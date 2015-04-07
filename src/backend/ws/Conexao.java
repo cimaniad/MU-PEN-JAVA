@@ -20,21 +20,30 @@ import org.apache.http.message.BasicNameValuePair;
 
 /**
  *
- * @author Ricardo
+ * Class responsavel por fazer a conexão ao web service sempre que necessário 
  */
 public class Conexao {
 
     private static Conexao instance;
-    private final String URL = "http://localhost/NEP-UM-WEB/api/";
-    private CloseableHttpClient clienteWS;
+    private final String URL = "http://localhost/NEP-UM-WEB/api/"; 
+    private final CloseableHttpClient clienteWS;
     private final HttpPost post;
+    
+    
 
+    /**
+     * metodo construtor privado para que não seja possivel a instanciação desta class.
+     */
     private Conexao() {
         this.clienteWS = HttpClients.createDefault();
-        post = new HttpPost(URL);
-
+        this.post = new HttpPost(URL);
     }
-
+    
+    
+/**
+ * Metodo que retorna a a instancia da propria Class, utilização do design pattern Singlton
+ * @return Conexao 
+ */
     public static Conexao getConexao() {
         if (instance == null) {
             synchronized (Conexao.class) {
@@ -45,6 +54,14 @@ public class Conexao {
         }
         return instance;
     }
+    
+    /**
+     * Metodo resposnsavel por fazer o pedido ao WS, retorna a resposta do WS 
+     * @param objeto    (objecto onde queremos executar a função)
+     * @param funcao    (função que queremos que o WS execute)
+     * @param parametros (parametros que são necessários enviar para o WS executar o pedido feito)
+     * @return CloseableHttpResponse
+     */
 
     public CloseableHttpResponse fazerPedido(String objeto, String funcao, List<NameValuePair> parametros) {
         try {
@@ -62,7 +79,11 @@ public class Conexao {
         }
         return null;
     }
-
+/**
+ * Metodo que trata a resposta feita pelo WS, e a devolve como uma String
+ * @param resposta
+ * @return String
+ */
     public String lerResposta(CloseableHttpResponse resposta) {
         
         try {
