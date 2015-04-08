@@ -39,15 +39,15 @@ public class PrescreverSessao extends javax.swing.JFrame {
         jComboBoxDominio = new javax.swing.JComboBox();
         jLabelDominio = new javax.swing.JLabel();
         jLabelSubDominio = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox();
+        jComboBoxSubDominio = new javax.swing.JComboBox();
         jLabelDescricao = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
+        jScrollPaneDescricao = new javax.swing.JScrollPane();
         jTextAreaDescricao = new javax.swing.JTextArea();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jList9 = new javax.swing.JList();
-        jButton9 = new javax.swing.JButton();
+        jScrollPaneExercicios = new javax.swing.JScrollPane();
+        jListExercicios = new javax.swing.JList();
+        jScrollPaneSelecionados = new javax.swing.JScrollPane();
+        jListSelecionados = new javax.swing.JList();
+        jButtonSelecionar = new javax.swing.JButton();
         jPanelPrescrever = new javax.swing.JPanel();
         jDateLimite = new com.toedter.calendar.JDateChooser();
         jLabelData = new javax.swing.JLabel();
@@ -104,32 +104,32 @@ public class PrescreverSessao extends javax.swing.JFrame {
 
         jLabelSubDominio.setText("Sub-Dominio: ");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSubDominio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabelDescricao.setText("Descrição: ");
 
         jTextAreaDescricao.setColumns(20);
         jTextAreaDescricao.setRows(5);
-        jScrollPane10.setViewportView(jTextAreaDescricao);
+        jScrollPaneDescricao.setViewportView(jTextAreaDescricao);
 
-        jList8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Exercícios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
-        jList8.setModel(new javax.swing.AbstractListModel() {
+        jListExercicios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Exercícios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        jListExercicios.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane11.setViewportView(jList8);
+        jScrollPaneExercicios.setViewportView(jListExercicios);
 
-        jList9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecionados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
-        jList9.setModel(new javax.swing.AbstractListModel() {
+        jListSelecionados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecionados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        jListSelecionados.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane12.setViewportView(jList9);
+        jScrollPaneSelecionados.setViewportView(jListSelecionados);
 
-        jButton9.setText("<>");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSelecionar.setText("<>");
+        jButtonSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
@@ -146,18 +146,18 @@ public class PrescreverSessao extends javax.swing.JFrame {
                         .addGroup(jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jLabelDescricao)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane10))
+                            .addComponent(jScrollPaneDescricao))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jLabelNome)
                             .addGap(28, 28, 28)
                             .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanelCriarLayout.createSequentialGroup()
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPaneExercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane12))
+                            .addComponent(jScrollPaneSelecionados))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jLabelDominio)
                             .addGap(18, 18, 18)
@@ -165,7 +165,7 @@ public class PrescreverSessao extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jLabelSubDominio)
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBoxSubDominio, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelCriarLayout.setVerticalGroup(
@@ -178,20 +178,20 @@ public class PrescreverSessao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescricao)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPaneDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxDominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDominio)
                     .addComponent(jLabelSubDominio)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSubDominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCriarLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jButton9))
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonSelecionar))
+                    .addComponent(jScrollPaneSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneExercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -305,11 +305,11 @@ public class PrescreverSessao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonPrescrever;
+    private javax.swing.JButton jButtonSelecionar;
     private javax.swing.JButton jButtonVoltar;
-    private javax.swing.JComboBox jComboBox6;
     private javax.swing.JComboBox jComboBoxDominio;
+    private javax.swing.JComboBox jComboBoxSubDominio;
     private com.toedter.calendar.JDateChooser jDateLimite;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelDescricao;
@@ -317,18 +317,18 @@ public class PrescreverSessao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFundo;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelSubDominio;
-    private javax.swing.JList jList8;
-    private javax.swing.JList jList9;
+    private javax.swing.JList jListExercicios;
     private javax.swing.JList jListExistentes;
+    private javax.swing.JList jListSelecionados;
     private javax.swing.JPanel jPanelCriar;
     private javax.swing.JPanel jPanelExistente;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JPanel jPanelPrescrever;
     private javax.swing.JPanel jPanelPrescreverSessao;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPaneDescricao;
+    private javax.swing.JScrollPane jScrollPaneExercicios;
     private javax.swing.JScrollPane jScrollPaneExistente;
+    private javax.swing.JScrollPane jScrollPaneSelecionados;
     private javax.swing.JTextArea jTextAreaDescricao;
     private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables

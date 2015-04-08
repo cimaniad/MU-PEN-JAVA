@@ -163,7 +163,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabelDescricao" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane10" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneDescricao" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
@@ -173,11 +173,11 @@
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jScrollPane11" min="-2" pref="155" max="-2" attributes="0"/>
+                                      <Component id="jScrollPaneExercicios" min="-2" pref="155" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton9" min="-2" pref="55" max="-2" attributes="0"/>
+                                      <Component id="jButtonSelecionar" min="-2" pref="55" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane12" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneSelecionados" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelDominio" min="-2" max="-2" attributes="0"/>
@@ -186,7 +186,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jLabelSubDominio" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jComboBox6" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxSubDominio" min="-2" pref="105" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -205,23 +205,23 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelDescricao" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane10" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneDescricao" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxDominio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelDominio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelSubDominio" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSubDominio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonSelecionar" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane12" min="-2" pref="120" max="-2" attributes="0"/>
-                              <Component id="jScrollPane11" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneSelecionados" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneExercicios" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -258,7 +258,7 @@
                     <Property name="text" type="java.lang.String" value="Sub-Dominio: "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox6">
+                <Component class="javax.swing.JComboBox" name="jComboBoxSubDominio">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -275,7 +275,7 @@
                     <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o: "/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+                <Container class="javax.swing.JScrollPane" name="jScrollPaneDescricao">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -290,14 +290,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane11">
+                <Container class="javax.swing.JScrollPane" name="jScrollPaneExercicios">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="jList8">
+                    <Component class="javax.swing.JList" name="jListExercicios">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -319,14 +319,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane12">
+                <Container class="javax.swing.JScrollPane" name="jScrollPaneSelecionados">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="jList9">
+                    <Component class="javax.swing.JList" name="jListSelecionados">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -348,7 +348,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton9">
+                <Component class="javax.swing.JButton" name="jButtonSelecionar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&lt;&gt;"/>
                   </Properties>
