@@ -24,18 +24,24 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-//        Terapeuta t = new Terapeuta("ricardo", "araujo", 1234, null ,1234, 1234, "mga@gmail", 123, null, "11-08-1994", null,"portu", "masc", "1234", "este", "aqe", null,false);
+//       Terapeuta t = new Terapeuta("Jose", "araujo", 1234, null ,1234, 1234, "mga@gmail", 123, null, "11-08-1994", null,"portu", "masc", "1234", "este", "aqe", null,false);
         TerapeutaWS tWS=new TerapeutaWS();
 //        List<Terapeuta> terapeutas = tWS.getAllTerapeutas();
 //        for(Terapeuta t : terapeutas){
 //            System.out.println(t.toString());
 //        }
 //        System.out.println(terapeutas.size());
-            Terapeuta t1 = tWS.getTerapeuta(13);
+        
+//         tWS.guardarEditarTerapeuta(t);
+            Terapeuta t1 = tWS.getTerapeuta(14);
             System.out.println(t1.getNome());
-            System.out.println(t1.isProfossionalDesenvolvimento());
+            t1.setNome("Antonio");
+            System.out.println(t1.getNome());
+            tWS.guardarEditarTerapeuta(t1);
+            Terapeuta t2 = tWS.getTerapeuta(14);
+            System.out.println(t2.getNome());
 //            
-//           tWS.guardarTerapeuta(t);
+//          
         
     }
     

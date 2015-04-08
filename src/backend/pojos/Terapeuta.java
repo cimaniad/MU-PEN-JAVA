@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package backend.pojos;
 
 /**
@@ -11,6 +10,8 @@ package backend.pojos;
  * @author Ricardo
  */
 public class Terapeuta {
+
+    private String idTerapeuta;
     private String nome;
     private String apelido;
     private int numCC;
@@ -30,9 +31,34 @@ public class Terapeuta {
     private String instituicao;
     private boolean profossionalDesenvolvimento;
 
+    /**
+     * Metdo construtor por defeito
+     */
     public Terapeuta() {
     }
 
+    /**
+     * Metodo Construtor
+     *
+     * @param nome
+     * @param apelido
+     * @param numCC
+     * @param morada
+     * @param numTel
+     * @param nif
+     * @param email
+     * @param numUtente
+     * @param estadoCivil
+     * @param dataNasc
+     * @param grupoSang
+     * @param nacionalidade
+     * @param sexo
+     * @param password
+     * @param perfil
+     * @param foto
+     * @param instituicao
+     * @param profossionalDesenvolvimento
+     */
     public Terapeuta(String nome, String apelido, int numCC, String morada, int numTel, int nif, String email, int numUtente, String estadoCivil, String dataNasc, String grupoSang, String nacionalidade, String sexo, String password, String perfil, String foto, String instituicao, boolean profossionalDesenvolvimento) {
         this.nome = nome;
         this.apelido = apelido;
@@ -53,23 +79,12 @@ public class Terapeuta {
         this.instituicao = instituicao;
         this.profossionalDesenvolvimento = profossionalDesenvolvimento;
     }
-    
 
-    public Terapeuta(String nome, String apelido, int numCC, int numTel, int nif, String email, int numUtente, String dataNasc, String nacionalidade, String sexo, String password, String perfil, String foto, boolean profossionalDesenvolvimento) {
-        this.nome = nome;
-        this.apelido = apelido;
-        this.numCC = numCC;
-        this.numTel = numTel;
-        this.nif = nif;
-        this.email = email;
-        this.numUtente = numUtente;
-        this.dataNasc = dataNasc;
-        this.nacionalidade = nacionalidade;
-        this.sexo = sexo;
-        this.password = password;
-        this.perfil = perfil;
-        this.foto = foto;
-        this.profossionalDesenvolvimento = profossionalDesenvolvimento;
+    /**
+     * Metodos modificadores e seletores
+     */
+    public String getIdTerapeuta() {
+        return idTerapeuta;
     }
 
     public String getNome() {
@@ -216,11 +231,12 @@ public class Terapeuta {
         this.profossionalDesenvolvimento = profossionalDesenvolvimento;
     }
 
+    /**
+     * Reescrita do metodo toString
+     */
     @Override
     public String toString() {
         return "Terapeuta{" + "nome=" + nome + ", apelido=" + apelido + ", numCC=" + numCC + ", morada=" + morada + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", numUtente=" + numUtente + ", estadoCivil=" + estadoCivil + ", dataNasc=" + dataNasc + ", grupoSang=" + grupoSang + ", nacionalidade=" + nacionalidade + ", sexo=" + sexo + ", password=" + password + ", perfil=" + perfil + ", foto=" + foto + ", instituicao=" + instituicao + ", profossionalDesenvolvimento=" + profossionalDesenvolvimento + '}';
     }
-    
-    
-    
+
 }

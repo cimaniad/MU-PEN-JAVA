@@ -17,31 +17,32 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
 
 /**
- *
- * @author Ricardo
+ * Class onde se efetua todas as operações existentes entre o Objecto terapeuta
+ * e o WS
  */
 public class TerapeutaWS {
 
-//    private final String URL = "http://localhost/NEP-UM-WEB/api/";
-//    private CloseableHttpClient clientWS;
-//    private HttpPost post;
-//    private CloseableHttpResponse resposta;
     Conexao conexaoWS;
     CloseableHttpResponse resposta;
     Gson gson;
 
     public TerapeutaWS() {
-
-//        clientWS = HttpClients.createDefault();
-//        post = new HttpPost(URL);
         gson = new Gson();
         conexaoWS = Conexao.getConexao();
-
     }
 
-    public boolean guardarTerapeuta(Terapeuta t) throws IOException {
+    /**
+     * Metodo que gurada ou Edita o terapeuta caso ele já exista, se tudo correr certo restorna true casos
+     * contrario retorna false
+     *
+     * @param t (Terapeuta)
+     * @return
+     * @throws IOException
+     */
+    public boolean guardarEditarTerapeuta(Terapeuta t) {
 
-        List<NameValuePair> parametros = new ArrayList<>();
+        List<NameValuePair> parametros = new ArrayList<>();           //array com os parametros necessários para registar um terapeuta
+        parametros.add(new BasicNameValuePair("idTerapeuta", t.getIdTerapeuta()));
         parametros.add(new BasicNameValuePair("nome", t.getNome()));
         parametros.add(new BasicNameValuePair("apelido", t.getApelido()));
         parametros.add(new BasicNameValuePair("numCC", String.valueOf(t.getNumCC())));
@@ -61,46 +62,55 @@ public class TerapeutaWS {
         parametros.add(new BasicNameValuePair("instituicao", t.getInstituicao()));
         parametros.add(new BasicNameValuePair("profissionalDesenvolvimento", String.valueOf(t.isProfossionalDesenvolvimento())));
 
-        resposta = conexaoWS.fazerPedido("terapeuta", "registar_terapeuta", parametros);
-        String terapeutaJson = conexaoWS.lerResposta(resposta);
+        resposta = conexaoWS.fazerPedido("terapeuta", "registar_editar_terapeuta", parametros);    //efetua o pedido ao WS
+        String validacao = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
 
-        Validacao v = gson.fromJson(terapeutaJson, Validacao.class);
+        Validacao v = gson.fromJson(validacao, Validacao.class);    //Conversão do objecto Json para o objecto Java
 
-        if (v.getCod() == 200) {
+        if (v.getCod() == 200) {        //caso o servidor retorne o codigo 200, segnifica que tudo correu como esperado, logo o metodo retorna true
             return true;
         }
-
         return false;
     }
 
+    /**
+     * Metodo que retorna o terapeuta com o id passado como parametro
+     *
+     * @param id
+     * @return Terapeuta
+     */
     public Terapeuta getTerapeuta(int id) {
         try {
-            List<NameValuePair> parametros = new ArrayList<>();
-            parametros.add(new BasicNameValuePair("id", String.valueOf(id)));
+            List<NameValuePair> parametros = new ArrayList<>();     //array com os parametros necessários para buscar um terapeuta pelo id
+            parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
 
-            resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);
-            System.out.println(resposta.getStatusLine().getStatusCode());
-            if (resposta.getStatusLine().getStatusCode() == 200) {
-                String terapeutaJson = conexaoWS.lerResposta(resposta);
-                Terapeuta t = gson.fromJson(terapeutaJson, Terapeuta.class);
-                return t;
-            }
+            resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
+            
+
+            String terapeutaJson = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
+            Terapeuta t = gson.fromJson(terapeutaJson, Terapeuta.class);    //Conversão do objecto Json para o objecto Java
+            return t;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
 
+    /**
+     * Metodo que retorna todos os terapeutas
+     *
+     * @return Lista de Terapeutas
+     */
     public List<Terapeuta> getAllTerapeutas() {
-
-        List<NameValuePair> parametros = new ArrayList<>();
+        List<NameValuePair> parametros = new ArrayList<>();     //array com os parametros necessários para buscar todos os terapeutas
 
         resposta = conexaoWS.fazerPedido("terapeuta", "get_all_terapeutas", parametros);
-        String terapeutaJson = conexaoWS.lerResposta(resposta);
-        Type type = new TypeToken<List<Terapeuta>>() {
-        }.getType();
+        
+        String terapeutaJson = conexaoWS.lerResposta(resposta);     //Passa a resposta para uma string
+        Type type = new TypeToken<List<Terapeuta>>() {}.getType();  //tipo do para o qual queros retornar a resposta Json
 
-        return gson.fromJson(terapeutaJson, type);
+        return gson.fromJson(terapeutaJson, type);          //Passao array dos objectos em Json para uma Lista de objectos Java
 
     }
 

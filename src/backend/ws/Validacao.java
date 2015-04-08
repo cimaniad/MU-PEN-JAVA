@@ -12,8 +12,8 @@ package backend.ws;
  */
 public class Validacao {
     
-    private int cod;
     private String msg;
+    private int cod;
 
     public Validacao() {
     }
