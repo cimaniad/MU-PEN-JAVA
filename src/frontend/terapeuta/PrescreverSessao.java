@@ -33,7 +33,7 @@ public class PrescreverSessao extends javax.swing.JFrame {
         jPanelExistente = new javax.swing.JPanel();
         jScrollPaneExistente = new javax.swing.JScrollPane();
         jListExistentes = new javax.swing.JList();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelCriar = new javax.swing.JPanel();
         jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jComboBoxDominio = new javax.swing.JComboBox();
@@ -48,11 +48,11 @@ public class PrescreverSessao extends javax.swing.JFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         jList9 = new javax.swing.JList();
         jButton9 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jLabel15 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jPanelPrescrever = new javax.swing.JPanel();
+        jDateLimite = new com.toedter.calendar.JDateChooser();
+        jLabelData = new javax.swing.JLabel();
+        jButtonVoltar = new javax.swing.JButton();
+        jButtonPrescrever = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,7 +94,7 @@ public class PrescreverSessao extends javax.swing.JFrame {
         jPanelPrescreverSessao.add(jPanelExistente);
         jPanelExistente.setBounds(10, 11, 210, 310);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Criar Bloco", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Agency FB", 1, 14))); // NOI18N
+        jPanelCriar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Criar Bloco", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Agency FB", 1, 14))); // NOI18N
 
         jLabelNome.setText("Nome: ");
 
@@ -135,30 +135,30 @@ public class PrescreverSessao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelCriarLayout = new javax.swing.GroupLayout(jPanelCriar);
+        jPanelCriar.setLayout(jPanelCriarLayout);
+        jPanelCriarLayout.setHorizontalGroup(
+            jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCriarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jLabelDescricao)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jScrollPane10))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jLabelNome)
                             .addGap(28, 28, 28)
                             .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane12))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCriarLayout.createSequentialGroup()
                             .addComponent(jLabelDominio)
                             .addGap(18, 18, 18)
                             .addComponent(jComboBoxDominio, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,26 +168,26 @@ public class PrescreverSessao extends javax.swing.JFrame {
                             .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanelCriarLayout.setVerticalGroup(
+            jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCriarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNome)
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescricao)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxDominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDominio)
                     .addComponent(jLabelSubDominio)
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCriarLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jButton9))
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,50 +195,50 @@ public class PrescreverSessao extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelPrescreverSessao.add(jPanel4);
-        jPanel4.setBounds(232, 11, 406, 310);
+        jPanelPrescreverSessao.add(jPanelCriar);
+        jPanelCriar.setBounds(232, 11, 406, 310);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanelPrescrever.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel15.setText("Data Limite :");
+        jLabelData.setText("Data Limite :");
 
-        jButton10.setText("Voltar");
+        jButtonVoltar.setText("Voltar");
 
-        jButton8.setText("Prescrever ");
+        jButtonPrescrever.setText("Prescrever ");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelPrescreverLayout = new javax.swing.GroupLayout(jPanelPrescrever);
+        jPanelPrescrever.setLayout(jPanelPrescreverLayout);
+        jPanelPrescreverLayout.setHorizontalGroup(
+            jPanelPrescreverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrescreverLayout.createSequentialGroup()
                 .addContainerGap(115, Short.MAX_VALUE)
-                .addComponent(jLabel15)
+                .addComponent(jLabelData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jDateLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonPrescrever, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanelPrescreverLayout.setVerticalGroup(
+            jPanelPrescreverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrescreverLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))
+                .addGroup(jPanelPrescreverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelPrescreverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonPrescrever, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPrescreverLayout.createSequentialGroup()
+                        .addGroup(jPanelPrescreverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelData))
                         .addGap(6, 6, 6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelPrescreverSessao.add(jPanel5);
-        jPanel5.setBounds(10, 330, 630, 50);
+        jPanelPrescreverSessao.add(jPanelPrescrever);
+        jPanelPrescrever.setBounds(10, 330, 630, 50);
 
         jPanelFundo.add(jPanelPrescreverSessao);
         jPanelPrescreverSessao.setBounds(20, 100, 660, 390);
@@ -305,13 +305,13 @@ public class PrescreverSessao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonPrescrever;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox jComboBox6;
     private javax.swing.JComboBox jComboBoxDominio;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private javax.swing.JLabel jLabel15;
+    private com.toedter.calendar.JDateChooser jDateLimite;
+    private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelDominio;
     private javax.swing.JLabel jLabelFundo;
@@ -320,10 +320,10 @@ public class PrescreverSessao extends javax.swing.JFrame {
     private javax.swing.JList jList8;
     private javax.swing.JList jList9;
     private javax.swing.JList jListExistentes;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelCriar;
     private javax.swing.JPanel jPanelExistente;
     private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JPanel jPanelPrescrever;
     private javax.swing.JPanel jPanelPrescreverSessao;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
