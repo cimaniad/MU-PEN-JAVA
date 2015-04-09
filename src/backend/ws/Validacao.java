@@ -8,7 +8,7 @@ package backend.ws;
 
 /**
  *
- * @author Ricardo
+ * class para validar os pedidos ao WS
  */
 public class Validacao {
     
