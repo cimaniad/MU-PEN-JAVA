@@ -32,7 +32,7 @@ public class TerapeutaWS {
     }
 
     /**
-     * Metodo que gurada ou Edita o terapeuta caso ele já exista, se tudo correr certo restorna true casos
+     * Metodo que Gurada ou Edita o terapeuta caso ele já exista, se tudo correr certo restorna true casos
      * contrario retorna false
      *
      * @param t (Terapeuta)

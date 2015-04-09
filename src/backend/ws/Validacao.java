@@ -14,10 +14,14 @@ public class Validacao {
     
     private String msg;
     private int cod;
-
+/**
+ * metodo construtor
+ */
     public Validacao() {
     }
-
+/**
+ * metodos seletores e modificadores
+ */
     public int getCod() {
         return cod;
     }
