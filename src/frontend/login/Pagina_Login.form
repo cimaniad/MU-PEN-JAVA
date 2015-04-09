@@ -103,23 +103,22 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="jButtonIniciar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/frontend/imagens/botoes/fundo_vermelho.jpg"/>
+                  <Image iconType="3" name="/imagens/botoes/fundo.jpg"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="130" width="160" height="30"/>
+                  <AbsoluteConstraints x="10" y="140" width="150" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelFundoLogin">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/frontend/imagens/fundos/fundo_laranja.jpg"/>
+                  <Image iconType="3" name="/imagens/fundos/fundo_laranja.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -133,7 +132,7 @@
         <Component class="javax.swing.JLabel" name="jLabelFundoPagina">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frontend/imagens/fundos/Fundo_login.jpg"/>
+              <Image iconType="3" name="/imagens/fundos/Fundo_login.jpg"/>
             </Property>
           </Properties>
           <Constraints>

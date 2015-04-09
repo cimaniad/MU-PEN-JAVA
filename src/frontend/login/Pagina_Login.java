@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package FrontEnd;
+package frontend.login;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Pagina_Login extends javax.swing.JFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldPassWord = new javax.swing.JTextField();
         jLabelEsquece = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonIniciar = new javax.swing.JButton();
         jLabelFundoLogin = new javax.swing.JLabel();
         jLabelFundoPagina = new javax.swing.JLabel();
 
@@ -67,19 +67,18 @@ public class Pagina_Login extends javax.swing.JFrame {
         jPanelLogin.add(jLabelEsquece);
         jLabelEsquece.setBounds(0, 170, 180, 20);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/imagens/botoes/fundo_vermelho.jpg"))); // NOI18N
-        jButton1.setText("jButton1");
-        jPanelLogin.add(jButton1);
-        jButton1.setBounds(10, 130, 160, 30);
+        jButtonIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botoes/fundo.jpg"))); // NOI18N
+        jPanelLogin.add(jButtonIniciar);
+        jButtonIniciar.setBounds(10, 140, 150, 20);
 
-        jLabelFundoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/imagens/fundos/fundo_laranja.jpg"))); // NOI18N
+        jLabelFundoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_laranja.jpg"))); // NOI18N
         jPanelLogin.add(jLabelFundoLogin);
         jLabelFundoLogin.setBounds(0, 0, 180, 210);
 
         jPanelFundoPagina.add(jPanelLogin);
         jPanelLogin.setBounds(500, 130, 180, 210);
 
-        jLabelFundoPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/imagens/fundos/Fundo_login.jpg"))); // NOI18N
+        jLabelFundoPagina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/Fundo_login.jpg"))); // NOI18N
         jPanelFundoPagina.add(jLabelFundoPagina);
         jLabelFundoPagina.setBounds(0, 0, 700, 500);
 
@@ -125,7 +124,7 @@ public class Pagina_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonIniciar;
     private javax.swing.JLabel jLabelEsquece;
     private javax.swing.JLabel jLabelFundoLogin;
     private javax.swing.JLabel jLabelFundoPagina;
