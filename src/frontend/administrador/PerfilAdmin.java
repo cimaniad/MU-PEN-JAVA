@@ -107,7 +107,7 @@ public class PerfilAdmin extends javax.swing.JFrame {
         jPanelPerfil.add(jButtonVoltar);
         jButtonVoltar.setBounds(490, 250, 130, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/imagens/fundo_branco.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabel3.setText("63");
         jPanelPerfil.add(jLabel3);
         jLabel3.setBounds(-10, 0, 660, 350);
@@ -115,7 +115,7 @@ public class PerfilAdmin extends javax.swing.JFrame {
         jPanelFundoPerfil.add(jPanelPerfil);
         jPanelPerfil.setBounds(20, 110, 650, 350);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/imagens/fundo2.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
         jPanelFundoPerfil.add(jLabel1);
         jLabel1.setBounds(0, 0, 680, 500);
 
