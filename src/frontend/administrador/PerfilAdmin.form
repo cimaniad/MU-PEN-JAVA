@@ -74,7 +74,7 @@
             <Component class="javax.swing.JLabel" name="jLabelFoto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/frontend/imagens/perfil.PNG"/>
+                  <Image iconType="3" name="/imagens/fotos/perfil.PNG"/>
                 </Property>
               </Properties>
               <Constraints>

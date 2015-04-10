@@ -59,7 +59,7 @@ public class PerfilAdmin extends javax.swing.JFrame {
         jPanelPerfil.add(jLabel2);
         jLabel2.setBounds(20, 0, 90, 50);
 
-        jLabelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/imagens/perfil.PNG"))); // NOI18N
+        jLabelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
         jPanelPerfil.add(jLabelFoto);
         jLabelFoto.setBounds(50, 50, 80, 80);
 
