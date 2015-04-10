@@ -7,6 +7,7 @@ package backend.ws;
 
 import backend.pojos.Terapeuta;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -32,8 +33,8 @@ public class TerapeutaWS {
     }
 
     /**
-     * Metodo que Gurada ou Edita o terapeuta caso ele já exista, se tudo correr certo restorna true casos
-     * contrario retorna false
+     * Metodo que Gurada ou Edita o terapeuta caso ele já exista, se tudo correr
+     * certo restorna true casos contrario retorna false
      *
      * @param t (Terapeuta)
      * @return
@@ -65,12 +66,19 @@ public class TerapeutaWS {
         resposta = conexaoWS.fazerPedido("terapeuta", "registar_editar_terapeuta", parametros);    //efetua o pedido ao WS
         String validacao = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
 
-        Validacao v = gson.fromJson(validacao, Validacao.class);    //Conversão do objecto Json para o objecto Java
-
-        if (v.getCod() == 200) {        //caso o servidor retorne o codigo 200, segnifica que tudo correu como esperado, logo o metodo retorna true
-            return true;
+        if (resposta.getStatusLine().getStatusCode() == 200) {      //verificar o codigo HTTP da resposta
+            System.out.println(resposta.getStatusLine().getStatusCode());
+            Validacao v = gson.fromJson(validacao, Validacao.class);    //Conversão do objecto Json para o objecto Java
+            
+            if (v.getCod() == 200) {        //se o servidor retornar o codigo 200, segnifica que tudo correu como esperado, logo o metodo retorna true
+                System.out.println(v.getCod());
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
@@ -80,21 +88,20 @@ public class TerapeutaWS {
      * @return Terapeuta
      */
     public Terapeuta getTerapeuta(int id) {
-        try {
-            List<NameValuePair> parametros = new ArrayList<>();     //array com os parametros necessários para buscar um terapeuta pelo id
-            parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
+        List<NameValuePair> parametros = new ArrayList<>();     //array com os parametros necessários para buscar um terapeuta pelo id
 
-            resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
-            
+        parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
 
+        resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
+
+        if (resposta.getStatusLine().getStatusCode() == 200) {              //verificar o codigo HTTP da resposta
+            System.out.println(resposta.getStatusLine().getStatusCode());
             String terapeutaJson = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
             Terapeuta t = gson.fromJson(terapeutaJson, Terapeuta.class);    //Conversão do objecto Json para o objecto Java
             return t;
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } else {
+            return null;
         }
-        return null;
     }
 
     /**
@@ -106,12 +113,19 @@ public class TerapeutaWS {
         List<NameValuePair> parametros = new ArrayList<>();     //array com os parametros necessários para buscar todos os terapeutas
 
         resposta = conexaoWS.fazerPedido("terapeuta", "get_all_terapeutas", parametros);
-        
-        String terapeutaJson = conexaoWS.lerResposta(resposta);     //Passa a resposta para uma string
-        Type type = new TypeToken<List<Terapeuta>>() {}.getType();  //tipo do para o qual queros retornar a resposta Json
 
-        return gson.fromJson(terapeutaJson, type);          //Passao array dos objectos em Json para uma Lista de objectos Java
+        if (resposta.getStatusLine().getStatusCode() == 200) {           //verificar o codigo HTTP da resposta
+            String terapeutaJson = conexaoWS.lerResposta(resposta);     //Passa a resposta para uma string
+            Type type = new TypeToken<List<Terapeuta>>() {
+            }.getType();  //tipo do para o qual queros retornar a resposta Json
 
+            return gson.fromJson(terapeutaJson, type);          //Passa o array dos objectos em Json para uma Lista de objectos Java
+
+        } else {
+            return null;
+        }
     }
-
+    
+    
+    
 }
