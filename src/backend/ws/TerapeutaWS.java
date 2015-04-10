@@ -119,10 +119,13 @@ public class TerapeutaWS {
             Type type = new TypeToken<List<Terapeuta>>() {
             }.getType();  //tipo do para o qual queros retornar a resposta Json
 
-            return gson.fromJson(terapeutaJson, type);          //Passao array dos objectos em Json para uma Lista de objectos Java
+            return gson.fromJson(terapeutaJson, type);          //Passa o array dos objectos em Json para uma Lista de objectos Java
 
         } else {
             return null;
         }
     }
+    
+    
+    
 }
