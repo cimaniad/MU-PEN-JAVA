@@ -10,12 +10,12 @@ package frontend.administrador;
  *
  * @author Quina
  */
-public class Perfil_Profissional extends javax.swing.JFrame {
+public class PerfilProfissional extends javax.swing.JFrame {
 
     /**
      * Creates new form Perfil_Professional
      */
-    public Perfil_Profissional() {
+    public PerfilProfissional() {
         initComponents();
     }
 
@@ -167,20 +167,20 @@ public class Perfil_Profissional extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Perfil_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Perfil_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Perfil_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Perfil_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Perfil_Profissional().setVisible(true);
+                new PerfilProfissional().setVisible(true);
             }
         });
     }

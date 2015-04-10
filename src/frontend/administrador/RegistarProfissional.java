@@ -6,16 +6,17 @@
 
 package frontend.administrador;
 
+
+
 /**
  *
- * @author Quina
  */
-public class Registar_Profissional extends javax.swing.JFrame {
+public class RegistarProfissional extends javax.swing.JFrame {
 
     /**
-     * Creates new form Registar_ProfissionalDeDesenvolvimento
+     * Creates new form RegistarProfissionalDeDesenvolvimento
      */
-    public Registar_Profissional() {
+    public RegistarProfissional() {
         initComponents();
     }
 
@@ -261,6 +262,7 @@ public class Registar_Profissional extends javax.swing.JFrame {
 
     private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBoxSexoActionPerformed
 
     private void jButtonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarActionPerformed
@@ -308,20 +310,20 @@ public class Registar_Profissional extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registar_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registar_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registar_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registar_Profissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registar_Profissional().setVisible(true);
+                new RegistarProfissional().setVisible(true);
             }
         });
     }
