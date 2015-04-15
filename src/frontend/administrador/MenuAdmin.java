@@ -41,6 +41,11 @@ public class MenuAdmin extends javax.swing.JFrame {
         jPanelFundo.setLayout(null);
 
         jButtonTerapeuta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botoes/Terapeuta.jpg"))); // NOI18N
+        jButtonTerapeuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTerapeutaActionPerformed(evt);
+            }
+        });
         jPanelFundo.add(jButtonTerapeuta);
         jButtonTerapeuta.setBounds(270, 190, 170, 60);
 
@@ -57,6 +62,10 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonTerapeutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerapeutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTerapeutaActionPerformed
 
     /**
      * @param args the command line arguments

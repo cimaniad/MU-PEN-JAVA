@@ -41,12 +41,13 @@ public class PerfilAdmin extends javax.swing.JFrame {
         jLabelCC = new javax.swing.JLabel();
         jLabelNacionalidade = new javax.swing.JLabel();
         jLabelSexo3 = new javax.swing.JLabel();
-        jButtonEditar = new javax.swing.JButton();
+        jButtonGuardar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jPanelFundoPerfil.setLayout(null);
 
@@ -69,11 +70,11 @@ public class PerfilAdmin extends javax.swing.JFrame {
 
         jLabelNome.setText("Nome:");
         jPanelPerfil.add(jLabelNome);
-        jLabelNome.setBounds(260, 50, 60, 20);
+        jLabelNome.setBounds(250, 50, 60, 20);
 
         jLabelDataNascimento.setText("Data de Nascimento:");
         jPanelPerfil.add(jLabelDataNascimento);
-        jLabelDataNascimento.setBounds(190, 80, 130, 14);
+        jLabelDataNascimento.setBounds(180, 80, 130, 14);
 
         jLabelMorada.setText("Morada:");
         jPanelPerfil.add(jLabelMorada);
@@ -89,7 +90,7 @@ public class PerfilAdmin extends javax.swing.JFrame {
 
         jLabelCC.setText(" Nº C.C:");
         jPanelPerfil.add(jLabelCC);
-        jLabelCC.setBounds(250, 170, 50, 14);
+        jLabelCC.setBounds(240, 170, 50, 14);
 
         jLabelNacionalidade.setText("   Nacionalidade:");
         jPanelPerfil.add(jLabelNacionalidade);
@@ -99,9 +100,14 @@ public class PerfilAdmin extends javax.swing.JFrame {
         jPanelPerfil.add(jLabelSexo3);
         jLabelSexo3.setBounds(460, 80, 70, 14);
 
-        jButtonEditar.setText("Editar Perfil");
-        jPanelPerfil.add(jButtonEditar);
-        jButtonEditar.setBounds(340, 250, 130, 40);
+        jButtonGuardar.setText("Editar Perfil");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
+        jPanelPerfil.add(jButtonGuardar);
+        jButtonGuardar.setBounds(340, 250, 130, 40);
 
         jButtonVoltar.setText("Voltar");
         jPanelPerfil.add(jButtonVoltar);
@@ -117,21 +123,17 @@ public class PerfilAdmin extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
         jPanelFundoPerfil.add(jLabel1);
-        jLabel1.setBounds(0, 0, 680, 500);
+        jLabel1.setBounds(0, 0, 690, 500);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFundoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFundoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanelFundoPerfil);
+        jPanelFundoPerfil.setBounds(0, 0, 689, 507);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,7 +171,7 @@ public class PerfilAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
