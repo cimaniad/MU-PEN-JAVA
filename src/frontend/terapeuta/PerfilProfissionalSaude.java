@@ -9,12 +9,12 @@ package frontend.terapeuta;
  *
  * @author jorge
  */
-public class EditarProfissional extends javax.swing.JFrame {
+public class PerfilProfissionalSaude extends javax.swing.JFrame {
 
     /**
-     * Creates new form EditarProfissional
+     * Creates new form PerfilProfissionalSaude
      */
-    public EditarProfissional() {
+    public PerfilProfissionalSaude() {
         initComponents();
     }
 
@@ -43,29 +43,13 @@ public class EditarProfissional extends javax.swing.JFrame {
         jLabelSexo3 = new javax.swing.JLabel();
         jLabelUtente = new javax.swing.JLabel();
         jLabelEstadoCivil = new javax.swing.JLabel();
-        jButtonGuardar = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
-        jTextFieldDataNasc = new javax.swing.JTextField();
-        jTextFieldMorada = new javax.swing.JTextField();
-        jTextFieldTel = new javax.swing.JTextField();
-        jTextFieldCC = new javax.swing.JTextField();
-        jTextFieldNIF = new javax.swing.JTextField();
-        jTextFieldNacionalidade = new javax.swing.JTextField();
-        jTextFieldApelido = new javax.swing.JTextField();
-        jTextFieldSexo = new javax.swing.JTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldUtente = new javax.swing.JTextField();
-        jTextFieldCivil = new javax.swing.JTextField();
-        jTextFieldInsti = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(700, 500));
-        setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(null);
 
         jPanelFundoPerfil.setMaximumSize(new java.awt.Dimension(700, 500));
@@ -131,14 +115,14 @@ public class EditarProfissional extends javax.swing.JFrame {
         jPanelPerfil.add(jLabelEstadoCivil);
         jLabelEstadoCivil.setBounds(430, 180, 60, 14);
 
-        jButtonGuardar.setText("Guardar");
-        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditar.setText("Editar Perfil");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarActionPerformed(evt);
+                jButtonEditarActionPerformed(evt);
             }
         });
-        jPanelPerfil.add(jButtonGuardar);
-        jButtonGuardar.setBounds(340, 290, 130, 40);
+        jPanelPerfil.add(jButtonEditar);
+        jButtonEditar.setBounds(340, 290, 130, 40);
 
         jButtonVoltar.setText("Voltar");
         jPanelPerfil.add(jButtonVoltar);
@@ -147,62 +131,6 @@ public class EditarProfissional extends javax.swing.JFrame {
         jLabel4.setText("     Instituição:");
         jPanelPerfil.add(jLabel4);
         jLabel4.setBounds(420, 210, 70, 14);
-
-        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeActionPerformed(evt);
-            }
-        });
-        jPanelPerfil.add(jTextFieldNome);
-        jTextFieldNome.setBounds(290, 30, 120, 20);
-        jPanelPerfil.add(jTextFieldDataNasc);
-        jTextFieldDataNasc.setBounds(290, 60, 120, 20);
-
-        jTextFieldMorada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMoradaActionPerformed(evt);
-            }
-        });
-        jPanelPerfil.add(jTextFieldMorada);
-        jTextFieldMorada.setBounds(290, 90, 120, 20);
-        jPanelPerfil.add(jTextFieldTel);
-        jTextFieldTel.setBounds(290, 120, 120, 20);
-
-        jTextFieldCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCCActionPerformed(evt);
-            }
-        });
-        jPanelPerfil.add(jTextFieldCC);
-        jTextFieldCC.setBounds(290, 150, 120, 20);
-
-        jTextFieldNIF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNIFActionPerformed(evt);
-            }
-        });
-        jPanelPerfil.add(jTextFieldNIF);
-        jTextFieldNIF.setBounds(290, 180, 120, 20);
-
-        jTextFieldNacionalidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNacionalidadeActionPerformed(evt);
-            }
-        });
-        jPanelPerfil.add(jTextFieldNacionalidade);
-        jTextFieldNacionalidade.setBounds(290, 210, 120, 20);
-        jPanelPerfil.add(jTextFieldApelido);
-        jTextFieldApelido.setBounds(500, 30, 120, 20);
-        jPanelPerfil.add(jTextFieldSexo);
-        jTextFieldSexo.setBounds(500, 60, 120, 20);
-        jPanelPerfil.add(jTextFieldEmail);
-        jTextFieldEmail.setBounds(500, 120, 120, 20);
-        jPanelPerfil.add(jTextFieldUtente);
-        jTextFieldUtente.setBounds(500, 150, 120, 20);
-        jPanelPerfil.add(jTextFieldCivil);
-        jTextFieldCivil.setBounds(500, 180, 120, 20);
-        jPanelPerfil.add(jTextFieldInsti);
-        jTextFieldInsti.setBounds(500, 210, 120, 20);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jPanelPerfil.add(jLabel3);
@@ -221,29 +149,9 @@ public class EditarProfissional extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeActionPerformed
-
-    private void jTextFieldMoradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMoradaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMoradaActionPerformed
-
-    private void jTextFieldNIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNIFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNIFActionPerformed
-
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
-
-    private void jTextFieldCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCCActionPerformed
-
-    private void jTextFieldNacionalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNacionalidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNacionalidadeActionPerformed
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,26 +170,26 @@ public class EditarProfissional extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissionalSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissionalSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissionalSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarProfissional.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PerfilProfissionalSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarProfissional().setVisible(true);
+                new PerfilProfissionalSaude().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -302,18 +210,5 @@ public class EditarProfissional extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUtente;
     private javax.swing.JPanel jPanelFundoPerfil;
     private javax.swing.JPanel jPanelPerfil;
-    private javax.swing.JTextField jTextFieldApelido;
-    private javax.swing.JTextField jTextFieldCC;
-    private javax.swing.JTextField jTextFieldCivil;
-    private javax.swing.JTextField jTextFieldDataNasc;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldInsti;
-    private javax.swing.JTextField jTextFieldMorada;
-    private javax.swing.JTextField jTextFieldNIF;
-    private javax.swing.JTextField jTextFieldNacionalidade;
-    private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldSexo;
-    private javax.swing.JTextField jTextFieldTel;
-    private javax.swing.JTextField jTextFieldUtente;
     // End of variables declaration//GEN-END:variables
 }
