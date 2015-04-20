@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FrontEnd;
+package frontend.healthProfessional;
 
 /**
  *
  * @author jorge
  */
-public class MenuAdmin extends javax.swing.JFrame {
+public class PrescribeSession extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuAdmin
+     * Creates new form PrescribeSession
      */
-    public MenuAdmin() {
+    public PrescribeSession() {
         initComponents();
     }
 
@@ -27,33 +27,28 @@ public class MenuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelFundo = new javax.swing.JPanel();
-        jButtonTerapeuta = new javax.swing.JButton();
-        jButtonPerfil = new javax.swing.JButton();
-        jLabelFundo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(null);
 
-        jPanelFundo.setMaximumSize(new java.awt.Dimension(700, 500));
-        jPanelFundo.setMinimumSize(new java.awt.Dimension(700, 500));
-        jPanelFundo.setLayout(null);
+        jLabel1.setText("Fazer");
 
-        jButtonTerapeuta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botoes/Terapeuta.jpg"))); // NOI18N
-        jPanelFundo.add(jButtonTerapeuta);
-        jButtonTerapeuta.setBounds(270, 190, 170, 60);
-
-        jButtonPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botoes/Perfil.jpg"))); // NOI18N
-        jPanelFundo.add(jButtonPerfil);
-        jButtonPerfil.setBounds(270, 310, 170, 60);
-
-        jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
-        jPanelFundo.add(jLabelFundo);
-        jLabelFundo.setBounds(0, 0, 700, 500);
-
-        getContentPane().add(jPanelFundo);
-        jPanelFundo.setBounds(0, 0, 700, 500);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(319, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(306, 306, 306))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(jLabel1)
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,28 +70,25 @@ public class MenuAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrescribeSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrescribeSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrescribeSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrescribeSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAdmin().setVisible(true);
+                new PrescribeSession().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonPerfil;
-    private javax.swing.JButton jButtonTerapeuta;
-    private javax.swing.JLabel jLabelFundo;
-    private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
