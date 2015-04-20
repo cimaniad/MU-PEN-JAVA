@@ -11,8 +11,11 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
@@ -62,14 +65,17 @@ public class TerapeutaWS {
         parametros.add(new BasicNameValuePair("foto", t.getFoto()));
         parametros.add(new BasicNameValuePair("instituicao", t.getInstituicao()));
         parametros.add(new BasicNameValuePair("profissionalDesenvolvimento", String.valueOf(t.isProfossionalDesenvolvimento())));
-
-        resposta = conexaoWS.fazerPedido("terapeuta", "registar_editar_terapeuta", parametros);    //efetua o pedido ao WS
+        try {
+            resposta = conexaoWS.fazerPedido("terapeuta", "registar_editar_terapeuta", parametros);    //efetua o pedido ao WS
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         String validacao = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
 
         if (resposta.getStatusLine().getStatusCode() == 200) {      //verificar o codigo HTTP da resposta
             System.out.println(resposta.getStatusLine().getStatusCode());
             Validacao v = gson.fromJson(validacao, Validacao.class);    //Conversão do objecto Json para o objecto Java
-            
+
             if (v.getCod() == 200) {        //se o servidor retornar o codigo 200, segnifica que tudo correu como esperado, logo o metodo retorna true
                 System.out.println(v.getCod());
                 return true;
@@ -89,19 +95,20 @@ public class TerapeutaWS {
      */
     public Terapeuta getTerapeuta(int id) {
         List<NameValuePair> parametros = new ArrayList<>();     //array com os parametros necessários para buscar um terapeuta pelo id
-
+        Terapeuta t = null;
         parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
-
-        resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
-
-        if (resposta.getStatusLine().getStatusCode() == 200) {              //verificar o codigo HTTP da resposta
-            System.out.println(resposta.getStatusLine().getStatusCode());
-            String terapeutaJson = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
-            Terapeuta t = gson.fromJson(terapeutaJson, Terapeuta.class);    //Conversão do objecto Json para o objecto Java
-            return t;
-        } else {
-            return null;
+        try {
+            resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
+            if (resposta.getStatusLine().getStatusCode() == 200) {              //verificar o codigo HTTP da resposta
+                System.out.println(resposta.getStatusLine().getStatusCode());
+                String terapeutaJson = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
+                t = gson.fromJson(terapeutaJson, Terapeuta.class);    //Conversão do objecto Json para o objecto Java
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Ocorreu um erro ao tentar aceder ao servidor. \n\tVerifique a ligação à internet");
         }
+        return t;
     }
 
     /**
@@ -125,7 +132,5 @@ public class TerapeutaWS {
             return null;
         }
     }
-    
-    
-    
+
 }

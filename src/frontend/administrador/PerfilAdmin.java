@@ -110,7 +110,7 @@ public class PerfilAdmin extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabel3.setText("63");
         jPanelPerfil.add(jLabel3);
-        jLabel3.setBounds(-10, 0, 660, 350);
+        jLabel3.setBounds(0, 0, 660, 350);
 
         jPanelFundoPerfil.add(jPanelPerfil);
         jPanelPerfil.setBounds(20, 110, 650, 350);

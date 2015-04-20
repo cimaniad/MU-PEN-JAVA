@@ -35,12 +35,12 @@ public class Main {
 //         tWS.guardarEditarTerapeuta(t);
             Terapeuta t1 = tWS.getTerapeuta(14);
 //            System.out.println(t1.getNome());
-            System.out.println(t1.getNumCC());
-            t1.setNome("Antonio");
-          System.out.println(t1.getNome());
-            tWS.guardarEditarTerapeuta(t1);
-            Terapeuta t2 = tWS.getTerapeuta(14);
-            System.out.println(t2.getNome());
+//            System.out.println(t1.getNumCC());
+//            t1.setNome("Antonio");
+//          System.out.println(t1.getNome());
+//            tWS.guardarEditarTerapeuta(t1);
+//            Terapeuta t2 = tWS.getTerapeuta(14);
+//            System.out.println(t2.getNome());
            
 //            
 //          
