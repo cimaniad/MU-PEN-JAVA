@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package frontendHealthProfessional;
+package frontend.healthProfessional;
 
 /**
  *
@@ -40,9 +40,7 @@ public class PatientesList extends javax.swing.JFrame {
         jLabelwallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(705, 520));
         setMinimumSize(new java.awt.Dimension(705, 520));
-        setPreferredSize(new java.awt.Dimension(705, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

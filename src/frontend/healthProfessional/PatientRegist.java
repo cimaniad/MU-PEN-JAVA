@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package frontendHealthProfessional;
+package frontend.healthProfessional;
 
 /**
  *
  * @author jorge
  */
-public class HealthProfessionalProfile extends javax.swing.JFrame {
+public class PatientRegist extends javax.swing.JFrame {
 
     /**
-     * Creates new form HealthProfessionalProfile
+     * Creates new form PatientRegist
      */
-    public HealthProfessionalProfile() {
+    public PatientRegist() {
         initComponents();
     }
 
@@ -29,7 +29,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
         jPanelWallpaper = new javax.swing.JPanel();
         jPanelInformation = new javax.swing.JPanel();
-        jLabelHealthProfessionalProfile = new javax.swing.JLabel();
+        jLabelPatientRegist = new javax.swing.JLabel();
         jLabelPhoto = new javax.swing.JLabel();
         jLabelName = new javax.swing.JLabel();
         jLabelBirthDate = new javax.swing.JLabel();
@@ -43,20 +43,32 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelNUtente = new javax.swing.JLabel();
         jLabelNIF = new javax.swing.JLabel();
         jLabelMaritalStatus = new javax.swing.JLabel();
-        jLabelType = new javax.swing.JLabel();
+        jLabelPathology = new javax.swing.JLabel();
         jLabelBloodType = new javax.swing.JLabel();
-        jLabelInstitution = new javax.swing.JLabel();
-        jButtonEdit = new javax.swing.JButton();
+        jLabelDescription = new javax.swing.JLabel();
+        jButtonRegist = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
-        jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
+        jComboBoxGender = new javax.swing.JComboBox();
+        jComboBoxBloodType = new javax.swing.JComboBox();
+        jComboBoxMaritalStatus = new javax.swing.JComboBox();
+        jTextFieldName = new javax.swing.JTextField();
+        jTextFieldBirthDate = new javax.swing.JTextField();
+        jTextFieldTel = new javax.swing.JTextField();
+        jTextFieldCC = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldLastName = new javax.swing.JTextField();
+        jTextFieldNationality = new javax.swing.JTextField();
+        jTextFieldAdress = new javax.swing.JTextField();
+        jTextFieldNIF = new javax.swing.JTextField();
+        jTextFieldUtente = new javax.swing.JTextField();
+        jTextFieldPathology = new javax.swing.JTextField();
+        jTextFieldDescription = new javax.swing.JTextField();
+        jButtonAddPhoto = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setEnabled(false);
-        setMaximumSize(new java.awt.Dimension(705, 520));
         setMinimumSize(new java.awt.Dimension(705, 520));
-        setPreferredSize(new java.awt.Dimension(705, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -66,9 +78,9 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelHealthProfessionalProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabelHealthProfessionalProfile.setText("Profissional de Saúde");
-        jPanelInformation.add(jLabelHealthProfessionalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabelPatientRegist.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabelPatientRegist.setText("Registar Paciente");
+        jPanelInformation.add(jLabelPatientRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
@@ -109,33 +121,67 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelMaritalStatus.setText(" Estado Civil:");
         jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 205, -1, -1));
 
-        jLabelType.setText("   Tipo:");
-        jPanelInformation.add(jLabelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 235, -1, -1));
+        jLabelPathology.setText(" Patologia:");
+        jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 235, -1, -1));
 
-        jLabelBloodType.setText("  Grupo sanguíneo:");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, -1, -1));
+        jLabelBloodType.setText("    Grupo sanguíneo:");
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 235, -1, -1));
 
-        jLabelInstitution.setText(" Instituição:");
-        jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 235, -1, -1));
+        jLabelDescription.setText("  Descrição:");
+        jPanelInformation.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 265, -1, -1));
 
-        jButtonEdit.setText("Editar");
-        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegist.setText("Registar");
+        jButtonRegist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditActionPerformed(evt);
+                jButtonRegistActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        jPanelInformation.add(jButtonRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
         jButtonBack.setText("Voltar");
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
-        jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
-        jCheckBoxDevelopmentProfessional.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino", " " }));
+        jPanelInformation.add(jComboBoxGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, -1));
+
+        jComboBoxBloodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-" }));
+        jPanelInformation.add(jComboBoxBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 170, -1));
+
+        jComboBoxMaritalStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Casado", "Divorciado", "Viúvo" }));
+        jPanelInformation.add(jComboBoxMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
+        jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
+        jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
+        jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
+        jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
+        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 170, -1));
+        jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
+        jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
+
+        jTextFieldAdress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxDevelopmentProfessionalActionPerformed(evt);
+                jTextFieldAdressActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 180, -1));
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
+
+        jTextFieldNIF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNIFActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
+        jPanelInformation.add(jTextFieldUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 170, -1));
+        jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
+
+        jTextFieldDescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescriptionActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, -1));
+
+        jButtonAddPhoto.setText("Inserir foto");
+        jPanelInformation.add(jButtonAddPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -153,13 +199,21 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+    private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEditActionPerformed
+    }//GEN-LAST:event_jButtonRegistActionPerformed
 
-    private void jCheckBoxDevelopmentProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDevelopmentProfessionalActionPerformed
+    private void jTextFieldAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAdressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxDevelopmentProfessionalActionPerformed
+    }//GEN-LAST:event_jTextFieldAdressActionPerformed
+
+    private void jTextFieldNIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNIFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNIFActionPerformed
+
+    private void jTextFieldDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescriptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescriptionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,48 +232,63 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HealthProfessionalProfile().setVisible(true);
+                new PatientRegist().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAddPhoto;
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonEdit;
-    private javax.swing.JCheckBox jCheckBoxDevelopmentProfessional;
+    private javax.swing.JButton jButtonRegist;
+    private javax.swing.JComboBox jComboBoxBloodType;
+    private javax.swing.JComboBox jComboBoxGender;
+    private javax.swing.JComboBox jComboBoxMaritalStatus;
     private javax.swing.JLabel jLabelAdress;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelBloodType;
     private javax.swing.JLabel jLabelCC;
+    private javax.swing.JLabel jLabelDescription;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelGender;
-    private javax.swing.JLabel jLabelHealthProfessionalProfile;
     private javax.swing.JLabel jLabelInformation;
-    private javax.swing.JLabel jLabelInstitution;
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelMaritalStatus;
     private javax.swing.JLabel jLabelNIF;
     private javax.swing.JLabel jLabelNUtente;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNationality;
+    private javax.swing.JLabel jLabelPathology;
+    private javax.swing.JLabel jLabelPatientRegist;
     private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelTel;
-    private javax.swing.JLabel jLabelType;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
+    private javax.swing.JTextField jTextFieldAdress;
+    private javax.swing.JTextField jTextFieldBirthDate;
+    private javax.swing.JTextField jTextFieldCC;
+    private javax.swing.JTextField jTextFieldDescription;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldLastName;
+    private javax.swing.JTextField jTextFieldNIF;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldNationality;
+    private javax.swing.JTextField jTextFieldPathology;
+    private javax.swing.JTextField jTextFieldTel;
+    private javax.swing.JTextField jTextFieldUtente;
     // End of variables declaration//GEN-END:variables
 }
