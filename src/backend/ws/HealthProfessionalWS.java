@@ -31,7 +31,7 @@ public class HealthProfessionalWS {
 
     public HealthProfessionalWS() {
         gson = new Gson();
-        wrapperWS = WrapperWS.getConexao();
+        wrapperWS = WrapperWS.getWrapperWS();
         
     }
 
