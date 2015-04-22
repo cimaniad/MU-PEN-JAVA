@@ -11,7 +11,7 @@ package backend.pojos;
  */
 public class HealthProfessional {
 
-    private String idHealthProfessional;
+    private int idHealthProfessional;
     private String name;
     private String lastName;
     private int numCC;
@@ -86,7 +86,7 @@ public class HealthProfessional {
     /**
      * Metodos modificadores e seletores
      */
-    public String getIdHealthProfessional() {
+    public int getIdHealthProfessional() {
         return idHealthProfessional;
     }
 

@@ -24,14 +24,14 @@ import org.apache.log4j.Logger;
  */
 public class HealthProfessionalWS {
 
-    private WrapperWS conexaoWS;
+    private WrapperWS wrapperWS;
     private CloseableHttpResponse resposta;
     private Gson gson;
     private static Logger log = Logger.getLogger(HealthProfessionalWS.class);
 
     public HealthProfessionalWS() {
         gson = new Gson();
-        conexaoWS = WrapperWS.getConexao();
+        wrapperWS = WrapperWS.getConexao();
         
     }
 
@@ -45,7 +45,7 @@ public class HealthProfessionalWS {
     public void saveEditHealthProfessional(HealthProfessional hp) {
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idHealthProfessional", hp.getIdHealthProfessional()));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(hp.getIdHealthProfessional())));
         params.add(new BasicNameValuePair("name", hp.getName()));
         params.add(new BasicNameValuePair("lastName", hp.getLastName()));
         params.add(new BasicNameValuePair("numCC", String.valueOf(hp.getNumCC())));
@@ -65,9 +65,9 @@ public class HealthProfessionalWS {
         params.add(new BasicNameValuePair("developmentProfessional", String.valueOf(hp.isDevelopmentProfessional())));
 
         try {
-            resposta = conexaoWS.fazerPedido("HealthProfessional", "saveEditHealthProfessional", params);    //efetua o pedido ao WS
+            resposta = wrapperWS.sendRequest("HealthProfessional", "saveEditHealthProfessional", params);    //efetua o pedido ao WS
 
-            String jsonResp = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
+            String jsonResp = wrapperWS.readResponse(resposta);         //Passa a resposta para uma string
 
             Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
 
@@ -96,10 +96,10 @@ public class HealthProfessionalWS {
         backend.pojos.HealthProfessional t = null;
         parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
 
-        resposta = conexaoWS.fazerPedido("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
+        resposta = wrapperWS.sendRequest("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
         //verificar o codigo HTTP da resposta
         System.out.println(resposta.getStatusLine().getStatusCode());
-        String terapeutaJson = conexaoWS.lerResposta(resposta);         //Passa a resposta para uma string
+        String terapeutaJson = wrapperWS.readResponse(resposta);         //Passa a resposta para uma string
         t = gson.fromJson(terapeutaJson, backend.pojos.HealthProfessional.class);    //Conversão do objecto Json para o objecto Java
 
         throw new RuntimeException("Ocorreu um erro ao tentar aceder ao servidor. \n\tVerifique a ligação à internet");
@@ -114,10 +114,10 @@ public class HealthProfessionalWS {
     public List<backend.pojos.HealthProfessional> getAllTerapeutas() {
         List<NameValuePair> parametros = new ArrayList<>();     //array com os params necessários para buscar todos os terapeutas
 
-        resposta = conexaoWS.fazerPedido("terapeuta", "get_all_terapeutas", parametros);
+        resposta = wrapperWS.sendRequest("terapeuta", "get_all_terapeutas", parametros);
 
         if (resposta.getStatusLine().getStatusCode() == 200) {           //verificar o codigo HTTP da resposta
-            String terapeutaJson = conexaoWS.lerResposta(resposta);     //Passa a resposta para uma string
+            String terapeutaJson = wrapperWS.readResponse(resposta);     //Passa a resposta para uma string
             Type type = new TypeToken<List<backend.pojos.HealthProfessional>>() {
             }.getType();  //tipo do para o qual queros retornar a resposta Json
 

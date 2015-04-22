@@ -62,7 +62,7 @@ public class WrapperWS {
      * @param params (necessary parameters to execute the function)
      * @return CloseableHttpResponse
      */
-    public CloseableHttpResponse fazerPedido(String object, String function,
+    public CloseableHttpResponse sendRequest(String object, String function,
             List<NameValuePair> params) {
         params.add(new BasicNameValuePair("object", object));
         params.add(new BasicNameValuePair("function", function));
@@ -84,7 +84,7 @@ public class WrapperWS {
      * @param response
      * @return String
      */
-    public String lerResposta(CloseableHttpResponse response) {
+    public String readResponse(CloseableHttpResponse response) {
 
         StringBuilder data = null;
         try {
