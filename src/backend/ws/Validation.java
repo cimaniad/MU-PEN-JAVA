@@ -10,14 +10,15 @@ package backend.ws;
  *
  * class para validar os pedidos ao WS
  */
-public class Validacao {
+public class Validation {
     
     private String msg;
     private int cod;
+    private boolean error;
 /**
  * metodo construtor
  */
-    public Validacao() {
+    public Validation() {
     }
 /**
  * metodos seletores e modificadores
@@ -36,6 +37,14 @@ public class Validacao {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public boolean isError() {
+        return error;
+    }
+
+    public void setError(boolean error) {
+        this.error = error;
     }
     
     
