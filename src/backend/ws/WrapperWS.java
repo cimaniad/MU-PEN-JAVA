@@ -47,7 +47,7 @@ public class WrapperWS {
      *
      * @return WrapperWS
      */
-    public static WrapperWS getConexao() {
+    public static WrapperWS getWrapperWS() {
         if (instance == null) {
             instance = new WrapperWS();
         }

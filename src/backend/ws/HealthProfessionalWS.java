@@ -25,13 +25,13 @@ import org.apache.log4j.Logger;
 public class HealthProfessionalWS {
 
     private WrapperWS wrapperWS;
-    private CloseableHttpResponse resposta;
+    private CloseableHttpResponse responseWS;
     private Gson gson;
     private static Logger log = Logger.getLogger(HealthProfessionalWS.class);
 
     public HealthProfessionalWS() {
         gson = new Gson();
-        wrapperWS = WrapperWS.getConexao();
+        wrapperWS = WrapperWS.getWrapperWS();
         
     }
 
@@ -65,9 +65,9 @@ public class HealthProfessionalWS {
         params.add(new BasicNameValuePair("developmentProfessional", String.valueOf(hp.isDevelopmentProfessional())));
 
         try {
-            resposta = wrapperWS.sendRequest("HealthProfessional", "saveEditHealthProfessional", params);    //efetua o pedido ao WS
+            responseWS = wrapperWS.sendRequest("HealthProfessional", "saveEditHealthProfessional", params);    //efetua o pedido ao WS
 
-            String jsonResp = wrapperWS.readResponse(resposta);         //Passa a resposta para uma string
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
 
@@ -96,10 +96,10 @@ public class HealthProfessionalWS {
         backend.pojos.HealthProfessional t = null;
         parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
 
-        resposta = wrapperWS.sendRequest("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
-        //verificar o codigo HTTP da resposta
-        System.out.println(resposta.getStatusLine().getStatusCode());
-        String terapeutaJson = wrapperWS.readResponse(resposta);         //Passa a resposta para uma string
+        responseWS = wrapperWS.sendRequest("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
+        //verificar o codigo HTTP da responseWS
+        System.out.println(responseWS.getStatusLine().getStatusCode());
+        String terapeutaJson = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
         t = gson.fromJson(terapeutaJson, backend.pojos.HealthProfessional.class);    //Conversão do objecto Json para o objecto Java
 
         throw new RuntimeException("Ocorreu um erro ao tentar aceder ao servidor. \n\tVerifique a ligação à internet");
@@ -114,12 +114,12 @@ public class HealthProfessionalWS {
     public List<backend.pojos.HealthProfessional> getAllTerapeutas() {
         List<NameValuePair> parametros = new ArrayList<>();     //array com os params necessários para buscar todos os terapeutas
 
-        resposta = wrapperWS.sendRequest("terapeuta", "get_all_terapeutas", parametros);
+        responseWS = wrapperWS.sendRequest("terapeuta", "get_all_terapeutas", parametros);
 
-        if (resposta.getStatusLine().getStatusCode() == 200) {           //verificar o codigo HTTP da resposta
-            String terapeutaJson = wrapperWS.readResponse(resposta);     //Passa a resposta para uma string
+        if (responseWS.getStatusLine().getStatusCode() == 200) {           //verificar o codigo HTTP da responseWS
+            String terapeutaJson = wrapperWS.readResponse(responseWS);     //Passa a responseWS para uma string
             Type type = new TypeToken<List<backend.pojos.HealthProfessional>>() {
-            }.getType();  //tipo do para o qual queros retornar a resposta Json
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
 
             return gson.fromJson(terapeutaJson, type);          //Passa o array dos objectos em Json para uma Lista de objectos Java
 
