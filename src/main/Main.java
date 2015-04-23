@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package main;
 
 import backend.pojos.HealthProfessional;
@@ -20,10 +19,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-       HealthProfessional t = new HealthProfessional("david", "nova", 123, "prazins", 123, 123, "nova@nova.com", "devolvido sem uso", "11-02-2015", "-n", "irlandes", "feminino", "nova", "pref", "nova.png", "HP", false);
-        HealthProfessionalWS tWS=new HealthProfessionalWS();
+        HealthProfessional t = new HealthProfessional("david", "nova", 123, "prazins", 123, 123, "nova@nova.com", "devolvido sem uso", "11-02-2015", "-n", "irlandes", "feminino", "nova", "nova.png", "HP", false);
+        HealthProfessionalWS tWS = new HealthProfessionalWS();
         tWS.saveEditHealthProfessional(t);
-
+        tWS.getTerapeutaHealthProfessionalById(15);
+        tWS.getAllTerapeutas();
     }
-    
+
 }
