@@ -33,6 +33,8 @@ public class Schedule extends javax.swing.JFrame {
         jButtonBack = new javax.swing.JButton();
         jButtonMakeAppointment = new javax.swing.JButton();
         jButtonSeeEvent = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -48,12 +50,22 @@ public class Schedule extends javax.swing.JFrame {
 
         jPanelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelInformation.add(jCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 540, 270));
+        jPanelInformation.add(jCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 540, 270));
 
         jButtonBack.setText("Voltar");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, -1, -1));
 
         jButtonMakeAppointment.setText("Marcar consulta");
+        jButtonMakeAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMakeAppointmentActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonMakeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
         jButtonSeeEvent.setText("Ver consulta");
@@ -63,6 +75,16 @@ public class Schedule extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonSeeEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 51));
+        jLabel1.setText("Consulta aprovada");
+        jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 130, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel2.setText("Consulta por aprovar");
+        jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
@@ -79,7 +101,24 @@ public class Schedule extends javax.swing.JFrame {
 
     private void jButtonSeeEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeEventActionPerformed
         // TODO add your handling code here:
+        Appointment ap = new Appointment();
+        ap.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonSeeEventActionPerformed
+
+    private void jButtonMakeAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMakeAppointmentActionPerformed
+        // TODO add your handling code here:
+        AppointmentEdit apEd = new AppointmentEdit();
+        apEd.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+        HealthProfessionalMenu hpm = new HealthProfessionalMenu();
+        hpm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,6 +160,8 @@ public class Schedule extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMakeAppointment;
     private javax.swing.JButton jButtonSeeEvent;
     private com.toedter.calendar.JCalendar jCalendar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;

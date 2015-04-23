@@ -9,12 +9,12 @@ package frontend.healthProfessional;
  *
  * @author jorge
  */
-public class EventRegist extends javax.swing.JFrame {
+public class Appointment extends javax.swing.JFrame {
 
     /**
-     * Creates new form EventRegist
+     * Creates new form Event
      */
-    public EventRegist() {
+    public Appointment() {
         initComponents();
     }
 
@@ -37,22 +37,20 @@ public class EventRegist extends javax.swing.JFrame {
         jLabelDescription = new javax.swing.JLabel();
         jLabelHours = new javax.swing.JLabel();
         jLabelPathology = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jTextFieldDate = new javax.swing.JTextField();
         jTextFieldPatient = new javax.swing.JTextField();
         jTextFieldPathology = new javax.swing.JTextField();
         jTextFieldHours = new javax.swing.JTextField();
         jTextFieldAge = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescription = new javax.swing.JTextArea();
-        jButtonMakeAppointment = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButtonAprove = new javax.swing.JButton();
+        jButtonCancelEvent = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(705, 520));
         setMinimumSize(new java.awt.Dimension(705, 520));
-        setPreferredSize(new java.awt.Dimension(705, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -63,10 +61,15 @@ public class EventRegist extends javax.swing.JFrame {
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelHealthPatientProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabelHealthPatientProfile.setText("Evento");
+        jLabelHealthPatientProfile.setText("Consulta");
         jPanelInformation.add(jLabelHealthPatientProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jButtonBack.setText("Voltar");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jLabelDate.setText("Data:");
@@ -87,8 +90,13 @@ public class EventRegist extends javax.swing.JFrame {
         jLabelPathology.setText("Patologia:");
         jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelInformation.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
+        jTextFieldDate.setEditable(false);
+        jTextFieldDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDateActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jTextFieldDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
 
         jTextFieldPatient.setEditable(false);
         jTextFieldPatient.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +108,8 @@ public class EventRegist extends javax.swing.JFrame {
 
         jTextFieldPathology.setEditable(false);
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, -1));
+
+        jTextFieldHours.setEditable(false);
         jPanelInformation.add(jTextFieldHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 180, -1));
 
         jTextFieldAge.setEditable(false);
@@ -112,9 +122,11 @@ public class EventRegist extends javax.swing.JFrame {
 
         jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 460, -1));
 
-        jButtonMakeAppointment.setText("Marcar consulta");
-        jPanelInformation.add(jButtonMakeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
-        jPanelInformation.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
+        jButtonAprove.setText("Aprovar");
+        jPanelInformation.add(jButtonAprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
+
+        jButtonCancelEvent.setText("Cancelar consulta");
+        jPanelInformation.add(jButtonCancelEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -132,9 +144,20 @@ public class EventRegist extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDateActionPerformed
+
     private void jTextFieldPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPatientActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPatientActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+       Schedule sh = new Schedule();
+        sh.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,29 +176,29 @@ public class EventRegist extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EventRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Appointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EventRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Appointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EventRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Appointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EventRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Appointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EventRegist().setVisible(true);
+                new Appointment().setVisible(true);
             }
-        });
+ });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAprove;
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonMakeAppointment;
-    private javax.swing.JComboBox jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton jButtonCancelEvent;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelDescription;
@@ -190,6 +213,7 @@ public class EventRegist extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaDescription;
     private javax.swing.JTextField jTextFieldAge;
+    private javax.swing.JTextField jTextFieldDate;
     private javax.swing.JTextField jTextFieldHours;
     private javax.swing.JTextField jTextFieldPathology;
     private javax.swing.JTextField jTextFieldPatient;
