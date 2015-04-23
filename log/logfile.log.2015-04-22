@@ -1,0 +1,627 @@
+2015-04-22 00:00:53,289 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:00:53,321 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:00:53,360 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:00:53,389 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:00:53,396 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:00:53,439 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:00:53,447 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:00:53,464 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:00:54,472 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-04-22 00:00:54,481 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-04-22 00:00:55,487 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 00:00:55,493 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:986)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.fazerPedido(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.saveEditHealthProfessional(HealthProfessionalWS.java:68)
+	at main.Main.main(Main.java:29)
+2015-04-22 00:00:55,500 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 00:00:55,501 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:00:55,503 ERROR [main] - backend.ws.WrapperWS.fazerPedido 75 - Error tryig to acess the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-04-22 00:00:55,503 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 81 - Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
+2015-04-22 00:05:01,615 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:05:01,635 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:05:01,674 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:05:01,699 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:05:01,704 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:05:01,744 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:05:01,748 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:05:01,757 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:05:02,763 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-04-22 00:05:02,765 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-04-22 00:05:03,767 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 00:05:03,770 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:986)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.fazerPedido(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.saveEditHealthProfessional(HealthProfessionalWS.java:68)
+	at main.Main.main(Main.java:29)
+2015-04-22 00:05:03,774 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 00:05:03,775 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:05:03,776 ERROR [main] - backend.ws.WrapperWS.fazerPedido 75 - Error tryig to acess the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-04-22 00:05:03,777 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 81 - Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
+2015-04-22 00:06:50,307 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:06:50,327 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:06:50,388 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:06:50,420 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:06:50,429 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:06:50,472 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:06:50,476 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:06:50,485 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:06:51,490 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-04-22 00:06:51,492 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-04-22 00:06:52,493 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 00:06:52,495 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:986)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.fazerPedido(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.saveEditHealthProfessional(HealthProfessionalWS.java:68)
+	at main.Main.main(Main.java:29)
+2015-04-22 00:06:52,500 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 00:06:52,501 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:06:52,502 ERROR [main] - backend.ws.WrapperWS.fazerPedido 75 - Error trying to access the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-04-22 00:06:52,502 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 81 - Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
+2015-04-22 00:06:52,505 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 84 - Health Professionla saved with sucess
+2015-04-22 00:09:47,939 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:09:47,958 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:09:47,996 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:09:48,022 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:09:48,032 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:09:48,136 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:09:48,144 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:09:48,205 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:09:49,220 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-04-22 00:09:49,221 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-04-22 00:09:50,223 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 00:09:50,228 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:986)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.fazerPedido(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.saveEditHealthProfessional(HealthProfessionalWS.java:68)
+	at main.Main.main(Main.java:29)
+2015-04-22 00:09:50,235 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 00:09:50,235 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:09:50,236 ERROR [main] - backend.ws.WrapperWS.fazerPedido 75 - Error trying to access the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-04-22 00:09:50,236 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 81 - Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
+2015-04-22 00:09:50,240 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 84 - Health Professionla saved with sucess
+2015-04-22 00:10:11,101 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:10:11,120 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:10:11,154 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:10:11,180 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:10:11,185 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:10:11,222 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:10:11,233 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:10:11,245 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:10:11,253 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:60795<->127.0.0.1:80
+2015-04-22 00:10:11,253 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 00:10:11,254 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 00:10:11,255 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 00:10:11,260 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 00:10:11,260 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 365
+2015-04-22 00:10:11,261 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 00:10:11,261 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 00:10:11,264 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 00:10:11,264 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 00:10:11,265 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 00:10:11,265 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /nep-um-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 00:10:11,266 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 365[\r][\n]"
+2015-04-22 00:10:11,266 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 00:10:11,267 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 00:10:11,267 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 00:10:11,268 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 00:10:11,268 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 00:10:11,268 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 00:10:11,269 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEditHealthProfessional"
+2015-04-22 00:10:11,379 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2015-04-22 00:10:11,379 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Tue, 21 Apr 2015 23:10:11 GMT[\r][\n]"
+2015-04-22 00:10:11,379 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 00:10:11,380 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.5.15[\r][\n]"
+2015-04-22 00:10:11,380 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 71[\r][\n]"
+2015-04-22 00:10:11,380 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-04-22 00:10:11,381 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-04-22 00:10:11,381 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html[\r][\n]"
+2015-04-22 00:10:11,381 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 00:10:11,387 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 200 OK
+2015-04-22 00:10:11,388 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Tue, 21 Apr 2015 23:10:11 GMT
+2015-04-22 00:10:11,388 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 00:10:11,388 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.5.15
+2015-04-22 00:10:11,389 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 71
+2015-04-22 00:10:11,389 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-04-22 00:10:11,389 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-04-22 00:10:11,389 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html
+2015-04-22 00:10:11,401 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-04-22 00:10:11,408 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 << "{"cod":201,"error":false,"msg":"Health Professional saved with sucess"}"
+2015-04-22 00:10:11,408 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-04-22 00:10:11,410 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:10:11,410 DEBUG [main] - backend.ws.WrapperWS.lerResposta 99 - Response from server: {"cod":201,"error":false,"msg":"Health Professional saved with sucess"}
+2015-04-22 00:10:11,433 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 84 - Health Professionla saved with sucess
+2015-04-22 00:48:40,486 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:48:40,510 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:48:40,575 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:48:40,627 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:48:40,632 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:48:40,786 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:48:40,795 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:48:40,930 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:48:40,941 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:52752<->127.0.0.1:80
+2015-04-22 00:48:40,945 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 00:48:40,948 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 00:48:40,953 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 00:48:40,962 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 00:48:40,965 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 365
+2015-04-22 00:48:40,968 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 00:48:40,972 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 00:48:40,977 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 00:48:40,980 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 00:48:40,983 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 00:48:40,986 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /nep-um-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 00:48:40,987 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 365[\r][\n]"
+2015-04-22 00:48:40,991 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 00:48:40,993 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 00:48:40,995 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 00:48:40,997 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 00:48:40,999 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 00:48:41,001 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 00:48:41,007 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEditHealthProfessional"
+2015-04-22 00:48:41,198 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2015-04-22 00:48:41,200 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Tue, 21 Apr 2015 23:48:41 GMT[\r][\n]"
+2015-04-22 00:48:41,202 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 00:48:41,205 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.5.15[\r][\n]"
+2015-04-22 00:48:41,207 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 71[\r][\n]"
+2015-04-22 00:48:41,210 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-04-22 00:48:41,212 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-04-22 00:48:41,214 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html[\r][\n]"
+2015-04-22 00:48:41,216 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 00:48:41,224 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 200 OK
+2015-04-22 00:48:41,228 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Tue, 21 Apr 2015 23:48:41 GMT
+2015-04-22 00:48:41,230 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 00:48:41,233 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.5.15
+2015-04-22 00:48:41,236 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 71
+2015-04-22 00:48:41,239 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-04-22 00:48:41,242 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-04-22 00:48:41,244 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html
+2015-04-22 00:48:41,259 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-04-22 00:48:41,267 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 << "{"cod":201,"error":false,"msg":"Health Professional saved with sucess"}"
+2015-04-22 00:48:41,280 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-04-22 00:48:41,281 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:48:41,282 DEBUG [main] - backend.ws.WrapperWS.lerResposta 99 - Response from server: {"cod":201,"error":false,"msg":"Health Professional saved with sucess"}
+2015-04-22 00:48:41,306 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 84 - Health Professionla saved with sucess
+2015-04-22 00:49:36,556 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 00:49:36,585 DEBUG [main] - backend.ws.WrapperWS.fazerPedido 72 - Request executed with sucess
+2015-04-22 00:49:36,639 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 00:49:36,664 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 00:49:36,669 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 00:49:36,724 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:49:36,735 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 00:49:36,747 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 00:49:36,757 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:52769<->127.0.0.1:80
+2015-04-22 00:49:36,761 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 00:49:36,765 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 00:49:36,769 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 00:49:36,776 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 00:49:36,779 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 365
+2015-04-22 00:49:36,782 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 00:49:36,784 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 00:49:36,789 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 00:49:36,791 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 00:49:36,793 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 00:49:36,798 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /nep-um-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 00:49:36,800 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 365[\r][\n]"
+2015-04-22 00:49:36,802 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 00:49:36,804 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 00:49:36,806 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 00:49:36,807 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 00:49:36,809 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 00:49:36,811 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 00:49:36,813 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEditHealthProfessional"
+2015-04-22 00:49:36,871 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2015-04-22 00:49:36,874 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Tue, 21 Apr 2015 23:49:36 GMT[\r][\n]"
+2015-04-22 00:49:36,876 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 00:49:36,878 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.5.15[\r][\n]"
+2015-04-22 00:49:36,879 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 71[\r][\n]"
+2015-04-22 00:49:36,879 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-04-22 00:49:36,880 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-04-22 00:49:36,881 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html[\r][\n]"
+2015-04-22 00:49:36,881 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 00:49:36,890 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 200 OK
+2015-04-22 00:49:36,891 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Tue, 21 Apr 2015 23:49:36 GMT
+2015-04-22 00:49:36,891 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 00:49:36,892 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.5.15
+2015-04-22 00:49:36,892 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 71
+2015-04-22 00:49:36,893 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-04-22 00:49:36,893 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-04-22 00:49:36,894 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html
+2015-04-22 00:49:36,909 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-04-22 00:49:36,916 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 << "{"cod":201,"error":false,"msg":"Health Professional saved with sucess"}"
+2015-04-22 00:49:36,918 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-04-22 00:49:36,918 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 00:49:36,920 DEBUG [main] - backend.ws.WrapperWS.lerResposta 99 - Response from server: {"cod":201,"error":false,"msg":"Health Professional saved with sucess"}
+2015-04-22 00:49:36,949 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 84 - Health Professionla saved with sucess
+2015-04-22 01:15:40,262 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 01:15:40,283 DEBUG [main] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-22 01:15:40,319 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 01:15:40,344 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 01:15:40,348 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 01:15:40,391 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 01:15:40,398 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 01:15:40,408 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 01:15:40,415 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:54572<->127.0.0.1:80
+2015-04-22 01:15:40,416 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 01:15:40,416 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 01:15:40,418 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 01:15:40,422 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 01:15:40,423 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 367
+2015-04-22 01:15:40,423 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 01:15:40,423 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 01:15:40,427 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 01:15:40,428 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 01:15:40,428 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 01:15:40,429 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /nep-um-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 01:15:40,429 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 367[\r][\n]"
+2015-04-22 01:15:40,430 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 01:15:40,430 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 01:15:40,430 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 01:15:40,431 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 01:15:40,431 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 01:15:40,431 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 01:15:40,432 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional=0&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEditHealthProfessional"
+2015-04-22 01:15:40,810 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2015-04-22 01:15:40,811 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Wed, 22 Apr 2015 00:15:40 GMT[\r][\n]"
+2015-04-22 01:15:40,811 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 01:15:40,812 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.5.15[\r][\n]"
+2015-04-22 01:15:40,812 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 72[\r][\n]"
+2015-04-22 01:15:40,814 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-04-22 01:15:40,814 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-04-22 01:15:40,815 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html[\r][\n]"
+2015-04-22 01:15:40,816 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 01:15:40,825 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 200 OK
+2015-04-22 01:15:40,826 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Wed, 22 Apr 2015 00:15:40 GMT
+2015-04-22 01:15:40,827 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 01:15:40,827 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.5.15
+2015-04-22 01:15:40,827 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 72
+2015-04-22 01:15:40,828 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-04-22 01:15:40,829 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-04-22 01:15:40,829 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html
+2015-04-22 01:15:40,842 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-04-22 01:15:40,850 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 << "0{"cod":201,"error":false,"msg":"Health Professional saved with sucess"}"
+2015-04-22 01:15:40,852 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-04-22 01:15:40,853 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 01:15:40,854 DEBUG [main] - backend.ws.WrapperWS.readResponse 99 - Response from server: 0{"cod":201,"error":false,"msg":"Health Professional saved with sucess"}
+2015-04-22 01:15:40,878 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 81 - java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 2 path $
+2015-04-22 01:15:40,878 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 84 - Health Professionla saved with sucess
+2015-04-22 22:37:56,139 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 22:37:56,158 DEBUG [main] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-22 22:37:56,194 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 22:37:56,218 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 22:37:56,223 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:37:56,258 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 22:37:56,262 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 22:37:56,270 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 22:37:57,275 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-04-22 22:37:57,276 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-04-22 22:37:58,278 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 22:37:58,280 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:986)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.sendRequest(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.saveEditHealthProfessional(HealthProfessionalWS.java:68)
+	at main.Main.main(Main.java:25)
+2015-04-22 22:37:58,341 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 22:37:58,341 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:37:58,342 ERROR [main] - backend.ws.WrapperWS.sendRequest 75 - Error trying to access the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-04-22 22:37:58,342 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 82 - Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
+2015-04-22 22:37:58,345 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 85 - Health Professionla saved with sucess
+2015-04-22 22:38:37,266 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 22:38:37,290 DEBUG [main] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-22 22:38:37,329 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 22:38:37,354 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 22:38:37,358 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:38:37,397 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 22:38:37,401 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 22:38:37,409 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 22:38:37,525 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:65152<->127.0.0.1:80
+2015-04-22 22:38:37,526 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 22:38:37,527 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 22:38:37,528 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 22:38:37,878 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /nep-um-web/api/ HTTP/1.1
+2015-04-22 22:38:37,879 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 367
+2015-04-22 22:38:37,880 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 22:38:37,880 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 22:38:37,885 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 22:38:37,886 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 22:38:37,886 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 22:38:37,887 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /nep-um-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 22:38:37,888 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 367[\r][\n]"
+2015-04-22 22:38:37,889 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 22:38:37,889 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 22:38:37,889 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 22:38:37,890 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 22:38:37,891 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 22:38:37,891 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 22:38:37,893 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional=0&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEditHealthProfessional"
+2015-04-22 22:38:38,605 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 404 Not Found[\r][\n]"
+2015-04-22 22:38:38,605 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Wed, 22 Apr 2015 21:38:37 GMT[\r][\n]"
+2015-04-22 22:38:38,605 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 22:38:38,606 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Vary: accept-language,accept-charset[\r][\n]"
+2015-04-22 22:38:38,606 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Accept-Ranges: bytes[\r][\n]"
+2015-04-22 22:38:38,656 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-04-22 22:38:38,657 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-04-22 22:38:38,657 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2015-04-22 22:38:38,657 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html; charset=utf-8[\r][\n]"
+2015-04-22 22:38:38,658 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Language: en[\r][\n]"
+2015-04-22 22:38:38,659 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,667 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 404 Not Found
+2015-04-22 22:38:38,668 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Wed, 22 Apr 2015 21:38:37 GMT
+2015-04-22 22:38:38,669 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 22:38:38,669 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Vary: accept-language,accept-charset
+2015-04-22 22:38:38,670 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Accept-Ranges: bytes
+2015-04-22 22:38:38,670 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-04-22 22:38:38,671 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-04-22 22:38:38,671 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Transfer-Encoding: chunked
+2015-04-22 22:38:38,672 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html; charset=utf-8
+2015-04-22 22:38:38,673 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Language: en
+2015-04-22 22:38:38,685 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-04-22 22:38:38,840 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "cb[\r][\n]"
+2015-04-22 22:38:38,842 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<?xml version="1.0" encoding="UTF-8"?>[\r][\n]"
+2015-04-22 22:38:38,844 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"[\r][\n]"
+2015-04-22 22:38:38,846 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">[\r][\n]"
+2015-04-22 22:38:38,848 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<html xmlns="http://www.w3.org/1999/xhtml" lang="[\r][\n]"
+2015-04-22 22:38:38,850 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "e[\r][\n]"
+2015-04-22 22:38:38,852 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "en" xml:lang="[\r][\n]"
+2015-04-22 22:38:38,854 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "15[\r][\n]"
+2015-04-22 22:38:38,855 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "en">[\r][\n]"
+2015-04-22 22:38:38,857 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<head>[\r][\n]"
+2015-04-22 22:38:38,858 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<title>[\r][\n]"
+2015-04-22 22:38:38,859 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "39[\r][\n]"
+2015-04-22 22:38:38,859 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Object not found!</title>[\r][\n]"
+2015-04-22 22:38:38,860 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<link rev="made" href="mailto:[\r][\n]"
+2015-04-22 22:38:38,860 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "117[\r][\n]"
+2015-04-22 22:38:38,861 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "postmaster@localhost" />[\r][\n]"
+2015-04-22 22:38:38,861 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<style type="text/css"><!--/*--><![CDATA[/*><!--*/ [\r][\n]"
+2015-04-22 22:38:38,863 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    body { color: #000000; background-color: #FFFFFF; }[\r][\n]"
+2015-04-22 22:38:38,864 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    a:link { color: #0000CC; }[\r][\n]"
+2015-04-22 22:38:38,864 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    p, address {margin-left: 3em;}[\r][\n]"
+2015-04-22 22:38:38,865 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    span {font-size: smaller;}[\r][\n]"
+2015-04-22 22:38:38,865 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "/*]]>*/--></style>[\r][\n]"
+2015-04-22 22:38:38,865 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "</head>[\r][\n]"
+2015-04-22 22:38:38,865 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,866 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<body>[\r][\n]"
+2015-04-22 22:38:38,866 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<h1>[\r][\n]"
+2015-04-22 22:38:38,867 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "1d[\r][\n]"
+2015-04-22 22:38:38,869 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Object not found!</h1>[\r][\n]"
+2015-04-22 22:38:38,870 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<p>[\r][\n]"
+2015-04-22 22:38:38,870 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,871 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "3d[\r][\n]"
+2015-04-22 22:38:38,871 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,871 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,871 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    The requested URL was not found on this server.[\r][\n]"
+2015-04-22 22:38:38,872 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,872 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "  [\r][\n]"
+2015-04-22 22:38:38,872 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "5c[\r][\n]"
+2015-04-22 22:38:38,872 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,873 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,873 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    If you entered the URL manually please check your[\r][\n]"
+2015-04-22 22:38:38,873 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "    spelling and try again.[\r][\n]"
+2015-04-22 22:38:38,873 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,874 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "  [\r][\n]"
+2015-04-22 22:38:38,874 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "4[\r][\n]"
+2015-04-22 22:38:38,874 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,874 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,874 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,875 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "b[\r][\n]"
+2015-04-22 22:38:38,875 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "</p>[\r][\n]"
+2015-04-22 22:38:38,875 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<p>[\r][\n]"
+2015-04-22 22:38:38,875 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,876 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "49[\r][\n]"
+2015-04-22 22:38:38,876 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "If you think this is a server error, please contact[\r][\n]"
+2015-04-22 22:38:38,877 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "the <a href="mailto:[\r][\n]"
+2015-04-22 22:38:38,877 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "26[\r][\n]"
+2015-04-22 22:38:38,877 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "postmaster@localhost">webmaster</a>.[\r][\n]"
+2015-04-22 22:38:38,877 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,878 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "14[\r][\n]"
+2015-04-22 22:38:38,878 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,878 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "</p>[\r][\n]"
+2015-04-22 22:38:38,878 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,878 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<h2>Error [\r][\n]"
+2015-04-22 22:38:38,879 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "23[\r][\n]"
+2015-04-22 22:38:38,879 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "404</h2>[\r][\n]"
+2015-04-22 22:38:38,879 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<address>[\r][\n]"
+2015-04-22 22:38:38,879 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "  <a href="/">[\r][\n]"
+2015-04-22 22:38:38,880 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "1d[\r][\n]"
+2015-04-22 22:38:38,880 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "localhost</a><br />[\r][\n]"
+2015-04-22 22:38:38,880 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "  <span>[\r][\n]"
+2015-04-22 22:38:38,880 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "56[\r][\n]"
+2015-04-22 22:38:38,881 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15</span>[\r][\n]"
+2015-04-22 22:38:38,881 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "</address>[\r][\n]"
+2015-04-22 22:38:38,903 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "</body>[\r][\n]"
+2015-04-22 22:38:38,904 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "</html>[\r][\n]"
+2015-04-22 22:38:38,904 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,905 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "2[\r][\n]"
+2015-04-22 22:38:38,905 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,906 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,906 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "0[\r][\n]"
+2015-04-22 22:38:38,906 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:38:38,907 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-04-22 22:38:38,908 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 22:38:38,908 DEBUG [main] - backend.ws.WrapperWS.readResponse 99 - Response from server: <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><title>Object not found!</title><link rev="made" href="mailto:postmaster@localhost" /><style type="text/css"><!--/*--><![CDATA[/*><!--*/     body { color: #000000; background-color: #FFFFFF; }    a:link { color: #0000CC; }    p, address {margin-left: 3em;}    span {font-size: smaller;}/*]]>*/--></style></head><body><h1>Object not found!</h1><p>    The requested URL was not found on this server.      If you entered the URL manually please check your    spelling and try again.  </p><p>If you think this is a server error, please contactthe <a href="mailto:postmaster@localhost">webmaster</a>.</p><h2>Error 404</h2><address>  <a href="/">localhost</a><br />  <span>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15</span></address></body></html>
+2015-04-22 22:38:39,249 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 82 - java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+2015-04-22 22:38:39,250 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 85 - Health Professionla saved with sucess
+2015-04-22 22:39:27,077 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 22:39:27,096 DEBUG [main] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-22 22:39:27,131 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 22:39:27,155 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 22:39:27,162 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:39:27,208 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 22:39:27,211 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 22:39:27,223 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 22:39:27,231 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:65171<->127.0.0.1:80
+2015-04-22 22:39:27,232 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /mu-pen-web/api/ HTTP/1.1
+2015-04-22 22:39:27,232 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 22:39:27,233 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 22:39:27,238 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /mu-pen-web/api/ HTTP/1.1
+2015-04-22 22:39:27,238 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 367
+2015-04-22 22:39:27,239 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 22:39:27,239 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 22:39:27,242 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 22:39:27,242 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 22:39:27,243 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 22:39:27,244 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /mu-pen-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 22:39:27,244 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 367[\r][\n]"
+2015-04-22 22:39:27,245 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 22:39:27,245 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 22:39:27,245 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 22:39:27,246 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 22:39:27,246 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 22:39:27,246 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 22:39:27,247 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional=0&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEditHealthProfessional"
+2015-04-22 22:39:27,379 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 500 Internal Server Error[\r][\n]"
+2015-04-22 22:39:27,380 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Wed, 22 Apr 2015 21:39:27 GMT[\r][\n]"
+2015-04-22 22:39:27,380 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 22:39:27,381 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.5.15[\r][\n]"
+2015-04-22 22:39:27,382 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 64[\r][\n]"
+2015-04-22 22:39:27,382 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: close[\r][\n]"
+2015-04-22 22:39:27,383 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html[\r][\n]"
+2015-04-22 22:39:27,383 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:39:27,392 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 500 Internal Server Error
+2015-04-22 22:39:27,394 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Wed, 22 Apr 2015 21:39:27 GMT
+2015-04-22 22:39:27,394 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 22:39:27,394 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.5.15
+2015-04-22 22:39:27,395 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 64
+2015-04-22 22:39:27,395 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: close
+2015-04-22 22:39:27,396 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html
+2015-04-22 22:39:27,408 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 << "0{"error":true,"msg":"Unknown column 'profile' in 'field list'"}"
+2015-04-22 22:39:27,409 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 22:39:27,410 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 128 - Connection discarded
+2015-04-22 22:39:27,411 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 22:39:27,411 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:39:27,412 DEBUG [main] - backend.ws.WrapperWS.readResponse 99 - Response from server: 0{"error":true,"msg":"Unknown column 'profile' in 'field list'"}
+2015-04-22 22:39:27,439 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 82 - java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 2 path $
+2015-04-22 22:39:27,441 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 85 - Health Professionla saved with sucess
+2015-04-22 22:53:27,982 DEBUG [main] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-22 22:53:28,030 DEBUG [main] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-22 22:53:28,066 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-22 22:53:28,095 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-22 22:53:28,099 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:53:28,134 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-22 22:53:28,142 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-22 22:53:28,150 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-22 22:53:28,157 DEBUG [main] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:65407<->127.0.0.1:80
+2015-04-22 22:53:28,157 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /mu-pen-web/api/ HTTP/1.1
+2015-04-22 22:53:28,158 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-22 22:53:28,159 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-22 22:53:28,164 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /mu-pen-web/api/ HTTP/1.1
+2015-04-22 22:53:28,164 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 366
+2015-04-22 22:53:28,164 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-22 22:53:28,165 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-22 22:53:28,167 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-22 22:53:28,168 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)
+2015-04-22 22:53:28,168 DEBUG [main] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-22 22:53:28,169 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /mu-pen-web/api/ HTTP/1.1[\r][\n]"
+2015-04-22 22:53:28,169 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 366[\r][\n]"
+2015-04-22 22:53:28,170 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-22 22:53:28,170 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-22 22:53:28,170 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-22 22:53:28,171 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.7.0_51)[\r][\n]"
+2015-04-22 22:53:28,171 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-22 22:53:28,172 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-22 22:53:28,172 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional=0&name=david&lastName=nova&numCC=123&adress=prazins&numTel=123&nif=123&email=nova%40nova.com&maritalState=devolvido+sem+uso&birthDate=11-02-2015&bloodGroup=-n&nacionality=irlandes&gender=feminino&password=nova&profile=pref&picture=nova.png&institution=HP&developmentProfessional=false&object=HealthProfessional&function=saveEdtHealthProfessional"
+2015-04-22 22:53:28,194 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 400 Bad Request[\r][\n]"
+2015-04-22 22:53:28,196 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Wed, 22 Apr 2015 21:53:28 GMT[\r][\n]"
+2015-04-22 22:53:28,197 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15[\r][\n]"
+2015-04-22 22:53:28,197 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.5.15[\r][\n]"
+2015-04-22 22:53:28,197 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 68[\r][\n]"
+2015-04-22 22:53:28,198 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: close[\r][\n]"
+2015-04-22 22:53:28,198 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html[\r][\n]"
+2015-04-22 22:53:28,198 DEBUG [main] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-22 22:53:28,204 DEBUG [main] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 400 Bad Request
+2015-04-22 22:53:28,205 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Wed, 22 Apr 2015 21:53:28 GMT
+2015-04-22 22:53:28,205 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15
+2015-04-22 22:53:28,206 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.5.15
+2015-04-22 22:53:28,206 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 68
+2015-04-22 22:53:28,206 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: close
+2015-04-22 22:53:28,207 DEBUG [main] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html
+2015-04-22 22:53:28,215 DEBUG [main] - org.apache.http.wire.wire 86 - http-outgoing-0 << "{"msg":"the requested function don't exist!","error":true,"cod":400}"
+2015-04-22 22:53:28,216 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-04-22 22:53:28,217 DEBUG [main] - org.apache.http.impl.execchain.MainClientExec.abortConnection 128 - Connection discarded
+2015-04-22 22:53:28,218 DEBUG [main] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-22 22:53:28,218 DEBUG [main] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-22 22:53:28,219 DEBUG [main] - backend.ws.WrapperWS.readResponse 99 - Response from server: {"msg":"the requested function don't exist!","error":true,"cod":400}
+2015-04-22 22:53:28,254 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 76 - 400
+2015-04-22 22:53:28,258 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 77 - the requested function don't exist!
+2015-04-22 22:53:28,270 ERROR [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 82 - Ocorreu um erro ao criar o Profissional de Saúde
+2015-04-22 22:53:28,271 DEBUG [main] - backend.ws.HealthProfessionalWS.saveEditHealthProfessional 85 - Health Professionla saved with sucess

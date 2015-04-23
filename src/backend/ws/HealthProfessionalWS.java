@@ -17,7 +17,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 
-
 /**
  * Class onde se efetua todas as operações existentes entre o Objecto terapeuta
  * e o WS
@@ -32,7 +31,7 @@ public class HealthProfessionalWS {
     public HealthProfessionalWS() {
         gson = new Gson();
         wrapperWS = WrapperWS.getWrapperWS();
-        
+
     }
 
     /**
@@ -44,6 +43,97 @@ public class HealthProfessionalWS {
      */
     public void saveEditHealthProfessional(HealthProfessional hp) {
 
+        try {
+            responseWS = wrapperWS.sendRequest("HealthProfessional",
+                    "saveEditHealthProfessional", getAllParams(hp));    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 201) {
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao criar o Profissional de Saúde");
+            }
+
+        } catch (RuntimeException e) {
+            log.error(e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tHealth Professional saved with success");
+    }
+
+    /**
+     * Metodo que retorna o terapeuta com o id passado como parametro
+     *
+     * @param id
+     * @return HealthProfessionalWS
+     */
+    public HealthProfessional getTerapeutaHealthProfessionalById(int id) {
+        HealthProfessional hp = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("HealthProfessional",
+                    "getHealthProfessionalById", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Profissional de Saúde");
+            }
+
+            hp = gson.fromJson(jsonResp, HealthProfessional.class);
+
+        } catch (RuntimeException e) {
+            log.error(e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tHealth Professioonal data access success");
+        log.debug("\n\tHP with id " + id + ": " + hp.toString());
+        return hp;
+    }
+
+    /**
+     * Metodo que retorna todos os terapeutas
+     *
+     * @return Lista de HealthProfessionalWSs
+     */
+    public List<HealthProfessional> getAllTerapeutas() {
+        List<HealthProfessional> hpList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+
+        try {
+            responseWS = wrapperWS.sendRequest("HealthProfessional",
+                    "getAllHealthProfessionals", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Profissional de Saúde");
+            }
+            Type type = new TypeToken<List<HealthProfessional>>() {}.getType();  //tipo do para o qual queros retornar a responseWS Json
+
+            hpList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error(e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tHealth Professioonal data access success");
+        log.debug("\n\tHPs : " + hpList.toString());
+        return hpList;
+        
+    }
+
+    private List<NameValuePair> getAllParams(HealthProfessional hp) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(hp.getIdHealthProfessional())));
         params.add(new BasicNameValuePair("name", hp.getName()));
@@ -59,73 +149,11 @@ public class HealthProfessionalWS {
         params.add(new BasicNameValuePair("nacionality", hp.getNacionality()));
         params.add(new BasicNameValuePair("gender", hp.getGender()));
         params.add(new BasicNameValuePair("password", hp.getPassword()));
-        params.add(new BasicNameValuePair("profile", hp.getProfile()));
         params.add(new BasicNameValuePair("picture", hp.getPicture()));
         params.add(new BasicNameValuePair("institution", hp.getInstitution()));
         params.add(new BasicNameValuePair("developmentProfessional", String.valueOf(hp.isDevelopmentProfessional())));
 
-        try {
-            responseWS = wrapperWS.sendRequest("HealthProfessional", "saveEditHealthProfessional", params);    //efetua o pedido ao WS
-
-            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
-
-            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
-
-            if (v.getCod() != 201) {
-                System.out.println(v.getMsg());
-                log.error(v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao criar o Profissional de Saúde");
-            }
-
-        } catch (RuntimeException e) {
-            log.error(e.getMessage());
-        //    throw new RuntimeException(e.getMessage());
-        }
-        log.debug("Health Professionla saved with sucess");
-    }
-
-    /**
-     * Metodo que retorna o terapeuta com o id passado como parametro
-     *
-     * @param id
-     * @return HealthProfessionalWS
-     */
-    public HealthProfessional getTerapeuta(int id) {
-
-        List<NameValuePair> parametros = new ArrayList<>();     //array com os params necessários para buscar um terapeuta pelo id
-        backend.pojos.HealthProfessional t = null;
-        parametros.add(new BasicNameValuePair("idTerapeuta", String.valueOf(id)));
-
-        responseWS = wrapperWS.sendRequest("terapeuta", "get_terapeuta_by_id", parametros);   //efetua o pedido ao WS
-        //verificar o codigo HTTP da responseWS
-        System.out.println(responseWS.getStatusLine().getStatusCode());
-        String terapeutaJson = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
-        t = gson.fromJson(terapeutaJson, backend.pojos.HealthProfessional.class);    //Conversão do objecto Json para o objecto Java
-
-        throw new RuntimeException("Ocorreu um erro ao tentar aceder ao servidor. \n\tVerifique a ligação à internet");
-
-    }
-
-    /**
-     * Metodo que retorna todos os terapeutas
-     *
-     * @return Lista de HealthProfessionalWSs
-     */
-    public List<backend.pojos.HealthProfessional> getAllTerapeutas() {
-        List<NameValuePair> parametros = new ArrayList<>();     //array com os params necessários para buscar todos os terapeutas
-
-        responseWS = wrapperWS.sendRequest("terapeuta", "get_all_terapeutas", parametros);
-
-        if (responseWS.getStatusLine().getStatusCode() == 200) {           //verificar o codigo HTTP da responseWS
-            String terapeutaJson = wrapperWS.readResponse(responseWS);     //Passa a responseWS para uma string
-            Type type = new TypeToken<List<backend.pojos.HealthProfessional>>() {
-            }.getType();  //tipo do para o qual queros retornar a responseWS Json
-
-            return gson.fromJson(terapeutaJson, type);          //Passa o array dos objectos em Json para uma Lista de objectos Java
-
-        } else {
-            return null;
-        }
+        return params;
     }
 
 }
