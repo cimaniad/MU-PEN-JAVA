@@ -83,7 +83,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButtonSchedule">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agenda"/>
           </Properties>

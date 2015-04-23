@@ -4,7 +4,7 @@ package backend.pojos;
 import java.util.Date;
 
 public class Patient {
-    private int idPacient;
+    private int idPatient;
     private String name;
     private String lastName;
     private String numCC;
@@ -12,7 +12,7 @@ public class Patient {
     private int numTel;
     private int nif;
     private String email;
-    private String  miritalState;
+    private String  maritalState;
     private Date birthDate;
     private String bloodGroup;
     private String nationality;
@@ -20,6 +20,8 @@ public class Patient {
     private String password;
     private String pathology;
     private String description;
+    private String picture;
+    /** private int idHealthProfessional; */
 
     public Patient() {
     }
@@ -42,8 +44,8 @@ public class Patient {
      * @param pathology
      * @param description 
      */
-    public Patient(int idPacient, String name, String lastName, String numCC, String adress, int numTel, int nif, String email, String miritalState, Date birthDate, String bloodGroup, String nationality, String gender, String password, String pathology, String description) {
-        this.idPacient = idPacient;
+    public Patient(int idPacient, String name, String lastName, String numCC, String picture, String adress, int numTel, int nif, String email, String miritalState, Date birthDate, String bloodGroup, String nationality, String gender, String password, String pathology, String description) {
+        this.idPatient = idPacient;
         this.name = name;
         this.lastName = lastName;
         this.numCC = numCC;
@@ -51,7 +53,7 @@ public class Patient {
         this.numTel = numTel;
         this.nif = nif;
         this.email = email;
-        this.miritalState = miritalState;
+        this.maritalState = miritalState;
         this.birthDate = birthDate;
         this.bloodGroup = bloodGroup;
         this.nationality = nationality;
@@ -59,10 +61,11 @@ public class Patient {
         this.password = password;
         this.pathology = pathology;
         this.description = description;
+        this.picture= picture;
     }
 
-    public int getIdPacient() {
-        return idPacient;
+    public int getIdPatient() {
+        return idPatient;
     }
 
     public String getName() {
@@ -93,6 +96,14 @@ public class Patient {
         return adress;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public void setAdress(String adress) {
         this.adress = adress;
     }
@@ -121,12 +132,12 @@ public class Patient {
         this.email = email;
     }
 
-    public String getMiritalState() {
-        return miritalState;
+    public String getMaritalState() {
+        return maritalState;
     }
 
-    public void setMiritalState(String miritalState) {
-        this.miritalState = miritalState;
+    public void setMaritalState(String miritalState) {
+        this.maritalState = miritalState;
     }
 
     public Date getBirthDate() {
@@ -187,7 +198,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "idPacient=" + idPacient + ", name=" + name + ", lastName=" + lastName + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", miritalState=" + miritalState + ", birthDate=" + birthDate + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender + ", password=" + password + ", pathology=" + pathology + ", description=" + description + '}';
+        return "Patient{" + "idPatient=" + idPatient + ", name=" + name + ", lastName=" + lastName + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", maritalState=" + maritalState + ", birthDate=" + birthDate + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender + ", password=" + password + ", pathology=" + pathology + ", description=" + description + '}';
     }
     
     

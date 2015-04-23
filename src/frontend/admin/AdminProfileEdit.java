@@ -51,6 +51,7 @@ public class AdminProfileEdit extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
+        jButtonEditPhoto = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -127,6 +128,9 @@ public class AdminProfileEdit extends javax.swing.JFrame {
         });
         jPanelInformation.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
 
+        jButtonEditPhoto.setText("Editar foto");
+        jPanelInformation.add(jButtonEditPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
@@ -188,6 +192,7 @@ public class AdminProfileEdit extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonEditPhoto;
     private javax.swing.JButton jButtonEditProfile;
     private javax.swing.JLabel jLabelAdress;
     private javax.swing.JLabel jLabelBirthDate;
