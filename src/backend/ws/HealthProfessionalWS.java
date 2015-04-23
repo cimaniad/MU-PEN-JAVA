@@ -57,7 +57,7 @@ public class HealthProfessionalWS {
             }
 
         } catch (RuntimeException e) {
-            log.error(e.getMessage());
+            log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
         log.debug("\n\tHealth Professional saved with success");
@@ -90,7 +90,7 @@ public class HealthProfessionalWS {
             hp = gson.fromJson(jsonResp, HealthProfessional.class);
 
         } catch (RuntimeException e) {
-            log.error(e.getMessage());
+            log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
         log.debug("\n\tHealth Professioonal data access success");
@@ -119,18 +119,38 @@ public class HealthProfessionalWS {
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Profissional de Saúde");
             }
-            Type type = new TypeToken<List<HealthProfessional>>() {}.getType();  //tipo do para o qual queros retornar a responseWS Json
 
+            Type type = new TypeToken<List<HealthProfessional>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
             hpList = gson.fromJson(jsonResp, type);
 
         } catch (RuntimeException e) {
-            log.error(e.getMessage());
+            log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
         log.debug("\n\tHealth Professioonal data access success");
         log.debug("\n\tHPs : " + hpList.toString());
         return hpList;
-        
+
+    }
+
+    public void deleteHealthProfessional(int id) {
+        List<NameValuePair> parms = new ArrayList<>();
+        parms.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));
+        try {
+            responseWS = wrapperWS.sendRequest("HealthProfessional", "deleteHealthProfessional", parms);
+            String jsonResp = wrapperWS.readResponse(responseWS);
+            Validation v = gson.fromJson(jsonResp, Validation.class);
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Não foi possivel eliminar este Profissional de saúde");
+            }
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tHealth Professional deleted with success");
     }
 
     private List<NameValuePair> getAllParams(HealthProfessional hp) {
@@ -155,5 +175,4 @@ public class HealthProfessionalWS {
 
         return params;
     }
-
 }
