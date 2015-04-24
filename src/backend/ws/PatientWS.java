@@ -49,7 +49,7 @@ public class PatientWS {
 
         } catch (RuntimeException e) {
             log.error(e.getMessage());
-        //    throw new RuntimeException(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
         log.debug("Patient saved with sucess");
     }
