@@ -33,7 +33,6 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabelwallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(705, 520));
         setMinimumSize(new java.awt.Dimension(705, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,9 +44,19 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanelWallpaper.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonHealthProfessional.setText("Profissionais de Saude");
+        jButtonHealthProfessional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHealthProfessionalActionPerformed(evt);
+            }
+        });
         jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 140, 40));
 
         jButtonProfile.setText("Perfil");
+        jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProfileActionPerformed(evt);
+            }
+        });
         jPanelWallpaper.add(jButtonProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 140, 40));
 
         jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
@@ -57,6 +66,16 @@ public class AdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonHealthProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHealthProfessionalActionPerformed
+        new HeathProfessionalList().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonHealthProfessionalActionPerformed
+
+    private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
+        new HealthProfessionalProfile().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonProfileActionPerformed
 
     /**
      * @param args the command line arguments
