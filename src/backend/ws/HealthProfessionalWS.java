@@ -6,6 +6,7 @@
 package backend.ws;
 
 import backend.pojos.HealthProfessional;
+import backend.pojos.Patient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
@@ -174,5 +175,36 @@ public class HealthProfessionalWS {
         params.add(new BasicNameValuePair("developmentProfessional", String.valueOf(hp.isDevelopmentProfessional())));
 
         return params;
+    }
+
+    public ArrayList<Patient> getPatientsByHealthProfessional(int id) {
+        ArrayList<Patient> pList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Patient",
+                    "getPatientsByHealthProfessional", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
+            }
+
+            Type type = new TypeToken<List<HealthProfessional>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            pList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tPatient data access success");
+        log.debug("\n\tHPs : " + pList.toString());
+        return pList;
     }
 }

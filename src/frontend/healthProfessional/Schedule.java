@@ -108,7 +108,7 @@ public class Schedule extends javax.swing.JFrame {
 
     private void jButtonMakeAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMakeAppointmentActionPerformed
         // TODO add your handling code here:
-        AppointmentEdit apEd = new AppointmentEdit();
+        AppointmentEdit apEd = new AppointmentEdit(jCalendar.getDate());
         apEd.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed

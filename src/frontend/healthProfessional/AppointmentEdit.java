@@ -5,6 +5,11 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.Patient;
+import backend.ws.HealthProfessionalWS;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author jorge
@@ -14,7 +19,16 @@ public class AppointmentEdit extends javax.swing.JFrame {
     /**
      * Creates new form EventRegist
      */
-    public AppointmentEdit() {
+    public AppointmentEdit(Date data) {
+        HealthProfessionalWS hp= new HealthProfessionalWS();
+        ArrayList<Patient> pList = hp.getPatientsByHealthProfessional(1);
+        for(int i=0; i< pList.size(); i++){
+            jComboBoxPatientList.addItem(pList.get(i).getName());
+            }
+        jDateChooserDate.setDate(data);
+        int indice=jComboBoxPatientList.getSelectedIndex();
+        jTextFieldPathology.setText(pList.get(indice).getPathology());
+        jTextFieldAge.setText(String.valueOf(pList.get(indice).getBirthDate()));
         initComponents();
     }
 
@@ -27,6 +41,7 @@ public class AppointmentEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelInformation = new javax.swing.JLabel();
         jPanelWallpaper = new javax.swing.JPanel();
         jPanelInformation = new javax.swing.JPanel();
         jLabelHealthPatientProfile = new javax.swing.JLabel();
@@ -37,7 +52,7 @@ public class AppointmentEdit extends javax.swing.JFrame {
         jLabelDescription = new javax.swing.JLabel();
         jLabelHours = new javax.swing.JLabel();
         jLabelPathology = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBoxPatientList = new javax.swing.JComboBox();
         jTextFieldPatient = new javax.swing.JTextField();
         jTextFieldPathology = new javax.swing.JTextField();
         jTextFieldHours = new javax.swing.JTextField();
@@ -45,9 +60,13 @@ public class AppointmentEdit extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescription = new javax.swing.JTextArea();
         jButtonMakeAppointment = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabelInformation = new javax.swing.JLabel();
+        jDateChooserDate = new com.toedter.calendar.JDateChooser();
         jLabelwallpaper = new javax.swing.JLabel();
+
+        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
+        jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
+        jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(705, 520));
@@ -78,8 +97,8 @@ public class AppointmentEdit extends javax.swing.JFrame {
         jLabelPatient.setText("Paciente:");
         jPanelInformation.add(jLabelPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
-        jLabelAge.setText("Idade:");
-        jPanelInformation.add(jLabelAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        jLabelAge.setText("Data nascimento");
+        jPanelInformation.add(jLabelAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
         jLabelDescription.setText("Descrição:");
         jPanelInformation.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
@@ -90,8 +109,13 @@ public class AppointmentEdit extends javax.swing.JFrame {
         jLabelPathology.setText("Patologia:");
         jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelInformation.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
+        jComboBoxPatientList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPatientList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPatientListActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jComboBoxPatientList, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
 
         jTextFieldPatient.setEditable(false);
         jTextFieldPatient.addActionListener(new java.awt.event.ActionListener() {
@@ -116,14 +140,13 @@ public class AppointmentEdit extends javax.swing.JFrame {
         jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 460, -1));
 
         jButtonMakeAppointment.setText("Marcar consulta");
+        jButtonMakeAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMakeAppointmentActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonMakeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
-        jPanelInformation.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
-
-        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
-        jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
-        jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
-        jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
-        jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanelInformation.add(jDateChooserDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 
@@ -146,47 +169,55 @@ public class AppointmentEdit extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void jButtonMakeAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMakeAppointmentActionPerformed
+             
+    }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
+
+    private void jComboBoxPatientListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPatientListActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AppointmentEdit().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(AppointmentEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new AppointmentEdit(data).setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonMakeAppointment;
-    private javax.swing.JComboBox jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox jComboBoxPatientList;
+    private com.toedter.calendar.JDateChooser jDateChooserDate;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelDescription;

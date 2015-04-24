@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -101,4 +102,62 @@ public class AppointmentWS {
         return params;
     }
     
+    public Appointment getApointmentById(int id){
+        Appointment ap = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idAppointment", String.valueOf(id)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Appointment",
+                    "getAppointmentById", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
+            }
+
+            ap = gson.fromJson(jsonResp, Appointment.class);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tAppointment data access success");
+        log.debug("\n\tAP with id " + id + ": " + ap.toString());
+        return ap;
+    }
+    
+   public Appointment getAppointmentByIdDate(int id, Date date){
+        Appointment ap = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idAppointment", String.valueOf(id)));
+        params.add(new BasicNameValuePair("dataAppointment", String.valueOf(date)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Appointment",
+                    "getAppointmentByIdDate", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
+            }
+
+            ap = gson.fromJson(jsonResp, Appointment.class);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tAppointment data access success");
+        log.debug("\n\tAP with id " + id + ": " + ap.toString());
+        return ap;
+   } 
 }
