@@ -103,7 +103,7 @@ public class HealthProfessionalWS {
      *
      * @return Lista de HealthProfessionalWSs
      */
-    public List<HealthProfessional> getAllTerapeutas() {
+    public List<HealthProfessional> getAllHealthProfessionals() {
         List<HealthProfessional> hpList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
@@ -152,6 +152,35 @@ public class HealthProfessionalWS {
         }
         log.debug("\n\tHealth Professional deleted with success");
     }
+    public List<HealthProfessional> getHealthProfessionalByName(String name) {
+        List<HealthProfessional> hpList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("name", name));
+        try {
+            responseWS = wrapperWS.sendRequest("HealthProfessional",
+                    "getHealthProfessionalByName", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao realizar a pesquisa");
+            }
+
+            Type type = new TypeToken<List<HealthProfessional>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            hpList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tHealth Professionals search success");
+        log.debug("\n\tHPs : " + hpList.toString());
+        return hpList;
+    }
 
     private List<NameValuePair> getAllParams(HealthProfessional hp) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
@@ -175,4 +204,6 @@ public class HealthProfessionalWS {
 
         return params;
     }
+
+    
 }
