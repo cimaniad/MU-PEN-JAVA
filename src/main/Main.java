@@ -23,7 +23,7 @@ public class Main {
         HealthProfessionalWS tWS = new HealthProfessionalWS();
         tWS.saveEditHealthProfessional(t);
         tWS.getTerapeutaHealthProfessionalById(15);
-        tWS.getAllTerapeutas();
+        tWS.getAllHealthProfessionals();
     }
 
 }
