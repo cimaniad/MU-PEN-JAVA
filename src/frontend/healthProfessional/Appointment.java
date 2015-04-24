@@ -126,6 +126,11 @@ public class Appointment extends javax.swing.JFrame {
         jPanelInformation.add(jButtonAprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
 
         jButtonCancelEvent.setText("Cancelar consulta");
+        jButtonCancelEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelEventActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonCancelEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -158,6 +163,13 @@ public class Appointment extends javax.swing.JFrame {
         sh.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
+        // TODO add your handling code here:
+        AppointmentCreateEdit apc = new AppointmentCreateEdit();
+        apc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonCancelEventActionPerformed
 
     /**
      * @param args the command line arguments
