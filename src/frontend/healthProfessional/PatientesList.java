@@ -103,7 +103,7 @@ public class PatientesList extends javax.swing.JFrame {
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
 
-        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background_white.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
@@ -111,7 +111,7 @@ public class PatientesList extends javax.swing.JFrame {
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 
-        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));

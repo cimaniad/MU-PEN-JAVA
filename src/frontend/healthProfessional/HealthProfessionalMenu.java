@@ -50,7 +50,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
         jButton1.setText("Agenda");
         jPanelWallpaper.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 140, 40));
 
-        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

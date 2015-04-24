@@ -68,7 +68,7 @@ public class PatienteProfile extends javax.swing.JFrame {
         jLabelHealthPatientProfile.setText("Paciente");
         jPanelInformation.add(jLabelHealthPatientProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
+        jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/profile.PNG"))); // NOI18N
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabelName.setText("Nome:");
@@ -133,7 +133,7 @@ public class PatienteProfile extends javax.swing.JFrame {
         jLabelDiscription.setText("  Descrição:");
         jPanelInformation.add(jLabelDiscription, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 265, -1, -1));
 
-        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background_white.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
@@ -141,7 +141,7 @@ public class PatienteProfile extends javax.swing.JFrame {
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 
-        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
