@@ -22,7 +22,7 @@ public class Main {
         HealthProfessional t = new HealthProfessional("david", "nova", 123, "prazins", 123, 123, "nova@nova.com", "devolvido sem uso", "11-02-2015", "-n", "irlandes", "feminino", "nova", "nova.png", "HP", false);
         HealthProfessionalWS tWS = new HealthProfessionalWS();
         tWS.saveEditHealthProfessional(t);
-        tWS.getTerapeutaHealthProfessionalById(15);
+        tWS.getHealthProfessionalById(15);
         tWS.getAllHealthProfessionals();
     }
 
