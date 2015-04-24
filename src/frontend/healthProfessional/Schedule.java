@@ -101,7 +101,7 @@ public class Schedule extends javax.swing.JFrame {
 
     private void jButtonSeeEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeEventActionPerformed
         // TODO add your handling code here:
-        Appointment ap = new Appointment();
+        FEAppointment ap = new FEAppointment(1, jCalendar.getDate());
         ap.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonSeeEventActionPerformed

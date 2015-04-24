@@ -108,5 +108,33 @@ public class PatientWS {
         return params;
     }
     
-   
+   public Patient getPatientById(int id){
+       
+       Patient p = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idPatient", String.valueOf(id)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Patient",
+                    "getPatientById", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
+            }
+
+            p = gson.fromJson(jsonResp, Patient.class);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tPatient data access success");
+        log.debug("\n\tP with id " + id + ": " + p.toString());
+        return p;
+   }
 }

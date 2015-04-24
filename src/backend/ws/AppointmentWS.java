@@ -131,8 +131,8 @@ public class AppointmentWS {
         return ap;
     }
     
-   public Appointment getAppointmentByIdDate(int id, Date date){
-        Appointment ap = null;
+  public ArrayList<Appointment> getAppointmentByIdDate(int id, Date date) {
+        ArrayList<Appointment> apList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idAppointment", String.valueOf(id)));
@@ -150,14 +150,17 @@ public class AppointmentWS {
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
             }
 
-            ap = gson.fromJson(jsonResp, Appointment.class);
+            Type type = new TypeToken<List<Appointment>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            apList = gson.fromJson(jsonResp, type);
 
         } catch (RuntimeException e) {
             log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
-        log.debug("\n\tAppointment data access success");
-        log.debug("\n\tAP with id " + id + ": " + ap.toString());
-        return ap;
-   } 
+
+        log.debug("\n\t Appointment data access success");
+        log.debug("\n\tHPs : " + apList.toString());
+        return apList;
+    }
 }

@@ -61,6 +61,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jTextAreaDescription = new javax.swing.JTextArea();
         jButtonMakeAppointment = new javax.swing.JButton();
         jDateChooserDate = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -148,6 +149,9 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jPanelInformation.add(jButtonMakeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
         jPanelInformation.add(jDateChooserDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
+
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 
         jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
@@ -218,6 +222,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMakeAppointment;
     private javax.swing.JComboBox jComboBoxPatientList;
     private com.toedter.calendar.JDateChooser jDateChooserDate;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelDescription;
