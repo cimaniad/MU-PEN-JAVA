@@ -5,17 +5,34 @@
  */
 package frontend.admin;
 
+import backend.pojos.HealthProfessional;
+import backend.ws.HealthProfessionalWS;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author jorge
  */
 public class HeathProfessionalList extends javax.swing.JFrame {
 
+    private DefaultTableModel tableModel;
+    private HealthProfessionalWS hpWS;
+    private List<HealthProfessional> hpList;
+    private List<HealthProfessional> hpSerach;
+
     /**
      * Creates new form HeathProfessionalList
      */
     public HeathProfessionalList() {
         initComponents();
+        hpWS = new HealthProfessionalWS();
+        hpList = hpWS.getAllHealthProfessionals();
+        drawTable(hpList);
     }
 
     /**
@@ -40,9 +57,7 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         jLabelwallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(705, 520));
         setMinimumSize(new java.awt.Dimension(705, 520));
-        setPreferredSize(new java.awt.Dimension(705, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -89,19 +104,34 @@ public class HeathProfessionalList extends javax.swing.JFrame {
                 "Nome", "Apelido", "Instituição"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTableList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableList.getTableHeader().setReorderingAllowed(false);
         jScrollPaneList.setViewportView(jTableList);
+        jTableList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 190));
 
         jButtonSearch.setText("Pesquisar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
 
@@ -122,8 +152,15 @@ public class HeathProfessionalList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
-        // TODO add your handling code here:
+        new HealthProfessionalRegist().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonRegistActionPerformed
+
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        String name = jTextFieldSearch.getText();
+        hpSerach = hpWS.getHealthProfessionalByName(name);
+        drawTable(hpSerach);
+    }//GEN-LAST:event_jButtonSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +197,29 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         });
     }
 
+    private void drawTable(List<HealthProfessional> hpList) {
+
+        String cols[] = {"Nome", "Apelido", "Instituição"};
+        Object rows[][] = new String[hpList.size()][3];
+        int i = 0;
+        for (HealthProfessional hp : hpList) {
+            rows[i][0] = hp.getName();
+            rows[i][1] = hp.getLastName();
+            rows[i][2] = hp.getInstitution();
+            i++;
+        }
+
+        tableModel = new DefaultTableModel(rows, cols);
+
+        jTableList.setModel(tableModel);
+        jTableList.addMouseListener(new HealthProfessionalViewProfile());
+
+        jTableList = new JTable(rows, cols);
+        jTableList.setVisible(true);
+        jScrollPaneList.setViewportView(jTableList);
+        ((JComponent) getContentPane()).revalidate();
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;
@@ -173,4 +233,18 @@ public class HeathProfessionalList extends javax.swing.JFrame {
     private javax.swing.JTable jTableList;
     private javax.swing.JTextField jTextFieldSearch;
     // End of variables declaration//GEN-END:variables
+
+    private class HealthProfessionalViewProfile extends MouseAdapter {
+
+        public void mouseClicked(MouseEvent event) {
+            if (event.getClickCount() == 2) {
+                HealthProfessional hp = hpList.get(jTableList.getSelectedRow());
+                if (hp != null) {
+                    new HealthProfessionalRegist().setVisible(true);
+                    dispose();
+                }
+            }
+        }
+    }
+
 }
