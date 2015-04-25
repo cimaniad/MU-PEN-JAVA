@@ -5,7 +5,6 @@
  */
 package backend.ws;
 
-import backend.pojos.Appointment;
 import backend.pojos.HealthProfessional;
 import backend.pojos.Patient;
 import com.google.gson.Gson;
@@ -13,7 +12,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
