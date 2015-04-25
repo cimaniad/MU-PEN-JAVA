@@ -21,14 +21,25 @@ import javax.swing.JOptionPane;
  */
 public class FEAppointment extends javax.swing.JFrame {
 
+    private PatientWS patWS;
+    private AppointmentWS apptmWS;
+    private ArrayList<Appointment> apL;
+
     /**
      * Creates new form Event
      */
     public FEAppointment(int idHP, String date) {
-
-        initComponents();
-        seeAppointment(idHP, date);
-        jTextFieldDate.setText(date);
+        try {
+            patWS = new PatientWS();
+            apptmWS = new AppointmentWS();
+            apL = apptmWS.getAppointmentByIdDate(idHP, date);
+            initComponents();
+            seeAppointment(idHP, date);
+            jTextFieldDate.setText(date);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(FEAppointment.this,
+                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 
@@ -113,9 +124,19 @@ public class FEAppointment extends javax.swing.JFrame {
         });
         jPanelInformation.add(jTextFieldDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
 
+        jComboBoxPatient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxPatientMouseClicked(evt);
+            }
+        });
         jComboBoxPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPatientActionPerformed(evt);
+            }
+        });
+        jComboBoxPatient.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jComboBoxPatientPropertyChange(evt);
             }
         });
         jPanelInformation.add(jComboBoxPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
@@ -188,12 +209,21 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelEventActionPerformed
 
     private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientActionPerformed
-
+comboChange(apL);
     }//GEN-LAST:event_jComboBoxPatientActionPerformed
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAproveActionPerformed
 
     }//GEN-LAST:event_jButtonAproveActionPerformed
+
+    private void jComboBoxPatientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPatientMouseClicked
+        
+    }//GEN-LAST:event_jComboBoxPatientMouseClicked
+
+    private void jComboBoxPatientPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxPatientPropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBoxPatientPropertyChange
 
     /**
      * @param args the command line arguments
@@ -234,28 +264,32 @@ public class FEAppointment extends javax.swing.JFrame {
 //    }
     private void seeAppointment(int idHP, String date) {
         try {
-            PatientWS p = new PatientWS();
-            AppointmentWS ap = new AppointmentWS();
-            ArrayList<Appointment> apL = ap.getAppointmentByIdDate(idHP, date);
             if (!apL.isEmpty()) {
-
                 for (Appointment a : apL) {
-                    Patient pt = p.getPatientById(a.getIdPatient());
+                    Patient pt = patWS.getPatientById(a.getIdPatient());
                     jComboBoxPatient.addItem(pt.getName());
                 }
+                comboChange(apL);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(FEAppointment.this,
+                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-                int index = jComboBoxPatient.getSelectedIndex();
-                Patient pat = p.getPatientById(apL.get(index).getIdPatient());
-                jTextFieldPathology.setText(pat.getPathology());
-                jTextFieldBirthDate.setText(String.valueOf(pat.getBirthDate()));
+    private void comboChange(ArrayList<Appointment> apL) {
+        try {
+            int index = jComboBoxPatient.getSelectedIndex();
+            Patient pat = patWS.getPatientById(apL.get(index).getIdPatient());
+            jTextFieldPathology.setText(pat.getPathology());
+            jTextFieldBirthDate.setText(String.valueOf(pat.getBirthDate()));
 
-                Appointment a = ap.getApointmentById(apL.get(index).getIdAppointment());
-                jTextAreaDescription.setText(a.getDescription());
-                jTextFieldDate.setText(a.getDate());
-                jTextFieldHours.setText(a.getHour());
-                if (!a.getOkay()) {
-                    jLabel1.setText("Consulta por aprovar");
-                }
+            Appointment a = apptmWS.getApointmentById(apL.get(index).getIdAppointment());
+            jTextAreaDescription.setText(a.getDescription());
+            jTextFieldDate.setText(a.getDate());
+            jTextFieldHours.setText(a.getHour());
+            if (!a.getOkay()) {
+                jLabel1.setText("Consulta por aprovar");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(FEAppointment.this,
