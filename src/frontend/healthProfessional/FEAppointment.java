@@ -8,11 +8,8 @@ package frontend.healthProfessional;
 import backend.pojos.Appointment;
 import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
-import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
-import frontend.admin.HealthProfessionalRegist;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,9 +191,7 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDateActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        // TODO add your handling code here:
-        Schedule sh = new Schedule();
-        sh.setVisible(true);
+        new Schedule().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
@@ -206,7 +201,7 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelEventActionPerformed
 
     private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientActionPerformed
-comboChange(apL);
+        comboChange(apL);
     }//GEN-LAST:event_jComboBoxPatientActionPerformed
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAproveActionPerformed
@@ -214,51 +209,14 @@ comboChange(apL);
     }//GEN-LAST:event_jButtonAproveActionPerformed
 
     private void jComboBoxPatientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPatientMouseClicked
-        
+
     }//GEN-LAST:event_jComboBoxPatientMouseClicked
 
     private void jComboBoxPatientPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxPatientPropertyChange
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jComboBoxPatientPropertyChange
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(FEAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(FEAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(FEAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(FEAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FEAppointment().setVisible(true);
-//            }
-// });
-//    }
     private void seeAppointment(int idHP, String date) {
         try {
             if (!apL.isEmpty()) {

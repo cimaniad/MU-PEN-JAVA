@@ -94,22 +94,19 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
 
     private void jButtonScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonScheduleActionPerformed
         // TODO add your handling code here:
-        Schedule sh = new Schedule();
-        sh.setVisible(true);
+        new Schedule().setVisible(true);;
         dispose();
     }//GEN-LAST:event_jButtonScheduleActionPerformed
 
     private void jButtonHealthProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHealthProfessionalActionPerformed
         // TODO add your handling code here:
-        PatientsList pl = new PatientsList();
-        pl.setVisible(true);
+        new PatientsList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonHealthProfessionalActionPerformed
 
     private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
         // TODO add your handling code here:
-        HealthProfessionalProfile hpp = new HealthProfessionalProfile();
-        hpp.setVisible(true);
+        new HealthProfessionalProfile().setVisible(true);;
         dispose();
     }//GEN-LAST:event_jButtonProfileActionPerformed
 

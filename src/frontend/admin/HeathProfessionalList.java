@@ -7,11 +7,8 @@ package frontend.admin;
 
 import backend.pojos.HealthProfessional;
 import backend.ws.HealthProfessionalWS;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JComponent;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -49,10 +46,10 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         jLabelHealthProfessionalList = new javax.swing.JLabel();
         jButtonRegist = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
-        jScrollPaneList = new javax.swing.JScrollPane();
-        jTableList = new javax.swing.JTable();
         jButtonSearch = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
+        jScrollPaneList = new javax.swing.JScrollPane();
+        jTableList = new javax.swing.JTable();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -80,51 +77,12 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         jPanelInformation.add(jButtonRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
 
         jButtonBack.setText("Voltar");
-        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
-
-        jTableList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nome", "Apelido", "Instituição"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
             }
         });
-        jTableList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTableList.getTableHeader().setReorderingAllowed(false);
-        jScrollPaneList.setViewportView(jTableList);
-        jTableList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 190));
+        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jButtonSearch.setText("Pesquisar");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -132,8 +90,28 @@ public class HeathProfessionalList extends javax.swing.JFrame {
                 jButtonSearchActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
-        jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
+        jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+        jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 210, -1));
+
+        jTableList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListMouseClicked(evt);
+            }
+        });
+        jScrollPaneList.setViewportView(jTableList);
+
+        jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 630, 180));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -162,40 +140,19 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         drawTable(hpSerach);
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HeathProfessionalList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HeathProfessionalList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HeathProfessionalList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HeathProfessionalList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
+        if (evt.getClickCount() == 2) {
+            new HealthProfessionalProfile(getHealthProAtTable()).setVisible(true);
+            dispose();
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jTableListMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HeathProfessionalList().setVisible(true);
-            }
-        });
-    }
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        new AdminMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
+    
 
     private void drawTable(List<HealthProfessional> hpList) {
 
@@ -209,16 +166,20 @@ public class HeathProfessionalList extends javax.swing.JFrame {
             i++;
         }
 
-        tableModel = new DefaultTableModel(rows, cols);
-
+        tableModel = new DefaultTableModel(rows, cols) {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
         jTableList.setModel(tableModel);
-        jTableList.addMouseListener(new HealthProfessionalViewProfile());
-
-        jTableList = new JTable(rows, cols);
-        jTableList.setVisible(true);
         jScrollPaneList.setViewportView(jTableList);
         ((JComponent) getContentPane()).revalidate();
 
+    }
+
+    private HealthProfessional getHealthProAtTable() {
+        return hpList.get(jTableList.getSelectedRow());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
@@ -233,18 +194,5 @@ public class HeathProfessionalList extends javax.swing.JFrame {
     private javax.swing.JTable jTableList;
     private javax.swing.JTextField jTextFieldSearch;
     // End of variables declaration//GEN-END:variables
-
-    private class HealthProfessionalViewProfile extends MouseAdapter {
-
-        public void mouseClicked(MouseEvent event) {
-            if (event.getClickCount() == 2) {
-                HealthProfessional hp = hpList.get(jTableList.getSelectedRow());
-                if (hp != null) {
-                    new HealthProfessionalRegist().setVisible(true);
-                    dispose();
-                }
-            }
-        }
-    }
 
 }

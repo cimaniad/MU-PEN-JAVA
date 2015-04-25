@@ -7,6 +7,8 @@ package frontend.admin;
 
 import backend.pojos.HealthProfessional;
 import backend.ws.HealthProfessionalWS;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -54,18 +56,18 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jComboBoxGender = new javax.swing.JComboBox();
         jComboBoxBloodType = new javax.swing.JComboBox();
         jComboBoxMaritalStatus = new javax.swing.JComboBox();
-        jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
         jTextFieldName = new javax.swing.JTextField();
         jTextFieldTel = new javax.swing.JTextField();
         jTextFieldCC = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldLastName = new javax.swing.JTextField();
         jTextFieldNationality = new javax.swing.JTextField();
-        jTextFieldAdress = new javax.swing.JTextField();
-        jTextFieldNIF = new javax.swing.JTextField();
         jTextFieldInstitution = new javax.swing.JTextField();
         jButtonAddPhoto = new javax.swing.JButton();
         jDateChooserBirth = new com.toedter.calendar.JDateChooser();
+        jTextFieldNIF = new javax.swing.JTextField();
+        jTextFieldAdress = new javax.swing.JTextField();
+        jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -150,39 +152,22 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
 
         jComboBoxMaritalStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Casado", "Divorciado", "Viúvo" }));
         jPanelInformation.add(jComboBoxMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
-
-        jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
-        jCheckBoxDevelopmentProfessional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxDevelopmentProfessionalActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 180, -1));
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
         jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
         jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
         jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
-
-        jTextFieldAdress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAdressActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
-
-        jTextFieldNIF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNIFActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
         jPanelInformation.add(jTextFieldInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 170, -1));
 
         jButtonAddPhoto.setText("Inserir foto");
         jPanelInformation.add(jButtonAddPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
         jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
+        jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
+
+        jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
+        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 180, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -202,67 +187,21 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
 
     private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
         try {
-            HealthProfessional hp = loadHealthProfessional();
+            HealthProfessional hp = loadHealthProfessionalFromPanel();
             HealthProfessionalWS hpWS = new HealthProfessionalWS();
             hpWS.saveEditHealthProfessional(hp);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(HealthProfessionalRegist.this, 
-						e.getMessage(), "Erro ao registar Profissional de saude", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(HealthProfessionalRegist.this,
+                    e.getMessage(), "Erro ao registar Profissional de saude", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRegistActionPerformed
-
-    private void jCheckBoxDevelopmentProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDevelopmentProfessionalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxDevelopmentProfessionalActionPerformed
-
-    private void jTextFieldAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAdressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAdressActionPerformed
-
-    private void jTextFieldNIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNIFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNIFActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         new HeathProfessionalList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HealthProfessionalRegist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HealthProfessionalRegist().setVisible(true);
-            }
-        });
-    }
+    
 
     private String validator() {
         StringBuilder warns = new StringBuilder();
@@ -277,28 +216,35 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
 
         if (!warns.toString().isEmpty()) {
             warns.delete(warns.toString().length() - 2, warns.toString().length());
+            warns.append("!");
         }
 
         return warns.toString();
     }
 
-    private HealthProfessional loadHealthProfessional() {
+    private HealthProfessional loadHealthProfessionalFromPanel() {
         String warn = validator();
         if (!warn.isEmpty()) {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
         }
         String name = jTextFieldName.getText();
-        String email = jTextFieldEmail.getText().trim();
         String lasName = jTextFieldLastName.getText();
+        String email = jTextFieldEmail.getText().trim();
         String adress = jTextFieldAdress.getText();
         String nacionality = jTextFieldNationality.getText();
         String institution = jTextFieldNationality.getText();
+        String gender = String.valueOf(jComboBoxBloodType.getSelectedItem());
+        String maritalStatus = String.valueOf(jComboBoxMaritalStatus.getSelectedItem());
+        String bloodGroup = String.valueOf(jComboBoxBloodType.getSelectedItem());
+        Date birthDate = jDateChooserBirth.getDate();
+        String pass = generatePass();
         int numTel = 0;
         int numCC = 0;
         int nif = 0;
+        boolean developmentPro = jCheckBoxDevelopmentProfessional.isSelected() == true ? true : false;
         try {
             if (jTextFieldTel.getText().trim().length() != 9 || jTextFieldNIF.getText().trim().length() != 9) {
-                throw new RuntimeException("O NºTEL e NIF devem ter 9 digitos!");
+                throw new RuntimeException("O NºTel e NIF devem ter 9 digitos!");
             }
             if (jTextFieldCC.getText().trim().length() != 8) {
                 throw new RuntimeException("O NºCC deve ter 8 digitos!");
@@ -307,16 +253,13 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             numCC = Integer.valueOf(jTextFieldCC.getText().trim());
             nif = Integer.valueOf(jTextFieldNIF.getText().trim());
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Verifique os seguintes campos: NºTel, NºCC, NIF");
+            throw new RuntimeException("Apenas numeros são permitidos nos campos NºTel, NIF e NºCC");
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
         }
-        String gender = String.valueOf(jComboBoxBloodType.getSelectedItem());
-        String maritalStatus = String.valueOf(jComboBoxMaritalStatus.getSelectedItem());
-        String bloodGroup = String.valueOf(jComboBoxBloodType.getSelectedItem());
-        String birthDate = jDateChooserBirth.getDateFormatString();
-        boolean developmentPro = jCheckBoxDevelopmentProfessional.isSelected() == true ? true : false;
-        String pass = generatePass();
 
-        return new HealthProfessional(name, lasName, numCC, adress, numTel, nif, email, maritalStatus, birthDate, bloodGroup, nacionality, gender, pass, null, institution, developmentPro);
+        return new HealthProfessional(name, lasName, numCC, adress, numTel, nif, email, maritalStatus,
+                parseDate(birthDate), bloodGroup, nacionality, gender, pass, null, institution, developmentPro);
     }
 
     private String generatePass() {
@@ -369,4 +312,9 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNationality;
     private javax.swing.JTextField jTextFieldTel;
     // End of variables declaration//GEN-END:variables
+private String parseDate(Date d) {
+        SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFromat.format(d);
+        return date;
+    }
 }
