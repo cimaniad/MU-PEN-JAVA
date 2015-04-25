@@ -114,7 +114,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 235, -1, -1));
 
         jButtonBack.setText("Voltar");
-        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 313, 80, 40));
 
         jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
         jCheckBoxDevelopmentProfessional.addActionListener(new java.awt.event.ActionListener() {
@@ -124,8 +124,11 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         });
         jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 180, -1));
 
+        jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botoes/remove.png"))); // NOI18N
         jButtonDelete.setText("Eliminar");
-        jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        jButtonDelete.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButtonDelete.setIconTextGap(7);
+        jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 313, 100, 40));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background_white.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));

@@ -30,6 +30,8 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanelWallpaper = new javax.swing.JPanel();
         jButtonHealthProfessional = new javax.swing.JButton();
         jButtonProfile = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,10 +47,21 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanelWallpaper.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonHealthProfessional.setText("Profissionais de Saude");
-        jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 140, 40));
+        jButtonHealthProfessional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHealthProfessionalActionPerformed(evt);
+            }
+        });
+        jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 140, 40));
 
         jButtonProfile.setText("Perfil");
-        jPanelWallpaper.add(jButtonProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 140, 40));
+        jPanelWallpaper.add(jButtonProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 140, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/group_icon.png"))); // NOI18N
+        jPanelWallpaper.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 100, 90));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/profile_icon.png"))); // NOI18N
+        jPanelWallpaper.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 100, 100));
 
         jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/background2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -57,6 +70,10 @@ public class AdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonHealthProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHealthProfessionalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHealthProfessionalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +114,8 @@ public class AdminMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonHealthProfessional;
     private javax.swing.JButton jButtonProfile;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelWallpaper;
     // End of variables declaration//GEN-END:variables
