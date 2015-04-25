@@ -16,7 +16,7 @@ public class Appointment {
     private int idAppointment;
     private int idPatient;
     private int idHealthProfessional;
-    private Date date;
+    private String date;
     private String hour;
     private boolean okay;
     private String description;
@@ -24,7 +24,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int idAppointment, int idPatient, int idHealthProfessional, Date date, String hour, boolean okay, String description) {
+    public Appointment(int idAppointment, int idPatient, int idHealthProfessional, String date, String hour, boolean okay, String description) {
         this.idAppointment = idAppointment;
         this.idPatient = idPatient;
         this.idHealthProfessional = idHealthProfessional;
@@ -54,13 +54,15 @@ public class Appointment {
         this.idHealthProfessional = idHealthProfessional;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
+
+   
 
     public String getHour() {
         return hour;

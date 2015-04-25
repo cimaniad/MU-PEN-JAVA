@@ -6,8 +6,6 @@
 package backend.ws;
 
 import backend.pojos.Appointment;
-import backend.pojos.HealthProfessional;
-import backend.pojos.Patient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -131,12 +129,12 @@ public class AppointmentWS {
         return ap;
     }
     
-   public Appointment getAppointmentByIdDate(int id, Date date){
-        Appointment ap = null;
+  public ArrayList<Appointment> getAppointmentByIdDate(int id, String date) {
+        ArrayList<Appointment> apList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idAppointment", String.valueOf(id)));
-        params.add(new BasicNameValuePair("dataAppointment", String.valueOf(date)));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));
+        params.add(new BasicNameValuePair("dateAppointment", date));
 
         try {
             responseWS = wrapperWS.sendRequest("Appointment",
@@ -150,14 +148,17 @@ public class AppointmentWS {
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
             }
 
-            ap = gson.fromJson(jsonResp, Appointment.class);
+            Type type = new TypeToken<List<Appointment>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            apList = gson.fromJson(jsonResp, type);
 
         } catch (RuntimeException e) {
             log.error("\n\t" + e.getMessage());
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException(e.getLocalizedMessage());
         }
-        log.debug("\n\tAppointment data access success");
-        log.debug("\n\tAP with id " + id + ": " + ap.toString());
-        return ap;
-   } 
+
+        log.debug("\n\t Appointment data access success");
+        log.debug("\n\tHPs : " + apList.toString());
+        return apList;
+    }
 }

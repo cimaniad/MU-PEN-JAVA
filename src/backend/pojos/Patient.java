@@ -13,7 +13,7 @@ public class Patient {
     private int nif;
     private String email;
     private String  maritalState;
-    private Date birthDate;
+    private String birthDate;
     private String bloodGroup;
     private String nationality;
     private String gender;
@@ -44,7 +44,9 @@ public class Patient {
      * @param pathology
      * @param description 
      */
-    public Patient(int idPacient, String name, String lastName, String numCC, String picture, String adress, int numTel, int nif, String email, String miritalState, Date birthDate, String bloodGroup, String nationality, String gender, String password, String pathology, String description) {
+    public Patient(int idPacient, String name, String lastName, String numCC, String picture,
+            String adress, int numTel, int nif, String email, String miritalState, String birthDate,
+            String bloodGroup, String nationality, String gender, String password, String pathology, String description) {
         this.idPatient = idPacient;
         this.name = name;
         this.lastName = lastName;
@@ -140,11 +142,11 @@ public class Patient {
         this.maritalState = miritalState;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

@@ -5,6 +5,12 @@
  */
 package frontend.healthProfessional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jorge
@@ -100,10 +106,12 @@ public class Schedule extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSeeEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeEventActionPerformed
-        // TODO add your handling code here:
-        Appointment ap = new Appointment();
+
+        FEAppointment ap = new FEAppointment(1, parseDate(jCalendar.getDate()));
         ap.setVisible(true);
         dispose();
+
+
     }//GEN-LAST:event_jButtonSeeEventActionPerformed
 
     private void jButtonMakeAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMakeAppointmentActionPerformed
@@ -167,4 +175,11 @@ public class Schedule extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     // End of variables declaration//GEN-END:variables
+
+    private String parseDate(Date d) {
+        SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFromat.format(d);
+        return date;
+    }
+    
 }
