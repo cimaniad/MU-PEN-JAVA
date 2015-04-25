@@ -8,6 +8,7 @@ package frontend.healthProfessional;
 import backend.pojos.Appointment;
 import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
+import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 public class FEAppointment extends javax.swing.JFrame {
 
     private PatientWS patWS;
+    private HealthProfessionalWS hpWS;
     private AppointmentWS apptmWS;
     private ArrayList<Appointment> apL;
 
@@ -28,6 +30,7 @@ public class FEAppointment extends javax.swing.JFrame {
     public FEAppointment(int idHP, String date) {
         try {
             patWS = new PatientWS();
+            hpWS = new HealthProfessionalWS();
             apptmWS = new AppointmentWS();
             apL = apptmWS.getAppointmentByIdDate(idHP, date);
             initComponents();
@@ -191,19 +194,24 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDateActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new Schedule().setVisible(true);
-        dispose();
+//        System.out.println(patWS.getPatientsByHealthProfessional(1).get(0).getName());
+        System.out.println(hpWS.getPatientsByHealthProfessional(1).get(0).getName());
+//        jLabelHours.setText(patWS.getPatientsByHealthProfessional(1).get(0).getName());
+        jLabelHours.setText(hpWS.getPatientsByHealthProfessional(1).get(0).getName());
+//        new Schedule().setVisible(true);
+//        dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
         String date = apL.get(jComboBoxPatient.getSelectedIndex()).getDate();
         int idAppoint = apL.get(jComboBoxPatient.getSelectedIndex()).getIdAppointment();
-        new AppointmentCreateEdit(1, "2015-04-25").setVisible(true);
+        new AppointmentCreateEdit(idAppoint, date).setVisible(true);
         dispose();
 
     }//GEN-LAST:event_jButtonCancelEventActionPerformed
     private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientActionPerformed
         comboChange(apL);
+
     }//GEN-LAST:event_jComboBoxPatientActionPerformed
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAproveActionPerformed

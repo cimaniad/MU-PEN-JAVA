@@ -107,7 +107,7 @@ public class PatientWS {
         
         return params;
     }
-    
+   
    public Patient getPatientById(int id){
        
        Patient p = null;

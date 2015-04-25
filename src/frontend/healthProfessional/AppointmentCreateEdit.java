@@ -8,7 +8,9 @@ package frontend.healthProfessional;
 import backend.pojos.Appointment;
 import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
+import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,16 +24,51 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
      */
     private AppointmentWS apptmWS;
     private PatientWS patWS;
+    private HealthProfessionalWS hpWS;
+    private ArrayList<Patient> patList;
 
     public AppointmentCreateEdit(int idAppoint, String date) {
         try {
             apptmWS = new AppointmentWS();
             patWS = new PatientWS();
+            hpWS = new HealthProfessionalWS();
             loadAppointToEdit(idAppoint, date);
             initComponents();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
-                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
+                    e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public AppointmentCreateEdit(String date) {
+        try {
+            initComponents();
+            jTextFieldDate.setText(date);
+            //colocar id do terapeuta
+//            patList = patWS.getPatientsByHealthProfessional(1);
+            patList = hpWS.getPatientsByHealthProfessional(1);
+            if (!patList.isEmpty()) {
+                for (Patient p : patList) {
+                    jComboBoxPatientList.addItem(p.getName());
+                }
+                comboChange(patList);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
+                    e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void comboChange(ArrayList<Patient> patList) {
+        try {
+            int index = jComboBoxPatientList.getSelectedIndex();
+            Patient pat = patWS.getPatientById(patList.get(index).getIdPatient());
+            jTextFieldPathology.setText(pat.getPathology());
+            jTextFieldBirth.setText(String.valueOf(pat.getBirthDate()));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
+                    e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -185,7 +222,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
 
     private void jComboBoxPatientListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientListActionPerformed
-        // TODO add your handling code here:
+        comboChange(patList);
     }//GEN-LAST:event_jComboBoxPatientListActionPerformed
 
 

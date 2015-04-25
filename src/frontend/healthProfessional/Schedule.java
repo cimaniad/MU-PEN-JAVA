@@ -116,8 +116,8 @@ public class Schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSeeEventActionPerformed
 
     private void jButtonMakeAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMakeAppointmentActionPerformed
-//        new AppointmentCreateEdit(jCalendar.getDate()).setVisible(true);
-//        dispose();
+        new AppointmentCreateEdit(parseDate(jCalendar.getDate())).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
