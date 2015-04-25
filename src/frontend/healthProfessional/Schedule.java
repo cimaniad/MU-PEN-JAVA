@@ -45,7 +45,9 @@ public class Schedule extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelInformation = new javax.swing.JLabel();
+        jLabelInformation1 = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
+        jLabelwallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(705, 520));
@@ -94,8 +96,14 @@ public class Schedule extends javax.swing.JFrame {
         jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
         jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
 
+        jLabelInformation1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jPanelInformation.add(jLabelInformation1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
+
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabelwallpaper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jPanelWallpaper.add(jLabelwallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
@@ -108,12 +116,12 @@ public class Schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSeeEventActionPerformed
 
     private void jButtonMakeAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMakeAppointmentActionPerformed
-        new AppointmentCreateEdit(jCalendar.getDate()).setVisible(true);
-        dispose();
+//        new AppointmentCreateEdit(jCalendar.getDate()).setVisible(true);
+//        dispose();
     }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new HealthProfessionalMenu().setVisible(true);;
+        new HealthProfessionalMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
@@ -126,12 +134,14 @@ public class Schedule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelInformation;
+    private javax.swing.JLabel jLabelInformation1;
     private javax.swing.JLabel jLabelwallpaper;
+    private javax.swing.JLabel jLabelwallpaper1;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     // End of variables declaration//GEN-END:variables
 
-    private String parseDate(Date d) {
+    public String parseDate(Date d) {
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFromat.format(d);
         return date;

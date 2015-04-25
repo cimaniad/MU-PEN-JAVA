@@ -29,7 +29,7 @@ public class FEAppointment extends javax.swing.JFrame {
         try {
             patWS = new PatientWS();
             apptmWS = new AppointmentWS();
-            apL = apptmWS.getAppointmentByData(idHP, date);
+            apL = apptmWS.getAppointmentByIdDate(idHP, date);
             initComponents();
             seeAppointment(idHP, date);
             jTextFieldDate.setText(date);
@@ -68,9 +68,9 @@ public class FEAppointment extends javax.swing.JFrame {
         jTextAreaDescription = new javax.swing.JTextArea();
         jButtonAprove = new javax.swing.JButton();
         jButtonCancelEvent = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelInformation = new javax.swing.JLabel();
-        jLabelwallpaper = new javax.swing.JLabel();
+        jLabelwallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(705, 520));
@@ -170,16 +170,16 @@ public class FEAppointment extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonCancelEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
+
         jLabel1.setText("Consulta Aprovada");
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
-        jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
-        jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
-        jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
-        jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
-        jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabelwallpaper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jPanelWallpaper.add(jLabelwallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
@@ -196,10 +196,12 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
-        // TODO add your handling code here:
+        String date = apL.get(jComboBoxPatient.getSelectedIndex()).getDate();
+        int idAppoint = apL.get(jComboBoxPatient.getSelectedIndex()).getIdAppointment();
+        new AppointmentCreateEdit(1, "2015-04-25").setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_jButtonCancelEventActionPerformed
-
     private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientActionPerformed
         comboChange(apL);
     }//GEN-LAST:event_jComboBoxPatientActionPerformed
@@ -258,15 +260,15 @@ public class FEAppointment extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelEvent;
     private javax.swing.JComboBox jComboBoxPatient;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelDescription;
     private javax.swing.JLabel jLabelHealthPatientProfile;
     private javax.swing.JLabel jLabelHours;
-    private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelPathology;
     private javax.swing.JLabel jLabelPatient;
-    private javax.swing.JLabel jLabelwallpaper;
+    private javax.swing.JLabel jLabelwallpaper1;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     private javax.swing.JScrollPane jScrollPane1;
