@@ -32,7 +32,7 @@ public class FEAppointment extends javax.swing.JFrame {
         try {
             patWS = new PatientWS();
             apptmWS = new AppointmentWS();
-            apL = apptmWS.getAppointmentByIdDate(idHP, date);
+            apL = apptmWS.getAppointmentByData(idHP, date);
             initComponents();
             seeAppointment(idHP, date);
             jTextFieldDate.setText(date);
@@ -176,15 +176,12 @@ public class FEAppointment extends javax.swing.JFrame {
         jLabel1.setText("Consulta Aprovada");
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
-        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
         jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
-
-        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
