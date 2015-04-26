@@ -71,8 +71,8 @@ public class FEAppointment extends javax.swing.JFrame {
         jTextAreaDescription = new javax.swing.JTextArea();
         jButtonAprove = new javax.swing.JButton();
         jButtonCancelEvent = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabelwallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -173,11 +173,11 @@ public class FEAppointment extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonCancelEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
-        jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
-
         jLabel1.setText("Consulta Aprovada");
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 
@@ -195,9 +195,8 @@ public class FEAppointment extends javax.swing.JFrame {
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
 //        System.out.println(patWS.getPatientsByHealthProfessional(1).get(0).getName());
-        System.out.println(hpWS.getPatientsByHealthProfessional(1).get(0).getName());
+        System.out.println(patWS.getPatientsByHealthProfessional(1).get(0).getName());
 //        jLabelHours.setText(patWS.getPatientsByHealthProfessional(1).get(0).getName());
-        jLabelHours.setText(hpWS.getPatientsByHealthProfessional(1).get(0).getName());
 //        new Schedule().setVisible(true);
 //        dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed

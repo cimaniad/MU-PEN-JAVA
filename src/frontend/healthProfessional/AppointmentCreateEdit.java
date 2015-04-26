@@ -45,8 +45,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             initComponents();
             jTextFieldDate.setText(date);
             //colocar id do terapeuta
-//            patList = patWS.getPatientsByHealthProfessional(1);
-            patList = hpWS.getPatientsByHealthProfessional(1);
+            patList = patWS.getPatientsByHealthProfessional(1);
             if (!patList.isEmpty()) {
                 for (Patient p : patList) {
                     jComboBoxPatientList.addItem(p.getName());

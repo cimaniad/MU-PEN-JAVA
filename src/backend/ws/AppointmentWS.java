@@ -22,7 +22,7 @@ import org.apache.log4j.Logger;
  * @author jorge
  */
 public class AppointmentWS {
-    
+
     private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
@@ -33,7 +33,7 @@ public class AppointmentWS {
         wrapperWS = WrapperWS.getWrapperWS();
 
     }
-    
+
     public void saveEditAppointment(Appointment a) {
 
         try {
@@ -55,15 +55,15 @@ public class AppointmentWS {
         }
         log.debug("\n\t Appointment saved with success");
     }
-    
-    public List<Appointment> getAllAppointments() {
-        List<Appointment> aList = null;
+
+    public ArrayList<Appointment> getAllAppointments(int idHealthProfessional) {
+        ArrayList<Appointment> aList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHealthProfessional)));
         try {
             responseWS = wrapperWS.sendRequest("Appointment",
-                    "getAllAppointment", params);    //efetua o pedido ao WS
+                    "getAllAppointments", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
@@ -82,11 +82,11 @@ public class AppointmentWS {
             throw new RuntimeException(e.getMessage());
         }
         log.debug("\n\t Appointment data access success");
-        log.debug("\n\tHPs : " + aList.toString());
+        log.debug("\n\tApoints : " + aList.toString());
         return aList;
 
     }
-    
+
     private List<NameValuePair> getAllParams(Appointment a) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(a.getIdHealthProfessional())));
@@ -96,11 +96,11 @@ public class AppointmentWS {
         params.add(new BasicNameValuePair("hour", a.getHour()));
         params.add(new BasicNameValuePair("okay", String.valueOf(a.getOkay())));
         params.add(new BasicNameValuePair("description", a.getDescription()));
- 
+
         return params;
     }
-    
-    public Appointment getApointmentById(int id){
+
+    public Appointment getApointmentById(int id) {
         Appointment ap = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
@@ -128,8 +128,8 @@ public class AppointmentWS {
         log.debug("\n\tAP with id " + id + ": " + ap.toString());
         return ap;
     }
-    
-  public ArrayList<Appointment> getAppointmentByIdDate(int id, String date) {
+
+    public ArrayList<Appointment> getAppointmentByIdDate(int id, String date) {
         ArrayList<Appointment> apList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
