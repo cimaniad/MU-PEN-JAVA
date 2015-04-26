@@ -68,7 +68,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonHealthProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHealthProfessionalActionPerformed
-        new HeathProfessionalList().setVisible(true);
+        new HealthProfessionalList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonHealthProfessionalActionPerformed
 

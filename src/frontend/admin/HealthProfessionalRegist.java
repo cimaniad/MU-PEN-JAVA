@@ -7,12 +7,40 @@ package frontend.admin;
 
 import backend.pojos.HealthProfessional;
 import backend.ws.HealthProfessionalWS;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.FileChooserUI;
+import org.apache.commons.codec.binary.Base64;
+import sun.misc.BASE64Encoder;
 
 /**
+ * try {
+ *
+ * String path = "http://localhost/mu-pen-web/imagens/animais/cao.png";
+ * System.out.println("Get Image from " + path); URL url = new URL(path);
+ * BufferedImage image = ImageIO.read(url); jLabelPhoto.setIcon(new
+ * ImageIcon(image)); } catch (MalformedURLException ex) {
+ * Logger.getLogger(HealthProfessionalRegist.class.getName()).log(Level.SEVERE,
+ * null, ex); } catch (IOException ex) {
+ * Logger.getLogger(HealthProfessionalRegist.class.getName()).log(Level.SEVERE,
+ * null, ex); }
  *
  * @author jorge
  */
@@ -21,8 +49,11 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private BufferedImage pic = null;
+
     public HealthProfessionalRegist() {
         initComponents();
+
     }
 
     /**
@@ -34,6 +65,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooserPhoto = new javax.swing.JFileChooser();
         jPanelWallpaper = new javax.swing.JPanel();
         jPanelInformation = new javax.swing.JPanel();
         jLabelHealthProfessionalRegist = new javax.swing.JLabel();
@@ -87,13 +119,13 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jPanelInformation.add(jLabelHealthProfessionalRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
-        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 90, 90));
 
         jLabelName.setText("Nome:");
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
         jLabelBirthDate.setText("Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 85, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 85, -1, -1));
 
         jLabelTel.setText("Nº Tel.:");
         jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
@@ -161,6 +193,11 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 170, -1));
 
         jButtonAddPhoto.setText("Inserir foto");
+        jButtonAddPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddPhotoActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonAddPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
         jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
@@ -197,11 +234,24 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegistActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new HeathProfessionalList().setVisible(true);
+        new HealthProfessionalList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    
+    private void jButtonAddPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddPhotoActionPerformed
+        jFileChooserPhoto.showOpenDialog(this);
+        File f = jFileChooserPhoto.getSelectedFile();
+        try {
+            ImageIcon image = new ImageIcon(f.getAbsolutePath());
+            jLabelPhoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+            pic = ImageIO.read(f);
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(HealthProfessionalRegist.this,
+                    "Erro ao carregar imagem", "Erro ao registar Profissional de saude", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButtonAddPhotoActionPerformed
 
     private String validator() {
         StringBuilder warns = new StringBuilder();
@@ -257,9 +307,9 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
-
+        
         return new HealthProfessional(name, lasName, numCC, adress, numTel, nif, email, maritalStatus,
-                parseDate(birthDate), bloodGroup, nacionality, gender, pass, null, institution, developmentPro);
+                parseDate(birthDate), bloodGroup, nacionality, gender, pass, encodeToString(pic, "jpg"), institution, developmentPro);
     }
 
     private String generatePass() {
@@ -283,6 +333,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxGender;
     private javax.swing.JComboBox jComboBoxMaritalStatus;
     private com.toedter.calendar.JDateChooser jDateChooserBirth;
+    private javax.swing.JFileChooser jFileChooserPhoto;
     private javax.swing.JLabel jLabelAdress;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelBloodType;
@@ -316,5 +367,45 @@ private String parseDate(Date d) {
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFromat.format(d);
         return date;
+    }
+
+    private String encodeToString(BufferedImage image, String type) {
+        if(image==null){
+            return "profile";
+        }
+       
+        String imageString = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        try {
+            ImageIO.write(image, type, bos);
+            byte[] imageBytes = bos.toByteArray();
+
+            BASE64Encoder encoder = new BASE64Encoder();
+            imageString = encoder.encode(imageBytes);
+
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imageString;
+    }
+
+    private BufferedImage resizeImageWithHint(BufferedImage originalImage, int type) {
+
+        BufferedImage resizedImage = new BufferedImage(90, 90, type);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(originalImage, 0, 0, 90, 90, null);
+        g.dispose();
+        g.setComposite(AlphaComposite.Src);
+
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.setRenderingHint(RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        return resizedImage;
     }
 }

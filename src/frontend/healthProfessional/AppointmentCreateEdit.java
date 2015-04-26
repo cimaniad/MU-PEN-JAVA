@@ -167,7 +167,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPatientActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new Schedule().setVisible(true);;
+        new Schedule().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 

@@ -6,6 +6,14 @@
 package frontend.admin;
 
 import backend.pojos.HealthProfessional;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,9 +26,13 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
      */
     public HealthProfessionalProfile(HealthProfessional hp) {
         initComponents();
+        setFields(hp);
     }
 
-    
+    private void setFields(HealthProfessional hp) {
+        jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(hp.getPicture(), 90, 90)));
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -62,8 +74,6 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelHealthProfessionalProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabelHealthProfessionalProfile.setText("Profissional de Saúde");
         jPanelInformation.add(jLabelHealthProfessionalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabelName.setText("Nome:");
@@ -142,11 +152,10 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new HeathProfessionalList().setVisible(true);
+        new HealthProfessionalList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
@@ -174,4 +183,17 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     // End of variables declaration//GEN-END:variables
+
+    private Image getImageFromServer(String picture, int with, int heigth) {
+        try {
+            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            throw new RuntimeException("Erro ao carregar imagem");
+        } catch (IOException ex) {
+            throw new RuntimeException("Erro ao carregar imagem");
+        }
+    }
 }

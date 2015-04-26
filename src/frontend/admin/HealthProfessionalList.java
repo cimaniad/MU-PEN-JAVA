@@ -7,16 +7,30 @@ package frontend.admin;
 
 import backend.pojos.HealthProfessional;
 import backend.ws.HealthProfessionalWS;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import org.apache.log4j.*;
 
 /**
  *
  * @author jorge
  */
-public class HeathProfessionalList extends javax.swing.JFrame {
+public class HealthProfessionalList extends javax.swing.JFrame {
 
+    private Logger log = Logger.getLogger(HealthProfessionalList.class);
     private DefaultTableModel tableModel;
     private HealthProfessionalWS hpWS;
     private List<HealthProfessional> hpList;
@@ -25,7 +39,7 @@ public class HeathProfessionalList extends javax.swing.JFrame {
     /**
      * Creates new form HeathProfessionalList
      */
-    public HeathProfessionalList() {
+    public HealthProfessionalList() {
         initComponents();
         hpWS = new HealthProfessionalWS();
         hpList = hpWS.getAllHealthProfessionals();
@@ -93,17 +107,19 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 210, -1));
 
+        jTableList.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "Apelido", "Foto"
             }
         ));
+        jTableList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableListMouseClicked(evt);
@@ -111,7 +127,7 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         });
         jScrollPaneList.setViewportView(jTableList);
 
-        jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 630, 180));
+        jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 630, 240));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -152,34 +168,65 @@ public class HeathProfessionalList extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    
-
     private void drawTable(List<HealthProfessional> hpList) {
+        try {
+            initializeTable();
+            int with = jTableList.getColumnModel().getColumn(2).getWidth();
+            int height = 60;
 
-        String cols[] = {"Nome", "Apelido", "Instituição"};
-        Object rows[][] = new String[hpList.size()][3];
-        int i = 0;
-        for (HealthProfessional hp : hpList) {
-            rows[i][0] = hp.getName();
-            rows[i][1] = hp.getLastName();
-            rows[i][2] = hp.getInstitution();
-            i++;
+            for (HealthProfessional hp : hpList) {
+                if (hp.getPicture().equals("profile")) {
+                    ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+                    tableModel.addRow(new Object[]{hp.getName(), hp.getLastName(),
+                        new ImageIcon(pic.getImage().getScaledInstance(with, height, Image.SCALE_DEFAULT))});
+                } else {
+
+                    tableModel.addRow(new Object[]{hp.getName(), hp.getLastName(),
+                        new ImageIcon(getImageFromServer(hp.getPicture(), with, height))});
+                }
+
+            }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(HealthProfessionalList.this, "Erro ao carregar a tabela dos \nprofissionais de saude",
+                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
         }
+    }
 
-        tableModel = new DefaultTableModel(rows, cols) {
+    private HealthProfessional getHealthProAtTable() {
+        return hpList.get(jTableList.getSelectedRow());
+    }
+
+    private void initializeTable() {
+        tableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int i, int i1) {
                 return false;
             }
         };
         jTableList.setModel(tableModel);
-        jScrollPaneList.setViewportView(jTableList);
-        ((JComponent) getContentPane()).revalidate();
-
+        tableModel.addColumn("Nome");
+        tableModel.addColumn("Apelido");
+        tableModel.addColumn("Foto");
+        JTableRenderer renderer = new JTableRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
+        jTableList.setRowHeight(60);
     }
 
-    private HealthProfessional getHealthProAtTable() {
-        return hpList.get(jTableList.getSelectedRow());
+    private Image getImageFromServer(String picture, int with, int heigth){
+        try {
+            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            log.debug(url.toString());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            log.error("\n"+ex.getMessage());
+        } catch (IOException ex) {
+            log.error("\n"+ex.getMessage());
+        }
+        return null;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
