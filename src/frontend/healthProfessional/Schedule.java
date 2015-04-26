@@ -30,10 +30,12 @@ public class Schedule extends javax.swing.JFrame {
      */
     private AppointmentWS appoint;
     private ArrayList<Appointment> apList;
+    private int i;
 
     public Schedule() {
         initComponents();
         appoint = new AppointmentWS();
+        i=0;
         apList = new ArrayList<>();
         paintSchedule();
     }
@@ -43,10 +45,10 @@ public class Schedule extends javax.swing.JFrame {
         apList = appoint.getAllAppointments(1);
         if (!apList.isEmpty()) {
             for (Appointment a : apList) {
-                if (a.getOkay()==true) {
+                if (a.getOkay() == true) {
                     paintAppoint(a, "green");
                 } else if (a.getOkay() == false) {
-                    paintAppoint(a, "yellow");
+                    paintAppoint(a, "orange");
                 }
             }
         }
@@ -55,14 +57,11 @@ public class Schedule extends javax.swing.JFrame {
     private void paintAppoint(Appointment a, String color) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(jCalendar.getDate());
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int month = cal.get(Calendar.MONTH)+1;
-        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1;
 
         JPanel jpanel = jCalendar.getDayChooser().getDayPanel();
         Component component[] = jpanel.getComponents();
         String[] data = a.getDate().split("-");
-        int appointYear = parseInt(data[0]);
         int appointMonth = parseInt(data[1]);
         System.out.println(month);
         System.out.println(appointMonth);
@@ -79,7 +78,7 @@ public class Schedule extends javax.swing.JFrame {
                 component[appointDay - 1 + offset + 6].setBackground(Color.green);
 
             } else {
-                component[appointDay - 1 + offset + 6].setBackground(Color.yellow);
+                component[appointDay - 1 + offset + 6].setBackground(Color.orange);
             }
         }
     }
@@ -189,7 +188,10 @@ public class Schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jCalendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarPropertyChange
-//        paintSchedule();
+        if (i >= 1) {
+            paintSchedule();
+        }
+        i++;
     }//GEN-LAST:event_jCalendarPropertyChange
 
 
