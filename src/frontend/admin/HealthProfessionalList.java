@@ -43,7 +43,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         initComponents();
         hpWS = new HealthProfessionalWS();
         hpList = hpWS.getAllHealthProfessionals();
-        drawTable(hpList);
+        drawTable();
     }
 
     /**
@@ -64,6 +64,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         jTextFieldSearch = new javax.swing.JTextField();
         jScrollPaneList = new javax.swing.JScrollPane();
         jTableList = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -110,10 +111,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         jTableList.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Apelido", "Foto"
@@ -128,6 +126,9 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         jScrollPaneList.setViewportView(jTableList);
 
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 630, 240));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "NºCC", "Nif" }));
+        jPanelInformation.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -152,8 +153,8 @@ public class HealthProfessionalList extends javax.swing.JFrame {
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         String name = jTextFieldSearch.getText();
-        hpSerach = hpWS.getHealthProfessionalByName(name);
-        drawTable(hpSerach);
+        hpList = hpWS.getHealthProfessionalByName(name);
+        drawTable();
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
@@ -168,21 +169,21 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void drawTable(List<HealthProfessional> hpList) {
+    private void drawTable() {
         try {
             initializeTable();
-            int with = jTableList.getColumnModel().getColumn(2).getWidth();
+            int width = jTableList.getColumnModel().getColumn(2).getWidth();
             int height = 60;
 
             for (HealthProfessional hp : hpList) {
                 if (hp.getPicture().equals("profile")) {
                     ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
                     tableModel.addRow(new Object[]{hp.getName(), hp.getLastName(),
-                        new ImageIcon(pic.getImage().getScaledInstance(with, height, Image.SCALE_DEFAULT))});
+                        new ImageIcon(pic.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT))});
                 } else {
 
                     tableModel.addRow(new Object[]{hp.getName(), hp.getLastName(),
-                        new ImageIcon(getImageFromServer(hp.getPicture(), with, height))});
+                        new ImageIcon(getImageFromServer(hp.getPicture(), width, height))});
                 }
 
             }
@@ -214,13 +215,13 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         jTableList.setRowHeight(60);
     }
 
-    private Image getImageFromServer(String picture, int with, int heigth){
+    private Image getImageFromServer(String picture, int width, int heigth){
         try {
             URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
             log.debug(url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);
-            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
+            return pic.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT);
         } catch (MalformedURLException ex) {
             log.error("\n"+ex.getMessage());
         } catch (IOException ex) {
@@ -232,6 +233,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;
     private javax.swing.JButton jButtonSearch;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabelHealthProfessionalList;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelwallpaper;

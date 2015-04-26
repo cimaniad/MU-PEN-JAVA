@@ -12,8 +12,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -21,12 +22,19 @@ import javax.swing.ImageIcon;
  */
 public class HealthProfessionalProfile extends javax.swing.JFrame {
 
+    private Logger log = Logger.getLogger(HealthProfessionalProfile.class);
+
     /**
      * Creates new form NewJFrame
      */
     public HealthProfessionalProfile(HealthProfessional hp) {
         initComponents();
-        setFields(hp);
+        try {
+            setFields(hp);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(HealthProfessionalProfile.this,
+                    e.getMessage(), "Erro ao carregar os dados do Profissional de saude", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void setFields(HealthProfessional hp) {
@@ -187,12 +195,15 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     private Image getImageFromServer(String picture, int with, int heigth) {
         try {
             URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            log.debug("\n\tProfile Image: "+url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);
             return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
         } catch (MalformedURLException ex) {
+            log.error(ex.getMessage());
             throw new RuntimeException("Erro ao carregar imagem");
         } catch (IOException ex) {
+            log.error(ex.getMessage());
             throw new RuntimeException("Erro ao carregar imagem");
         }
     }
