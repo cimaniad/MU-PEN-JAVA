@@ -32,11 +32,13 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
 
     public AppointmentCreateEdit(Appointment appoint) {
         try {
-            apptmWS = new AppointmentWS();
-            patWS = new PatientWS();
-            hpWS = new HealthProfessionalWS();
-            loadAppointToEdit(appoint);
-            initComponents();
+        apptmWS = new AppointmentWS();
+        patWS = new PatientWS();
+        hpWS = new HealthProfessionalWS();
+        initComponents();
+        jTextFieldDate.setVisible(false);
+        loadAppointToEdit(appoint);
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
                     e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
@@ -51,12 +53,11 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             initComponents();
             jTextFieldDate.setText(date);
             //colocar id do terapeuta
-            patWS = new PatientWS();
             patList = patWS.getPatientsByHealthProfessional(1);
-
+            jDateChooser1.setVisible(false);
             if (!patList.isEmpty()) {
                 for (Patient p : patList) {
-                    jComboBoxPatientList.addItem(p.getName());
+                    jComboBoxPatientList.addItem(p.getName()+" "+p.getLastName());
                 }
                 comboChange(patList);
             }
@@ -79,14 +80,12 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
                     e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     private void loadAppointToEdit(Appointment appoint) {
         try {
             Patient pat = patWS.getPatientById(appoint.getIdPatient());
-            jTextFieldDate.setText(appoint.getDate());
             jTextAreaDescription.setText(appoint.getDescription());
             jTextFieldBirth.setText(pat.getBirthDate());
-            jComboBoxPatientList.addItem(pat.getName());
+            jComboBoxPatientList.addItem(pat.getName()+" "+pat.getLastName());
             jTextFieldPathology.setText(pat.getPathology());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
@@ -122,6 +121,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jTextAreaDescription = new javax.swing.JTextArea();
         jButtonMakeAppointment = new javax.swing.JButton();
         jTextFieldHours1 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
         jLabelwallpaper1 = new javax.swing.JLabel();
@@ -203,6 +203,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonMakeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
         jPanelInformation.add(jTextFieldHours1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 180, -1));
+        jPanelInformation.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
@@ -228,7 +229,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
 
     private void jComboBoxPatientListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientListActionPerformed
-        comboChange(patList);
+//        comboChange(patList);
     }//GEN-LAST:event_jComboBoxPatientListActionPerformed
 
 
@@ -236,6 +237,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonMakeAppointment;
     private javax.swing.JComboBox jComboBoxPatientList;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelDate;

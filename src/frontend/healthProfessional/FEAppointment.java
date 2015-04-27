@@ -10,7 +10,6 @@ import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
 import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
@@ -228,7 +227,7 @@ public class FEAppointment extends javax.swing.JFrame {
             if (!apL.isEmpty()) {
                 for (Appointment a : apL) {
                     Patient pt = patWS.getPatientById(a.getIdPatient());
-                    jComboBoxPatient.addItem(pt.getName());
+                    jComboBoxPatient.addItem(pt.getName()+" "+pt.getLastName());
                 }
                 comboChange(apL);
             }
@@ -249,7 +248,7 @@ public class FEAppointment extends javax.swing.JFrame {
             jTextAreaDescription.setText(a.getDescription());
             jTextFieldDate.setText(a.getDate());
             jTextFieldHours.setText(a.getHour());
-            if (!a.getOkay()) {
+            if (a.getOkay()==0) {
                 jLabel1.setText("Consulta por aprovar");
             }
         } catch (Exception e) {
