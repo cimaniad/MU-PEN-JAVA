@@ -32,6 +32,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
         jButtonProfile = new javax.swing.JButton();
         jButtonSchedule = new javax.swing.JButton();
         jLabelwallpaper = new javax.swing.JLabel();
+        jLabelwallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(705, 520));
@@ -64,9 +65,10 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
             }
         });
         jPanelWallpaper.add(jButtonSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 140, 40));
-
-        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+
+        jLabelwallpaper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jPanelWallpaper.add(jLabelwallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +108,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
 
     private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
         // TODO add your handling code here:
-        new HealthProfessionalProfile().setVisible(true);;
+        new HealthProfessionalProfile().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonProfileActionPerformed
 
@@ -150,6 +152,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonProfile;
     private javax.swing.JButton jButtonSchedule;
     private javax.swing.JLabel jLabelwallpaper;
+    private javax.swing.JLabel jLabelwallpaper1;
     private javax.swing.JPanel jPanelWallpaper;
     // End of variables declaration//GEN-END:variables
 }

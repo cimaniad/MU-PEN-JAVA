@@ -5,10 +5,13 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.Appointment;
 import backend.pojos.Patient;
+import backend.ws.AppointmentWS;
 import backend.ws.HealthProfessionalWS;
+import backend.ws.PatientWS;
 import java.util.ArrayList;
-import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,17 +22,68 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     /**
      * Creates new form EventRegist
      */
-    public AppointmentCreateEdit(Date data) {
-        HealthProfessionalWS hp = new HealthProfessionalWS();
-        ArrayList<Patient> pList = hp.getPatientsByHealthProfessional(1);
-        for (int i = 0; i < pList.size(); i++) {
-            jComboBoxPatientList.addItem(pList.get(i).getName());
+    private AppointmentWS apptmWS;
+    private PatientWS patWS;
+    private HealthProfessionalWS hpWS;
+    private ArrayList<Patient> patList;
+
+    public AppointmentCreateEdit(int idAppoint, String date) {
+        try {
+            apptmWS = new AppointmentWS();
+            patWS = new PatientWS();
+            hpWS = new HealthProfessionalWS();
+            loadAppointToEdit(idAppoint, date);
+            initComponents();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
+                    e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
         }
-        jDateChooserDate.setDate(data);
-        int indice = jComboBoxPatientList.getSelectedIndex();
-        jTextFieldPathology.setText(pList.get(indice).getPathology());
-        jTextFieldAge.setText(String.valueOf(pList.get(indice).getBirthDate()));
-        initComponents();
+    }
+
+    public AppointmentCreateEdit(String date) {
+        try {
+            jTextFieldDate.setText(date);
+            //colocar id do terapeuta
+            patList = patWS.getPatientsByHealthProfessional(1);
+            initComponents();
+            if (!patList.isEmpty()) {
+                for (Patient p : patList) {
+                    jComboBoxPatientList.addItem(p.getName());
+                }
+                comboChange(patList);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
+                    e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void comboChange(ArrayList<Patient> patList) {
+        try {
+            int index = jComboBoxPatientList.getSelectedIndex();
+            Patient pat = patWS.getPatientById(patList.get(index).getIdPatient());
+            jTextFieldPathology.setText(pat.getPathology());
+            jTextFieldBirth.setText(String.valueOf(pat.getBirthDate()));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
+                    e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void loadAppointToEdit(int idAppoint, String date) {
+        try {
+            Appointment appoint = apptmWS.getApointmentById(idAppoint);
+            Patient pat = patWS.getPatientById(appoint.getIdPatient());
+            jTextFieldDate.setText(date);
+            jTextAreaDescription.setText(appoint.getDescription());
+            jTextFieldBirth.setText(pat.getBirthDate());
+            jComboBoxPatientList.addItem(pat.getName());
+            jTextFieldPathology.setText(pat.getPathology());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
+                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -53,16 +107,16 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jLabelHours = new javax.swing.JLabel();
         jLabelPathology = new javax.swing.JLabel();
         jComboBoxPatientList = new javax.swing.JComboBox();
-        jTextFieldPatient = new javax.swing.JTextField();
         jTextFieldPathology = new javax.swing.JTextField();
-        jTextFieldHours = new javax.swing.JTextField();
-        jTextFieldAge = new javax.swing.JTextField();
+        jTextFieldDate = new javax.swing.JTextField();
+        jTextFieldBirth = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescription = new javax.swing.JTextArea();
         jButtonMakeAppointment = new javax.swing.JButton();
-        jDateChooserDate = new com.toedter.calendar.JDateChooser();
+        jTextFieldHours1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
+        jLabelwallpaper1 = new javax.swing.JLabel();
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -118,20 +172,14 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         });
         jPanelInformation.add(jComboBoxPatientList, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
 
-        jTextFieldPatient.setEditable(false);
-        jTextFieldPatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPatientActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jTextFieldPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
-
         jTextFieldPathology.setEditable(false);
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, -1));
-        jPanelInformation.add(jTextFieldHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 180, -1));
 
-        jTextFieldAge.setEditable(false);
-        jPanelInformation.add(jTextFieldAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 180, -1));
+        jTextFieldDate.setEditable(false);
+        jPanelInformation.add(jTextFieldDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
+
+        jTextFieldBirth.setEditable(false);
+        jPanelInformation.add(jTextFieldBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 180, -1));
 
         jTextAreaDescription.setEditable(false);
         jTextAreaDescription.setColumns(20);
@@ -147,24 +195,21 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonMakeAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
-        jPanelInformation.add(jDateChooserDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
+        jPanelInformation.add(jTextFieldHours1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 180, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
-
-        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
         jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabelwallpaper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jPanelWallpaper.add(jLabelwallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPatientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPatientActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         new Schedule().setVisible(true);
@@ -176,7 +221,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMakeAppointmentActionPerformed
 
     private void jComboBoxPatientListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientListActionPerformed
-        // TODO add your handling code here:
+        comboChange(patList);
     }//GEN-LAST:event_jComboBoxPatientListActionPerformed
 
 
@@ -184,7 +229,6 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonMakeAppointment;
     private javax.swing.JComboBox jComboBoxPatientList;
-    private com.toedter.calendar.JDateChooser jDateChooserDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelDate;
@@ -195,13 +239,14 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPathology;
     private javax.swing.JLabel jLabelPatient;
     private javax.swing.JLabel jLabelwallpaper;
+    private javax.swing.JLabel jLabelwallpaper1;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaDescription;
-    private javax.swing.JTextField jTextFieldAge;
-    private javax.swing.JTextField jTextFieldHours;
+    private javax.swing.JTextField jTextFieldBirth;
+    private javax.swing.JTextField jTextFieldDate;
+    private javax.swing.JTextField jTextFieldHours1;
     private javax.swing.JTextField jTextFieldPathology;
-    private javax.swing.JTextField jTextFieldPatient;
     // End of variables declaration//GEN-END:variables
 }
