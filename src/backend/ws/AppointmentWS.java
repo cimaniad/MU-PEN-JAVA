@@ -94,7 +94,9 @@ public class AppointmentWS {
         params.add(new BasicNameValuePair("idPatient", String.valueOf(a.getIdPatient())));
         params.add(new BasicNameValuePair("date", String.valueOf(a.getDate())));
         params.add(new BasicNameValuePair("hour", a.getHour()));
-        params.add(new BasicNameValuePair("okay", String.valueOf(a.getOkay())));
+        params.add(new BasicNameValuePair("local", a.getLocal()));
+        params.add(new BasicNameValuePair("patientApproval", String.valueOf(a.getPatientApproval())));
+        params.add(new BasicNameValuePair("healthProfessionalApproval", String.valueOf(a.getHealthProfessionalApproval())));
         params.add(new BasicNameValuePair("description", a.getDescription()));
 
         return params;
