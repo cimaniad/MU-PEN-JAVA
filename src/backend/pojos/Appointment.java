@@ -12,25 +12,28 @@ import java.util.Date;
  * @author jorge
  */
 public class Appointment {
-    
+
     private int idAppointment;
     private int idPatient;
     private int idHealthProfessional;
     private String date;
     private String hour;
-    private byte okay;
+    private String local;
+    private byte patientApproval;
+    private byte healthProfessionalApproval;
     private String description;
 
     public Appointment() {
     }
 
-    public Appointment(int idAppointment, int idPatient, int idHealthProfessional, String date, String hour, byte okay, String description) {
-        this.idAppointment = idAppointment;
+    public Appointment(int idPatient, int idHealthProfessional, String date, String hour, String local, byte patientApproval, byte healthProfessionalApproval, String description) {
         this.idPatient = idPatient;
         this.idHealthProfessional = idHealthProfessional;
         this.date = date;
         this.hour = hour;
-        this.okay = okay;
+        this.local = local;
+        this.patientApproval = patientApproval;
+        this.healthProfessionalApproval = healthProfessionalApproval;
         this.description = description;
     }
 
@@ -38,13 +41,17 @@ public class Appointment {
         return idAppointment;
     }
 
-    
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
 
     public int getIdPatient() {
         return idPatient;
     }
-
-    
 
     public int getIdHealthProfessional() {
         return idHealthProfessional;
@@ -62,7 +69,21 @@ public class Appointment {
         this.date = date;
     }
 
-   
+    public byte getPatientApproval() {
+        return patientApproval;
+    }
+
+    public void setPatientApproval(byte patientApproval) {
+        this.patientApproval = patientApproval;
+    }
+
+    public byte getHealthProfessionalApproval() {
+        return healthProfessionalApproval;
+    }
+
+    public void setHealthProfessionalApproval(byte healthProfessionalApproval) {
+        this.healthProfessionalApproval = healthProfessionalApproval;
+    }
 
     public String getHour() {
         return hour;
@@ -70,14 +91,6 @@ public class Appointment {
 
     public void setHour(String hour) {
         this.hour = hour;
-    }
-
-    public byte getOkay() {
-        return okay;
-    }
-
-    public void setOkay(byte okay) {
-        this.okay = okay;
     }
 
     public String getDescription() {
@@ -90,9 +103,11 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment{" + "idAppointment=" + idAppointment + ", idPatient=" + idPatient + ", idHealthProfessional=" + idHealthProfessional + ", date=" + date + ", hour=" + hour + ", okay=" + okay + ", description=" + description + '}';
+        return "Appointment{" + "idAppointment=" + idAppointment + ", idPatient="
+                + idPatient + ", idHealthProfessional=" + idHealthProfessional + ", date="
+                + date + ", hour=" + hour + ", patientApproval=" + patientApproval
+                + ", healthProfessionalApproval=" + healthProfessionalApproval
+                + ", description=" + description + '}';
     }
-    
-    
-    
+
 }
