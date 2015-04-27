@@ -24,8 +24,8 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int idAppointment, int idPatient, int idHealthProfessional, String date, String hour, boolean okay, String description) {
-        this.idAppointment = idAppointment;
+    public Appointment( int idPatient, int idHealthProfessional, String date, String hour, boolean okay, String description) {
+
         this.idPatient = idPatient;
         this.idHealthProfessional = idHealthProfessional;
         this.date = date;
