@@ -18,14 +18,14 @@ public class Appointment {
     private int idHealthProfessional;
     private String date;
     private String hour;
-    private boolean okay;
+    private byte okay;
     private String description;
 
     public Appointment() {
     }
 
-    public Appointment( int idPatient, int idHealthProfessional, String date, String hour, boolean okay, String description) {
-
+    public Appointment(int idAppointment, int idPatient, int idHealthProfessional, String date, String hour, byte okay, String description) {
+        this.idAppointment = idAppointment;
         this.idPatient = idPatient;
         this.idHealthProfessional = idHealthProfessional;
         this.date = date;
@@ -72,11 +72,11 @@ public class Appointment {
         this.hour = hour;
     }
 
-    public boolean getOkay() {
+    public byte getOkay() {
         return okay;
     }
 
-    public void setOkay(boolean okay) {
+    public void setOkay(byte okay) {
         this.okay = okay;
     }
 

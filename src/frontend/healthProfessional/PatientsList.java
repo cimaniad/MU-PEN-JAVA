@@ -1,21 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+/* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package frontend.healthProfessional;
+
+import backend.pojos.Patient;
+import backend.ws.PatientWS;
+import frontend.admin.JTableRenderer;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author jorge
  */
 public class PatientsList extends javax.swing.JFrame {
-
+    private Logger log = Logger.getLogger(PatientsList.class);
+    private DefaultTableModel tableModel;
+    private PatientWS pWS;
+    private List<Patient> pList;
+    private List<Patient> pSearch;
+    
     /**
      * Creates new form PatientesList
      */
     public PatientsList() {
         initComponents();
+        pWS = new PatientWS();
+        pList = pWS.getAllPatients();
+//        drawTable();
     }
 
     /**
@@ -134,7 +150,51 @@ public class PatientsList extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-
+//    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
+//        String text = jTextFieldSearch.getText();
+////        pList = pWS.getPatientByName(text);
+//        drawTable();
+//    }
+//    
+//    private void drawTable() {
+//        try {
+//            initializeTable();
+//            int width = jTableList.getColumnModel().getColumn(2).getWidth();
+//            int height = 60;
+////            for(Patient p: pList()){
+//                tableModel.addRow(new Object[] {p.getName()});
+//                tableModel.addRow(new Object[] {p.getLastName()});
+//                tableModel.addRow(new Object[] {p.getPathology()});
+//            }
+//        } catch (Exception ex) {
+//            log.error(ex.getMessage());
+//            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
+//                    "Erro  Pacientes", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
+//
+//   
+//    private Patient getPatientAtTable() {
+//        return pList.get(jTableList.getSelectedRow());
+//    }
+//
+//    private void initializeTable() {
+//        tableModel = new DefaultTableModel() {
+//            @Override
+//            public boolean isCellEditable(int i, int i1) {
+//                return false;
+//            }
+//        };
+//        jTableList.setModel(tableModel);
+//        tableModel.addColumn("Nome");
+//        tableModel.addColumn("Apelido");
+//        tableModel.addColumn("Patologia");
+//        JTableRenderer renderer = new JTableRenderer();
+//        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+//        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
+//        jTableList.setRowHeight(60);
+//    }
+//
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;

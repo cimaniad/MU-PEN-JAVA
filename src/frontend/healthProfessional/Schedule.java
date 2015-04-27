@@ -5,10 +5,18 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.Appointment;
 import backend.ws.AppointmentWS;
-import java.text.ParseException;
+import backend.ws.PatientWS;
+import java.awt.Color;
+import java.awt.Component;
+import static java.lang.Integer.parseInt;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,10 +27,58 @@ public class Schedule extends javax.swing.JFrame {
     /**
      * Creates new form Schedule
      */
+    private AppointmentWS appoint;
+    private PatientWS patWS;
+    private List<Appointment> apList;
+    private int i;
+
     public Schedule() {
         initComponents();
-//        AppointmentWS ap=new AppointmentWS();
-//        System.out.println(ap.getApointmentById(1).getDate());
+        appoint = new AppointmentWS();
+        i=1;
+        apList = new ArrayList<>();
+        paintSchedule();
+    }
+
+    private void paintSchedule() {
+        //colocar idHealthProfessional
+        apList = appoint.getAllAppointments(1);
+        if (!apList.isEmpty()) {
+            for (Appointment a : apList) {
+                if (a.getOkay() == 1) {
+                    paintAppoint(a, "green");
+                } else if (a.getOkay() == 0) {
+                    paintAppoint(a, "orange");
+                }
+            }
+        }
+    }
+
+    private void paintAppoint(Appointment a, String color) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(jCalendar.getDate());
+        int month = cal.get(Calendar.MONTH) + 1;
+
+        JPanel jpanel = jCalendar.getDayChooser().getDayPanel();
+        Component component[] = jpanel.getComponents();
+        String[] data = a.getDate().split("-");
+        int appointMonth = parseInt(data[1]);
+        int appointDay = parseInt(data[2]);
+        // Calculate the offset of the first day of the month
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        int offset = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        //se o offset for 0 (Sunday) offset=7 (because of the components that are leaved behind)
+        if (offset == 0) {
+            offset = 7;
+        }
+        if (month == appointMonth) {
+            if (color.equals("green")) {
+                component[appointDay - 1 + offset + 6].setBackground(Color.green);
+
+            } else {
+                component[appointDay - 1 + offset + 6].setBackground(Color.orange);
+            }
+        }
     }
 
     /**
@@ -57,6 +113,12 @@ public class Schedule extends javax.swing.JFrame {
 
         jPanelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jCalendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarPropertyChange(evt);
+            }
+        });
         jPanelInformation.add(jCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 540, 270));
 
         jButtonBack.setText("Voltar");
@@ -122,6 +184,13 @@ public class Schedule extends javax.swing.JFrame {
         new HealthProfessionalMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jCalendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarPropertyChange
+        if (i >= 1) {
+            paintSchedule();
+        }
+        i++;
+    }//GEN-LAST:event_jCalendarPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

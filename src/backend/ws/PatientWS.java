@@ -22,7 +22,7 @@ import org.apache.log4j.*;
  * @author jorge
  */
 public class PatientWS {
-    
+
     private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
@@ -33,14 +33,14 @@ public class PatientWS {
         wrapperWS = WrapperWS.getWrapperWS();
     }
 
-    public void saveEditPatient (Patient p) {
- 
-        try{
-        responseWS = wrapperWS.sendRequest("Patient", "saveEditPatient", getAllParams(p));    //efetua o pedido ao WS
-        String validacao = wrapperWS.readResponse(responseWS);         //Passa a resposta para uma string
+    public void saveEditPatient(Patient p) {
+
+        try {
+            responseWS = wrapperWS.sendRequest("Patient", "saveEditPatient", getAllParams(p));    //efetua o pedido ao WS
+            String validacao = wrapperWS.readResponse(responseWS);         //Passa a resposta para uma string
 
             Validation v = gson.fromJson(validacao, Validation.class);    //Conversão do objecto Json para o objecto Java
-            
+
             if (v.getCod() != 201) {
                 System.out.println(v.getMsg());
                 log.error(v.getMsg());
@@ -53,7 +53,7 @@ public class PatientWS {
         }
         log.debug("Patient saved with sucess");
     }
-    
+
     public List<Patient> getAllPatients() {
         List<Patient> pList = null;
 
@@ -84,7 +84,7 @@ public class PatientWS {
         return pList;
 
     }
-    
+
     private List<NameValuePair> getAllParams(Patient p) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idPatient", String.valueOf(p.getIdPatient())));
@@ -104,13 +104,13 @@ public class PatientWS {
         params.add(new BasicNameValuePair("pathology", p.getPathology()));
         params.add(new BasicNameValuePair("description", p.getDescription()));
         params.add(new BasicNameValuePair("picture", p.getPicture()));
-        
+
         return params;
     }
-   
-   public Patient getPatientById(int id){
-       
-       Patient p = null;
+
+    public Patient getPatientById(int id) {
+
+        Patient p = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idPatient", String.valueOf(id)));
@@ -136,5 +136,36 @@ public class PatientWS {
         log.debug("\n\tPatient data access success");
         log.debug("\n\tP with id " + id + ": " + p.toString());
         return p;
-   }
+    }
+
+    public List<Patient> getPatientsByHealthProfessional(int id) {
+        List<Patient> pList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Patient",
+                    "getPatientsByHealthProfessional", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
+            }
+
+            Type type = new TypeToken<List<Patient>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            pList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tPatient data access success");
+        log.debug("\n\tPs : " + pList.toString());
+        return pList;
+    }
 }
