@@ -10,7 +10,7 @@ import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
 import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,14 +25,14 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     private AppointmentWS apptmWS;
     private PatientWS patWS;
     private HealthProfessionalWS hpWS;
-    private ArrayList<Patient> patList;
+    private List<Patient> patList;
 
-    public AppointmentCreateEdit(int idAppoint, String date) {
+    public AppointmentCreateEdit(Appointment appoint) {
         try {
             apptmWS = new AppointmentWS();
             patWS = new PatientWS();
             hpWS = new HealthProfessionalWS();
-            loadAppointToEdit(idAppoint, date);
+            loadAppointToEdit(appoint);
             initComponents();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
@@ -44,6 +44,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         try {
             jTextFieldDate.setText(date);
             //colocar id do terapeuta
+            patWS = new PatientWS();
             patList = patWS.getPatientsByHealthProfessional(1);
             initComponents();
             if (!patList.isEmpty()) {
@@ -58,7 +59,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         }
     }
 
-    private void comboChange(ArrayList<Patient> patList) {
+    private void comboChange(List<Patient> patList) {
         try {
             int index = jComboBoxPatientList.getSelectedIndex();
             Patient pat = patWS.getPatientById(patList.get(index).getIdPatient());
@@ -71,11 +72,10 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         }
     }
 
-    private void loadAppointToEdit(int idAppoint, String date) {
+    private void loadAppointToEdit(Appointment appoint) {
         try {
-            Appointment appoint = apptmWS.getApointmentById(idAppoint);
             Patient pat = patWS.getPatientById(appoint.getIdPatient());
-            jTextFieldDate.setText(date);
+            jTextFieldDate.setText(appoint.getDate());
             jTextAreaDescription.setText(appoint.getDescription());
             jTextFieldBirth.setText(pat.getBirthDate());
             jComboBoxPatientList.addItem(pat.getName());

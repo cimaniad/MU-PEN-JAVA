@@ -138,8 +138,8 @@ public class PatientWS {
         return p;
     }
 
-    public ArrayList<Patient> getPatientsByHealthProfessional(int id) {
-        ArrayList<Patient> pList = null;
+    public List<Patient> getPatientsByHealthProfessional(int id) {
+        List<Patient> pList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));
@@ -156,7 +156,7 @@ public class PatientWS {
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
             }
 
-            Type type = new TypeToken<List<HealthProfessional>>() {
+            Type type = new TypeToken<List<Patient>>() {
             }.getType();  //tipo do para o qual queros retornar a responseWS Json
             pList = gson.fromJson(jsonResp, type);
 
