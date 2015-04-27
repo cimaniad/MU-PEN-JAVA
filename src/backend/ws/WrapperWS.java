@@ -37,7 +37,7 @@ public class WrapperWS {
     private WrapperWS() {
         this.httpClient = HttpClients.createDefault();
         this.post = new HttpPost(URL);
-        
+
         log.debug("Connection established with the WS");
 
     }

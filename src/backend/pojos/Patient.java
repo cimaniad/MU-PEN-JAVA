@@ -21,7 +21,7 @@ public class Patient {
     private String pathology;
     private String description;
     private String picture;
-    /** private int idHealthProfessional; */
+    private int idHealthProfessional;
 
     public Patient() {
     }
@@ -46,7 +46,7 @@ public class Patient {
      */
     public Patient(int idPacient, String name, String lastName, String numCC, String picture,
             String adress, int numTel, int nif, String email, String miritalState, String birthDate,
-            String bloodGroup, String nationality, String gender, String password, String pathology, String description) {
+            String bloodGroup, String nationality, String gender, String password, String pathology, String description, int idHealthProfessional) {
         this.idPatient = idPacient;
         this.name = name;
         this.lastName = lastName;
@@ -64,6 +64,11 @@ public class Patient {
         this.pathology = pathology;
         this.description = description;
         this.picture= picture;
+        this.idHealthProfessional=idHealthProfessional;
+    }
+
+    public int getIdHealthProfessional() {
+        return idHealthProfessional;
     }
 
     public int getIdPatient() {
