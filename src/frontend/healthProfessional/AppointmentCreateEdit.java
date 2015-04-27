@@ -12,6 +12,7 @@ import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -21,7 +22,9 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
 
     /**
      * Creates new form EventRegist
+     *
      */
+    private Logger log = Logger.getLogger(AppointmentCreateEdit.class);
     private AppointmentWS apptmWS;
     private PatientWS patWS;
     private HealthProfessionalWS hpWS;
@@ -42,11 +45,15 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
 
     public AppointmentCreateEdit(String date) {
         try {
+            apptmWS = new AppointmentWS();
+            patWS = new PatientWS();
+            hpWS = new HealthProfessionalWS();
+            initComponents();
             jTextFieldDate.setText(date);
             //colocar id do terapeuta
             patWS = new PatientWS();
             patList = patWS.getPatientsByHealthProfessional(1);
-            initComponents();
+
             if (!patList.isEmpty()) {
                 for (Patient p : patList) {
                     jComboBoxPatientList.addItem(p.getName());
@@ -54,6 +61,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
                 comboChange(patList);
             }
         } catch (Exception e) {
+            log.error(e.getMessage());
             JOptionPane.showMessageDialog(AppointmentCreateEdit.this,
                     e.getMessage(), "Erro ao carregar paciente", JOptionPane.ERROR_MESSAGE);
         }
@@ -164,7 +172,6 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jLabelPathology.setText("Patologia:");
         jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
 
-        jComboBoxPatientList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxPatientList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPatientListActionPerformed(evt);

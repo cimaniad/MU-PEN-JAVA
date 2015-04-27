@@ -13,13 +13,14 @@ import backend.ws.PatientWS;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author jorge
  */
 public class FEAppointment extends javax.swing.JFrame {
-
+    private Logger log = Logger.getLogger(FEAppointment.class);
     private PatientWS patWS;
     private HealthProfessionalWS hpWS;
     private AppointmentWS apptmWS;
