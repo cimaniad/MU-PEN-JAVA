@@ -56,8 +56,8 @@ public class AppointmentWS {
         log.debug("\n\t Appointment saved with success");
     }
 
-    public ArrayList<Appointment> getAllAppointments(int idHealthProfessional) {
-        ArrayList<Appointment> aList = null;
+    public List<Appointment> getAllAppointments(int idHealthProfessional) {
+        List<Appointment> aList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHealthProfessional)));
@@ -129,8 +129,8 @@ public class AppointmentWS {
         return ap;
     }
 
-    public ArrayList<Appointment> getAppointmentByIdDate(int id, String date) {
-        ArrayList<Appointment> apList = null;
+    public List<Appointment> getAppointmentByIdDate(int id, String date) {
+        List<Appointment> apList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));

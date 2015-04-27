@@ -7,16 +7,15 @@ package frontend.healthProfessional;
 
 import backend.pojos.Appointment;
 import backend.ws.AppointmentWS;
+import backend.ws.PatientWS;
 import java.awt.Color;
 import java.awt.Component;
 import static java.lang.Integer.parseInt;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -29,13 +28,14 @@ public class Schedule extends javax.swing.JFrame {
      * Creates new form Schedule
      */
     private AppointmentWS appoint;
-    private ArrayList<Appointment> apList;
+    private PatientWS patWS;
+    private List<Appointment> apList;
     private int i;
 
     public Schedule() {
         initComponents();
         appoint = new AppointmentWS();
-        i=0;
+        i=1;
         apList = new ArrayList<>();
         paintSchedule();
     }
@@ -45,9 +45,9 @@ public class Schedule extends javax.swing.JFrame {
         apList = appoint.getAllAppointments(1);
         if (!apList.isEmpty()) {
             for (Appointment a : apList) {
-                if (a.getOkay() == true) {
+                if (a.getOkay() == 1) {
                     paintAppoint(a, "green");
-                } else if (a.getOkay() == false) {
+                } else if (a.getOkay() == 0) {
                     paintAppoint(a, "orange");
                 }
             }
@@ -63,8 +63,6 @@ public class Schedule extends javax.swing.JFrame {
         Component component[] = jpanel.getComponents();
         String[] data = a.getDate().split("-");
         int appointMonth = parseInt(data[1]);
-        System.out.println(month);
-        System.out.println(appointMonth);
         int appointDay = parseInt(data[2]);
         // Calculate the offset of the first day of the month
         cal.set(Calendar.DAY_OF_MONTH, 1);

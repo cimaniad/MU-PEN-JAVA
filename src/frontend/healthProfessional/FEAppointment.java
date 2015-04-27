@@ -10,7 +10,7 @@ import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
 import backend.ws.HealthProfessionalWS;
 import backend.ws.PatientWS;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 
@@ -23,7 +23,7 @@ public class FEAppointment extends javax.swing.JFrame {
     private PatientWS patWS;
     private HealthProfessionalWS hpWS;
     private AppointmentWS apptmWS;
-    private ArrayList<Appointment> apL;
+    private List<Appointment> apL;
 
     /**
      * Creates new form Event
@@ -200,9 +200,7 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
-        String date = apL.get(jComboBoxPatient.getSelectedIndex()).getDate();
-        int idAppoint = apL.get(jComboBoxPatient.getSelectedIndex()).getIdAppointment();
-        new AppointmentCreateEdit(idAppoint, date).setVisible(true);
+        new AppointmentCreateEdit(apL.get(jComboBoxPatient.getSelectedIndex())).setVisible(true);
         dispose();
 
     }//GEN-LAST:event_jButtonCancelEventActionPerformed
@@ -229,7 +227,7 @@ public class FEAppointment extends javax.swing.JFrame {
             if (!apL.isEmpty()) {
                 for (Appointment a : apL) {
                     Patient pt = patWS.getPatientById(a.getIdPatient());
-                    jComboBoxPatient.addItem(pt.getName());
+                    jComboBoxPatient.addItem(pt.getName()+" "+pt.getLastName());
                 }
                 comboChange(apL);
             }
@@ -239,7 +237,7 @@ public class FEAppointment extends javax.swing.JFrame {
         }
     }
 
-    private void comboChange(ArrayList<Appointment> apL) {
+    private void comboChange(List<Appointment> apL) {
         try {
             int index = jComboBoxPatient.getSelectedIndex();
             Patient pat = patWS.getPatientById(apL.get(index).getIdPatient());
@@ -250,7 +248,7 @@ public class FEAppointment extends javax.swing.JFrame {
             jTextAreaDescription.setText(a.getDescription());
             jTextFieldDate.setText(a.getDate());
             jTextFieldHours.setText(a.getHour());
-            if (!a.getOkay()) {
+            if (a.getOkay()==0) {
                 jLabel1.setText("Consulta por aprovar");
             }
         } catch (Exception e) {
