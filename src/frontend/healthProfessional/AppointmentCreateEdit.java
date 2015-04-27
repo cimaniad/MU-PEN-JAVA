@@ -42,10 +42,10 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
 
     public AppointmentCreateEdit(String date) {
         try {
-            initComponents();
             jTextFieldDate.setText(date);
             //colocar id do terapeuta
             patList = patWS.getPatientsByHealthProfessional(1);
+            initComponents();
             if (!patList.isEmpty()) {
                 for (Patient p : patList) {
                     jComboBoxPatientList.addItem(p.getName());

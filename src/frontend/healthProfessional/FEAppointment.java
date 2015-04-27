@@ -194,11 +194,8 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDateActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-//        System.out.println(patWS.getPatientsByHealthProfessional(1).get(0).getName());
-        System.out.println(patWS.getPatientsByHealthProfessional(1).get(0).getName());
-//        jLabelHours.setText(patWS.getPatientsByHealthProfessional(1).get(0).getName());
-//        new Schedule().setVisible(true);
-//        dispose();
+        new Schedule().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
