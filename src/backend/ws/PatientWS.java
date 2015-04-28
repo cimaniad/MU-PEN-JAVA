@@ -125,7 +125,7 @@ public class PatientWS {
         params.add(new BasicNameValuePair("numTel", String.valueOf(p.getNumTel())));
         params.add(new BasicNameValuePair("nif", String.valueOf(p.getNif())));
         params.add(new BasicNameValuePair("email", p.getEmail()));
-        params.add(new BasicNameValuePair("maritalState", p.getMaritalState()));
+        params.add(new BasicNameValuePair("maritalState", p.getMaritalStatus()));
         params.add(new BasicNameValuePair("birthDate", String.valueOf(p.getBirthDate())));
         params.add(new BasicNameValuePair("bloodGroup", p.getBloodGroup()));
         params.add(new BasicNameValuePair("nationality", p.getNationality()));
