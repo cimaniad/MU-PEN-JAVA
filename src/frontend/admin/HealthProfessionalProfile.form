@@ -73,7 +73,7 @@
             <Component class="javax.swing.JLabel" name="jLabelPhoto">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="60" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="10" y="50" width="90" height="90"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -93,7 +93,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="110" y="85" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="115" y="85" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -256,7 +256,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="480" y="260" width="180" height="-1"/>
+                  <AbsoluteConstraints x="440" y="260" width="230" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

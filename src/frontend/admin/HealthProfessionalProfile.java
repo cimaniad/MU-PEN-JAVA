@@ -31,14 +31,20 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         initComponents();
         try {
             setFields(hp);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(HealthProfessionalProfile.this,
                     e.getMessage(), "Erro ao carregar os dados do Profissional de saude", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void setFields(HealthProfessional hp) {
-        jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(hp.getPicture(), 90, 90)));
+        if (hp.getPicture().equals("profile")) {
+            ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+            jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
+                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+        } else {
+            jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(hp.getPicture(), 90, 90)));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -82,13 +88,13 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelHealthProfessionalProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabelHealthProfessionalProfile.setText("Profissional de Saúde");
         jPanelInformation.add(jLabelHealthProfessionalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 90));
 
         jLabelName.setText("Nome:");
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
         jLabelBirthDate.setText("Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 85, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 85, -1, -1));
 
         jLabelTel.setText("Nº Tel.:");
         jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
@@ -141,7 +147,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
         jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 180, -1));
+        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 230, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -195,7 +201,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     private Image getImageFromServer(String picture, int with, int heigth) {
         try {
             URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
-            log.debug("\n\tProfile Image: "+url.toString());
+            log.debug("\n\tProfile Image: " + url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);
             return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
