@@ -53,7 +53,7 @@ public class PatientWS {
         log.debug("Patient saved with sucess");
     }
 
-    public List<Patient> getPacientsByHPDate(int idHelthPro, String appointmentDate) {
+    public List<Patient> getPatientsByHPDate(int idHelthPro, String appointmentDate) {
         List<Patient> pList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
@@ -61,7 +61,7 @@ public class PatientWS {
         params.add(new BasicNameValuePair("appointmentDate", appointmentDate));
         try {
             responseWS = wrapperWS.sendRequest("Patient",
-                    "getPacientsByHPDate", params);    //efetua o pedido ao WS
+                    "getPatientsByHPDate", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();

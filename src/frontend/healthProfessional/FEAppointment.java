@@ -34,7 +34,7 @@ public class FEAppointment extends javax.swing.JFrame {
             patWS = new PatientWS();
             apptmWS = new AppointmentWS();
             apL = apptmWS.getAppointmentByIdDate(idHP, date);
-            patients = patWS.getPacientsByHPDate(idHP, date);
+            patients = patWS.getPatientsByHPDate(idHP, date);
             initComponents();
             seeAppointment();
             jTextFieldDate.setText(date);
@@ -230,6 +230,9 @@ public class FEAppointment extends javax.swing.JFrame {
         jTextFieldDate.setEditable(false);
         jPanelInformation.add(jTextFieldDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 0));
         jLabel1.setText("Consulta Aprovada");
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, -1));
 
