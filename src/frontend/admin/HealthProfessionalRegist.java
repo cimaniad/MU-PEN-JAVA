@@ -176,6 +176,8 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonAddPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jDateChooserBirth.setDoubleBuffered(false);
         jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
@@ -391,7 +393,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
     }
 
     /**
-     * This method receives a imgage and passes is to Base64 String
+     * This method receives a image and passes is to Base64 String
      *
      * @param image
      * @param type

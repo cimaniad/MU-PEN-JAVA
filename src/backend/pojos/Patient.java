@@ -5,7 +5,7 @@ public class Patient {
     private int idPatient;
     private String name;
     private String lastName;
-    private String numCC;
+    private int numCC;
     private String adress;
     private int numTel;
     private int nif;
@@ -43,10 +43,11 @@ public class Patient {
      * @param pathology
      * @param description
      */
-    public Patient(int idPacient, String name, String lastName, String numCC, String picture,
+    public Patient(String name, String lastName, int numCC, String picture,
             String adress, int numTel, int nif, String email, String maritalStatus, String birthDate,
-            String bloodGroup, String nationality, String gender, String password, String pathology, String description, int idHealthProfessional) {
-        this.idPatient = idPacient;
+            String bloodGroup, String nationality, String gender, String password, String pathology,
+            String description, int idHealthProfessional) {
+
         this.name = name;
         this.lastName = lastName;
         this.numCC = numCC;
@@ -64,6 +65,8 @@ public class Patient {
         this.description = description;
         this.picture = picture;
         this.idHealthProfessional = idHealthProfessional;
+        this.picture = picture;
+
     }
 
     public int getIdHealthProfessional() {
@@ -90,11 +93,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getNumCC() {
+    public int getNumCC() {
         return numCC;
     }
 
-    public void setNumCC(String numCC) {
+    public void setNumCC(int numCC) {
         this.numCC = numCC;
     }
 
@@ -204,7 +207,12 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "idPatient=" + idPatient + ", name=" + name + ", lastName=" + lastName + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", maritalState=" + maritalStatus + ", birthDate=" + birthDate + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender + ", password=" + password + ", pathology=" + pathology + ", description=" + description + '}';
+        return "Patient{" + "idPatient=" + idPatient + ", name=" + name + ", lastName=" + lastName
+                + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif
+                + ", email=" + email + ", maritalStatus=" + maritalStatus + ", birthDate=" + birthDate
+                + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender
+                + ", password=" + password + ", pathology=" + pathology + ", description=" + description
+                + ", picture=" + picture + ", idHealthProfessional=" + idHealthProfessional + '}';
     }
 
 }
