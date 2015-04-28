@@ -5,7 +5,6 @@
  */
 package backend.ws;
 
-import backend.pojos.HealthProfessional;
 import backend.pojos.Patient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -52,6 +51,37 @@ public class PatientWS {
             throw new RuntimeException(e.getMessage());
         }
         log.debug("Patient saved with sucess");
+    }
+
+    public List<Patient> getPacientsByHPDate(int idHelthPro, String appointmentDate) {
+        List<Patient> pList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHelthPro)));
+        params.add(new BasicNameValuePair("appointmentDate", appointmentDate));
+        try {
+            responseWS = wrapperWS.sendRequest("Patient",
+                    "getPacientsByHPDate", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos Pacientes com consulta marcada para esta data");
+            }
+
+            Type type = new TypeToken<List<Patient>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            pList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tPacients by health professional and appointment date, data access succed");
+        log.debug("\n\tPacients: " + pList.toString());
+        return pList;
     }
 
     public List<Patient> getAllPatients() {
@@ -138,8 +168,8 @@ public class PatientWS {
         return p;
     }
 
-    public ArrayList<Patient> getPatientsByHealthProfessional(int id) {
-        ArrayList<Patient> pList = null;
+    public List<Patient> getPatientsByHealthProfessional(int id) {
+        List<Patient> pList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(id)));

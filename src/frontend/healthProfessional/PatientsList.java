@@ -31,7 +31,7 @@ public class PatientsList extends javax.swing.JFrame {
         initComponents();
         pWS = new PatientWS();
         pList = pWS.getAllPatients();
-        drawTable();
+//        drawTable();
     }
 
     /**
@@ -138,6 +138,7 @@ public class PatientsList extends javax.swing.JFrame {
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
@@ -150,51 +151,51 @@ public class PatientsList extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        String text = jTextFieldSearch.getText();
-        pList = pWS.getPatientByName(text);
-        drawTable();
-    }
-    
-    private void drawTable() {
-        try {
-            initializeTable();
-            int width = jTableList.getColumnModel().getColumn(2).getWidth();
-            int height = 60;
-            for(Patient p: pList()){
-                tableModel.addRow(new Object[] {p.getName()});
-                tableModel.addRow(new Object[] {p.getLastName()});
-                tableModel.addRow(new Object[] {p.getPathology()});
-            }
-        } catch (Exception ex) {
-            log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
-                    "Erro  Pacientes", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-   
-    private Patient getPatientAtTable() {
-        return pList.get(jTableList.getSelectedRow());
-    }
-
-    private void initializeTable() {
-        tableModel = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int i, int i1) {
-                return false;
-            }
-        };
-        jTableList.setModel(tableModel);
-        tableModel.addColumn("Nome");
-        tableModel.addColumn("Apelido");
-        tableModel.addColumn("Patologia");
-        JTableRenderer renderer = new JTableRenderer();
-        renderer.setHorizontalAlignment(SwingConstants.CENTER);
-        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
-        jTableList.setRowHeight(60);
-    }
-
+//    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
+//        String text = jTextFieldSearch.getText();
+////        pList = pWS.getPatientByName(text);
+//        drawTable();
+//    }
+//    
+//    private void drawTable() {
+//        try {
+//            initializeTable();
+//            int width = jTableList.getColumnModel().getColumn(2).getWidth();
+//            int height = 60;
+////            for(Patient p: pList()){
+//                tableModel.addRow(new Object[] {p.getName()});
+//                tableModel.addRow(new Object[] {p.getLastName()});
+//                tableModel.addRow(new Object[] {p.getPathology()});
+//            }
+//        } catch (Exception ex) {
+//            log.error(ex.getMessage());
+//            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
+//                    "Erro  Pacientes", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
+//
+//   
+//    private Patient getPatientAtTable() {
+//        return pList.get(jTableList.getSelectedRow());
+//    }
+//
+//    private void initializeTable() {
+//        tableModel = new DefaultTableModel() {
+//            @Override
+//            public boolean isCellEditable(int i, int i1) {
+//                return false;
+//            }
+//        };
+//        jTableList.setModel(tableModel);
+//        tableModel.addColumn("Nome");
+//        tableModel.addColumn("Apelido");
+//        tableModel.addColumn("Patologia");
+//        JTableRenderer renderer = new JTableRenderer();
+//        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+//        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
+//        jTableList.setRowHeight(60);
+//    }
+//
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;
