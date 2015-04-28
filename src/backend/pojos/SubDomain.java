@@ -11,7 +11,7 @@ package backend.pojos;
  */
 public class SubDomain {
     
-    private int idSubdomain;
+    private int idSubDomain;
     private String name;
     private String description;
     private int idDomain;
@@ -22,8 +22,8 @@ public class SubDomain {
         this.idDomain = idDomain;
     }
 
-    public int getIdSubdomain() {
-        return idSubdomain;
+    public int getIdSubDomain() {
+        return idSubDomain;
     }
 
 
@@ -53,7 +53,7 @@ public class SubDomain {
 
     @Override
     public String toString() {
-        return "subDomain{" + "idSubdomain=" + idSubdomain + ", name=" + name + ", description=" + description + ", idDomain=" + idDomain + '}';
+        return "subDomain{" + "idSubDomain=" + idSubDomain + ", name=" + name + ", description=" + description + ", idDomain=" + idDomain + '}';
     }
     
     

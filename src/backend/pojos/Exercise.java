@@ -12,12 +12,12 @@ package backend.pojos;
 public class Exercise {
    
     private int idExercise;
-    private int idSubdomain;
+    private int idSubDomain;
     private String designation;
     private String structure;
 
     public Exercise(int idSubdomain, String designation, String structure) {
-        this.idSubdomain = idSubdomain;
+        this.idSubDomain = idSubdomain;
         this.designation = designation;
         this.structure = structure;
     }
@@ -27,12 +27,12 @@ public class Exercise {
     }
 
 
-    public int getIdSubdomain() {
-        return idSubdomain;
+    public int getIdSubDomain() {
+        return idSubDomain;
     }
 
     public void setIdSubdomain(int idSubdomain) {
-        this.idSubdomain = idSubdomain;
+        this.idSubDomain = idSubdomain;
     }
 
     public String getDesignation() {
@@ -53,7 +53,7 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "Exercise{" + "idExercise=" + idExercise + ", idSubdomain=" + idSubdomain + ", designation=" + designation + ", structure=" + structure + '}';
+        return "Exercise{" + "idExercise=" + idExercise + ", idSubDomain=" + idSubDomain + ", designation=" + designation + ", structure=" + structure + '}';
     }
     
     

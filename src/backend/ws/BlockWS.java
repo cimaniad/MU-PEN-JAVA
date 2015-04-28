@@ -8,6 +8,8 @@ package backend.ws;
 import backend.pojos.Block;
 import backend.pojos.Patient;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.NameValuePair;
@@ -58,5 +60,66 @@ public class BlockWS {
         params.add(new BasicNameValuePair("description", (b.getDescription())));
         
         return params;
+    }
+     
+     public List<Block> getAllBlocks() {
+        List<Block> bList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+
+        try {
+            responseWS = wrapperWS.sendRequest("Block",
+                    "getAllBlocks", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Bloco");
+            }
+
+            Type type = new TypeToken<List<Block>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            bList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\t Block data access success");
+        log.debug("\n\tBs : " + bList.toString());
+        return bList;
+
+    }
+     
+     public Block getBlockById(int id) {
+
+        Block b = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idBlock", String.valueOf(id)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Blcok",
+                    "getBlockById", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Bloco");
+            }
+
+            b = gson.fromJson(jsonResp, Block.class);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tBlock data access success");
+        log.debug("\n\tB with id " + id + ": " + b.toString());
+        return b;
     }
 }
