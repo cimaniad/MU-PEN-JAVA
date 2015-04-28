@@ -283,11 +283,11 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
         }
         String name = jTextFieldName.getText();
-        String lasName = jTextFieldLastName.getText();
+        String lastName = jTextFieldLastName.getText();
         String email = jTextFieldEmail.getText().trim();
         String adress = jTextFieldAdress.getText();
         String nacionality = jTextFieldNationality.getText();
-        String institution = jTextFieldNationality.getText();
+        String institution = jTextFieldInstitution.getText();
         String gender = String.valueOf(jComboBoxBloodType.getSelectedItem());
         String maritalStatus = String.valueOf(jComboBoxMaritalStatus.getSelectedItem());
         String bloodGroup = String.valueOf(jComboBoxBloodType.getSelectedItem());
@@ -313,7 +313,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             throw new RuntimeException(e.getMessage());
         }
 
-        return new HealthProfessional(name, lasName, numCC, adress, numTel, nif, email, maritalStatus,
+        return new HealthProfessional(name, lastName, numCC, adress, numTel, nif, email, maritalStatus,
                 parseDate(birthDate), bloodGroup, nacionality, gender, pass, encodeToString(pic, "jpg"), institution, developmentPro);
     }
 
