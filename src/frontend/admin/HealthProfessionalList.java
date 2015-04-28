@@ -134,6 +134,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
  * This method opens the HealthProfessionalRegist Jfram and close this when the jButtonRegist is clicked

@@ -197,6 +197,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         getContentPane().add(jPanelWallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
  * This method reacts to the click at the jButtonRegist, and sends the information
