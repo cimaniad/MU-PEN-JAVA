@@ -5,12 +5,24 @@
  */
 package frontend.healthProfessional;
 
-/**
- *
- * @author jorge
- */
-public class PatientRegist extends javax.swing.JFrame {
+import backend.pojos.Patient;
+import backend.ws.PatientWS;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import sun.misc.BASE64Encoder;
 
+public class PatientRegist extends javax.swing.JFrame {
+    
+     private BufferedImage pic = null;
     /**
      * Creates new form PatientRegist
      */
@@ -27,6 +39,7 @@ public class PatientRegist extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooserPhoto = new javax.swing.JFileChooser();
         jPanelWallpaper = new javax.swing.JPanel();
         jPanelInformation = new javax.swing.JPanel();
         jLabelPatientRegist = new javax.swing.JLabel();
@@ -52,7 +65,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jComboBoxBloodType = new javax.swing.JComboBox();
         jComboBoxMaritalStatus = new javax.swing.JComboBox();
         jTextFieldName = new javax.swing.JTextField();
-        jTextFieldBirthDate = new javax.swing.JTextField();
         jTextFieldTel = new javax.swing.JTextField();
         jTextFieldCC = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
@@ -63,6 +75,7 @@ public class PatientRegist extends javax.swing.JFrame {
         jTextFieldUtente = new javax.swing.JTextField();
         jTextFieldPathology = new javax.swing.JTextField();
         jTextFieldDescription = new javax.swing.JTextField();
+        jDateChooserBirth = new com.toedter.calendar.JDateChooser();
         jButtonAddPhoto = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
@@ -155,37 +168,24 @@ public class PatientRegist extends javax.swing.JFrame {
         jComboBoxMaritalStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Casado", "Divorciado", "Viúvo" }));
         jPanelInformation.add(jComboBoxMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
-        jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
         jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
         jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
         jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 170, -1));
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
-
-        jTextFieldAdress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAdressActionPerformed(evt);
-            }
-        });
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
-
-        jTextFieldNIF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNIFActionPerformed(evt);
-            }
-        });
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
         jPanelInformation.add(jTextFieldUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 170, -1));
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
-
-        jTextFieldDescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDescriptionActionPerformed(evt);
-            }
-        });
         jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, -1));
+        jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
 
         jButtonAddPhoto.setText("Inserir foto");
+        jButtonAddPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddPhotoActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonAddPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -206,27 +206,113 @@ public class PatientRegist extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
-        // TODO add your handling code here:
+        try {
+            Patient p = loadPatientFromPanel();
+            PatientWS pWS = new PatientWS();
+            pWS.saveEditPatient(p);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(PatientRegist.this,
+                    e.getMessage(), "Erro ao registar Patiente", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonRegistActionPerformed
-
-    private void jTextFieldAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAdressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAdressActionPerformed
-
-    private void jTextFieldNIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNIFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNIFActionPerformed
-
-    private void jTextFieldDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescriptionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDescriptionActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         new PatientsList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void jButtonAddPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddPhotoActionPerformed
+        jFileChooserPhoto.showOpenDialog(this);
+        File f = jFileChooserPhoto.getSelectedFile();
+        try {
+            ImageIcon image = new ImageIcon(f.getAbsolutePath());
+            jLabelPhoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(
+                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+            pic = ImageIO.read(f);
 
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(PatientRegist.this,
+                    "Erro ao carregar imagem", "Erro ao registar Profissional de saude",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonAddPhotoActionPerformed
+
+
+    
+    private String validator() {
+        StringBuilder warns = new StringBuilder();
+        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
+        warns.append(jTextFieldLastName.getText().isEmpty() ? "Apelido, " : "");
+        warns.append(jTextFieldPathology.getText().isEmpty() ? "Patologia, " : "");
+        warns.append(jDateChooserBirth.getDate().toString().isEmpty() ? "Data de Nascimento, " : "");
+        warns.append(jTextFieldCC.getText().isEmpty() ? "Numero CC, " : "");
+        warns.append(jTextFieldEmail.getText().isEmpty() ? "E-mail, " : "");
+        warns.append(jTextFieldNationality.getText().isEmpty() ? "Nacionalidade, " : "");
+
+        if (!warns.toString().isEmpty()) {
+            warns.delete(warns.toString().length() - 2, warns.toString().length());
+            warns.append("!");
+        }
+
+        return warns.toString();
+    }
+    
+    
+     private Patient loadPatientFromPanel() {
+        String warn = validator();
+        if (!warn.isEmpty()) {
+            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
+        }
+        String name = jTextFieldName.getText();
+        String lastName = jTextFieldLastName.getText();
+        String email = jTextFieldEmail.getText().trim();
+        String adress = jTextFieldAdress.getText();
+        String nationality = jTextFieldNationality.getText();
+        String description = jTextFieldDescription.getText();
+        String pathology = jTextFieldPathology.getText();
+        String gender = String.valueOf(jComboBoxBloodType.getSelectedItem());
+        String maritalStatus = String.valueOf(jComboBoxMaritalStatus.getSelectedItem());
+        String bloodGroup = String.valueOf(jComboBoxBloodType.getSelectedItem());
+        Date birthDate = jDateChooserBirth.getDate();
+        String pass = generatePass();
+        int numTel = 0;
+        int numCC = 0;
+        int nif = 0;
+        
+        try {
+            if (jTextFieldTel.getText().trim().length() != 9 || jTextFieldNIF.getText().trim().length() != 9) {
+                throw new RuntimeException("O NºTel e NIF devem ter 9 digitos!");
+            }
+            if (jTextFieldCC.getText().trim().length() != 8) {
+                throw new RuntimeException("O NºCC deve ter 8 digitos!");
+            }
+            numTel = Integer.valueOf(jTextFieldTel.getText().trim());
+            numCC = Integer.valueOf(jTextFieldCC.getText().trim());
+            nif = Integer.valueOf(jTextFieldNIF.getText().trim());
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Apenas numeros são permitidos nos campos NºTel, NIF e NºCC");
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        
+        return new Patient(name, lastName, numCC, encodeToString(pic, "jpg"), adress, numTel, nif, email, maritalStatus,  parseDate(birthDate),
+                bloodGroup, nationality, gender, pass, pathology, description);
+    }
+    
+        private String generatePass() {
+        StringBuilder sb = new StringBuilder();
+        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Random rnd = new Random();
+
+        for (int i = 0; i < 8; i++) {
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        }
+        return sb.toString();
+    }
+        
+        
+        
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddPhoto;
     private javax.swing.JButton jButtonBack;
@@ -234,6 +320,8 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxBloodType;
     private javax.swing.JComboBox jComboBoxGender;
     private javax.swing.JComboBox jComboBoxMaritalStatus;
+    private com.toedter.calendar.JDateChooser jDateChooserBirth;
+    private javax.swing.JFileChooser jFileChooserPhoto;
     private javax.swing.JLabel jLabelAdress;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelBloodType;
@@ -256,7 +344,6 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     private javax.swing.JTextField jTextFieldAdress;
-    private javax.swing.JTextField jTextFieldBirthDate;
     private javax.swing.JTextField jTextFieldCC;
     private javax.swing.JTextField jTextFieldDescription;
     private javax.swing.JTextField jTextFieldEmail;
@@ -268,4 +355,47 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTel;
     private javax.swing.JTextField jTextFieldUtente;
     // End of variables declaration//GEN-END:variables
+/**
+     * This method receive a Date object and passes it to a String in the format
+     * yyyy-MM-dd
+     *
+     * @param d
+     * @return String date
+     */
+
+
+private String parseDate(Date d) {
+        SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFromat.format(d);
+        return date;
+    }
+
+    /**
+     * This method receives a image and passes is to Base64 String
+     *
+     * @param image
+     * @param type
+     * @return String image Base64
+     */
+    private String encodeToString(BufferedImage image, String type) {
+        if (image == null) {
+            return "profile";
+        }
+
+        String imageString = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        try {
+            ImageIO.write(image, type, bos);
+            byte[] imageBytes = bos.toByteArray();
+
+            BASE64Encoder encoder = new BASE64Encoder();
+            imageString = encoder.encode(imageBytes);
+
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imageString;
+    }
 }

@@ -7,7 +7,7 @@ public class Patient {
     private int idPatient;
     private String name;
     private String lastName;
-    private String numCC;
+    private int numCC;
     private String adress;
     private int numTel;
     private int nif;
@@ -44,10 +44,10 @@ public class Patient {
      * @param pathology
      * @param description 
      */
-    public Patient(int idPacient, String name, String lastName, String numCC, String picture,
+    public Patient(String name, String lastName, int numCC, String picture,
             String adress, int numTel, int nif, String email, String miritalState, String birthDate,
-            String bloodGroup, String nationality, String gender, String password, String pathology, String description, int idHealthProfessional) {
-        this.idPatient = idPacient;
+            String bloodGroup, String nationality, String gender, String password, String pathology, String description) {
+        
         this.name = name;
         this.lastName = lastName;
         this.numCC = numCC;
@@ -64,7 +64,7 @@ public class Patient {
         this.pathology = pathology;
         this.description = description;
         this.picture= picture;
-        this.idHealthProfessional=idHealthProfessional;
+        
     }
 
     public int getIdHealthProfessional() {
@@ -91,11 +91,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getNumCC() {
+    public int getNumCC() {
         return numCC;
     }
 
-    public void setNumCC(String numCC) {
+    public void setNumCC(int numCC) {
         this.numCC = numCC;
     }
 
