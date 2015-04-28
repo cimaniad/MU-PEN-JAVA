@@ -84,6 +84,37 @@ public class PatientWS {
         return pList;
     }
 
+    public List<Patient> getPatientsByHPDate(int idHelthPro, String appointmentDate) {
+        List<Patient> pList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHelthPro)));
+        params.add(new BasicNameValuePair("appointmentDate", appointmentDate));
+        try {
+            responseWS = wrapperWS.sendRequest("Patient",
+                    "getPatientsByHPDate", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos Pacientes com consulta marcada para esta data");
+            }
+
+            Type type = new TypeToken<List<Patient>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            pList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tPacients by health professional and appointment date, data access succed");
+        log.debug("\n\tPacients: " + pList.toString());
+        return pList;
+    }
+
     public List<Patient> getAllPatients() {
         List<Patient> pList = null;
 
@@ -125,7 +156,7 @@ public class PatientWS {
         params.add(new BasicNameValuePair("numTel", String.valueOf(p.getNumTel())));
         params.add(new BasicNameValuePair("nif", String.valueOf(p.getNif())));
         params.add(new BasicNameValuePair("email", p.getEmail()));
-        params.add(new BasicNameValuePair("maritalState", p.getMaritalState()));
+        params.add(new BasicNameValuePair("maritalState", p.getMaritalStatus()));
         params.add(new BasicNameValuePair("birthDate", String.valueOf(p.getBirthDate())));
         params.add(new BasicNameValuePair("bloodGroup", p.getBloodGroup()));
         params.add(new BasicNameValuePair("nationality", p.getNationality()));

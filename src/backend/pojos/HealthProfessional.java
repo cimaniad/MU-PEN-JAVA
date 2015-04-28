@@ -19,7 +19,7 @@ public class HealthProfessional {
     private int numTel;
     private int nif;
     private String email;
-    private String maritalState;
+    private String maritalStatus;
     private String birthDate;
     private String bloodGroup;
     private String nacionality;
@@ -58,7 +58,7 @@ public class HealthProfessional {
      * @param developmentProfessional
      */
     public HealthProfessional(String name, String lastName, int numCC, String adress,
-            int numTel, int nif, String email, String miritalState, String birthDate,
+            int numTel, int nif, String email, String maritalStatus, String birthDate,
             String bloodGroup, String nacionality, String gender, String password,
             String picture, String institution, boolean developmentProfessional) {
 
@@ -69,7 +69,7 @@ public class HealthProfessional {
         this.numTel = numTel;
         this.nif = nif;
         this.email = email;
-        this.maritalState = miritalState;
+        this.maritalStatus = maritalStatus;
         this.birthDate = birthDate;
         this.bloodGroup = bloodGroup;
         this.nacionality = nacionality;
@@ -144,12 +144,12 @@ public class HealthProfessional {
         this.email = email;
     }
 
-    public String getMaritalState() {
-        return maritalState;
+    public String getMaritalStatus() {
+        return maritalStatus;
     }
 
-    public void setMaritalState(String maritalState) {
-        this.maritalState = maritalState;
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
     public String getBirthDate() {
@@ -221,7 +221,7 @@ public class HealthProfessional {
      */
     @Override
     public String toString() {
-        return "HealthProfessional{" + "idHealthProfessional=" + idHealthProfessional + ", name=" + name + ", lastName=" + lastName + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", miritalState=" + maritalState + ", birthDate=" + birthDate + ", bloodGroup=" + bloodGroup + ", nacionality=" + nacionality + ", sex=" + gender + ", password=" + password + ", picture=" + picture + ", institution=" + institution + ", developmentProfessional=" + developmentProfessional + '}';
+        return "HealthProfessional{" + "idHealthProfessional=" + idHealthProfessional + ", name=" + name + ", lastName=" + lastName + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", miritalState=" + maritalStatus + ", birthDate=" + birthDate + ", bloodGroup=" + bloodGroup + ", nacionality=" + nacionality + ", sex=" + gender + ", password=" + password + ", picture=" + picture + ", institution=" + institution + ", developmentProfessional=" + developmentProfessional + '}';
     }
 
 }

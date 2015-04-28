@@ -1,18 +1,16 @@
-
 package backend.pojos;
 
-import java.util.Date;
-
 public class Patient {
+
     private int idPatient;
     private String name;
     private String lastName;
-    private String numCC;
+    private int numCC;
     private String adress;
     private int numTel;
     private int nif;
     private String email;
-    private String  maritalState;
+    private String maritalStatus;
     private String birthDate;
     private String bloodGroup;
     private String nationality;
@@ -25,8 +23,9 @@ public class Patient {
 
     public Patient() {
     }
+
     /**
-     * 
+     *
      * @param idPacient
      * @param name
      * @param lastName
@@ -42,12 +41,13 @@ public class Patient {
      * @param gender
      * @param password
      * @param pathology
-     * @param description 
+     * @param description
      */
-    public Patient(int idPacient, String name, String lastName, String numCC, String picture,
-            String adress, int numTel, int nif, String email, String miritalState, String birthDate,
-            String bloodGroup, String nationality, String gender, String password, String pathology, String description, int idHealthProfessional) {
-        this.idPatient = idPacient;
+    public Patient(String name, String lastName, int numCC, String picture,
+            String adress, int numTel, int nif, String email, String maritalStatus, String birthDate,
+            String bloodGroup, String nationality, String gender, String password, String pathology,
+            String description, int idHealthProfessional) {
+
         this.name = name;
         this.lastName = lastName;
         this.numCC = numCC;
@@ -55,7 +55,7 @@ public class Patient {
         this.numTel = numTel;
         this.nif = nif;
         this.email = email;
-        this.maritalState = miritalState;
+        this.maritalStatus = maritalStatus;
         this.birthDate = birthDate;
         this.bloodGroup = bloodGroup;
         this.nationality = nationality;
@@ -63,8 +63,10 @@ public class Patient {
         this.password = password;
         this.pathology = pathology;
         this.description = description;
-        this.picture= picture;
-        this.idHealthProfessional=idHealthProfessional;
+        this.picture = picture;
+        this.idHealthProfessional = idHealthProfessional;
+        this.picture = picture;
+
     }
 
     public int getIdHealthProfessional() {
@@ -91,11 +93,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getNumCC() {
+    public int getNumCC() {
         return numCC;
     }
 
-    public void setNumCC(String numCC) {
+    public void setNumCC(int numCC) {
         this.numCC = numCC;
     }
 
@@ -139,12 +141,12 @@ public class Patient {
         this.email = email;
     }
 
-    public String getMaritalState() {
-        return maritalState;
+    public String getMaritalStatus() {
+        return maritalStatus;
     }
 
-    public void setMaritalState(String miritalState) {
-        this.maritalState = miritalState;
+    public void setMaritalStatus(String miritalState) {
+        this.maritalStatus = miritalState;
     }
 
     public String getBirthDate() {
@@ -205,12 +207,12 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "idPatient=" + idPatient + ", name=" + name + ", lastName=" + lastName + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif + ", email=" + email + ", maritalState=" + maritalState + ", birthDate=" + birthDate + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender + ", password=" + password + ", pathology=" + pathology + ", description=" + description + '}';
+        return "Patient{" + "idPatient=" + idPatient + ", name=" + name + ", lastName=" + lastName
+                + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif
+                + ", email=" + email + ", maritalStatus=" + maritalStatus + ", birthDate=" + birthDate
+                + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender
+                + ", password=" + password + ", pathology=" + pathology + ", description=" + description
+                + ", picture=" + picture + ", idHealthProfessional=" + idHealthProfessional + '}';
     }
-    
-    
-    
-    
+
 }
-
-

@@ -195,7 +195,7 @@ public class HealthProfessionalWS {
         params.add(new BasicNameValuePair("numTel", String.valueOf(hp.getNumTel())));
         params.add(new BasicNameValuePair("nif", String.valueOf(hp.getNif())));
         params.add(new BasicNameValuePair("email", hp.getEmail()));
-        params.add(new BasicNameValuePair("maritalState", hp.getMaritalState()));
+        params.add(new BasicNameValuePair("maritalState", hp.getMaritalStatus()));
         params.add(new BasicNameValuePair("birthDate", hp.getBirthDate()));
         params.add(new BasicNameValuePair("bloodGroup", hp.getBloodGroup()));
         params.add(new BasicNameValuePair("nacionality", hp.getNacionality()));
