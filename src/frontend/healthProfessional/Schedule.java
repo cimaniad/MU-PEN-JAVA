@@ -75,10 +75,12 @@ public class Schedule extends javax.swing.JFrame {
         }
         if (month == appointMonth) {
             if (color.equals("green")) {
-                component[appointDay - 1 + offset + 6].setBackground(Color.green);
+                Color newGreen = new Color(0, 204, 51);
+                component[appointDay - 1 + offset + 6].setBackground(newGreen);
 
             } else {
-                component[appointDay - 1 + offset + 6].setBackground(Color.red);
+                Color newRed = new Color(255, 82, 19);
+                component[appointDay - 1 + offset + 6].setBackground(newRed);
             }
         }
     }
