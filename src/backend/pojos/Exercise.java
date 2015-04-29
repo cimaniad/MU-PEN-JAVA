@@ -15,11 +15,13 @@ public class Exercise {
     private int idSubDomain;
     private String designation;
     private String structure;
+    private String name;
 
     public Exercise(int idSubdomain, String designation, String structure) {
         this.idSubDomain = idSubdomain;
         this.designation = designation;
         this.structure = structure;
+        this.name = name;
     }
 
     public int getIdExercise() {
@@ -51,10 +53,20 @@ public class Exercise {
         this.structure = structure;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
-        return "Exercise{" + "idExercise=" + idExercise + ", idSubDomain=" + idSubDomain + ", designation=" + designation + ", structure=" + structure + '}';
+        return "Exercise{" + "idExercise=" + idExercise + ", idSubDomain=" + idSubDomain + ", designation=" + designation + ", structure=" + structure + ", name=" + name + '}';
     }
+
+    
     
     
 }

@@ -120,6 +120,7 @@ public class ExerciseWS {
         params.add(new BasicNameValuePair("idSubDomain", String.valueOf(ex.getIdSubDomain())));
         params.add(new BasicNameValuePair("designation", ex.getDesignation()));
         params.add(new BasicNameValuePair("structure", ex.getStructure()));
+                params.add(new BasicNameValuePair("name", (ex.getName())));
 
         return params;
     }

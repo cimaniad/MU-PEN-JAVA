@@ -13,6 +13,7 @@ public class Block {
     
     private int idBlock;
     private String description;
+    private String name;
 
     public Block(String description) {
         this.description = description;
@@ -29,6 +30,14 @@ public class Block {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

@@ -33,7 +33,7 @@ public class DomainWS {
         wrapperWS = WrapperWS.getWrapperWS();
     }
     
-    public List<Domain> getAllPatients() {
+    public List<Domain> getAllDomains() {
         List<Domain> dList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta

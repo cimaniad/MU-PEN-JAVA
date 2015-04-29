@@ -58,6 +58,7 @@ public class BlockWS {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idBlock", String.valueOf(b.getIdBlock())));
         params.add(new BasicNameValuePair("description", (b.getDescription())));
+        params.add(new BasicNameValuePair("name", (b.getName())));
         
         return params;
     }
