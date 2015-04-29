@@ -6,7 +6,15 @@ package frontend.healthProfessional;
 
 import backend.pojos.Patient;
 import backend.ws.PatientWS;
+import frontend.admin.JTableRenderer;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -159,32 +167,76 @@ public class PatientsList extends javax.swing.JFrame {
 //    
     
     private void drawTable() {
-        try{
+        try {
             initializeTable();
-            for(Patient p: pList){
-                tableModel.addRow(new Object[] {p.getName() , p.getLastName(), p.getPathology()});
+            int width = jTableList.getColumnModel().getColumn(2).getWidth();
+            int height = 60;
+
+            for (Patient p : pList) {
+                if (p.getPicture().equals("profile")) {
+                    ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+                    tableModel.addRow(new Object[]{p.getName(), p.getLastName(),
+                        new ImageIcon(pic.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT))});
+                } else {
+
+                    tableModel.addRow(new Object[]{p.getName(), p.getLastName(),
+                        new ImageIcon(getImageFromServer(p.getPicture(), width, height))});
+                }
+
             }
         } catch (Exception ex) {
             log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
-                    "Erro  Paciente", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos \nprofissionais de saude",
+                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
         }
     }
-
    
     private Patient getPatientAtTable() {
         return pList.get(jTableList.getSelectedRow());
     }
-//
+
+         
     private void initializeTable() {
-        tableModel= new DefaultTableModel();
+        tableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
         jTableList.setModel(tableModel);
         tableModel.addColumn("Nome");
         tableModel.addColumn("Apelido");
-        tableModel.addColumn("Patologia");
-        tableModel.addColumn("Notificações");
+        tableModel.addColumn("Foto");
+        JTableRenderer renderer = new JTableRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
+        jTableList.setRowHeight(60);
     }
-//
+    
+    /**
+     * This method gets the image of the Patient from the server and
+     * resize it to the chosen dimensions
+     *
+     * @param picture
+     * @param width
+     * @param heigth
+     * @return Image
+     */
+    private Image getImageFromServer(String picture, int width, int heigth) {
+        try {
+            URL url = new URL("http://localhost/mu-pen-web/imagens/Patients/" + picture.trim());
+            log.debug(url.toString());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            log.error("\n" + ex.getMessage());
+        } catch (IOException ex) {
+            log.error("\n" + ex.getMessage());
+        }
+        return null;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;
