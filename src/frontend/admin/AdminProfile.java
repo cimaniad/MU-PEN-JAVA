@@ -102,6 +102,11 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jButtonEditProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
 
         jButtonBack.setText("Voltar");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -125,6 +130,11 @@ public class AdminProfile extends javax.swing.JFrame {
         new AdminProfileEdit().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonEditProfileActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        new AdminMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
    
 

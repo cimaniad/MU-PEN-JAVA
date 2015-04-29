@@ -53,7 +53,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jLabelGender = new javax.swing.JLabel();
         jLabelNationality = new javax.swing.JLabel();
         jLabelAdress = new javax.swing.JLabel();
-        jLabelNUtente = new javax.swing.JLabel();
         jLabelNIF = new javax.swing.JLabel();
         jLabelMaritalStatus = new javax.swing.JLabel();
         jLabelPathology = new javax.swing.JLabel();
@@ -72,7 +71,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jTextFieldNationality = new javax.swing.JTextField();
         jTextFieldAdress = new javax.swing.JTextField();
         jTextFieldNIF = new javax.swing.JTextField();
-        jTextFieldUtente = new javax.swing.JTextField();
         jTextFieldPathology = new javax.swing.JTextField();
         jTextFieldDescription = new javax.swing.JTextField();
         jDateChooserBirth = new com.toedter.calendar.JDateChooser();
@@ -125,9 +123,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jLabelAdress.setText("Morada:");
         jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 145, -1, -1));
 
-        jLabelNUtente.setText("Nº Utente:");
-        jPanelInformation.add(jLabelNUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 175, -1, -1));
-
         jLabelNIF.setText("  NIF:");
         jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 205, 30, -1));
 
@@ -159,7 +154,7 @@ public class PatientRegist extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
-        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino", " " }));
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino" }));
         jPanelInformation.add(jComboBoxGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, -1));
 
         jComboBoxBloodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-" }));
@@ -175,7 +170,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
-        jPanelInformation.add(jTextFieldUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 170, -1));
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
         jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, -1));
         jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
@@ -333,7 +327,6 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelMaritalStatus;
     private javax.swing.JLabel jLabelNIF;
-    private javax.swing.JLabel jLabelNUtente;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNationality;
     private javax.swing.JLabel jLabelPathology;
@@ -353,7 +346,6 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNationality;
     private javax.swing.JTextField jTextFieldPathology;
     private javax.swing.JTextField jTextFieldTel;
-    private javax.swing.JTextField jTextFieldUtente;
     // End of variables declaration//GEN-END:variables
 /**
      * This method receive a Date object and passes it to a String in the format
