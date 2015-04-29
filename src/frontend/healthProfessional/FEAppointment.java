@@ -19,7 +19,7 @@ import org.apache.log4j.Logger;
  * @author jorge
  */
 public class FEAppointment extends javax.swing.JFrame {
-    
+
     private Logger log = Logger.getLogger(FEAppointment.class);
     private PatientWS patWS;
     private AppointmentWS apptmWS;
@@ -33,7 +33,7 @@ public class FEAppointment extends javax.swing.JFrame {
      */
     public FEAppointment(int idHP, String date) {
         try {
-            newRed = new Color(255, 82, 19);
+            newRed = new Color(173, 0, 2);
             newGreen = new Color(0, 204, 51);
             patWS = new PatientWS();
             apptmWS = new AppointmentWS();
@@ -48,9 +48,9 @@ public class FEAppointment extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(FEAppointment.this,
                     e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }
-    
+
     private Appointment aproveAppointment() {
         int index = jComboBoxPatient.getSelectedIndex();
         int idPatient = apL.get(index).getIdPatient();
@@ -60,11 +60,11 @@ public class FEAppointment extends javax.swing.JFrame {
         String local = jTextFieldLocal.getText();
         byte healthProAprov = 1;
         String description = jTextAreaDescription.getText();
-        
+
         return new Appointment(idPatient, idHealthProfessional, date, hour, local,
                 (byte) 1, healthProAprov, description);
     }
-    
+
     private void seeAppointment() {
         try {
             if (!apL.isEmpty()) {
@@ -78,30 +78,26 @@ public class FEAppointment extends javax.swing.JFrame {
                     e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void comboChange() {
         try {
-            int index = jComboBoxPatient.getSelectedIndex();
-            Patient pat = patients.get(index);
+            Patient pat = getSelectPat();
             jTextFieldPathology.setText(pat.getPathology());
-            for (Appointment a : apL) {
-                if (a.getIdPatient() == pat.getIdPatient()) {
-                    jTextAreaDescription.setText(a.getDescription());
-                    jTextFieldDate.setText(a.getDate());
-                    jTextFieldHours.setText(a.getHour());
-                    jTextFieldLocal.setText(a.getLocal());
-                    changeFields(a);
-                }
-            }
+            Appointment a = getSelectAppointment();
+            jTextAreaDescription.setText(a.getDescription());
+            jTextFieldDate.setText(a.getDate());
+            jTextFieldHours.setText(a.getHour());
+            jTextFieldLocal.setText(a.getLocal());
+            changeFields(a);
+
             //   Appointment a = apptmWS.getApointmentById(apL.get(index).getIdAppointment());
             //   jTextFieldLocal.setText(String.valueOf());
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(FEAppointment.this,
                     e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void changeFields(Appointment a) {
         if (a.getHealthProfessionalApproval() == 1 && a.getPatientApproval() == 1) {
             jButtonAprove.setVisible(false);
@@ -117,11 +113,20 @@ public class FEAppointment extends javax.swing.JFrame {
             jLabel1.setForeground(newRed);
         }
     }
-    
+
     private Patient getSelectPat() {
         return patients.get(jComboBoxPatient.getSelectedIndex());
     }
-    
+
+    private Appointment getSelectAppointment() {
+        for (Appointment a : apL) {
+            if (a.getIdPatient() == getSelectPat().getIdPatient()) {
+                return a;
+            }
+        }
+        return null;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -234,8 +239,7 @@ public class FEAppointment extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Aprovação da consulta");
+        jLabel1.setText("Não existe Consulta");
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -258,15 +262,20 @@ public class FEAppointment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
-        new AppointmentCreateEdit(apL.get(jComboBoxPatient.getSelectedIndex())).setVisible(true);
+        new AppointmentCreateEdit(getSelectAppointment()).setVisible(true);
         dispose();
 
     }//GEN-LAST:event_jButtonCancelEventActionPerformed
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAproveActionPerformed
-        
+
         try {
-            apptmWS.saveEditAppointment(aproveAppointment());
+            if (getSelectAppointment().getHealthProfessionalApproval() == 1) {
+                JOptionPane.showMessageDialog(FEAppointment.this,
+                        "Esta consulta já foi aprovada", "Profissional de saúde", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                apptmWS.saveEditAppointment(aproveAppointment());
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(FEAppointment.this,
                     e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);

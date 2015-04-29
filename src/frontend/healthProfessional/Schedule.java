@@ -79,7 +79,7 @@ public class Schedule extends javax.swing.JFrame {
                 component[appointDay - 1 + offset + 6].setBackground(newGreen);
 
             } else {
-                Color newRed = new Color(255, 82, 19);
+                Color newRed = new Color(173, 0, 2);
                 component[appointDay - 1 + offset + 6].setBackground(newRed);
             }
         }
@@ -150,7 +150,7 @@ public class Schedule extends javax.swing.JFrame {
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 82, 19));
+        jLabel2.setForeground(new java.awt.Color(173, 0, 2));
         jLabel2.setText("Consulta por aprovar");
         jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
         jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
