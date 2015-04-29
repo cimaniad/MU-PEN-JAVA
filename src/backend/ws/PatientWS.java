@@ -39,11 +39,11 @@ public class PatientWS {
             String validacao = wrapperWS.readResponse(responseWS);         //Passa a resposta para uma string
 
             Validation v = gson.fromJson(validacao, Validation.class);    //Conversão do objecto Json para o objecto Java
-
-            if (v.getCod() != 201) {
-                System.out.println(v.getMsg());
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 201) {
+                log.error("\n\tError saving patient: " + v.getMsg() + "\tCod:" + httpResponseCod);
                 log.error(v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao criar o Paciente");
+                throw new RuntimeException("Ocorreu um erro ao registar o Paciente");
             }
 
         } catch (RuntimeException e) {
@@ -143,8 +143,7 @@ public class PatientWS {
         log.debug("\n\t Patient data access success");
         log.debug("\n\tHPs : " + pList.toString());
         return pList;
-}
-    
+    }
 
     private List<NameValuePair> getAllParams(Patient p) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta

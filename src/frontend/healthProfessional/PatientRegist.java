@@ -109,7 +109,7 @@ public class PatientRegist extends javax.swing.JFrame {
         jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
 
         jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 175, -1, -1));
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 145, -1, -1));
 
         jLabelLastName.setText("Apelido:");
         jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 55, -1, -1));
@@ -117,11 +117,11 @@ public class PatientRegist extends javax.swing.JFrame {
         jLabelGender.setText("Sexo:");
         jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 85, -1, -1));
 
-        jLabelNationality.setText("Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 115, -1, -1));
+        jLabelNationality.setText("  Nacionalidade:");
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 115, 90, -1));
 
         jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 145, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 175, 50, -1));
 
         jLabelNIF.setText("  NIF:");
         jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 205, 30, -1));
@@ -165,10 +165,10 @@ public class PatientRegist extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
         jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
         jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
-        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 170, -1));
+        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
-        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
         jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, -1));
@@ -204,6 +204,8 @@ public class PatientRegist extends javax.swing.JFrame {
             Patient p = loadPatientFromPanel();
             PatientWS pWS = new PatientWS();
             pWS.saveEditPatient(p);
+            new PatientsList().setVisible(true);
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(PatientRegist.this,
                     e.getMessage(), "Erro ao registar Patiente", JOptionPane.ERROR_MESSAGE);
@@ -226,7 +228,7 @@ public class PatientRegist extends javax.swing.JFrame {
 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(PatientRegist.this,
-                    "Erro ao carregar imagem", "Erro ao registar Profissional de saude",
+                    "Erro ao carregar imagem", "Erro ao registar Paciente",
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonAddPhotoActionPerformed
