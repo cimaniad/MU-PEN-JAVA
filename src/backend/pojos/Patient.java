@@ -25,16 +25,16 @@ public class Patient {
     }
 
     /**
-     *
-     * @param idPacient
+     * 
      * @param name
      * @param lastName
      * @param numCC
+     * @param picture
      * @param adress
      * @param numTel
      * @param nif
      * @param email
-     * @param miritalState
+     * @param maritalStatus
      * @param birthDate
      * @param bloodGroup
      * @param nationality
@@ -42,6 +42,7 @@ public class Patient {
      * @param password
      * @param pathology
      * @param description
+     * @param idHealthProfessional 
      */
     public Patient(String name, String lastName, int numCC, String picture,
             String adress, int numTel, int nif, String email, String maritalStatus, String birthDate,

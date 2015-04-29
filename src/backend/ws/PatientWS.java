@@ -143,12 +143,13 @@ public class PatientWS {
         log.debug("\n\t Patient data access success");
         log.debug("\n\tHPs : " + pList.toString());
         return pList;
-
-    }
+}
+    
 
     private List<NameValuePair> getAllParams(Patient p) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idPatient", String.valueOf(p.getIdPatient())));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(p.getIdHealthProfessional())));
         params.add(new BasicNameValuePair("name", p.getName()));
         params.add(new BasicNameValuePair("lastName", p.getLastName()));
         params.add(new BasicNameValuePair("numCC", String.valueOf(p.getNumCC())));
@@ -156,7 +157,7 @@ public class PatientWS {
         params.add(new BasicNameValuePair("numTel", String.valueOf(p.getNumTel())));
         params.add(new BasicNameValuePair("nif", String.valueOf(p.getNif())));
         params.add(new BasicNameValuePair("email", p.getEmail()));
-        params.add(new BasicNameValuePair("maritalState", p.getMaritalStatus()));
+        params.add(new BasicNameValuePair("maritalStatus", p.getMaritalStatus()));
         params.add(new BasicNameValuePair("birthDate", String.valueOf(p.getBirthDate())));
         params.add(new BasicNameValuePair("bloodGroup", p.getBloodGroup()));
         params.add(new BasicNameValuePair("nationality", p.getNationality()));
