@@ -6,9 +6,9 @@ package frontend.healthProfessional;
 
 import backend.pojos.Patient;
 import backend.ws.PatientWS;
-import frontend.admin.JTableRenderer;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
@@ -29,9 +29,9 @@ public class PatientsList extends javax.swing.JFrame {
      */
     public PatientsList() {
         initComponents();
-        pWS = new PatientWS();
-        pList = pWS.getAllPatients();
-//        drawTable();
+        pWS = new PatientWS(); 
+        pList = pWS.getPatientsByHealthProfessional(1);
+        drawTable();
     }
 
     /**
@@ -88,28 +88,28 @@ public class PatientsList extends javax.swing.JFrame {
 
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Apelido", "Patologia"
+                "Nome", "Apelido", "Patologia", "Notificações"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -152,49 +152,38 @@ public class PatientsList extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
 //    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
-//        String text = jTextFieldSearch.getText();
-////        pList = pWS.getPatientByName(text);
-//        drawTable();
+//       String name = jTextFieldSearch.getText();
+//       pList = pWS.getPatientByName(name);
+//       drawTable();
 //    }
 //    
-//    private void drawTable() {
-//        try {
-//            initializeTable();
-//            int width = jTableList.getColumnModel().getColumn(2).getWidth();
-//            int height = 60;
-////            for(Patient p: pList()){
-//                tableModel.addRow(new Object[] {p.getName()});
-//                tableModel.addRow(new Object[] {p.getLastName()});
-//                tableModel.addRow(new Object[] {p.getPathology()});
-//            }
-//        } catch (Exception ex) {
-//            log.error(ex.getMessage());
-//            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
-//                    "Erro  Pacientes", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
+    
+    private void drawTable() {
+        try{
+            initializeTable();
+            for(Patient p: pList){
+                tableModel.addRow(new Object[] {p.getName() , p.getLastName(), p.getPathology()});
+            }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
+                    "Erro  Paciente", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+   
+    private Patient getPatientAtTable() {
+        return pList.get(jTableList.getSelectedRow());
+    }
 //
-//   
-//    private Patient getPatientAtTable() {
-//        return pList.get(jTableList.getSelectedRow());
-//    }
-//
-//    private void initializeTable() {
-//        tableModel = new DefaultTableModel() {
-//            @Override
-//            public boolean isCellEditable(int i, int i1) {
-//                return false;
-//            }
-//        };
-//        jTableList.setModel(tableModel);
-//        tableModel.addColumn("Nome");
-//        tableModel.addColumn("Apelido");
-//        tableModel.addColumn("Patologia");
-//        JTableRenderer renderer = new JTableRenderer();
-//        renderer.setHorizontalAlignment(SwingConstants.CENTER);
-//        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
-//        jTableList.setRowHeight(60);
-//    }
+    private void initializeTable() {
+        tableModel= new DefaultTableModel();
+        jTableList.setModel(tableModel);
+        tableModel.addColumn("Nome");
+        tableModel.addColumn("Apelido");
+        tableModel.addColumn("Patologia");
+        tableModel.addColumn("Notificações");
+    }
 //
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
