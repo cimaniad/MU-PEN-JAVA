@@ -128,7 +128,7 @@ public class FEAppointment extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jPanelWallpaper = new javax.swing.JPanel();
@@ -254,20 +254,20 @@ public class FEAppointment extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {                                            
         new Schedule().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    }                                           
 
-    private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
+    private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         new AppointmentCreateEdit(getSelectAppointment()).setVisible(true);
         dispose();
 
-    }//GEN-LAST:event_jButtonCancelEventActionPerformed
+    }                                                  
 
-    private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAproveActionPerformed
+    private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {                                              
 
         try {
             if (getSelectAppointment().getHealthProfessionalApproval() == 1) {
@@ -282,14 +282,14 @@ public class FEAppointment extends javax.swing.JFrame {
         }
         new Schedule().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButtonAproveActionPerformed
+    }                                             
 
-    private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientActionPerformed
+    private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         comboChange();
-    }//GEN-LAST:event_jComboBoxPatientActionPerformed
+    }                                                
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButtonAprove;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonCancelEvent;
@@ -312,5 +312,5 @@ public class FEAppointment extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldHours;
     private javax.swing.JTextField jTextFieldLocal;
     private javax.swing.JTextField jTextFieldPathology;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

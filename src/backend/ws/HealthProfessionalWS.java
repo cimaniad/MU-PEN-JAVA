@@ -183,7 +183,6 @@ public class HealthProfessionalWS {
         log.debug("\n\tHPs : " + hpList.toString());
         return hpList;
     }
-    
 
     private List<NameValuePair> getAllParams(HealthProfessional hp) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
