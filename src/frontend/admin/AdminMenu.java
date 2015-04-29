@@ -49,7 +49,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 jButtonHealthProfessionalActionPerformed(evt);
             }
         });
-        jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 140, 40));
+        jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 180, 40));
 
         jButtonProfile.setText("Perfil");
         jButtonProfile.addActionListener(new java.awt.event.ActionListener() {

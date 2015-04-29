@@ -47,6 +47,12 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         this.jLabelTelhp.setText(String.valueOf(hp.getNumTel()));
         this.jLabelNationalityhp.setText(hp.getNacionality());
         this.jLabelCChp.setText(String.valueOf(hp.getNumCC()));
+        this.jLabelEmailhp.setText(hp.getEmail());
+        this.jLabelAdresshp.setText(hp.getAdress());
+        this.jLabelNIFhp.setText(String.valueOf(hp.getNif()));
+        this.jLabelMaritalStatushp.setText(hp.getMaritalStatus());
+        this.jLabelInstitutionhp.setText(hp.getInstitution());
+        this.jLabelBloodTypehp.setText(hp.getBloodGroup());
         
         if (hp.getPicture().equals("profile")) {
             ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
@@ -82,7 +88,6 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelInstitution = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
         jLabelNamehp = new javax.swing.JLabel();
         jLabelBithDatehp = new javax.swing.JLabel();
         jLabelTelhp = new javax.swing.JLabel();
@@ -96,6 +101,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelNationalityhp = new javax.swing.JLabel();
         jLabelAdresshp = new javax.swing.JLabel();
         jLabelMaritalStatushp = new javax.swing.JLabel();
+        jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -113,44 +119,44 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelHealthProfessionalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 90));
 
-        jLabelName.setText("Nome:");
-        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
+        jLabelName.setText("      Nome:");
+        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 70, -1));
 
-        jLabelBirthDate.setText("Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 85, -1, -1));
+        jLabelBirthDate.setText("          Data de nascimento:");
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 150, -1));
 
-        jLabelTel.setText("Nº Tel.:");
-        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
+        jLabelTel.setText("  Nº Telemovel: ");
+        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 90, 20));
 
-        jLabelCC.setText(" Nº CC:");
-        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
+        jLabelCC.setText("     Nº CC:");
+        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 60, -1));
 
-        jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 175, -1, -1));
+        jLabelEmail.setText("   Email: ");
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, 20));
 
-        jLabelLastName.setText("Apelido:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 55, -1, -1));
+        jLabelLastName.setText("  Apelido:");
+        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 60, -1));
 
-        jLabelGender.setText("Sexo:");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
+        jLabelGender.setText("   Sexo:");
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 40, -1));
 
-        jLabelNationality.setText("Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
+        jLabelNationality.setText("   Nacionalidade:");
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 100, -1));
 
-        jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
+        jLabelAdress.setText("          Morada: ");
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 80, -1));
 
-        jLabelNIF.setText("  NIF:");
-        jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 205, 30, -1));
+        jLabelNIF.setText("       NIF: ");
+        jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 60, -1));
 
-        jLabelMaritalStatus.setText(" Estado Civil:");
-        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 205, -1, -1));
+        jLabelMaritalStatus.setText("  Estado Civil: ");
+        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 80, -1));
 
-        jLabelBloodType.setText("  Grupo sanguíneo:");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, -1, -1));
+        jLabelBloodType.setText("         Grupo sanguíneo:  ");
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 140, -1));
 
-        jLabelInstitution.setText(" Instituição:");
-        jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 235, -1, -1));
+        jLabelInstitution.setText("     Instituição: ");
+        jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 80, -1));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -163,47 +169,60 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jButtonDelete.setText("Eliminar");
         jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
-        jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 230, -1));
-
+        jLabelNamehp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelNamehp.setText("jLabel1");
-        jPanelInformation.add(jLabelNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 44, 70, 30));
+        jPanelInformation.add(jLabelNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 44, 180, 30));
 
+        jLabelBithDatehp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelBithDatehp.setText("jLabel2");
-        jPanelInformation.add(jLabelBithDatehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 84, 120, 20));
+        jPanelInformation.add(jLabelBithDatehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 73, 150, 30));
 
+        jLabelTelhp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTelhp.setText("jLabel3");
-        jPanelInformation.add(jLabelTelhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 114, 50, 20));
+        jPanelInformation.add(jLabelTelhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 104, 160, 30));
 
+        jLabelCChp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelCChp.setText("jLabel4");
-        jPanelInformation.add(jLabelCChp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 40, 20));
+        jPanelInformation.add(jLabelCChp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 134, 110, 30));
 
+        jLabelEmailhp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelEmailhp.setText("jLabel5");
-        jPanelInformation.add(jLabelEmailhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 174, 50, 20));
+        jPanelInformation.add(jLabelEmailhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 165, 170, 30));
 
+        jLabelNIFhp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelNIFhp.setText("jLabel6");
-        jPanelInformation.add(jLabelNIFhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 50, 20));
+        jPanelInformation.add(jLabelNIFhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 194, 150, 30));
 
+        jLabelInstitutionhp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelInstitutionhp.setText("jLabel7");
-        jPanelInformation.add(jLabelInstitutionhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 50, 20));
+        jPanelInformation.add(jLabelInstitutionhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 224, 140, 30));
 
+        jLabelBloodTypehp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelBloodTypehp.setText("jLabel8");
-        jPanelInformation.add(jLabelBloodTypehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 50, 20));
+        jPanelInformation.add(jLabelBloodTypehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 192, 110, 30));
 
+        jLabelLastNamehp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelLastNamehp.setText("jLabel9");
-        jPanelInformation.add(jLabelLastNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 50, 20));
+        jPanelInformation.add(jLabelLastNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 44, 50, 30));
 
+        jLabelGenderhp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelGenderhp.setText("jLabel10");
-        jPanelInformation.add(jLabelGenderhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 60, 20));
+        jPanelInformation.add(jLabelGenderhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 73, 60, 30));
 
+        jLabelNationalityhp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelNationalityhp.setText("jLabel11");
-        jPanelInformation.add(jLabelNationalityhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 60, 20));
+        jPanelInformation.add(jLabelNationalityhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 103, 100, 30));
 
+        jLabelAdresshp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelAdresshp.setText("jLabel12");
-        jPanelInformation.add(jLabelAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 70, 20));
+        jPanelInformation.add(jLabelAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 134, 120, 30));
 
+        jLabelMaritalStatushp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelMaritalStatushp.setText("jLabel14");
-        jPanelInformation.add(jLabelMaritalStatushp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 50, 20));
+        jPanelInformation.add(jLabelMaritalStatushp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 165, 80, 30));
+
+        jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
+        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 230, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));

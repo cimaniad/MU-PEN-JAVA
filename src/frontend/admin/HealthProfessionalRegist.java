@@ -22,7 +22,8 @@ import sun.misc.BASE64Encoder;
 
 /**
  * This class is the interface with the Admin so he can make the register of the
- * Health Professional in the system 
+ * Health Professional in the system
+ *
  * @author Ricardo
  */
 public class HealthProfessionalRegist extends javax.swing.JFrame {
@@ -37,7 +38,6 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
 
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,11 +200,13 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
- * This method reacts to the click at the jButtonRegist, and sends the information
- * of the Health Professional to the server where it gonna be saved. Also catches the errors,
- * and displays a error message if catch some error.
- * @param evt 
- */
+     * This method reacts to the click at the jButtonRegist, and sends the
+     * information of the Health Professional to the server where it gonna be
+     * saved. Also catches the errors, and displays a error message if catch
+     * some error.
+     *
+     * @param evt
+     */
     private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
         try {
             HealthProfessional hp = loadHealthProfessionalFromPanel();
@@ -215,20 +217,22 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
                     e.getMessage(), "Erro ao registar Profissional de saude", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRegistActionPerformed
-/**
- * This method reacts to the click at the jButtonBack, and close this frame and opens
- * the HeatlProfessionalList frame
- * @param evt 
- */
+    /**
+     * This method reacts to the click at the jButtonBack, and close this frame
+     * and opens the HeatlProfessionalList frame
+     *
+     * @param evt
+     */
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         new HealthProfessionalList().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
-/**
- * This method reacts to the click at the jButtonAddPhoto and allows the user to 
- * choose the profile image thru the computer 
- * @param evt 
- */
+    /**
+     * This method reacts to the click at the jButtonAddPhoto and allows the
+     * user to choose the profile image thru the computer
+     *
+     * @param evt
+     */
     private void jButtonAddPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddPhotoActionPerformed
         jFileChooserPhoto.showOpenDialog(this);
         File f = jFileChooserPhoto.getSelectedFile();
@@ -256,7 +260,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
         warns.append(jTextFieldLastName.getText().isEmpty() ? "Apelido, " : "");
         warns.append(jTextFieldAdress.getText().isEmpty() ? "Morada, " : "");
-        warns.append(jTextFieldTel.getText().isEmpty() ? "Data de Nascimento, " : "");
+        warns.append(jDateChooserBirth.getDate().toString().isEmpty() ? "Data de Nascimento, " : "");
         warns.append(jTextFieldCC.getText().isEmpty() ? "Numero CC, " : "");
         warns.append(jTextFieldEmail.getText().isEmpty() ? "E-mail, " : "");
         warns.append(jTextFieldNIF.getText().isEmpty() ? "NIF, " : "");
@@ -283,11 +287,11 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
         }
         String name = jTextFieldName.getText();
-        String lasName = jTextFieldLastName.getText();
+        String lastName = jTextFieldLastName.getText();
         String email = jTextFieldEmail.getText().trim();
         String adress = jTextFieldAdress.getText();
         String nacionality = jTextFieldNationality.getText();
-        String institution = jTextFieldNationality.getText();
+        String institution = jTextFieldInstitution.getText();
         String gender = String.valueOf(jComboBoxBloodType.getSelectedItem());
         String maritalStatus = String.valueOf(jComboBoxMaritalStatus.getSelectedItem());
         String bloodGroup = String.valueOf(jComboBoxBloodType.getSelectedItem());
@@ -313,7 +317,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             throw new RuntimeException(e.getMessage());
         }
 
-        return new HealthProfessional(name, lasName, numCC, adress, numTel, nif, email, maritalStatus,
+        return new HealthProfessional(name, lastName, numCC, adress, numTel, nif, email, maritalStatus,
                 parseDate(birthDate), bloodGroup, nacionality, gender, pass, encodeToString(pic, "jpg"), institution, developmentPro);
     }
 
