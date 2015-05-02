@@ -60,7 +60,7 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabelProfile.setText("Perfil");
+        jLabelProfile.setText("Administrador");
         jPanelInformation.add(jLabelProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
@@ -70,28 +70,29 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
         jLabelBirthDate.setText("Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 85, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 115, -1, -1));
 
-        jLabelTel.setText("Nº Tel.:");
-        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 115, -1, -1));
+        jLabelTel.setText("Nº Tel:");
+        jLabelTel.setToolTipText("");
+        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 85, -1, -1));
 
         jLabelCC.setText(" Nº CC:");
-        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 145, -1, -1));
+        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 145, -1, -1));
 
         jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 175, -1, -1));
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 145, -1, -1));
 
         jLabelLastName.setText("Apelido:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 55, -1, -1));
+        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 55, -1, -1));
 
         jLabelGender.setText("Sexo:");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 85, -1, -1));
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 85, -1, -1));
 
         jLabelNationality.setText("Nacionalidade:");
         jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 115, -1, -1));
 
         jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 145, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 175, -1, -1));
 
         jButtonEditProfile.setText("Editar Perfil");
         jButtonEditProfile.addActionListener(new java.awt.event.ActionListener() {
