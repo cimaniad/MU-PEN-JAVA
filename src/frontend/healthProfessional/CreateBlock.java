@@ -5,6 +5,7 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.Block;
 import backend.pojos.Domain;
 import backend.pojos.Exercise;
 import backend.pojos.Patient;
@@ -29,7 +30,8 @@ public class CreateBlock extends javax.swing.JFrame {
      */
     
     private Logger log = Logger.getLogger(CreateBlock.class);
-    private DefaultTableModel tableModel;
+    private DefaultTableModel tableModelSel;
+    private DefaultTableModel tableModelPro;
     private DomainWS dWS;
     private List<Domain> dList;
     private SubDomainWS sdWS;
@@ -61,7 +63,7 @@ public class CreateBlock extends javax.swing.JFrame {
         } catch (Exception ex) {
             log.error(ex.getMessage());
             JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \ndominios",
-                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
+                    "Erro  Domínio", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -73,40 +75,75 @@ public class CreateBlock extends javax.swing.JFrame {
         } catch (Exception ex) {
             log.error(ex.getMessage());
             JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nsub-dominios",
-                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
+                    "Erro  Sub Domínios", JOptionPane.ERROR_MESSAGE);
         }
     }
      
      private void drawPropExerTable(){
-          tableModel = new DefaultTableModel() {
+         try {
+          tableModelPro = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int i, int i1) {
                 return false;
             }
         };
-        jTableProposenExercises.setModel(tableModel);
-        tableModel.addColumn("Exercícios Propostos");
+        jTableProposenExercises.setModel(tableModelPro);
+        tableModelPro.addColumn("Exercícios Propostos");
          
         for(Exercise ex : exList){
-             tableModel.addRow(new Object[]{ex.getName()});
+             tableModelPro.addRow(new Object[]{ex.getName()});
          }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios propostos",
+                    "Erro  Exercícios propostos", JOptionPane.ERROR_MESSAGE);
+        }
      }
      
     
-//     private void drawSelecExerTable(){
-//          tableModel = new DefaultTableModel() {
-//            @Override
-//            public boolean isCellEditable(int i, int i1) {
-//                return false;
-//            }
-//        };
-//        jTableSelectedExercises.setModel(tableModel);
-//        tableModel.addColumn("Exercícios Selecionados");
-//         
-//        for(Exercise ex : exList){
-//             tableModel.addRow(new Object[]{ex.getName()});
-//         }
-//     }
+    private void drawSelecExerTable(){
+           try {
+          tableModelSel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+        jTableSelectedExercises.setModel(tableModelSel);
+        tableModelSel.addColumn("Exercícios Selecionados");
+        
+           } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios selecionados",
+                    "Erro  Exercícios selecionados", JOptionPane.ERROR_MESSAGE);
+        } 
+        
+     }
+    
+     private Block loadBlockFromPanel() {
+        String warn = validator();
+        if (!warn.isEmpty()) {
+            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
+        }
+        String name = jTextFieldName.getText();
+        String description = jTextAreaDescription.getText();
+
+
+        return new Block(name, description);
+    }
+
+    private String validator() {
+        StringBuilder warns = new StringBuilder();
+        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
+        warns.append(jTextAreaDescription.getText().isEmpty() ? "Descriçao, " : "");
+
+        if (!warns.toString().isEmpty()) {
+            warns.delete(warns.toString().length() - 2, warns.toString().length());
+            warns.append("!");
+        }
+
+        return warns.toString();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,9 +290,19 @@ public class CreateBlock extends javax.swing.JFrame {
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, -1, -1));
 
         jButtonSave.setText("Guardar");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, -1));
 
         jButtonSelect.setText("<>");
+        jButtonSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelectActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 70, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -279,6 +326,18 @@ public class CreateBlock extends javax.swing.JFrame {
     private void jComboBoxDomainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDomainActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxDomainActionPerformed
+
+    private void jButtonSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectActionPerformed
+        // TODO add your handling code here:
+        tableModelSel.addRow(new Object[]{jTableProposenExercises.getSelectedRow()});
+        tableModelPro.addRow(new Object[]{jTableSelectedExercises.getSelectedRow()});
+        
+    }//GEN-LAST:event_jButtonSelectActionPerformed
+
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;

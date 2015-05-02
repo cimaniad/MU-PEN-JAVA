@@ -47,8 +47,8 @@ public class PrescribeSession extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(PrescribeSession.this, "Erro ao carregar a tabela dos \nprofissionais de saude",
-                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(PrescribeSession.this, "Erro ao carregar a tabela dos \nblocos",
+                    "Erro  Blocos", JOptionPane.ERROR_MESSAGE);
         }
     }
 
