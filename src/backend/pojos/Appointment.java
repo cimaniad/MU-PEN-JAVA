@@ -26,6 +26,18 @@ public class Appointment {
     public Appointment() {
     }
 
+    public Appointment(int idAppointment, int idPatient, int idHealthProfessional, String date, String hour, String local, byte patientApproval, byte healthProfessionalApproval, String description) {
+        this.idAppointment = idAppointment;
+        this.idPatient = idPatient;
+        this.idHealthProfessional = idHealthProfessional;
+        this.date = date;
+        this.hour = hour;
+        this.local = local;
+        this.patientApproval = patientApproval;
+        this.healthProfessionalApproval = healthProfessionalApproval;
+        this.description = description;
+    }
+
     public Appointment(int idPatient, int idHealthProfessional, String date, String hour, String local, byte patientApproval, byte healthProfessionalApproval, String description) {
         this.idPatient = idPatient;
         this.idHealthProfessional = idHealthProfessional;
