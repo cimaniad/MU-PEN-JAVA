@@ -1,0 +1,160 @@
+2015-04-29 02:02:14,654 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-04-29 02:02:14,685 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-29 02:02:14,714 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-29 02:02:14,740 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-29 02:02:14,745 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-29 02:02:14,778 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-29 02:02:14,782 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-29 02:02:14,815 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-29 02:02:14,838 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:63080<->127.0.0.1:80
+2015-04-29 02:02:14,839 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /mu-pen-web/api/ HTTP/1.1
+2015-04-29 02:02:14,840 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-29 02:02:14,841 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-29 02:02:14,866 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /mu-pen-web/api/ HTTP/1.1
+2015-04-29 02:02:14,867 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 69
+2015-04-29 02:02:14,867 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-29 02:02:14,868 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-04-29 02:02:14,871 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-04-29 02:02:14,872 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)
+2015-04-29 02:02:14,872 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-04-29 02:02:14,873 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /mu-pen-web/api/ HTTP/1.1[\r][\n]"
+2015-04-29 02:02:14,874 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 69[\r][\n]"
+2015-04-29 02:02:14,875 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-29 02:02:14,875 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-04-29 02:02:14,876 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-29 02:02:14,877 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)[\r][\n]"
+2015-04-29 02:02:14,878 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-29 02:02:14,878 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-04-29 02:02:14,879 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional=1&object=Appointment&function=getAllAppointments"
+2015-04-29 02:02:37,492 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2015-04-29 02:02:37,493 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Wed, 29 Apr 2015 01:02:17 GMT[\r][\n]"
+2015-04-29 02:02:37,494 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3[\r][\n]"
+2015-04-29 02:02:37,495 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.6.3[\r][\n]"
+2015-04-29 02:02:37,496 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 1189[\r][\n]"
+2015-04-29 02:02:37,497 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-04-29 02:02:37,498 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-04-29 02:02:37,498 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html; charset=UTF-8[\r][\n]"
+2015-04-29 02:02:37,499 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-04-29 02:02:37,508 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 200 OK
+2015-04-29 02:02:37,509 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Wed, 29 Apr 2015 01:02:17 GMT
+2015-04-29 02:02:37,510 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3
+2015-04-29 02:02:37,511 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.6.3
+2015-04-29 02:02:37,512 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 1189
+2015-04-29 02:02:37,512 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-04-29 02:02:37,513 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-04-29 02:02:37,514 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html; charset=UTF-8
+2015-04-29 02:02:37,549 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-04-29 02:02:37,559 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-0 << "[{"0":"1","idAppointment":"1","1":"2015-04-25","date":"2015-04-25","2":"17","hour":"17","3":"Hospita de Braga","local":"Hospita de Braga","4":"1","patientApproval":"1","5":"1","healthProfessionalApproval":"1","6":"Consulta urgente!","description":"Consulta urgente!","7":"1","idHealthProfessional":"1","8":"1","idPatient":"1"},{"0":"2","idAppointment":"2","1":"2015-04-25","date":"2015-04-25","2":"20","hour":"20","3":"Cruz Vermelha","local":"Cruz Vermelha","4":"1","patientApproval":"1","5":"0","healthProfessionalApproval":"0","6":"ggg","description":"ggg","7":"1","idHealthProfessional":"1","8":"4","idPatient":"4"},{"0":"8","idAppointment":"8","1":"2015-04-30","date":"2015-04-30","2":"20:00","hour":"20:00","3":"Guimar\u00e3es","local":"Guimar\u00e3es","4":"1","patientApproval":"1","5":"0","healthProfessionalApproval":"0","6":"Fodeu","description":"Fodeu","7":"1","idHealthProfessional":"1","8":"1","idPatient":"1"},{"0":"9","idAppointment":"9","1":"2015-04-25","date":"2015-04-25","2":"20","hour":"20","3":"","local":"","4":"1","patientApproval":"1","5":"1","healthProfessionalApproval":"1","6":"ggg","description":"ggg","7":"1","idHealthProfessional":"1","8":"4","idPatient":"4"}]"
+2015-04-29 02:02:37,561 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-04-29 02:02:37,563 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-29 02:02:37,564 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.readResponse 99 - Response from server: [{"0":"1","idAppointment":"1","1":"2015-04-25","date":"2015-04-25","2":"17","hour":"17","3":"Hospita de Braga","local":"Hospita de Braga","4":"1","patientApproval":"1","5":"1","healthProfessionalApproval":"1","6":"Consulta urgente!","description":"Consulta urgente!","7":"1","idHealthProfessional":"1","8":"1","idPatient":"1"},{"0":"2","idAppointment":"2","1":"2015-04-25","date":"2015-04-25","2":"20","hour":"20","3":"Cruz Vermelha","local":"Cruz Vermelha","4":"1","patientApproval":"1","5":"0","healthProfessionalApproval":"0","6":"ggg","description":"ggg","7":"1","idHealthProfessional":"1","8":"4","idPatient":"4"},{"0":"8","idAppointment":"8","1":"2015-04-30","date":"2015-04-30","2":"20:00","hour":"20:00","3":"Guimar\u00e3es","local":"Guimar\u00e3es","4":"1","patientApproval":"1","5":"0","healthProfessionalApproval":"0","6":"Fodeu","description":"Fodeu","7":"1","idHealthProfessional":"1","8":"1","idPatient":"1"},{"0":"9","idAppointment":"9","1":"2015-04-25","date":"2015-04-25","2":"20","hour":"20","3":"","local":"","4":"1","patientApproval":"1","5":"1","healthProfessionalApproval":"1","6":"ggg","description":"ggg","7":"1","idHealthProfessional":"1","8":"4","idPatient":"4"}]
+2015-04-29 02:02:37,661 DEBUG [AWT-EventQueue-0] - backend.ws.AppointmentWS.getAllAppointments 84 - 
+	 Appointment data access success
+2015-04-29 02:02:37,662 DEBUG [AWT-EventQueue-0] - backend.ws.AppointmentWS.getAllAppointments 85 - 
+	Apoints : [Appointment{idAppointment=1, idPatient=1, idHealthProfessional=1, date=2015-04-25, hour=17, patientApproval=1, healthProfessionalApproval=1, description=Consulta urgente!}, Appointment{idAppointment=2, idPatient=4, idHealthProfessional=1, date=2015-04-25, hour=20, patientApproval=1, healthProfessionalApproval=0, description=ggg}, Appointment{idAppointment=8, idPatient=1, idHealthProfessional=1, date=2015-04-30, hour=20:00, patientApproval=1, healthProfessionalApproval=0, description=Fodeu}, Appointment{idAppointment=9, idPatient=4, idHealthProfessional=1, date=2015-04-25, hour=20, patientApproval=1, healthProfessionalApproval=1, description=ggg}]
+2015-04-29 02:02:44,421 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-29 02:02:44,422 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-29 02:02:44,423 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-29 02:02:44,424 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-29 02:02:44,455 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.CPool.isExpired 81 - Connection [id:0][route:{}->http://localhost:80][state:null] expired @ Wed Apr 29 02:02:42 BST 2015
+2015-04-29 02:02:44,456 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-04-29 02:02:44,458 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 1][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-29 02:02:44,459 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-29 02:02:44,460 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-29 02:02:44,462 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:63084<->127.0.0.1:80
+2015-04-29 02:02:44,463 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /mu-pen-web/api/ HTTP/1.1
+2015-04-29 02:02:44,464 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-29 02:02:44,465 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-29 02:02:44,466 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-1 >> POST /mu-pen-web/api/ HTTP/1.1
+2015-04-29 02:02:44,467 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Content-Length: 38
+2015-04-29 02:02:44,468 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-29 02:02:44,469 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Host: localhost
+2015-04-29 02:02:44,469 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Connection: Keep-Alive
+2015-04-29 02:02:44,470 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)
+2015-04-29 02:02:44,471 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2015-04-29 02:02:44,472 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "POST /mu-pen-web/api/ HTTP/1.1[\r][\n]"
+2015-04-29 02:02:44,473 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Content-Length: 38[\r][\n]"
+2015-04-29 02:02:44,474 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-29 02:02:44,475 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Host: localhost[\r][\n]"
+2015-04-29 02:02:44,476 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-29 02:02:44,476 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)[\r][\n]"
+2015-04-29 02:02:44,477 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-29 02:02:44,478 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "[\r][\n]"
+2015-04-29 02:02:44,479 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-1 >> "object=Patient&function=getAllPatients"
+2015-04-29 02:02:44,536 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "HTTP/1.1 400 Bad Request[\r][\n]"
+2015-04-29 02:02:44,538 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Date: Wed, 29 Apr 2015 01:02:44 GMT[\r][\n]"
+2015-04-29 02:02:44,539 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3[\r][\n]"
+2015-04-29 02:02:44,539 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "X-Powered-By: PHP/5.6.3[\r][\n]"
+2015-04-29 02:02:44,540 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Content-Length: 68[\r][\n]"
+2015-04-29 02:02:44,542 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Connection: close[\r][\n]"
+2015-04-29 02:02:44,543 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Content-Type: text/html; charset=UTF-8[\r][\n]"
+2015-04-29 02:02:44,544 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-1 << "[\r][\n]"
+2015-04-29 02:02:44,545 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-1 << HTTP/1.1 400 Bad Request
+2015-04-29 02:02:44,546 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Date: Wed, 29 Apr 2015 01:02:44 GMT
+2015-04-29 02:02:44,547 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3
+2015-04-29 02:02:44,547 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << X-Powered-By: PHP/5.6.3
+2015-04-29 02:02:44,548 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Content-Length: 68
+2015-04-29 02:02:44,548 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Connection: close
+2015-04-29 02:02:44,549 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Content-Type: text/html; charset=UTF-8
+2015-04-29 02:02:44,550 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-1 << "{"msg":"the requested function don't exist!","error":true,"cod":400}"
+2015-04-29 02:02:44,551 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-1: Shutdown connection
+2015-04-29 02:02:44,552 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.abortConnection 128 - Connection discarded
+2015-04-29 02:02:44,552 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-1: Close connection
+2015-04-29 02:02:44,553 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 1][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-29 02:02:44,554 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.readResponse 99 - Response from server: {"msg":"the requested function don't exist!","error":true,"cod":400}
+2015-04-29 02:02:44,561 ERROR [AWT-EventQueue-0] - backend.pojos.Patient.getAllPatients 131 - 
+	Cod: 400	Msg: the requested function don't exist!
+2015-04-29 02:02:44,562 ERROR [AWT-EventQueue-0] - backend.pojos.Patient.getAllPatients 140 - 
+	Ocorreu um erro ao aceder aos dados do Paciente
+2015-04-29 02:03:11,005 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-04-29 02:03:11,007 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-04-29 02:03:11,008 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-04-29 02:03:11,009 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-29 02:03:11,010 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 2][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-04-29 02:03:11,011 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-04-29 02:03:11,013 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-04-29 02:03:11,015 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:63086<->127.0.0.1:80
+2015-04-29 02:03:11,016 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /mu-pen-web/api/ HTTP/1.1
+2015-04-29 02:03:11,017 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-04-29 02:03:11,018 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-04-29 02:03:11,019 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-2 >> POST /mu-pen-web/api/ HTTP/1.1
+2015-04-29 02:03:11,020 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-2 >> Content-Length: 38
+2015-04-29 02:03:11,021 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-2 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-04-29 02:03:11,021 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-2 >> Host: localhost
+2015-04-29 02:03:11,022 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-2 >> Connection: Keep-Alive
+2015-04-29 02:03:11,023 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-2 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)
+2015-04-29 02:03:11,024 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-2 >> Accept-Encoding: gzip,deflate
+2015-04-29 02:03:11,025 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "POST /mu-pen-web/api/ HTTP/1.1[\r][\n]"
+2015-04-29 02:03:11,026 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "Content-Length: 38[\r][\n]"
+2015-04-29 02:03:11,027 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-04-29 02:03:11,028 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "Host: localhost[\r][\n]"
+2015-04-29 02:03:11,029 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "Connection: Keep-Alive[\r][\n]"
+2015-04-29 02:03:11,030 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)[\r][\n]"
+2015-04-29 02:03:11,031 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-04-29 02:03:11,031 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 >> "[\r][\n]"
+2015-04-29 02:03:11,032 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-2 >> "object=Patient&function=getAllPatients"
+2015-04-29 02:03:11,056 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "HTTP/1.1 400 Bad Request[\r][\n]"
+2015-04-29 02:03:11,057 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "Date: Wed, 29 Apr 2015 01:03:11 GMT[\r][\n]"
+2015-04-29 02:03:11,058 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3[\r][\n]"
+2015-04-29 02:03:11,059 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "X-Powered-By: PHP/5.6.3[\r][\n]"
+2015-04-29 02:03:11,060 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "Content-Length: 68[\r][\n]"
+2015-04-29 02:03:11,061 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "Connection: close[\r][\n]"
+2015-04-29 02:03:11,061 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "Content-Type: text/html; charset=UTF-8[\r][\n]"
+2015-04-29 02:03:11,062 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-2 << "[\r][\n]"
+2015-04-29 02:03:11,063 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-2 << HTTP/1.1 400 Bad Request
+2015-04-29 02:03:11,064 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-2 << Date: Wed, 29 Apr 2015 01:03:11 GMT
+2015-04-29 02:03:11,065 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-2 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3
+2015-04-29 02:03:11,065 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-2 << X-Powered-By: PHP/5.6.3
+2015-04-29 02:03:11,066 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-2 << Content-Length: 68
+2015-04-29 02:03:11,067 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-2 << Connection: close
+2015-04-29 02:03:11,068 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-2 << Content-Type: text/html; charset=UTF-8
+2015-04-29 02:03:11,069 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-2 << "{"msg":"the requested function don't exist!","error":true,"cod":400}"
+2015-04-29 02:03:11,070 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-2: Shutdown connection
+2015-04-29 02:03:11,071 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.abortConnection 128 - Connection discarded
+2015-04-29 02:03:11,072 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-2: Close connection
+2015-04-29 02:03:11,074 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 2][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-04-29 02:03:11,075 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.readResponse 99 - Response from server: {"msg":"the requested function don't exist!","error":true,"cod":400}
+2015-04-29 02:03:11,077 ERROR [AWT-EventQueue-0] - backend.pojos.Patient.getAllPatients 131 - 
+	Cod: 400	Msg: the requested function don't exist!
+2015-04-29 02:03:11,078 ERROR [AWT-EventQueue-0] - backend.pojos.Patient.getAllPatients 140 - 
+	Ocorreu um erro ao aceder aos dados do Paciente

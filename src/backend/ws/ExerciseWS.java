@@ -114,6 +114,37 @@ public class ExerciseWS {
         log.debug("\n\tEx with id " + id + ": " + ex.toString());
         return ex;
     }
+    
+    public List<Exercise> getExerciseBySubDomain(int idSD){
+        List<Exercise> exList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idSubDomain", String.valueOf(idSD)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("Exercise",
+                    "getExerciseBySubDomain", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Exercício");
+            }
+
+            Type type = new TypeToken<List<Exercise>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            exList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tExercise data access success");
+        log.debug("\n\tPs : " + exList.toString());
+        return exList;
+    }
     private List<NameValuePair> getAllParams(Exercise ex) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idExercise", String.valueOf(ex.getIdExercise())));

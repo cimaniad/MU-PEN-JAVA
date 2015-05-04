@@ -235,6 +235,10 @@ public class PrescribeSession extends javax.swing.JFrame {
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
         // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            new BlockProfile(getBlockAtTable()).setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jTableListMouseClicked
 
 
