@@ -6,6 +6,7 @@
 package frontend.healthProfessional;
 
 import backend.pojos.Block;
+import backend.pojos.Patient;
 import backend.ws.BlockWS;
 import frontend.admin.HealthProfessionalList;
 import frontend.admin.JTableRenderer;
@@ -47,8 +48,8 @@ public class PrescribeSession extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(PrescribeSession.this, "Erro ao carregar a tabela dos \nprofissionais de saude",
-                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(PrescribeSession.this, "Erro ao carregar a tabela dos \nblocos",
+                    "Erro  Blocos", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -235,6 +236,10 @@ public class PrescribeSession extends javax.swing.JFrame {
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
         // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            new BlockProfile(getBlockAtTable()).setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jTableListMouseClicked
 
 
