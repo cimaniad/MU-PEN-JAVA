@@ -6,6 +6,7 @@
 package frontend.healthProfessional;
 
 import backend.pojos.Block;
+import backend.pojos.Patient;
 import backend.ws.BlockWS;
 import frontend.admin.HealthProfessionalList;
 import frontend.admin.JTableRenderer;
