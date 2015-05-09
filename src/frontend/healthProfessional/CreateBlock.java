@@ -14,6 +14,7 @@ import backend.ws.DomainWS;
 import backend.ws.ExerciseWS;
 import backend.ws.PatientWS;
 import backend.ws.SubDomainWS;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -124,29 +125,26 @@ public class CreateBlock extends javax.swing.JFrame {
     private Exercise getExerciseProAtTable() {
         return exList.get(jTableProposenExercises.getSelectedRow());
     }
-//     private Block loadBlockFromPanel() {
-//        String warn = validator();
-//        if (!warn.isEmpty()) {
-//            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
-//        }
-//        String name = jTextFieldName.getText();
-//        String description = jTextAreaDescription.getText();
-//
-//
-//        return new Block(name, description);
-//    }
-//    private String validator() {
-//        StringBuilder warns = new StringBuilder();
-//        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
-//        warns.append(jTextAreaDescription.getText().isEmpty() ? "Descriçao, " : "");
-//
-//        if (!warns.toString().isEmpty()) {
-//            warns.delete(warns.toString().length() - 2, warns.toString().length());
-//            warns.append("!");
-//        }
-//
-//        return warns.toString();
-//    }
+    
+    private void validator(){
+        int row = jTableSelectedExercises.getSelectedRow();
+        if((row == -1) &&
+            jTextFieldName.getText().isEmpty() &&
+            jTextAreaDescription.getText().isEmpty()){
+            throw new RuntimeException("Preencha todos os dados");
+        }
+    }
+    
+    
+    private List<Exercise> getSelectedExercise(){
+        
+    }
+    
+    private void loadBlock(){
+        String name = jTextFieldName.getText();
+        String description = jTextAreaDescription.getText();
+        ArrayList <Exercise> exc = exWS.getExerciseById(jTableSelectedExercises.getSelectedRow());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

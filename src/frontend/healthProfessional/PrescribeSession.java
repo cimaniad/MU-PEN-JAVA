@@ -10,6 +10,7 @@ import backend.pojos.Patient;
 import backend.ws.BlockWS;
 import frontend.admin.HealthProfessionalList;
 import frontend.admin.JTableRenderer;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -43,6 +44,7 @@ public class PrescribeSession extends javax.swing.JFrame {
 
             for (Block b : bList) {
                 tableModel.addRow(new Object[]{b.getName()});
+                
 
             }
 
@@ -66,6 +68,22 @@ public class PrescribeSession extends javax.swing.JFrame {
 
     private Block getBlockAtTable() {
         return bList.get(jTableList.getSelectedRow());
+    }
+    
+    private void loadSession(){
+        validator();
+       Date d = jDateChooserDeadline.getDate();
+       Block b = bList.get(jTableList.getSelectedRow());
+        
+    }
+    
+    private void validator(){
+        
+        int row = jTableList.getSelectedRow();
+        if(  jDateChooserDeadline.getDate().toString().isEmpty() && (row == -1)){
+               
+         throw new RuntimeException("Preencha todos os dados");
+        }
     }
 
     /**
@@ -164,6 +182,11 @@ public class PrescribeSession extends javax.swing.JFrame {
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 180));
 
         jButtonSearch.setText("Pesquisar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
 
         jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +251,7 @@ public class PrescribeSession extends javax.swing.JFrame {
 
     private void jButtonPrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrescribeActionPerformed
         // TODO add your handling code here:
+        loadSession();
     }//GEN-LAST:event_jButtonPrescribeActionPerformed
 
     private void jTextFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchActionPerformed
@@ -241,6 +265,13 @@ public class PrescribeSession extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_jTableListMouseClicked
+
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        // TODO add your handling code here:
+        String text = jTextFieldSearch.getText();
+        bList = bWS.getBlockByName(text);
+        drawTable();
+    }//GEN-LAST:event_jButtonSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

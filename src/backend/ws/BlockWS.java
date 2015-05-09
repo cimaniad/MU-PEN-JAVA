@@ -123,4 +123,35 @@ public class BlockWS {
         log.debug("\n\tB with id " + id + ": " + b.toString());
         return b;
     }
+     public List<Block> getBlockByName(String name) {
+         
+         List<Block> bList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+
+        try {
+            responseWS = wrapperWS.sendRequest("Block",
+                    "getBlocksByName", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Bloco");
+            }
+
+            Type type = new TypeToken<List<Block>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            bList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\t Block data access success");
+        log.debug("\n\tBs : " + bList.toString());
+        return bList;
+        
+    }
 }

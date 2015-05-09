@@ -153,7 +153,7 @@ public class PatientsList extends javax.swing.JFrame {
 
 //    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //        String text = jTextFieldSearch.getText();
-////        pList = pWS.getPatientByName(text);
+////      pList = pWS.getPatientByName(text);
 //        drawTable();
 //    }
 //    
