@@ -54,6 +54,11 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         this.jLabelInstitutionhp.setText(hp.getInstitution());
         this.jLabelBloodTypehp.setText(hp.getBloodGroup());
         
+        if(hp.isDevelopmentProfessional()== 1){
+        this.jCheckBoxDevelopmentProfessional.setSelected(true);    
+        }
+        
+        
         if (hp.getPicture().equals("profile")) {
             ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
             jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
@@ -102,6 +107,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelAdresshp = new javax.swing.JLabel();
         jLabelMaritalStatushp = new javax.swing.JLabel();
         jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -215,7 +221,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
         jLabelAdresshp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelAdresshp.setText("jLabel12");
-        jPanelInformation.add(jLabelAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 134, 120, 30));
+        jPanelInformation.add(jLabelAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 134, 160, 30));
 
         jLabelMaritalStatushp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelMaritalStatushp.setText("jLabel14");
@@ -223,6 +229,14 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
         jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
         jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 230, -1));
+
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -246,8 +260,13 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JCheckBox jCheckBoxDevelopmentProfessional;

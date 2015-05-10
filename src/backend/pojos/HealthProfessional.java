@@ -27,7 +27,7 @@ public class HealthProfessional {
     private String password;
     private String picture;
     private String institution;
-    private boolean developmentProfessional;
+    private byte developmentProfessional;
 
     /**
      * Metdo construtor por defeito
@@ -60,7 +60,7 @@ public class HealthProfessional {
     public HealthProfessional(String name, String lastName, int numCC, String adress,
             int numTel, int nif, String email, String maritalStatus, String birthDate,
             String bloodGroup, String nacionality, String gender, String password,
-            String picture, String institution, boolean developmentProfessional) {
+            String picture, String institution, byte developmentProfessional) {
 
         this.name = name;
         this.lastName = lastName;
@@ -208,11 +208,11 @@ public class HealthProfessional {
         this.institution = institution;
     }
 
-    public boolean isDevelopmentProfessional() {
+    public byte isDevelopmentProfessional() {
         return developmentProfessional;
     }
 
-    public void setDevelopmentProfessional(boolean developmentProfessional) {
+    public void setDevelopmentProfessional(byte developmentProfessional) {
         this.developmentProfessional = developmentProfessional;
     }
 
