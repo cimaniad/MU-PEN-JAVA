@@ -62,7 +62,6 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jLabelInstitution = new javax.swing.JLabel();
         jButtonRegist = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
-        jComboBoxGender = new javax.swing.JComboBox();
         jComboBoxBloodType = new javax.swing.JComboBox();
         jComboBoxMaritalStatus = new javax.swing.JComboBox();
         jTextFieldName = new javax.swing.JTextField();
@@ -77,6 +76,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jTextFieldNIF = new javax.swing.JTextField();
         jTextFieldAdress = new javax.swing.JTextField();
         jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
+        jComboBoxGender = new javax.swing.JComboBox();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -153,9 +153,6 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
-        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino", " " }));
-        jPanelInformation.add(jComboBoxGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, -1));
-
         jComboBoxBloodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-" }));
         jPanelInformation.add(jComboBoxBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 170, -1));
 
@@ -184,6 +181,9 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
 
         jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
         jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 180, -1));
+
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino" }));
+        jPanelInformation.add(jComboBoxGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -302,7 +302,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         int numTel = 0;
         int numCC = 0;
         int nif = 0;
-        byte developmentPro = jCheckBoxDevelopmentProfessional.isSelected() == true ? (byte)1 : (byte)0;
+        boolean developmentPro = jCheckBoxDevelopmentProfessional.isSelected() == true ? true : false;
         try {
             if (jTextFieldTel.getText().trim().length() != 9 || jTextFieldNIF.getText().trim().length() != 9) {
                 throw new RuntimeException("O NºTel e NIF devem ter 9 digitos!");

@@ -16,7 +16,6 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
@@ -96,21 +95,7 @@ public class PatientsList extends javax.swing.JFrame {
 
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Apelido", "Patologia", "Notificações"
@@ -122,6 +107,11 @@ public class PatientsList extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListMouseClicked(evt);
             }
         });
         jScrollPaneList.setViewportView(jTableList);
@@ -158,6 +148,13 @@ public class PatientsList extends javax.swing.JFrame {
         new HealthProfessionalMenu().setVisible(true);;
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
+        if(evt.getClickCount()==2){
+            new PatientProfile(getPatientAtTable()).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jTableListMouseClicked
 
 //    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
 //       String name = jTextFieldSearch.getText();

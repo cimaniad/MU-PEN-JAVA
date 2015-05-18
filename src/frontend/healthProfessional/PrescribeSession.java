@@ -5,6 +5,17 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.Block;
+import backend.pojos.Patient;
+import backend.ws.BlockWS;
+import frontend.admin.HealthProfessionalList;
+import frontend.admin.JTableRenderer;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
+
 /**
  *
  * @author jorge
@@ -14,8 +25,47 @@ public class PrescribeSession extends javax.swing.JFrame {
     /**
      * Creates new form PrescribeSession
      */
+    private Logger log = Logger.getLogger(PrescribeSession.class);
+    private DefaultTableModel tableModel;
+    private BlockWS bWS;
+    private List<Block> bList;
+
     public PrescribeSession() {
         initComponents();
+        bWS = new BlockWS();
+        bList = bWS.getAllBlocks();
+        drawTable();
+    }
+
+    private void drawTable() {
+        try {
+            initializeTable();
+
+            for (Block b : bList) {
+                tableModel.addRow(new Object[]{b.getName()});
+
+            }
+
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(PrescribeSession.this, "Erro ao carregar a tabela dos \nblocos",
+                    "Erro  Blocos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void initializeTable() {
+        tableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+        jTableList.setModel(tableModel);
+        tableModel.addColumn("Blocos Existentes");
+    }
+
+    private Block getBlockAtTable() {
+        return bList.get(jTableList.getSelectedRow());
     }
 
     /**
@@ -36,10 +86,10 @@ public class PrescribeSession extends javax.swing.JFrame {
         jTableList = new javax.swing.JTable();
         jButtonSearch = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonPrescribe = new javax.swing.JButton();
+        jLabelDeadline = new javax.swing.JLabel();
+        jDateChooserDeadline = new com.toedter.calendar.JDateChooser();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -104,6 +154,11 @@ public class PrescribeSession extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListMouseClicked(evt);
+            }
+        });
         jScrollPaneList.setViewportView(jTableList);
 
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 180));
@@ -118,25 +173,25 @@ public class PrescribeSession extends javax.swing.JFrame {
         });
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
 
-        jButton1.setText("Eliminar Bloco");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDelete.setText("Eliminar Bloco");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
+        jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
 
-        jButton2.setText("Prescrever");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPrescribe.setText("Prescrever");
+        jButtonPrescribe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonPrescribeActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
+        jPanelInformation.add(jButtonPrescribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
 
-        jLabel1.setText("Data limite:");
-        jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-        jPanelInformation.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 170, -1));
+        jLabelDeadline.setText("Data limite:");
+        jPanelInformation.add(jLabelDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+        jPanelInformation.add(jDateChooserDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 170, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -165,28 +220,37 @@ public class PrescribeSession extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        tableModel.removeRow(jTableList.getSelectedRow());
+      // deleteBlock(jTableList.getSelectedRow()); 
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonPrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrescribeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonPrescribeActionPerformed
 
     private void jTextFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSearchActionPerformed
 
-   
+    private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            new BlockProfile(getBlockAtTable()).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jTableListMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonPrescribe;
     private javax.swing.JButton jButtonRegist;
     private javax.swing.JButton jButtonSearch;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JDateChooser jDateChooserDeadline;
+    private javax.swing.JLabel jLabelDeadline;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelPatientslList;
     private javax.swing.JLabel jLabelwallpaper;

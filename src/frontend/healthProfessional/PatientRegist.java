@@ -21,8 +21,9 @@ import javax.swing.JOptionPane;
 import sun.misc.BASE64Encoder;
 
 public class PatientRegist extends javax.swing.JFrame {
-    
-     private BufferedImage pic = null;
+
+    private BufferedImage pic = null;
+
     /**
      * Creates new form PatientRegist
      */
@@ -206,6 +207,7 @@ public class PatientRegist extends javax.swing.JFrame {
             pWS.saveEditPatient(p);
             new PatientsList().setVisible(true);
             dispose();
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(PatientRegist.this,
                     e.getMessage(), "Erro ao registar Patiente", JOptionPane.ERROR_MESSAGE);
@@ -229,7 +231,9 @@ public class PatientRegist extends javax.swing.JFrame {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(PatientRegist.this,
                     "Erro ao carregar imagem", "Erro ao registar Paciente",
-                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE
+        
+    );
         }
     }//GEN-LAST:event_jButtonAddPhotoActionPerformed
 
@@ -252,9 +256,8 @@ public class PatientRegist extends javax.swing.JFrame {
 
         return warns.toString();
     }
-    
-    
-     private Patient loadPatientFromPanel() {
+
+    private Patient loadPatientFromPanel() {
         String warn = validator();
         if (!warn.isEmpty()) {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
@@ -274,7 +277,7 @@ public class PatientRegist extends javax.swing.JFrame {
         int numTel = 0;
         int numCC = 0;
         int nif = 0;
-        
+
         try {
             if (jTextFieldTel.getText().trim().length() != 9 || jTextFieldNIF.getText().trim().length() != 9) {
                 throw new RuntimeException("O NºTel e NIF devem ter 9 digitos!");
@@ -291,11 +294,11 @@ public class PatientRegist extends javax.swing.JFrame {
             throw new RuntimeException(e.getMessage());
         }
         //por o id do Profissional de saude!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        return new Patient(name, lastName, numCC, encodeToString(pic, "jpg"), adress, numTel, nif, email, maritalStatus,  parseDate(birthDate),
+        return new Patient(name, lastName, numCC, encodeToString(pic, "jpg"), adress, numTel, nif, email, maritalStatus, parseDate(birthDate),
                 bloodGroup, nationality, gender, pass, pathology, description, 1);
     }
-    
-        private String generatePass() {
+
+    private String generatePass() {
         StringBuilder sb = new StringBuilder();
         String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         Random rnd = new Random();
@@ -305,10 +308,8 @@ public class PatientRegist extends javax.swing.JFrame {
         }
         return sb.toString();
     }
-        
-        
-        
-        
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddPhoto;
     private javax.swing.JButton jButtonBack;
@@ -357,8 +358,7 @@ public class PatientRegist extends javax.swing.JFrame {
      * @return String date
      */
 
-
-private String parseDate(Date d) {
+    private String parseDate(Date d) {
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFromat.format(d);
         return date;

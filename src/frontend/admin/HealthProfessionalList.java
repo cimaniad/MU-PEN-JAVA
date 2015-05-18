@@ -35,10 +35,17 @@ public class HealthProfessionalList extends javax.swing.JFrame {
      * Creates new form HeathProfessionalList
      */
     public HealthProfessionalList() {
-        initComponents();
-        hpWS = new HealthProfessionalWS();
-        hpList = hpWS.getAllHealthProfessionals();
-        drawTable();
+        try {
+            initComponents();
+            hpWS = new HealthProfessionalWS();
+            hpList = hpWS.getAllHealthProfessionals();
+            drawTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(HealthProfessionalList.this,
+                    e.getMessage(), "Erro ao carregar os dados do Profissional de saude", JOptionPane.ERROR_MESSAGE);
+            
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -137,36 +144,44 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
- * This method opens the HealthProfessionalRegist Jfram and close this when the jButtonRegist is clicked
- * @param evt 
- */
+     * This method opens the HealthProfessionalRegist Jfram and close this when
+     * the jButtonRegist is clicked
+     *
+     * @param evt
+     */
     private void jButtonRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistActionPerformed
         new HealthProfessionalRegist().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonRegistActionPerformed
-/**
- * This method makes the serch by the HealthProfessional, and redraw the table
- * @param evt 
- */
+    /**
+     * This method makes the serch by the HealthProfessional, and redraw the
+     * table
+     *
+     * @param evt
+     */
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         String name = jTextFieldSearch.getText();
         hpList = hpWS.getHealthProfessionalByName(name);
         drawTable();
     }//GEN-LAST:event_jButtonSearchActionPerformed
-/**
- * This method reacts to the click at the Jtable, and opens the profile of the selected HealthProfessional
- * @param evt 
- */
+    /**
+     * This method reacts to the click at the Jtable, and opens the profile of
+     * the selected HealthProfessional
+     *
+     * @param evt
+     */
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
         if (evt.getClickCount() == 2) {
             new HealthProfessionalProfile(getHealthProAtTable()).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jTableListMouseClicked
-/**
- * This method reacts to the click at the jButtonBack, and close this Jframe and opens the AdminMenu Jframe
- * @param evt 
- */
+    /**
+     * This method reacts to the click at the jButtonBack, and close this Jframe
+     * and opens the AdminMenu Jframe
+     *
+     * @param evt
+     */
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         new AdminMenu().setVisible(true);
         dispose();
