@@ -229,4 +229,28 @@ public class PatientWS {
         log.debug("\n\tPs : " + pList.toString());
         return pList;
     }
+
+    public void deletePatient(int id) {
+        List<NameValuePair> parms = new ArrayList<>();
+        parms.add(new BasicNameValuePair("idPatient", String.valueOf(id)));
+        try {
+            responseWS = wrapperWS.sendRequest("Patient", "deletePatient", parms);
+            String jsonResp = wrapperWS.readResponse(responseWS);
+            Validation v = gson.fromJson(jsonResp, Validation.class);
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            log.debug("codigo: " + httpResponseCod);
+            if (httpResponseCod != 200) {
+                if (httpResponseCod == 500) {
+                    log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                    throw new RuntimeException("Não foi possivel eliminar este paciente");
+                }
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Não foi possivel eliminar este Paciente");
+            }
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tPatient deleted with success");
+    }
 }

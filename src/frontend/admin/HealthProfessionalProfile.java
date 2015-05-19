@@ -6,6 +6,7 @@
 package frontend.admin;
 
 import backend.pojos.HealthProfessional;
+import backend.ws.HealthProfessionalWS;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -23,14 +24,15 @@ import org.apache.log4j.Logger;
 public class HealthProfessionalProfile extends javax.swing.JFrame {
 
     private Logger log = Logger.getLogger(HealthProfessionalProfile.class);
+    private HealthProfessional hp;
 
     /**
      * Creates new form NewJFrame
      */
     public HealthProfessionalProfile(HealthProfessional hp) {
-        
+
         initComponents();
-        
+        this.hp = hp;
         try {
             setFields(hp);
         } catch (Exception e) {
@@ -53,7 +55,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         this.jTextFieldMaritalStatehp.setText(hp.getMaritalStatus());
         this.jTextFieldInstitutionhp.setText(hp.getInstitution());
         this.jTextField11.setText(hp.getBloodGroup());
-        
+
         if (hp.getPicture().equals("profile")) {
             ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
             jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
@@ -63,8 +65,6 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         }
     }
 
-   
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -228,7 +228,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jTextFieldAdresshp.setEditable(false);
         jTextFieldAdresshp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jTextFieldAdresshp.setText("jTextField9");
-        jPanelInformation.add(jTextFieldAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 430, -1));
+        jPanelInformation.add(jTextFieldAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 380, -1));
 
         jTextFieldMaritalStatehp.setEditable(false);
         jTextFieldMaritalStatehp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -288,7 +288,16 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            HealthProfessionalWS hpWS = new HealthProfessionalWS();
+            hpWS.deleteHealthProfessional(hp.getIdHealthProfessional());
+            new HealthProfessionalList().setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(HealthProfessionalProfile.this,
+                    e.getMessage(), "Erro ao eliminar o Profissional de saude", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jTextFieldnifhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldnifhpActionPerformed
