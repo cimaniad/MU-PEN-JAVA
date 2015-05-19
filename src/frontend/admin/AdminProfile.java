@@ -24,27 +24,45 @@ import org.apache.log4j.Logger;
 public class AdminProfile extends javax.swing.JFrame {
 
     private Logger log = Logger.getLogger(AdminProfile.class);
-    private AdminWS adminWS;
-    private Admin a;
+    private AdminWS admWS;
+
 
     /**
      * Creates new form AdminProfile
+     * @param idAdmin
      */
     public AdminProfile(int idAdmin) {
         try {
-
-            adminWS = new AdminWS();
-            a = adminWS.getAdminById(idAdmin);
             initComponents();
-
-            setFields(a);
+            admWS = new AdminWS();
+            setFields(admWS.getAdminById(idAdmin));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(AdminProfile.this,
                     e.getMessage(), "Erro ao carregar os dados do Administrador", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public AdminProfile() {
+
+
+    private void setFields(Admin a) {
+        this.jTextField1.setText(a.getName());
+        this.jTextField6.setText(a.getLastName());
+        this.jTextField3.setText(a.getBirthDate());
+        this.jTextField2.setText(String.valueOf(a.getNumTel()));
+        this.jTextField8.setText(a.getNationality());
+        this.jTextField9.setText(String.valueOf(a.getNumCC()));
+        this.jTextField4.setText(a.getEmail());
+        this.jTextField5.setText(a.getAdress());
+        this.jTextField7.setText(a.getBloodGroup());
+
+        if (a.getPicture().equals("profile")) {
+            ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+            jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
+                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+        } else {
+            jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(a.getPicture(), 90, 90)));
+        }
+
     }
 
     private void setFields(Admin a) {
@@ -84,17 +102,17 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabelNationality = new javax.swing.JLabel();
         jLabelAdress = new javax.swing.JLabel();
         jLabelBloodType = new javax.swing.JLabel();
-        jLabelNamea = new javax.swing.JLabel();
-        jLabelLastNamea = new javax.swing.JLabel();
-        jLabelTela = new javax.swing.JLabel();
-        jLabelBirthDatea = new javax.swing.JLabel();
-        jLabelCCa = new javax.swing.JLabel();
-        jLabelBloodTypea = new javax.swing.JLabel();
-        jLabelNationalitya = new javax.swing.JLabel();
-        jLabelAdressa = new javax.swing.JLabel();
-        jLabelEmaila = new javax.swing.JLabel();
         jButtonEditProfile = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -115,7 +133,10 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabelProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabelProfile.setText("Administrador");
         jPanelInformation.add(jLabelProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 90));
+
+
+        jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
+        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, 80));
 
         jLabelName.setText("Nome:");
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
@@ -145,42 +166,6 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabelBloodType.setText("         Grupo sanguíneo:  ");
         jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 85, 140, -1));
 
-        jLabelNamea.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelNamea.setText("jLabel1");
-        jPanelInformation.add(jLabelNamea, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 49, 180, 30));
-
-        jLabelLastNamea.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelLastNamea.setText("jLabel6");
-        jPanelInformation.add(jLabelLastNamea, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 49, 180, 30));
-
-        jLabelTela.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelTela.setText("jLabel2");
-        jPanelInformation.add(jLabelTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 79, 180, 30));
-
-        jLabelBirthDatea.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelBirthDatea.setText("jLabel3");
-        jPanelInformation.add(jLabelBirthDatea, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 109, 180, 30));
-
-        jLabelCCa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelCCa.setText("jLabel9");
-        jPanelInformation.add(jLabelCCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 139, 180, 30));
-
-        jLabelBloodTypea.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelBloodTypea.setText("jLabel7");
-        jPanelInformation.add(jLabelBloodTypea, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 79, 180, 30));
-
-        jLabelNationalitya.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelNationalitya.setText("jLabel8");
-        jPanelInformation.add(jLabelNationalitya, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 109, 180, 30));
-
-        jLabelAdressa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelAdressa.setText("jLabel5");
-        jPanelInformation.add(jLabelAdressa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 169, 180, 30));
-
-        jLabelEmaila.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelEmaila.setText("jLabel4");
-        jPanelInformation.add(jLabelEmaila, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 139, 180, 30));
-
         jButtonEditProfile.setText("Editar Perfil");
         jButtonEditProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +181,38 @@ public class AdminProfile extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+
+        jTextField1.setEditable(false);
+        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
+
+        jTextField2.setEditable(false);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
+
+        jTextField3.setEditable(false);
+        jPanelInformation.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
+
+        jTextField4.setEditable(false);
+        jPanelInformation.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 110, -1));
+
+        jTextField5.setEditable(false);
+        jPanelInformation.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 370, -1));
+
+        jTextField6.setEditable(false);
+        jPanelInformation.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 110, -1));
+
+        jTextField7.setEditable(false);
+        jPanelInformation.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, -1));
+
+        jTextField8.setEditable(false);
+        jPanelInformation.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 110, -1));
+
+        jTextField9.setEditable(false);
+        jPanelInformation.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 110, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -231,13 +248,10 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAdress;
     private javax.swing.JLabel jLabelAdressa;
     private javax.swing.JLabel jLabelBirthDate;
-    private javax.swing.JLabel jLabelBirthDatea;
     private javax.swing.JLabel jLabelBloodType;
-    private javax.swing.JLabel jLabelBloodTypea;
     private javax.swing.JLabel jLabelCC;
     private javax.swing.JLabel jLabelCCa;
     private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEmaila;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelLastNamea;
@@ -252,6 +266,15 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
     private Image getImageFromServer(String picture, int with, int heigth) {
