@@ -65,8 +65,7 @@ public class AdminWS {
                 "\n\tAdmin with id " + id + ": " + a.toString());
         return a;
     }
-<<<<<<< HEAD
-=======
+
 
     public void editAdmin(Admin a) {
         try {
@@ -105,5 +104,4 @@ public class AdminWS {
 
         return params;
     }
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
 }

@@ -65,25 +65,6 @@ public class AdminProfile extends javax.swing.JFrame {
 
     }
 
-    private void setFields(Admin a) {
-        this.jLabelNamea.setText(a.getName());
-        this.jLabelLastNamea.setText(a.getLastName());
-        this.jLabelBirthDatea.setText(a.getBirthDate());
-        this.jLabelTela.setText(String.valueOf(a.getNumTel()));
-        this.jLabelNationalitya.setText(a.getNationality());
-        this.jLabelCCa.setText(String.valueOf(a.getNumCC()));
-        this.jLabelEmaila.setText(a.getEmail());
-        this.jLabelAdressa.setText(a.getAdress());
-        this.jLabelBloodTypea.setText(a.getBloodGroup());
-
-        if (a.getPicture().equals("profile")) {
-            ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
-            jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
-                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
-        } else {
-            jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(a.getPicture(), 90, 90)));
-        }
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -186,11 +167,6 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
 
         jTextField2.setEditable(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
         jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
 
         jTextField3.setEditable(false);

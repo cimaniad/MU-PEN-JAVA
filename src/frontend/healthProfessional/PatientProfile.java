@@ -5,13 +5,8 @@
  */
 package frontend.healthProfessional;
 
-<<<<<<< HEAD
-import backend.pojos.Patient;
-=======
-import backend.pojos.HealthProfessional;
 import backend.pojos.Patient;
 import backend.ws.PatientWS;
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -21,10 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
-<<<<<<< HEAD
 
-=======
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
 /**
  *
  * @author jorge
@@ -32,66 +24,25 @@ import org.apache.log4j.Logger;
 public class PatientProfile extends javax.swing.JFrame {
 
     private Logger log = Logger.getLogger(PatientProfile.class);
-    
+    private Patient p;
+
     /**
      * Creates new form PatienteProfile
      */
-<<<<<<< HEAD
-    public PatientProfile(Patient p) {
-        initComponents();
-=======
-    private Logger log = Logger.getLogger(HealthProfessionalProfile.class);
-    private Patient p;
-
-    
-    
     public PatientProfile(Patient p) {
         initComponents();
         this.p = p;
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
         try {
             setFields(p);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(PatientProfile.this,
-<<<<<<< HEAD
-                    e.getMessage(), "Erro ao carregar os dados do Paciente", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void setFields(Patient p) {
-        this.jLabelNamep.setText(p.getName());
-        this.jLabelLastNamep.setText(p.getLastName());
-        this.jLabelBirthDatep.setText(p.getBirthDate());
-        this.jLabelGenderp.setText(p.getGender());
-        this.jLabelTelp.setText(String.valueOf(p.getNumTel()));
-        this.jLabelNationalityp.setText(p.getNationality());
-        this.jLabelCCp.setText(String.valueOf(p.getNumCC()));
-        this.jLabelEmailp.setText(p.getEmail());
-        this.jLabelAdressp.setText(p.getAdress());
-        this.jLabelUtentep.setText(String.valueOf(p.getNif()));
-        this.jLabelNIFp.setText(String.valueOf(p.getNif()));
-        this.jLabelMaritalStatusp.setText(p.getMaritalStatus());
-        this.jLabelPathologyp.setText(p.getPathology());
-        this.jLabelDescriptionp.setText(p.getDescription());
-        this.jLabelBloodTypep.setText(p.getBloodGroup());
-        
-        if (p.getPicture().equals("profile")) {
-            ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
-            jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
-                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
-        } else {
-            jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(p.getPicture(), 90, 90)));
-=======
                     e.getMessage(), "Erro ao carregar os dados do Profissional de Saúde", JOptionPane.ERROR_MESSAGE);
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
         }
     }
-    
 
-    PatientProfile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public PatientProfile() {
     }
-    
+
     private void setFields(Patient p) {
         this.jTextFieldNamep.setText(p.getName());
         this.jTextFieldLastNamep.setText(p.getLastName());
@@ -107,7 +58,7 @@ public class PatientProfile extends javax.swing.JFrame {
         this.jTextField2.setText(p.getMaritalStatus());
         this.jTextField10.setText(String.valueOf(p.getNif()));
         this.jTextField1.setText(p.getPathology());
-    
+
         if (p.getPicture().equals("profile")) {
             ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
             jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
@@ -116,6 +67,7 @@ public class PatientProfile extends javax.swing.JFrame {
             jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(p.getPicture(), 90, 90)));
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,23 +94,6 @@ public class PatientProfile extends javax.swing.JFrame {
         jLabelMaritalStatus = new javax.swing.JLabel();
         jLabelPathology = new javax.swing.JLabel();
         jLabelBloodType = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jLabelNamep = new javax.swing.JLabel();
-        jLabelBirthDatep = new javax.swing.JLabel();
-        jLabelTelp = new javax.swing.JLabel();
-        jLabelCCp = new javax.swing.JLabel();
-        jLabelEmailp = new javax.swing.JLabel();
-        jLabelNIFp = new javax.swing.JLabel();
-        jLabelBloodTypep = new javax.swing.JLabel();
-        jLabelDescriptionp = new javax.swing.JLabel();
-        jLabelLastNamep = new javax.swing.JLabel();
-        jLabelGenderp = new javax.swing.JLabel();
-        jLabelNationalityp = new javax.swing.JLabel();
-        jLabelAdressp = new javax.swing.JLabel();
-        jLabelUtentep = new javax.swing.JLabel();
-        jLabelMaritalStatusp = new javax.swing.JLabel();
-        jLabelPathologyp = new javax.swing.JLabel();
-=======
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextFieldAdressp = new javax.swing.JTextField();
@@ -173,7 +108,6 @@ public class PatientProfile extends javax.swing.JFrame {
         jTextFieldNumTelp = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
         jTextFieldNamep = new javax.swing.JTextField();
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
         jButtonPrescribeSession = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
@@ -204,11 +138,8 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
         jLabelBirthDate.setText("Data de nascimento:");
-<<<<<<< HEAD
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
-=======
+
         jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 85, -1, -1));
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
 
         jLabelTel.setText("Nº Tel:");
         jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 115, -1, -1));
@@ -226,11 +157,8 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 85, -1, -1));
 
         jLabelNationality.setText("Nacionalidade:");
-<<<<<<< HEAD
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, 20));
-=======
+
         jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 115, -1, -1));
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
 
         jLabelAdress.setText("Morada:");
         jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
@@ -239,60 +167,7 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 205, 30, -1));
 
         jLabelMaritalStatus.setText(" Estado Civil:");
-<<<<<<< HEAD
-        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
-        jLabelPathology.setText(" Patologia:");
-        jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 224, -1, 20));
-
-        jLabelBloodType.setText("    Grupo sanguíneo:");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
-
-        jLabelNamep.setText("jLabel1");
-        jPanelInformation.add(jLabelNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 140, 20));
-
-        jLabelBirthDatep.setText("jLabel2");
-        jPanelInformation.add(jLabelBirthDatep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, -1));
-
-        jLabelTelp.setText("jLabel3");
-        jPanelInformation.add(jLabelTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 104, 110, 30));
-
-        jLabelCCp.setText("jLabel4");
-        jPanelInformation.add(jLabelCCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 144, 110, 20));
-
-        jLabelEmailp.setText("jLabel5");
-        jPanelInformation.add(jLabelEmailp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 130, 20));
-
-        jLabelNIFp.setText("jLabel6");
-        jPanelInformation.add(jLabelNIFp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, 20));
-
-        jLabelBloodTypep.setText("jLabel7");
-        jPanelInformation.add(jLabelBloodTypep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 110, -1));
-
-        jLabelDescriptionp.setText("jLabel8");
-        jPanelInformation.add(jLabelDescriptionp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 264, 370, 50));
-
-        jLabelLastNamep.setText("jLabel9");
-        jPanelInformation.add(jLabelLastNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 44, 140, 30));
-
-        jLabelGenderp.setText("jLabel10");
-        jPanelInformation.add(jLabelGenderp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 84, 130, 20));
-
-        jLabelNationalityp.setText("jLabel11");
-        jPanelInformation.add(jLabelNationalityp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 140, 20));
-
-        jLabelAdressp.setText("jLabel12");
-        jPanelInformation.add(jLabelAdressp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 160, 20));
-
-        jLabelUtentep.setText("jLabel13");
-        jPanelInformation.add(jLabelUtentep, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 130, 20));
-
-        jLabelMaritalStatusp.setText("jLabel14");
-        jPanelInformation.add(jLabelMaritalStatusp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 110, 30));
-
-        jLabelPathologyp.setText("jLabel15");
-        jPanelInformation.add(jLabelPathologyp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 100, 30));
-=======
         jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 205, -1, -1));
 
         jLabelPathology.setText(" Patologia:");
@@ -314,11 +189,6 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldNationalityp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 110, -1));
 
         jTextField6.setEditable(false);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
         jPanelInformation.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, -1));
 
         jTextFieldLastNamep.setEditable(false);
@@ -340,11 +210,6 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldNumCCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 110, -1));
 
         jTextFieldNumTelp.setEditable(false);
-        jTextFieldNumTelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNumTelpActionPerformed(evt);
-            }
-        });
         jPanelInformation.add(jTextFieldNumTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
 
         jTextField14.setEditable(false);
@@ -352,7 +217,6 @@ public class PatientProfile extends javax.swing.JFrame {
 
         jTextFieldNamep.setEditable(false);
         jPanelInformation.add(jTextFieldNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
 
         jButtonPrescribeSession.setText("Prescrever sessão");
         jButtonPrescribeSession.addActionListener(new java.awt.event.ActionListener() {
@@ -411,17 +275,10 @@ public class PatientProfile extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jTextFieldNumTelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumTelpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNumTelpActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        try{
-            PatientWS pWS= new PatientWS();
+        try {
+            PatientWS pWS = new PatientWS();
             pWS.deletePatient(p.getIdPatient());
             new PatientsList().setVisible(true);
             dispose();
@@ -431,7 +288,7 @@ public class PatientProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonDelete;
@@ -458,11 +315,6 @@ public class PatientProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMaritalStatus;
     private javax.swing.JLabel jLabelMaritalStatusp;
     private javax.swing.JLabel jLabelNIF;
-<<<<<<< HEAD
-    private javax.swing.JLabel jLabelNIFp;
-    private javax.swing.JLabel jLabelNUtente;
-=======
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNamep;
     private javax.swing.JLabel jLabelNationality;
@@ -494,12 +346,8 @@ public class PatientProfile extends javax.swing.JFrame {
 
     private Image getImageFromServer(String picture, int with, int heigth) {
         try {
-<<<<<<< HEAD
-            URL url = new URL("http://localhost/mu-pen-web/imagens/Patients/" + picture.trim());
-=======
-            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
->>>>>>> 130be17c649ae024f3d6738443f8eb3e917b8f3c
-            log.debug("\n\tProfile Image: " + url.toString());
+             URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+             log.debug("\n\tProfile Image: " + url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);
             return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
