@@ -6,6 +6,7 @@
 package frontend.healthProfessional;
 
 import backend.pojos.HealthProfessional;
+import backend.ws.HealthProfessionalWS;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -23,11 +24,15 @@ import org.apache.log4j.Logger;
 public class HealthProfessionalProfile extends javax.swing.JFrame {
 
     private Logger log = Logger.getLogger(HealthProfessionalProfile.class);
-    
-    public HealthProfessionalProfile(HealthProfessional hp) {
-        initComponents();
-        
+    private HealthProfessionalWS hpWS;
+    private HealthProfessional hp;
+
+    public HealthProfessionalProfile(int idHealthProfessional) {
+
         try {
+            initComponents();
+            hpWS = new HealthProfessionalWS();
+            hp = hpWS.getHealthProfessionalById(idHealthProfessional);
             setFields(hp);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(HealthProfessionalProfile.this,
@@ -38,23 +43,22 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     HealthProfessionalProfile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     private void setFields(HealthProfessional hp) {
-        this.jTextFieldNamehp.setText(hp.getName());
-        this.jTextFieldGenderhp.setText(hp.getLastName());
-        this.jTextField14.setText(hp.getBirthDate());
-        this.jTextFieldGenderhp.setText(hp.getGender());
-        this.jTextFieldMaritalStatushp.setText(String.valueOf(hp.getNumTel()));
-        this.jTextField8.setText(hp.getNacionality());
-        this.jTextField5.setText(hp.getAdress());
-        this.jTextField4.setText(hp.getEmail());
-        this.jTextFieldInstitutionhp.setText(String.valueOf(hp.getNumCC()));
-        this.jTextFieldNIFhp.setText(String.valueOf(hp.getNif()));
-        this.jTextFieldMaritalStatushp.setText(hp.getMaritalStatus());
-        this.jTextField7.setText(hp.getBloodGroup());
-        this.jTextFieldInstitutionhp.setText(hp.getInstitution());
-        
-        
+        this.jTextFieldName.setText(hp.getName());
+        this.jTextFieldGender.setText(hp.getLastName());
+        this.jTextFieldBirthDate.setText(hp.getBirthDate());
+        this.jTextFieldGender.setText(hp.getGender());
+        this.jTextFieldMaritalStatus.setText(String.valueOf(hp.getNumTel()));
+        this.jTextFieldBloodGroup.setText(hp.getNacionality());
+        this.jTextFieldNacio.setText(hp.getAdress());
+        this.jTextFieldAdress.setText(hp.getEmail());
+        this.jTextFieldInstitution.setText(String.valueOf(hp.getNumCC()));
+        this.jTextFieldNIF.setText(String.valueOf(hp.getNif()));
+        this.jTextFieldMaritalStatus.setText(hp.getMaritalStatus());
+        this.jTextFieldLastName.setText(hp.getBloodGroup());
+        this.jTextFieldInstitution.setText(hp.getInstitution());
+
         if (hp.getPicture().equals("profile")) {
             ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
             jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
@@ -62,7 +66,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         } else {
             jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(hp.getPicture(), 90, 90)));
         }
-        
+
     }
 
     /**
@@ -91,21 +95,21 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelMaritalStatus = new javax.swing.JLabel();
         jLabelBloodType = new javax.swing.JLabel();
         jLabelInstitution = new javax.swing.JLabel();
-        jTextFieldMaritalStatushp = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextFieldGenderhp = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextFieldInstitutionhp = new javax.swing.JTextField();
-        jTextFieldNIFhp = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextFieldNamehp = new javax.swing.JTextField();
-        jButtonEdit = new javax.swing.JButton();
+        jTextFieldMaritalStatus = new javax.swing.JTextField();
+        jTextFieldAdress = new javax.swing.JTextField();
+        jTextFieldNacio = new javax.swing.JTextField();
+        jTextFieldGender = new javax.swing.JTextField();
+        jTextFieldLastName = new javax.swing.JTextField();
+        jTextFieldBloodGroup = new javax.swing.JTextField();
+        jTextFieldInstitution = new javax.swing.JTextField();
+        jTextFieldNIF = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldNCC = new javax.swing.JTextField();
+        jTextFieldNTel = new javax.swing.JTextField();
+        jTextFieldBirthDate = new javax.swing.JTextField();
+        jTextFieldName = new javax.swing.JTextField();
         jButtonBack = new javax.swing.JButton();
+        jButtonEdit = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -167,52 +171,44 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelInstitution.setText(" Instituição:");
         jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 235, -1, -1));
 
-        jTextFieldMaritalStatushp.setEditable(false);
-        jPanelInformation.add(jTextFieldMaritalStatushp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 110, -1));
+        jTextFieldMaritalStatus.setEditable(false);
+        jPanelInformation.add(jTextFieldMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 150, -1));
 
-        jTextField4.setEditable(false);
-        jPanelInformation.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 370, -1));
+        jTextFieldAdress.setEditable(false);
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 410, -1));
 
-        jTextField5.setEditable(false);
-        jPanelInformation.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 110, -1));
+        jTextFieldNacio.setEditable(false);
+        jPanelInformation.add(jTextFieldNacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 150, -1));
 
-        jTextFieldGenderhp.setEditable(false);
-        jPanelInformation.add(jTextFieldGenderhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, -1));
+        jTextFieldGender.setEditable(false);
+        jPanelInformation.add(jTextFieldGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
 
-        jTextField7.setEditable(false);
-        jPanelInformation.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 110, -1));
+        jTextFieldLastName.setEditable(false);
+        jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 150, -1));
 
-        jTextField8.setEditable(false);
-        jPanelInformation.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 110, -1));
+        jTextFieldBloodGroup.setEditable(false);
+        jPanelInformation.add(jTextFieldBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 150, -1));
 
-        jTextFieldInstitutionhp.setEditable(false);
-        jPanelInformation.add(jTextFieldInstitutionhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 110, -1));
+        jTextFieldInstitution.setEditable(false);
+        jPanelInformation.add(jTextFieldInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 150, -1));
 
-        jTextFieldNIFhp.setEditable(false);
-        jPanelInformation.add(jTextFieldNIFhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, -1));
+        jTextFieldNIF.setEditable(false);
+        jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 150, -1));
 
-        jTextField11.setEditable(false);
-        jPanelInformation.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 110, -1));
+        jTextFieldEmail.setEditable(false);
+        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
 
-        jTextField12.setEditable(false);
-        jPanelInformation.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 110, -1));
+        jTextFieldNCC.setEditable(false);
+        jPanelInformation.add(jTextFieldNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 150, -1));
 
-        jTextField13.setEditable(false);
-        jPanelInformation.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
+        jTextFieldNTel.setEditable(false);
+        jPanelInformation.add(jTextFieldNTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 150, -1));
 
-        jTextField14.setEditable(false);
-        jPanelInformation.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
+        jTextFieldBirthDate.setEditable(false);
+        jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
 
-        jTextFieldNamehp.setEditable(false);
-        jPanelInformation.add(jTextFieldNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
-
-        jButtonEdit.setText("Editar");
-        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jButtonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        jTextFieldName.setEditable(false);
+        jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, -1));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +217,14 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+
+        jButtonEdit.setText("Editar");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jButtonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -239,15 +243,15 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
-        new HealthProfessionalEdit().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButtonEditActionPerformed
-
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         new HealthProfessionalMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        new HealthProfessionalEdit(hp).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,19 +276,19 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextFieldGenderhp;
-    private javax.swing.JTextField jTextFieldInstitutionhp;
-    private javax.swing.JTextField jTextFieldMaritalStatushp;
-    private javax.swing.JTextField jTextFieldNIFhp;
-    private javax.swing.JTextField jTextFieldNamehp;
+    private javax.swing.JTextField jTextFieldAdress;
+    private javax.swing.JTextField jTextFieldBirthDate;
+    private javax.swing.JTextField jTextFieldBloodGroup;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldGender;
+    private javax.swing.JTextField jTextFieldInstitution;
+    private javax.swing.JTextField jTextFieldLastName;
+    private javax.swing.JTextField jTextFieldMaritalStatus;
+    private javax.swing.JTextField jTextFieldNCC;
+    private javax.swing.JTextField jTextFieldNIF;
+    private javax.swing.JTextField jTextFieldNTel;
+    private javax.swing.JTextField jTextFieldNacio;
+    private javax.swing.JTextField jTextFieldName;
     // End of variables declaration//GEN-END:variables
 
     private Image getImageFromServer(String picture, int with, int heigth) {

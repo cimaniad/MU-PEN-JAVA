@@ -5,6 +5,8 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.HealthProfessional;
+
 /**
  *
  * @author jorge
@@ -14,7 +16,7 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public HealthProfessionalEdit() {
+    public HealthProfessionalEdit(HealthProfessional hp) {
         initComponents();
     }
 

@@ -26,7 +26,7 @@ public class SubDomainWS {
      private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
-    private Logger log = Logger.getLogger(Domain.class);
+    private Logger log = Logger.getLogger(SubDomainWS.class);
 
     public SubDomainWS() {
         gson = new Gson();

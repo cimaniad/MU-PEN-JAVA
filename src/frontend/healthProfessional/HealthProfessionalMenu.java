@@ -108,8 +108,8 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHealthProfessionalActionPerformed
 
     private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
-        // TODO add your handling code here:
-        new HealthProfessionalProfile().setVisible(true);
+        // Por idHealthProfessional !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        new HealthProfessionalProfile(1).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonProfileActionPerformed
 

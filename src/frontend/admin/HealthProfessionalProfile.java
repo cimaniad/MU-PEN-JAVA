@@ -168,7 +168,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 230, -1));
+        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 230, -1));
 
         jTextFieldnCChp.setEditable(false);
         jTextFieldnCChp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -265,7 +265,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setMinimumSize(new java.awt.Dimension(680, 380));
         jLabelInformation.setPreferredSize(new java.awt.Dimension(680, 380));
-        jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 

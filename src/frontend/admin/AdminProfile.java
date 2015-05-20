@@ -45,15 +45,15 @@ public class AdminProfile extends javax.swing.JFrame {
 
 
     private void setFields(Admin a) {
-        this.jTextField1.setText(a.getName());
-        this.jTextField6.setText(a.getLastName());
-        this.jTextField3.setText(a.getBirthDate());
-        this.jTextField2.setText(String.valueOf(a.getNumTel()));
-        this.jTextField8.setText(a.getNationality());
-        this.jTextField9.setText(String.valueOf(a.getNumCC()));
-        this.jTextField4.setText(a.getEmail());
-        this.jTextField5.setText(a.getAdress());
-        this.jTextField7.setText(a.getBloodGroup());
+        this.jTextFieldName.setText(a.getName());
+        this.jTextFieldLastName.setText(a.getLastName());
+        this.jTextFieldBirthDate.setText(a.getBirthDate());
+        this.jTextFieldNTel.setText(String.valueOf(a.getNumTel()));
+        this.jTextFieldNatio.setText(a.getNationality());
+        this.jTextFieldNCC.setText(String.valueOf(a.getNumCC()));
+        this.jTextFieldEmail.setText(a.getEmail());
+        this.jTextFieldAdress.setText(a.getAdress());
+        this.jTextFieldBloodGroup.setText(a.getBloodGroup());
 
         if (a.getPicture().equals("profile")) {
             ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
@@ -85,15 +85,15 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabelBloodType = new javax.swing.JLabel();
         jButtonEditProfile = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        jTextFieldName = new javax.swing.JTextField();
+        jTextFieldNTel = new javax.swing.JTextField();
+        jTextFieldBirthDate = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldAdress = new javax.swing.JTextField();
+        jTextFieldLastName = new javax.swing.JTextField();
+        jTextFieldBloodGroup = new javax.swing.JTextField();
+        jTextFieldNatio = new javax.swing.JTextField();
+        jTextFieldNCC = new javax.swing.JTextField();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -115,7 +115,6 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabelProfile.setText("Administrador");
         jPanelInformation.add(jLabelProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-
         jLabelPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"))); // NOI18N
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, 80));
 
@@ -123,7 +122,7 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
         jLabelBirthDate.setText("Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 115, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         jLabelTel.setText("Nº Tel:");
         jLabelTel.setToolTipText("");
@@ -139,13 +138,13 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 55, -1, -1));
 
         jLabelNationality.setText("Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 115, -1, -1));
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 85, -1, -1));
 
         jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 175, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
 
         jLabelBloodType.setText("         Grupo sanguíneo:  ");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 85, 140, -1));
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 140, -1));
 
         jButtonEditProfile.setText("Editar Perfil");
         jButtonEditProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -163,32 +162,32 @@ public class AdminProfile extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
-        jTextField1.setEditable(false);
-        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
+        jTextFieldName.setEditable(false);
+        jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, -1));
 
-        jTextField2.setEditable(false);
-        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
+        jTextFieldNTel.setEditable(false);
+        jPanelInformation.add(jTextFieldNTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
 
-        jTextField3.setEditable(false);
-        jPanelInformation.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
+        jTextFieldBirthDate.setEditable(false);
+        jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
 
-        jTextField4.setEditable(false);
-        jPanelInformation.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 110, -1));
+        jTextFieldEmail.setEditable(false);
+        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 150, -1));
 
-        jTextField5.setEditable(false);
-        jPanelInformation.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 370, -1));
+        jTextFieldAdress.setEditable(false);
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 400, -1));
 
-        jTextField6.setEditable(false);
-        jPanelInformation.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 110, -1));
+        jTextFieldLastName.setEditable(false);
+        jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 140, -1));
 
-        jTextField7.setEditable(false);
-        jPanelInformation.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, -1));
+        jTextFieldBloodGroup.setEditable(false);
+        jPanelInformation.add(jTextFieldBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 140, -1));
 
-        jTextField8.setEditable(false);
-        jPanelInformation.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 110, -1));
+        jTextFieldNatio.setEditable(false);
+        jPanelInformation.add(jTextFieldNatio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 140, -1));
 
-        jTextField9.setEditable(false);
-        jPanelInformation.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 110, -1));
+        jTextFieldNCC.setEditable(false);
+        jPanelInformation.add(jTextFieldNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 140, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -222,35 +221,29 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonEditProfile;
     private javax.swing.JLabel jLabelAdress;
-    private javax.swing.JLabel jLabelAdressa;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelBloodType;
     private javax.swing.JLabel jLabelCC;
-    private javax.swing.JLabel jLabelCCa;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelLastName;
-    private javax.swing.JLabel jLabelLastNamea;
     private javax.swing.JLabel jLabelName;
-    private javax.swing.JLabel jLabelNamea;
     private javax.swing.JLabel jLabelNationality;
-    private javax.swing.JLabel jLabelNationalitya;
     private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelProfile;
     private javax.swing.JLabel jLabelTel;
-    private javax.swing.JLabel jLabelTela;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldAdress;
+    private javax.swing.JTextField jTextFieldBirthDate;
+    private javax.swing.JTextField jTextFieldBloodGroup;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldLastName;
+    private javax.swing.JTextField jTextFieldNCC;
+    private javax.swing.JTextField jTextFieldNTel;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldNatio;
     // End of variables declaration//GEN-END:variables
 
     private Image getImageFromServer(String picture, int with, int heigth) {

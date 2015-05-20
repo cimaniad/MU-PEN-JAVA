@@ -52,23 +52,23 @@ public class PatientWS {
         }
         log.debug("Patient saved with sucess");
     }
-
-    public List<Patient> getPacientsByHPDate(int idHelthPro, String appointmentDate) {
+    
+    public List<Patient> getPatientByName(String name, int idHealthPro) {
         List<Patient> pList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHelthPro)));
-        params.add(new BasicNameValuePair("appointmentDate", appointmentDate));
+        params.add(new BasicNameValuePair("name", name));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHealthPro)));
         try {
             responseWS = wrapperWS.sendRequest("Patient",
-                    "getPacientsByHPDate", params);    //efetua o pedido ao WS
+                    "getPatientByName", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
                 Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao aceder aos Pacientes com consulta marcada para esta data");
+                throw new RuntimeException("Ocorreu um erro ao realizar a pesquisa");
             }
 
             Type type = new TypeToken<List<Patient>>() {
@@ -79,16 +79,16 @@ public class PatientWS {
             log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
-        log.debug("\n\tPacients by health professional and appointment date, data access succed");
-        log.debug("\n\tPacients: " + pList.toString());
+        log.debug("\n\tPatients search success");
+        log.debug("\n\tHPs : " + pList.toString());
         return pList;
     }
-
-    public List<Patient> getPatientsByHPDate(int idHelthPro, String appointmentDate) {
+    
+    public List<Patient> getPatientsByHPDate(int idHealthPro, String appointmentDate) {
         List<Patient> pList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHelthPro)));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHealthPro)));
         params.add(new BasicNameValuePair("appointmentDate", appointmentDate));
         try {
             responseWS = wrapperWS.sendRequest("Patient",

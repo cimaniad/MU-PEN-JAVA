@@ -37,6 +37,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             appWS = new AppointmentWS();
             patWS = new PatientWS();
             patList = new ArrayList<>();
+            apptList = appWS.getAppointmentByIdDate(1, appoint.getDate());
             initComponents();
             jTextFieldDate.setVisible(false);
             loadAppointToEdit(appoint);

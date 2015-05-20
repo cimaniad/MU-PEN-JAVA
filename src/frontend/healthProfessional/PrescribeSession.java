@@ -6,6 +6,7 @@
 package frontend.healthProfessional;
 
 import backend.pojos.Block;
+import backend.pojos.HealthProfessional;
 import backend.pojos.Patient;
 import backend.ws.BlockWS;
 import frontend.admin.HealthProfessionalList;
@@ -29,11 +30,15 @@ public class PrescribeSession extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
     private BlockWS bWS;
     private List<Block> bList;
+    private Patient p;
+    private int idHP;
 
-    public PrescribeSession() {
+    public PrescribeSession(Patient p,int idHP) {
         initComponents();
+        this.p=p;
+        this.idHP = 1;                 // resolver a cena do id 
         bWS = new BlockWS();
-        bList = bWS.getAllBlocks();
+        bList = bWS.getAllBlocksByHealthProfessional(idHP);
         drawTable();
     }
 
@@ -164,6 +169,11 @@ public class PrescribeSession extends javax.swing.JFrame {
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 180));
 
         jButtonSearch.setText("Pesquisar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
 
         jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -216,14 +226,14 @@ public class PrescribeSession extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegistActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new HealthProfessionalMenu().setVisible(true);
+        new PatientProfile(p).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
+        bWS.deleteBlock(jTableList.getSelectedRow());
         tableModel.removeRow(jTableList.getSelectedRow());
-      // deleteBlock(jTableList.getSelectedRow()); 
+ 
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonPrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrescribeActionPerformed
@@ -237,10 +247,17 @@ public class PrescribeSession extends javax.swing.JFrame {
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
-            new BlockProfile(getBlockAtTable()).setVisible(true);
+            new BlockInterface(getBlockAtTable()).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jTableListMouseClicked
+
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        // TODO add your handling code here:
+        String name = jTextFieldSearch.getText();
+        bList = bWS.getBlockByName(name);
+        drawTable();
+    }//GEN-LAST:event_jButtonSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
