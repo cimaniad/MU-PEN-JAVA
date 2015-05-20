@@ -266,7 +266,8 @@ public class PatientProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPrescribeSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrescribeSessionActionPerformed
-        new PrescribeSession().setVisible(true);
+        //por id Terapeuta!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        new PrescribeSession(p, 1).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonPrescribeSessionActionPerformed
 

@@ -33,10 +33,10 @@ public class PrescribeSession extends javax.swing.JFrame {
     private Patient p;
     private int idHP;
 
-    public PrescribeSession(Patient p,int idHP) {
+    public PrescribeSession(Patient p, int idHP) {
         initComponents();
-        this.p=p;
-        this.idHP = 1;                 // resolver a cena do id 
+        this.p = p;
+        this.idHP = idHP;
         bWS = new BlockWS();
         bList = bWS.getAllBlocksByHealthProfessional(idHP);
         drawTable();
@@ -45,7 +45,6 @@ public class PrescribeSession extends javax.swing.JFrame {
     private void drawTable() {
         try {
             initializeTable();
-
             for (Block b : bList) {
                 tableModel.addRow(new Object[]{b.getName()});
 
@@ -231,9 +230,17 @@ public class PrescribeSession extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        bWS.deleteBlock(jTableList.getSelectedRow());
-        tableModel.removeRow(jTableList.getSelectedRow());
- 
+        try {
+            bWS.deleteBlock(getBlockAtTable().getIdBlock());
+            bList.remove(getBlockAtTable());
+            drawTable();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            JOptionPane.showMessageDialog(PrescribeSession.this, e.getMessage(),
+                    "Erro  Blocos", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonPrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrescribeActionPerformed

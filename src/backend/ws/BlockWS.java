@@ -164,7 +164,7 @@ public class BlockWS {
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
-                throw new RuntimeException("Não foi possivel eliminar este Bloco");
+                throw new RuntimeException("Não foi possivel eliminar este Bloco \nporque está associado a algo!");
             }
         } catch (RuntimeException e) {
             log.error("\n\t" + e.getMessage());

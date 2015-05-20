@@ -48,15 +48,22 @@ public class CreateBlock extends javax.swing.JFrame {
 
 
     public CreateBlock() {
+        try{
         initComponents();
         dWS = new DomainWS();
+        dList =  new ArrayList<>();
         dList = dWS.getAllDomains();
         sdWS = new SubDomainWS();
         exWS = new ExerciseWS();
         selectedExList = new ArrayList<>();
         drawDomainCombo();
         drawSubDomainCombo();
-        drawPropExerTable();
+        drawPropExerTable();    
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(CreateBlock.this,
+                    e.getMessage(), "Erro ao carregar dados para criação de um bloco", JOptionPane.ERROR_MESSAGE);    
+        }
+        
         
     }
 
