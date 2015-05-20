@@ -11,12 +11,12 @@ import backend.pojos.Exercise;
  *
  * @author jorge
  */
-public class ExerciseProfile extends javax.swing.JFrame {
+public class ExerciseInterface extends javax.swing.JFrame {
 
     /**
      * Creates new form ExerciseDescription
      */
-    public ExerciseProfile(Exercise ex) {
+    public ExerciseInterface(Exercise ex) {
         initComponents();
     }
 
@@ -38,9 +38,10 @@ public class ExerciseProfile extends javax.swing.JFrame {
         jLabelGender = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -60,16 +61,16 @@ public class ExerciseProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelExercise, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelName.setText("Nome:");
-        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
+        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         jLabelBirthDate.setText("designaçao:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
 
         jLabelLastName.setText("Nivel de dificuldade:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, -1));
+        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
 
         jLabelGender.setText("Estrutura:");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, -1, -1));
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -77,19 +78,15 @@ public class ExerciseProfile extends javax.swing.JFrame {
                 jButtonBackActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, -1, -1));
+        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 190, -1));
 
-        jTextField1.setText("jTextField1");
-        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 160, -1));
-
-        jTextField2.setText("jTextField2");
-        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 160, -1));
-
-        jTextField3.setText("jTextField3");
-        jPanelInformation.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 160, -1));
-
-        jTextField4.setText("jTextField4");
-        jPanelInformation.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 160, -1));
+        jLabel1.setText("                           Imagem do exercício");
+        jLabel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), null));
+        jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 300, 220));
+        jPanelInformation.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 190, -1));
+        jPanelInformation.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 190, -1));
+        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 190, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -129,13 +126,13 @@ public class ExerciseProfile extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ExerciseProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ExerciseInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ExerciseProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ExerciseInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ExerciseProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ExerciseInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ExerciseProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ExerciseInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -143,13 +140,14 @@ public class ExerciseProfile extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new ExerciseProfile().setVisible(true);
+//                new ExerciseInterface().setVisible(true);
 //            }
 //        });
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelExercise;
     private javax.swing.JLabel jLabelGender;

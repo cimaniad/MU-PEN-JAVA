@@ -20,17 +20,20 @@ import org.apache.log4j.Logger;
  */
 public class FEAppointment extends javax.swing.JFrame {
 
-    private Logger log = Logger.getLogger(FEAppointment.class);
     private PatientWS patWS;
     private AppointmentWS apptmWS;
     private List<Appointment> apL;
     private List<Patient> patients;
+    private Color newGreen;
+    private Color newRed;
 
     /**
      * Creates new form Event
      */
     public FEAppointment(int idHP, String date) {
         try {
+            newRed = new Color(173, 0, 2);
+            newGreen = new Color(0, 204, 51);
             patWS = new PatientWS();
             apptmWS = new AppointmentWS();
             apL = apptmWS.getAppointmentByIdDate(idHP, date);
@@ -39,7 +42,6 @@ public class FEAppointment extends javax.swing.JFrame {
             seeAppointment();
             jTextFieldDate.setText(date);
             jTextAreaDescription.setEditable(false);
-            jButtonAprove.setVisible(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(FEAppointment.this,
                     e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
@@ -48,8 +50,8 @@ public class FEAppointment extends javax.swing.JFrame {
     }
 
     private Appointment aproveAppointment() {
-        int index = jComboBoxPatient.getSelectedIndex();
-        int idPatient = apL.get(index).getIdPatient();
+        int idAppointment = getSelectAppointment().getIdAppointment();
+        int idPatient = getSelectPat().getIdPatient();
         int idHealthProfessional = 1;
         String date = jTextFieldDate.getText();
         String hour = jTextFieldHours.getText();
@@ -57,62 +59,41 @@ public class FEAppointment extends javax.swing.JFrame {
         byte healthProAprov = 1;
         String description = jTextAreaDescription.getText();
 
-        return new Appointment(idPatient, idHealthProfessional, date, hour, local,
+        return new Appointment(idAppointment, idPatient, idHealthProfessional, date, hour, local,
                 (byte) 1, healthProAprov, description);
     }
 
     private void seeAppointment() {
-        try {
-            if (!apL.isEmpty()) {
-                for (Patient pt : patients) {
-                    jComboBoxPatient.addItem(pt.getName() + " " + pt.getLastName());
-                }
-                comboChange();
+        if (!apL.isEmpty()) {
+            for (Patient pt : patients) {
+                jComboBoxPatient.addItem(pt.getName() + " " + pt.getLastName());
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(FEAppointment.this,
-                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
+            comboChange();
         }
     }
 
     private void comboChange() {
-        try {
-            int index = jComboBoxPatient.getSelectedIndex();
-            Patient pat = patients.get(index);
-            jTextFieldPathology.setText(pat.getPathology());
-            for (Appointment a : apL) {
-                if (a.getIdPatient() == pat.getIdPatient()) {
-                    jTextAreaDescription.setText(a.getDescription());
-                    jTextFieldDate.setText(a.getDate());
-                    jTextFieldHours.setText(a.getHour());
-                    changeFields(a);
-                }
-            }
-            //   Appointment a = apptmWS.getApointmentById(apL.get(index).getIdAppointment());
-            //   jTextFieldLocal.setText(String.valueOf());
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(FEAppointment.this,
-                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
-        }
+        jTextFieldPathology.setText(getSelectPat().getPathology());
+        Appointment a = getSelectAppointment();
+        jTextAreaDescription.setText(a.getDescription());
+        jTextFieldDate.setText(a.getDate());
+        jTextFieldHours.setText(a.getHour());
+        jTextFieldLocal.setText(a.getLocal());
+        changeMessage(a);
+
     }
 
-    private void changeFields(Appointment a) {
+    private void changeMessage(Appointment a) {
         if (a.getHealthProfessionalApproval() == 1 && a.getPatientApproval() == 1) {
-            jButtonAprove.setVisible(false);
-            jLabel1.setText("Esta foi aprovada por ambos");
-            jLabel1.setForeground(Color.green);
-            jLabel1.setBackground(Color.gray);
+            jLabel1.setText("Esta consulta foi aprovada por ambos");
+            jLabel1.setForeground(newGreen);
         } else if (a.getHealthProfessionalApproval() == 1 && a.getPatientApproval() == 0) {
-            jButtonAprove.setVisible(false);
             jLabel1.setText("Esta consulta necessita de ser aprovada pelo paciente");
-            jLabel1.setForeground(Color.orange);
-            jLabel1.setBackground(Color.gray);
+            jLabel1.setForeground(newRed);
         } else if (a.getHealthProfessionalApproval() == 0 && a.getPatientApproval() == 1) {
-            jButtonAprove.setVisible(true);
             jLabel1.setText("Esta consulta necessita de ser aprovada por si");
-            jLabel1.setForeground(Color.orange);
-            jLabel1.setBackground(Color.gray);
+            jLabel1.setForeground(newRed);
         }
     }
 
@@ -120,13 +101,23 @@ public class FEAppointment extends javax.swing.JFrame {
         return patients.get(jComboBoxPatient.getSelectedIndex());
     }
 
+    private Appointment getSelectAppointment() {
+        for (Appointment a : apL) {
+            if (a.getIdPatient() == getSelectPat().getIdPatient()) {
+                return a;
+            }
+        }
+        return null;
+    }
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jPanelWallpaper = new javax.swing.JPanel();
         jPanelInformation = new javax.swing.JPanel();
         jLabelHealthPatientProfile = new javax.swing.JLabel();
+        jButtonAprove = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jLabelDate = new javax.swing.JLabel();
         jLabelPatient = new javax.swing.JLabel();
@@ -139,7 +130,6 @@ public class FEAppointment extends javax.swing.JFrame {
         jTextFieldLocal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescription = new javax.swing.JTextArea();
-        jButtonAprove = new javax.swing.JButton();
         jButtonCancelEvent = new javax.swing.JButton();
         jComboBoxPatient = new javax.swing.JComboBox();
         jTextFieldDate = new javax.swing.JTextField();
@@ -161,6 +151,14 @@ public class FEAppointment extends javax.swing.JFrame {
         jLabelHealthPatientProfile.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabelHealthPatientProfile.setText("Consulta");
         jPanelInformation.add(jLabelHealthPatientProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jButtonAprove.setText("Aprovar");
+        jButtonAprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAproveActionPerformed(evt);
+            }
+        });
+        jPanelInformation.add(jButtonAprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -204,14 +202,6 @@ public class FEAppointment extends javax.swing.JFrame {
 
         jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 460, -1));
 
-        jButtonAprove.setText("Aprovar");
-        jButtonAprove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAproveActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jButtonAprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
-
         jButtonCancelEvent.setText("Cancelar consulta");
         jButtonCancelEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,8 +222,7 @@ public class FEAppointment extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel1.setText("Consulta Aprovada");
+        jLabel1.setText("Não existe Consulta");
         jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -248,36 +237,40 @@ public class FEAppointment extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {
         new Schedule().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    }
 
-    private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelEventActionPerformed
-        new AppointmentCreateEdit(apL.get(jComboBoxPatient.getSelectedIndex())).setVisible(true);
+    private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {
+        new AppointmentCreateEdit(getSelectAppointment()).setVisible(true);
         dispose();
 
-    }//GEN-LAST:event_jButtonCancelEventActionPerformed
+    }
 
-    private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAproveActionPerformed
+    private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {
+
         try {
+            if (getSelectAppointment().getHealthProfessionalApproval() == 1) {
+                JOptionPane.showMessageDialog(FEAppointment.this,
+                        "Esta consulta já foi aprovada por si.", "Aprovar consulta", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             apptmWS.saveEditAppointment(aproveAppointment());
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(FEAppointment.this,
-                    e.getMessage(), "Erro ao carregar consulta", JOptionPane.ERROR_MESSAGE);
+                    e.getMessage(), "Erro aprovar consulta", JOptionPane.ERROR_MESSAGE);
         }
-        new Schedule().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButtonAproveActionPerformed
+    }
 
-    private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPatientActionPerformed
+    private void jComboBoxPatientActionPerformed(java.awt.event.ActionEvent evt) {
         comboChange();
-    }//GEN-LAST:event_jComboBoxPatientActionPerformed
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButtonAprove;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonCancelEvent;
@@ -300,5 +293,5 @@ public class FEAppointment extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldHours;
     private javax.swing.JTextField jTextFieldLocal;
     private javax.swing.JTextField jTextFieldPathology;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

@@ -5,11 +5,14 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.AssignExercise;
 import backend.pojos.Block;
 import backend.pojos.Domain;
 import backend.pojos.Exercise;
 import backend.pojos.Patient;
 import backend.pojos.SubDomain;
+import backend.ws.AssignExerciseWS;
+import backend.ws.BlockWS;
 import backend.ws.DomainWS;
 import backend.ws.ExerciseWS;
 import backend.ws.PatientWS;
@@ -37,7 +40,12 @@ public class CreateBlock extends javax.swing.JFrame {
     private SubDomainWS sdWS;
     private List<SubDomain> sdList;
     private ExerciseWS exWS;
-    private List<Exercise> exList;
+    private List<Exercise> propExList;
+    private List<Exercise> selectedExList;
+    private BlockWS bWS;
+    private AssignExerciseWS aeWS;
+    
+
 
     public CreateBlock() {
         initComponents();
@@ -45,9 +53,11 @@ public class CreateBlock extends javax.swing.JFrame {
         dList = dWS.getAllDomains();
         sdWS = new SubDomainWS();
         exWS = new ExerciseWS();
+        selectedExList = new ArrayList<>();
         drawDomainCombo();
         drawSubDomainCombo();
         drawPropExerTable();
+        
     }
 
     private void drawDomainCombo() {
@@ -88,8 +98,8 @@ public class CreateBlock extends javax.swing.JFrame {
             tableModelPro.addColumn("Exercícios Propostos");
 
             int index = jComboBoxSubDomain.getSelectedIndex();
-            exList = exWS.getExerciseBySubDomain(sdList.get(index).getIdSubDomain());
-            for (Exercise ex : exList) {
+            propExList = exWS.getExerciseBySubDomain(sdList.get(index).getIdSubDomain());
+            for (Exercise ex : propExList) {
                 tableModelPro.addRow(new Object[]{ex.getName()});
             }
         } catch (Exception ex) {
@@ -109,6 +119,10 @@ public class CreateBlock extends javax.swing.JFrame {
             };
             jTableSelectedExercises.setModel(tableModelSel);
             tableModelSel.addColumn("Exercícios Selecionados");
+            for (Exercise ex : selectedExList){
+                tableModelSel.addRow(new Object[]{ex.getName()});
+            }
+            
 
         } catch (Exception ex) {
             log.error(ex.getMessage());
@@ -119,32 +133,42 @@ public class CreateBlock extends javax.swing.JFrame {
     }
     
     private Exercise getExerciseSelAtTable() {
-        return exList.get(jTableSelectedExercises.getSelectedRow());
+        return propExList.get(jTableSelectedExercises.getSelectedRow());
     }
     
     private Exercise getExerciseProAtTable() {
-        return exList.get(jTableProposenExercises.getSelectedRow());
+        return propExList.get(jTableProposenExercises.getSelectedRow());
     }
     
-    private void validator(){
-        int row = jTableSelectedExercises.getSelectedRow();
-        if((row == -1) &&
-            jTextFieldName.getText().isEmpty() &&
-            jTextAreaDescription.getText().isEmpty()){
-            throw new RuntimeException("Preencha todos os dados");
+
+    private Block loadBlockFromPanel() {
+        String warn = validator();
+        if (!warn.isEmpty()) {
+            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
         }
-    }
-    
-    
-    private List<Exercise> getSelectedExercise(){
-        
-    }
-    
-    private void loadBlock(){
         String name = jTextFieldName.getText();
         String description = jTextAreaDescription.getText();
-        ArrayList <Exercise> exc = exWS.getExerciseById(jTableSelectedExercises.getSelectedRow());
+        
+        return new Block(0,name, description, 1);   // resolver id profissional
     }
+    private String validator() {
+        StringBuilder warns = new StringBuilder();
+        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
+        warns.append(jTextAreaDescription.getText().isEmpty() ? "Descriçao, " : "");
+
+        if (!warns.toString().isEmpty()) {
+            warns.delete(warns.toString().length() - 2, warns.toString().length());
+            warns.append("!");
+        }
+
+        return warns.toString();
+    }
+    private Exercise getExAtTable(){
+        return propExList.get(jTableProposenExercises.getSelectedRow());
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -295,6 +319,11 @@ public class CreateBlock extends javax.swing.JFrame {
         jPanelInformation.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 260, 140));
 
         jButtonBack.setText("Voltar");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, -1, -1));
 
         jButtonSave.setText("Guardar");
@@ -329,6 +358,7 @@ public class CreateBlock extends javax.swing.JFrame {
 
     private void jComboBoxSubDomainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSubDomainActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jComboBoxSubDomainActionPerformed
 
     private void jComboBoxDomainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDomainActionPerformed
@@ -337,22 +367,29 @@ public class CreateBlock extends javax.swing.JFrame {
 
     private void jButtonSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectActionPerformed
         // TODO add your handling code here:
-        tableModelSel.addRow(new Object[]{jTableProposenExercises.getSelectedRow()});
-        tableModelSel.removeRow(jTableSelectedExercises.getSelectedRow());
-        tableModelPro.addRow(new Object[]{jTableSelectedExercises.getSelectedRow()});
-        tableModelPro.removeRow(jTableProposenExercises.getSelectedRow());
+        if(jTableProposenExercises.getSelectedRow()!=-1){
+            selectedExList.add(getExAtTable());
+            propExList.remove(getExAtTable());
+        }else{
+            selectedExList.remove(getExAtTable());
+            propExList.add(getExAtTable());
+        }
+        drawPropExerTable();
+        drawSelecExerTable();
 
     }//GEN-LAST:event_jButtonSelectActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        // TODO add your handling code here:
-
+//
+//        int idB = 0;
+//        bWS.saveBlock(loadBlockFromPanel());
+//        aeWS.saveAssignExercise(new AssignExercise(idEX, idB));
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jTableProposenExercisesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProposenExercisesMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
-            new ExerciseProfile(getExerciseProAtTable()).setVisible(true);
+            new ExerciseInterface(getExerciseProAtTable()).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jTableProposenExercisesMouseClicked
@@ -360,10 +397,15 @@ public class CreateBlock extends javax.swing.JFrame {
     private void jTableSelectedExercisesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSelectedExercisesMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
-            new ExerciseProfile(getExerciseSelAtTable()).setVisible(true);
+            new ExerciseInterface(getExerciseSelAtTable()).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jTableSelectedExercisesMouseClicked
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;

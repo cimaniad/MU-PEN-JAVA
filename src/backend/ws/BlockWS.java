@@ -26,7 +26,7 @@ public class BlockWS {
     private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
-    private Logger log = Logger.getLogger(Patient.class);
+    private Logger log = Logger.getLogger(BlockWS.class);
 
     public BlockWS() {
          gson = new Gson();
@@ -59,18 +59,19 @@ public class BlockWS {
         params.add(new BasicNameValuePair("idBlock", String.valueOf(b.getIdBlock())));
         params.add(new BasicNameValuePair("description", (b.getDescription())));
         params.add(new BasicNameValuePair("name", (b.getName())));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(b.getIdHealthProfessional())));
         
         return params;
     }
      
-     public List<Block> getAllBlocks() {
+     public List<Block> getAllBlocksByHealthProfessional(int idHealthProfessional) {
         List<Block> bList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHealthProfessional)));
         try {
             responseWS = wrapperWS.sendRequest("Block",
-                    "getAllBlocks", params);    //efetua o pedido ao WS
+                    "getAllBlocksByHealthProfessional", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
@@ -88,10 +89,9 @@ public class BlockWS {
             log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
-        log.debug("\n\t Block data access success");
+        log.debug("\n\tBlock data access success");
         log.debug("\n\tBs : " + bList.toString());
         return bList;
-
     }
      
      public Block getBlockById(int id) {
@@ -123,22 +123,22 @@ public class BlockWS {
         log.debug("\n\tB with id " + id + ": " + b.toString());
         return b;
     }
+     
      public List<Block> getBlockByName(String name) {
-         
-         List<Block> bList = null;
+        List<Block> bList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-
+        params.add(new BasicNameValuePair("name", name));
         try {
             responseWS = wrapperWS.sendRequest("Block",
-                    "getBlocksByName", params);    //efetua o pedido ao WS
+                    "getBlockByName", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
                 Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Bloco");
+                throw new RuntimeException("Ocorreu um erro ao realizar a pesquisa");
             }
 
             Type type = new TypeToken<List<Block>>() {
@@ -149,9 +149,27 @@ public class BlockWS {
             log.error("\n\t" + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
-        log.debug("\n\t Block data access success");
+        log.debug("\n\tBlock search success");
         log.debug("\n\tBs : " + bList.toString());
         return bList;
-        
     }
+     
+     public void deleteBlock(int id){
+          List<NameValuePair> parms = new ArrayList<>();
+        parms.add(new BasicNameValuePair("idBlock", String.valueOf(id)));
+        try {
+            responseWS = wrapperWS.sendRequest("Block", "deleteBlock", parms);
+            String jsonResp = wrapperWS.readResponse(responseWS);
+            Validation v = gson.fromJson(jsonResp, Validation.class);
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Não foi possivel eliminar este Bloco");
+            }
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tBlock deleted with success");
+     }
 }

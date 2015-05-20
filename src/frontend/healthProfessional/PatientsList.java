@@ -7,7 +7,14 @@ package frontend.healthProfessional;
 import backend.pojos.Patient;
 import backend.ws.PatientWS;
 import frontend.admin.JTableRenderer;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -29,9 +36,9 @@ public class PatientsList extends javax.swing.JFrame {
      */
     public PatientsList() {
         initComponents();
-        pWS = new PatientWS();
-        pList = pWS.getAllPatients();
-//        drawTable();
+        pWS = new PatientWS(); 
+        pList = pWS.getPatientsByHealthProfessional(1);
+        drawTable();
     }
 
     /**
@@ -88,32 +95,23 @@ public class PatientsList extends javax.swing.JFrame {
 
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Nome", "Apelido", "Patologia"
+                "Nome", "Apelido", "Patologia", "Notificações"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListMouseClicked(evt);
             }
         });
         jScrollPaneList.setViewportView(jTableList);
@@ -121,6 +119,11 @@ public class PatientsList extends javax.swing.JFrame {
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 190));
 
         jButtonSearch.setText("Pesquisar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
 
@@ -151,51 +154,95 @@ public class PatientsList extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
+        if(evt.getClickCount()==2){
+            new PatientProfile(getPatientAtTable()).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jTableListMouseClicked
+
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSearchActionPerformed
+
 //    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
-//        String text = jTextFieldSearch.getText();
-////      pList = pWS.getPatientByName(text);
-//        drawTable();
+//       String name = jTextFieldSearch.getText();
+//       pList = pWS.getPatientByName(name);
+//       drawTable();
 //    }
 //    
-//    private void drawTable() {
-//        try {
-//            initializeTable();
-//            int width = jTableList.getColumnModel().getColumn(2).getWidth();
-//            int height = 60;
-////            for(Patient p: pList()){
-//                tableModel.addRow(new Object[] {p.getName()});
-//                tableModel.addRow(new Object[] {p.getLastName()});
-//                tableModel.addRow(new Object[] {p.getPathology()});
-//            }
-//        } catch (Exception ex) {
-//            log.error(ex.getMessage());
-//            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos pacientes",
-//                    "Erro  Pacientes", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
-//
-//   
-//    private Patient getPatientAtTable() {
-//        return pList.get(jTableList.getSelectedRow());
-//    }
-//
-//    private void initializeTable() {
-//        tableModel = new DefaultTableModel() {
-//            @Override
-//            public boolean isCellEditable(int i, int i1) {
-//                return false;
-//            }
-//        };
-//        jTableList.setModel(tableModel);
-//        tableModel.addColumn("Nome");
-//        tableModel.addColumn("Apelido");
-//        tableModel.addColumn("Patologia");
-//        JTableRenderer renderer = new JTableRenderer();
-//        renderer.setHorizontalAlignment(SwingConstants.CENTER);
-//        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
-//        jTableList.setRowHeight(60);
-//    }
-//
+    
+    private void drawTable() {
+        try {
+            initializeTable();
+            int width = jTableList.getColumnModel().getColumn(2).getWidth();
+            int height = 60;
+
+            for (Patient p : pList) {
+                if (p.getPicture().equals("profile")) {
+                    ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+                    tableModel.addRow(new Object[]{p.getName(), p.getLastName(),
+                        new ImageIcon(pic.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT))});
+                } else {
+
+                    tableModel.addRow(new Object[]{p.getName(), p.getLastName(),
+                        new ImageIcon(getImageFromServer(p.getPicture(), width, height))});
+                }
+
+            }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos \nprofissionais de saude",
+                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+   
+    private Patient getPatientAtTable() {
+        return pList.get(jTableList.getSelectedRow());
+    }
+
+         
+    private void initializeTable() {
+        tableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+        jTableList.setModel(tableModel);
+        tableModel.addColumn("Nome");
+        tableModel.addColumn("Apelido");
+        tableModel.addColumn("Foto");
+        JTableRenderer renderer = new JTableRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
+        jTableList.setRowHeight(60);
+    }
+    
+    /**
+     * This method gets the image of the Patient from the server and
+     * resize it to the chosen dimensions
+     *
+     * @param picture
+     * @param width
+     * @param heigth
+     * @return Image
+     */
+    private Image getImageFromServer(String picture, int width, int heigth) {
+        try {
+            URL url = new URL("http://localhost/mu-pen-web/imagens/Patients/" + picture.trim());
+            log.debug(url.toString());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(width, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            log.error("\n" + ex.getMessage());
+        } catch (IOException ex) {
+            log.error("\n" + ex.getMessage());
+        }
+        return null;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;

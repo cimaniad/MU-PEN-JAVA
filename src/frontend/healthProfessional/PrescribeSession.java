@@ -6,11 +6,11 @@
 package frontend.healthProfessional;
 
 import backend.pojos.Block;
+import backend.pojos.HealthProfessional;
 import backend.pojos.Patient;
 import backend.ws.BlockWS;
 import frontend.admin.HealthProfessionalList;
 import frontend.admin.JTableRenderer;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -30,11 +30,15 @@ public class PrescribeSession extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
     private BlockWS bWS;
     private List<Block> bList;
+    private Patient p;
+    private int idHP;
 
-    public PrescribeSession() {
+    public PrescribeSession(Patient p,int idHP) {
         initComponents();
+        this.p=p;
+        this.idHP = 1;                 // resolver a cena do id 
         bWS = new BlockWS();
-        bList = bWS.getAllBlocks();
+        bList = bWS.getAllBlocksByHealthProfessional(idHP);
         drawTable();
     }
 
@@ -44,7 +48,6 @@ public class PrescribeSession extends javax.swing.JFrame {
 
             for (Block b : bList) {
                 tableModel.addRow(new Object[]{b.getName()});
-                
 
             }
 
@@ -68,22 +71,6 @@ public class PrescribeSession extends javax.swing.JFrame {
 
     private Block getBlockAtTable() {
         return bList.get(jTableList.getSelectedRow());
-    }
-    
-    private void loadSession(){
-        validator();
-       Date d = jDateChooserDeadline.getDate();
-       Block b = bList.get(jTableList.getSelectedRow());
-        
-    }
-    
-    private void validator(){
-        
-        int row = jTableList.getSelectedRow();
-        if(  jDateChooserDeadline.getDate().toString().isEmpty() && (row == -1)){
-               
-         throw new RuntimeException("Preencha todos os dados");
-        }
     }
 
     /**
@@ -239,19 +226,18 @@ public class PrescribeSession extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegistActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new HealthProfessionalMenu().setVisible(true);
+        new PatientProfile(p).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
+        bWS.deleteBlock(jTableList.getSelectedRow());
         tableModel.removeRow(jTableList.getSelectedRow());
-      // deleteBlock(jTableList.getSelectedRow()); 
+ 
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonPrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrescribeActionPerformed
         // TODO add your handling code here:
-        loadSession();
     }//GEN-LAST:event_jButtonPrescribeActionPerformed
 
     private void jTextFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchActionPerformed
@@ -261,15 +247,15 @@ public class PrescribeSession extends javax.swing.JFrame {
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
-            new BlockProfile(getBlockAtTable()).setVisible(true);
+            new BlockInterface(getBlockAtTable()).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jTableListMouseClicked
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         // TODO add your handling code here:
-        String text = jTextFieldSearch.getText();
-        bList = bWS.getBlockByName(text);
+        String name = jTextFieldSearch.getText();
+        bList = bWS.getBlockByName(name);
         drawTable();
     }//GEN-LAST:event_jButtonSearchActionPerformed
 

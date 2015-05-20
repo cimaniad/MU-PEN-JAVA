@@ -26,8 +26,7 @@ public class ExerciseWS {
      private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
-    private Logger log = Logger.getLogger(Exercise
-            .class);
+    private Logger log = Logger.getLogger(ExerciseWS.class);
 
     public ExerciseWS() {
         gson = new Gson();

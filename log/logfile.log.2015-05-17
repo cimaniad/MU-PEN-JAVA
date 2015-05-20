@@ -1,0 +1,58 @@
+2015-05-17 17:21:16,429 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-05-17 17:21:16,441 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-05-17 17:21:16,451 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-05-17 17:21:16,459 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-05-17 17:21:16,461 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-05-17 17:21:16,471 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-05-17 17:21:16,473 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-05-17 17:21:16,479 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-05-17 17:21:16,484 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:54444<->127.0.0.1:80
+2015-05-17 17:21:16,484 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /mu-pen-web/api/ HTTP/1.1
+2015-05-17 17:21:16,484 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2015-05-17 17:21:16,485 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2015-05-17 17:21:16,488 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /mu-pen-web/api/ HTTP/1.1
+2015-05-17 17:21:16,488 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 78
+2015-05-17 17:21:16,488 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2015-05-17 17:21:16,489 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost
+2015-05-17 17:21:16,490 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2015-05-17 17:21:16,490 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)
+2015-05-17 17:21:16,490 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2015-05-17 17:21:16,491 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /mu-pen-web/api/ HTTP/1.1[\r][\n]"
+2015-05-17 17:21:16,491 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 78[\r][\n]"
+2015-05-17 17:21:16,492 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2015-05-17 17:21:16,492 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost[\r][\n]"
+2015-05-17 17:21:16,492 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2015-05-17 17:21:16,492 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4 (Java 1.5 minimum; Java/1.8.0_25)[\r][\n]"
+2015-05-17 17:21:16,493 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2015-05-17 17:21:16,493 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2015-05-17 17:21:16,493 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "idHealthProfessional=1&object=Patient&function=getPatientsByHealthProfessional"
+2015-05-17 17:21:19,771 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 404 Not Found[\r][\n]"
+2015-05-17 17:21:19,771 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Date: Sun, 17 May 2015 16:21:16 GMT[\r][\n]"
+2015-05-17 17:21:19,772 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3[\r][\n]"
+2015-05-17 17:21:19,772 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "X-Powered-By: PHP/5.6.3[\r][\n]"
+2015-05-17 17:21:19,772 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length: 532[\r][\n]"
+2015-05-17 17:21:19,772 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Keep-Alive: timeout=5, max=100[\r][\n]"
+2015-05-17 17:21:19,773 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection: Keep-Alive[\r][\n]"
+2015-05-17 17:21:19,773 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type: text/html; charset=UTF-8[\r][\n]"
+2015-05-17 17:21:19,773 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2015-05-17 17:21:19,776 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 404 Not Found
+2015-05-17 17:21:19,776 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Date: Sun, 17 May 2015 16:21:16 GMT
+2015-05-17 17:21:19,776 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Server: Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3
+2015-05-17 17:21:19,776 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << X-Powered-By: PHP/5.6.3
+2015-05-17 17:21:19,777 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length: 532
+2015-05-17 17:21:19,777 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Keep-Alive: timeout=5, max=100
+2015-05-17 17:21:19,777 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection: Keep-Alive
+2015-05-17 17:21:19,777 DEBUG [AWT-EventQueue-0] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type: text/html; charset=UTF-8
+2015-05-17 17:21:19,782 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 284 - Connection can be kept alive for 5000 MILLISECONDS
+2015-05-17 17:21:19,785 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<br />[\n]"
+2015-05-17 17:21:19,786 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<b>Warning</b>:  mysql_connect():  in <b>C:\xampp\htdocs\mu-pen-web\api\db\DbConn.php</b> on line <b>10</b><br />[\n]"
+2015-05-17 17:21:19,786 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<br />[\n]"
+2015-05-17 17:21:19,786 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<b>Warning</b>:  mysql_query() expects parameter 2 to be resource, boolean given in <b>C:\xampp\htdocs\mu-pen-web\api\objects\Patient.php</b> on line <b>28</b><br />[\n]"
+2015-05-17 17:21:19,787 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<br />[\n]"
+2015-05-17 17:21:19,787 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 72 - http-outgoing-0 << "<b>Warning</b>:  mysql_close() expects parameter 1 to be resource, boolean given in <b>C:\xampp\htdocs\mu-pen-web\api\objects\Patient.php</b> on line <b>40</b><br />[\n]"
+2015-05-17 17:21:19,787 DEBUG [AWT-EventQueue-0] - org.apache.http.wire.wire 86 - http-outgoing-0 << "{"msg":"Health Professional does not have Patients","error":true}"
+2015-05-17 17:21:19,788 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 314 - Connection [id: 0][route: {}->http://localhost:80] can be kept alive for 5.0 seconds
+2015-05-17 17:21:19,788 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-05-17 17:21:19,788 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.readResponse 99 - Response from server: <br /><b>Warning</b>:  mysql_connect():  in <b>C:\xampp\htdocs\mu-pen-web\api\db\DbConn.php</b> on line <b>10</b><br /><br /><b>Warning</b>:  mysql_query() expects parameter 2 to be resource, boolean given in <b>C:\xampp\htdocs\mu-pen-web\api\objects\Patient.php</b> on line <b>28</b><br /><br /><b>Warning</b>:  mysql_close() expects parameter 1 to be resource, boolean given in <b>C:\xampp\htdocs\mu-pen-web\api\objects\Patient.php</b> on line <b>40</b><br />{"msg":"Health Professional does not have Patients","error":true}
+2015-05-17 17:21:19,815 ERROR [AWT-EventQueue-0] - backend.pojos.Patient.getPatientsByHealthProfessional 225 - 
+	java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $

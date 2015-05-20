@@ -25,7 +25,7 @@ public class PatientWS {
     private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
-    private Logger log = Logger.getLogger(Patient.class);
+    private Logger log = Logger.getLogger(PatientWS.class);
 
     public PatientWS() {
         gson = new Gson();
@@ -39,11 +39,11 @@ public class PatientWS {
             String validacao = wrapperWS.readResponse(responseWS);         //Passa a resposta para uma string
 
             Validation v = gson.fromJson(validacao, Validation.class);    //Conversão do objecto Json para o objecto Java
-
-            if (v.getCod() != 201) {
-                System.out.println(v.getMsg());
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 201) {
+                log.error("\n\tError saving patient: " + v.getMsg() + "\tCod:" + httpResponseCod);
                 log.error(v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao criar o Paciente");
+                throw new RuntimeException("Ocorreu um erro ao registar o Paciente");
             }
 
         } catch (RuntimeException e) {
@@ -143,12 +143,12 @@ public class PatientWS {
         log.debug("\n\t Patient data access success");
         log.debug("\n\tHPs : " + pList.toString());
         return pList;
-
     }
 
     private List<NameValuePair> getAllParams(Patient p) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idPatient", String.valueOf(p.getIdPatient())));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(p.getIdHealthProfessional())));
         params.add(new BasicNameValuePair("name", p.getName()));
         params.add(new BasicNameValuePair("lastName", p.getLastName()));
         params.add(new BasicNameValuePair("numCC", String.valueOf(p.getNumCC())));
@@ -156,7 +156,7 @@ public class PatientWS {
         params.add(new BasicNameValuePair("numTel", String.valueOf(p.getNumTel())));
         params.add(new BasicNameValuePair("nif", String.valueOf(p.getNif())));
         params.add(new BasicNameValuePair("email", p.getEmail()));
-        params.add(new BasicNameValuePair("maritalState", p.getMaritalStatus()));
+        params.add(new BasicNameValuePair("maritalStatus", p.getMaritalStatus()));
         params.add(new BasicNameValuePair("birthDate", String.valueOf(p.getBirthDate())));
         params.add(new BasicNameValuePair("bloodGroup", p.getBloodGroup()));
         params.add(new BasicNameValuePair("nationality", p.getNationality()));

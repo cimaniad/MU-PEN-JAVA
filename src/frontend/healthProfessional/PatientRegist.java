@@ -21,8 +21,9 @@ import javax.swing.JOptionPane;
 import sun.misc.BASE64Encoder;
 
 public class PatientRegist extends javax.swing.JFrame {
-    
-     private BufferedImage pic = null;
+
+    private BufferedImage pic = null;
+
     /**
      * Creates new form PatientRegist
      */
@@ -53,7 +54,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jLabelGender = new javax.swing.JLabel();
         jLabelNationality = new javax.swing.JLabel();
         jLabelAdress = new javax.swing.JLabel();
-        jLabelNUtente = new javax.swing.JLabel();
         jLabelNIF = new javax.swing.JLabel();
         jLabelMaritalStatus = new javax.swing.JLabel();
         jLabelPathology = new javax.swing.JLabel();
@@ -72,7 +72,6 @@ public class PatientRegist extends javax.swing.JFrame {
         jTextFieldNationality = new javax.swing.JTextField();
         jTextFieldAdress = new javax.swing.JTextField();
         jTextFieldNIF = new javax.swing.JTextField();
-        jTextFieldUtente = new javax.swing.JTextField();
         jTextFieldPathology = new javax.swing.JTextField();
         jTextFieldDescription = new javax.swing.JTextField();
         jDateChooserBirth = new com.toedter.calendar.JDateChooser();
@@ -111,7 +110,7 @@ public class PatientRegist extends javax.swing.JFrame {
         jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
 
         jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 175, -1, -1));
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 145, -1, -1));
 
         jLabelLastName.setText("Apelido:");
         jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 55, -1, -1));
@@ -119,14 +118,11 @@ public class PatientRegist extends javax.swing.JFrame {
         jLabelGender.setText("Sexo:");
         jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 85, -1, -1));
 
-        jLabelNationality.setText("Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 115, -1, -1));
+        jLabelNationality.setText("  Nacionalidade:");
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 115, 90, -1));
 
         jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 145, -1, -1));
-
-        jLabelNUtente.setText("Nº Utente:");
-        jPanelInformation.add(jLabelNUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 175, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 175, 50, -1));
 
         jLabelNIF.setText("  NIF:");
         jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 205, 30, -1));
@@ -159,7 +155,7 @@ public class PatientRegist extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
-        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino", " " }));
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino" }));
         jPanelInformation.add(jComboBoxGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, -1));
 
         jComboBoxBloodType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-" }));
@@ -170,12 +166,11 @@ public class PatientRegist extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
         jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
         jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
-        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 170, -1));
+        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
-        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
-        jPanelInformation.add(jTextFieldUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 170, -1));
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
         jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, -1));
         jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
@@ -210,6 +205,9 @@ public class PatientRegist extends javax.swing.JFrame {
             Patient p = loadPatientFromPanel();
             PatientWS pWS = new PatientWS();
             pWS.saveEditPatient(p);
+            new PatientsList().setVisible(true);
+            dispose();
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(PatientRegist.this,
                     e.getMessage(), "Erro ao registar Patiente", JOptionPane.ERROR_MESSAGE);
@@ -232,8 +230,10 @@ public class PatientRegist extends javax.swing.JFrame {
 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(PatientRegist.this,
-                    "Erro ao carregar imagem", "Erro ao registar Profissional de saude",
-                    JOptionPane.ERROR_MESSAGE);
+                    "Erro ao carregar imagem", "Erro ao registar Paciente",
+                    JOptionPane.ERROR_MESSAGE
+        
+    );
         }
     }//GEN-LAST:event_jButtonAddPhotoActionPerformed
 
@@ -256,9 +256,8 @@ public class PatientRegist extends javax.swing.JFrame {
 
         return warns.toString();
     }
-    
-    
-     private Patient loadPatientFromPanel() {
+
+    private Patient loadPatientFromPanel() {
         String warn = validator();
         if (!warn.isEmpty()) {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
@@ -278,7 +277,7 @@ public class PatientRegist extends javax.swing.JFrame {
         int numTel = 0;
         int numCC = 0;
         int nif = 0;
-        
+
         try {
             if (jTextFieldTel.getText().trim().length() != 9 || jTextFieldNIF.getText().trim().length() != 9) {
                 throw new RuntimeException("O NºTel e NIF devem ter 9 digitos!");
@@ -295,11 +294,11 @@ public class PatientRegist extends javax.swing.JFrame {
             throw new RuntimeException(e.getMessage());
         }
         //por o id do Profissional de saude!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        return new Patient(name, lastName, numCC, encodeToString(pic, "jpg"), adress, numTel, nif, email, maritalStatus,  parseDate(birthDate),
+        return new Patient(name, lastName, numCC, encodeToString(pic, "jpg"), adress, numTel, nif, email, maritalStatus, parseDate(birthDate),
                 bloodGroup, nationality, gender, pass, pathology, description, 1);
     }
-    
-        private String generatePass() {
+
+    private String generatePass() {
         StringBuilder sb = new StringBuilder();
         String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         Random rnd = new Random();
@@ -309,10 +308,8 @@ public class PatientRegist extends javax.swing.JFrame {
         }
         return sb.toString();
     }
-        
-        
-        
-        
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddPhoto;
     private javax.swing.JButton jButtonBack;
@@ -333,7 +330,6 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelMaritalStatus;
     private javax.swing.JLabel jLabelNIF;
-    private javax.swing.JLabel jLabelNUtente;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNationality;
     private javax.swing.JLabel jLabelPathology;
@@ -353,7 +349,6 @@ public class PatientRegist extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNationality;
     private javax.swing.JTextField jTextFieldPathology;
     private javax.swing.JTextField jTextFieldTel;
-    private javax.swing.JTextField jTextFieldUtente;
     // End of variables declaration//GEN-END:variables
 /**
      * This method receive a Date object and passes it to a String in the format
@@ -363,8 +358,7 @@ public class PatientRegist extends javax.swing.JFrame {
      * @return String date
      */
 
-
-private String parseDate(Date d) {
+    private String parseDate(Date d) {
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFromat.format(d);
         return date;

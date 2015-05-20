@@ -6,18 +6,29 @@
 package frontend.healthProfessional;
 
 import backend.pojos.Block;
+import backend.pojos.Exercise;
+import backend.ws.ExerciseWS;
+import java.util.List;
 
 /**
  *
  * @author jorge
  */
-public class BlockProfile extends javax.swing.JFrame {
+public class BlockInterface extends javax.swing.JFrame {
 
     /**
      * Creates new form SeeBlock
      */
-    public BlockProfile(Block b) {
+    
+    private ExerciseWS exWS;
+    private List<Exercise> exList;
+    
+    public BlockInterface(Block b) {
         initComponents();
+    }
+    
+     private Exercise getExerciseSelAtTable() {
+        return exList.get(jTableSelectedExercises.getSelectedRow());
     }
 
     /**
@@ -42,7 +53,7 @@ public class BlockProfile extends javax.swing.JFrame {
         jComboBoxDomain = new javax.swing.JComboBox();
         jComboBoxSubDomain = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableProposenExercises = new javax.swing.JTable();
+        jTableSelectedExercises = new javax.swing.JTable();
         jButtonBack = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
@@ -99,7 +110,7 @@ public class BlockProfile extends javax.swing.JFrame {
         });
         jPanelInformation.add(jComboBoxSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 230, -1));
 
-        jTableProposenExercises.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSelectedExercises.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -113,7 +124,7 @@ public class BlockProfile extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Exercícios Propostos"
+                "Exercícios Selecionados"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -124,11 +135,21 @@ public class BlockProfile extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTableProposenExercises);
+        jTableSelectedExercises.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableSelectedExercisesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableSelectedExercises);
 
         jPanelInformation.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 320, 140));
 
         jButtonBack.setText("Voltar");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -152,6 +173,18 @@ public class BlockProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSubDomainActionPerformed
 
+    private void jTableSelectedExercisesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSelectedExercisesMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            new ExerciseInterface(getExerciseSelAtTable()).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jTableSelectedExercisesMouseClicked
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -169,20 +202,20 @@ public class BlockProfile extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(BlockProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(BlockInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(BlockProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(BlockInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(BlockProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(BlockInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(BlockProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(BlockInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new BlockProfile().setVisible(true);
+//                new BlockInterface().setVisible(true);
 //            }
 //        });
 //    }
@@ -202,7 +235,7 @@ public class BlockProfile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelWallpaper;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableProposenExercises;
+    private javax.swing.JTable jTableSelectedExercises;
     private javax.swing.JTextArea jTextAreaDescription;
     private javax.swing.JTextField jTextFieldName;
     // End of variables declaration//GEN-END:variables
