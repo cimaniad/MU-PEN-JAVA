@@ -1,0 +1,152 @@
+2015-05-21 01:20:58,252 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-05-21 01:20:58,252 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-05-21 01:20:58,268 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-05-21 01:20:58,284 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-05-21 01:20:58,284 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-05-21 01:20:58,284 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-05-21 01:20:58,284 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-05-21 01:20:58,299 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-05-21 01:20:59,344 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-05-21 01:20:59,344 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-05-21 01:21:00,358 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-05-21 01:21:00,358 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:1016)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.sendRequest(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.getHealthProfessionalById(HealthProfessionalWS.java:80)
+	at frontend.healthProfessional.healthprofprof.<init>(healthprofprof.java:35)
+	at frontend.healthProfessional.HealthProfessionalMenu.jButtonProfileActionPerformed(HealthProfessionalMenu.java:112)
+	at frontend.healthProfessional.HealthProfessionalMenu.access$100(HealthProfessionalMenu.java:12)
+	at frontend.healthProfessional.HealthProfessionalMenu$2.actionPerformed(HealthProfessionalMenu.java:56)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6525)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
+	at java.awt.Component.processEvent(Component.java:6290)
+	at java.awt.Container.processEvent(Container.java:2234)
+	at java.awt.Component.dispatchEventImpl(Component.java:4881)
+	at java.awt.Container.dispatchEventImpl(Container.java:2292)
+	at java.awt.Component.dispatchEvent(Component.java:4703)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
+	at java.awt.Container.dispatchEventImpl(Container.java:2278)
+	at java.awt.Window.dispatchEventImpl(Window.java:2739)
+	at java.awt.Component.dispatchEvent(Component.java:4703)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
+	at java.awt.EventQueue.access$400(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:697)
+	at java.awt.EventQueue$3.run(EventQueue.java:691)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:719)
+	at java.awt.EventQueue$4.run(EventQueue.java:717)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+2015-05-21 01:21:00,358 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-05-21 01:21:00,358 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-05-21 01:21:00,358 ERROR [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 75 - Error trying to access the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-05-21 01:21:00,358 ERROR [AWT-EventQueue-0] - backend.ws.HealthProfessionalWS.getHealthProfessionalById 94 - 
+	Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
+2015-05-21 01:21:22,877 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.<init> 41 - Connection established with the WS
+2015-05-21 01:21:22,877 DEBUG [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 72 - Request executed with sucess
+2015-05-21 01:21:22,893 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2015-05-21 01:21:22,893 DEBUG [AWT-EventQueue-0] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2015-05-21 01:21:22,893 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-05-21 01:21:22,908 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2015-05-21 01:21:22,908 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:80
+2015-05-21 01:21:22,924 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:80
+2015-05-21 01:21:23,938 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 160 - Connect to localhost/127.0.0.1:80 timed out. Connection will be retried using another IP address
+2015-05-21 01:21:23,938 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/0:0:0:0:0:0:0:1:80
+2015-05-21 01:21:24,967 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2015-05-21 01:21:24,967 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.execchain.MainClientExec.abortConnection 131 - Socket is closed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.setSoLinger(Socket.java:1016)
+	at org.apache.http.impl.BHttpConnectionBase.shutdown(BHttpConnectionBase.java:305)
+	at org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown(DefaultManagedHttpClientConnection.java:97)
+	at org.apache.http.impl.conn.LoggingManagedHttpClientConnection.shutdown(LoggingManagedHttpClientConnection.java:89)
+	at org.apache.http.impl.conn.CPoolEntry.shutdownConnection(CPoolEntry.java:74)
+	at org.apache.http.impl.conn.CPoolProxy.shutdown(CPoolProxy.java:96)
+	at org.apache.http.impl.execchain.ConnectionHolder.abortConnection(ConnectionHolder.java:127)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:352)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at backend.ws.WrapperWS.sendRequest(WrapperWS.java:73)
+	at backend.ws.HealthProfessionalWS.getHealthProfessionalById(HealthProfessionalWS.java:80)
+	at frontend.healthProfessional.healthprofprof.<init>(healthprofprof.java:35)
+	at frontend.healthProfessional.HealthProfessionalMenu.jButtonProfileActionPerformed(HealthProfessionalMenu.java:112)
+	at frontend.healthProfessional.HealthProfessionalMenu.access$100(HealthProfessionalMenu.java:12)
+	at frontend.healthProfessional.HealthProfessionalMenu$2.actionPerformed(HealthProfessionalMenu.java:56)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6525)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
+	at java.awt.Component.processEvent(Component.java:6290)
+	at java.awt.Container.processEvent(Container.java:2234)
+	at java.awt.Component.dispatchEventImpl(Component.java:4881)
+	at java.awt.Container.dispatchEventImpl(Container.java:2292)
+	at java.awt.Component.dispatchEvent(Component.java:4703)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
+	at java.awt.Container.dispatchEventImpl(Container.java:2278)
+	at java.awt.Window.dispatchEventImpl(Window.java:2739)
+	at java.awt.Component.dispatchEvent(Component.java:4703)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
+	at java.awt.EventQueue.access$400(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:697)
+	at java.awt.EventQueue$3.run(EventQueue.java:691)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:719)
+	at java.awt.EventQueue$4.run(EventQueue.java:717)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+2015-05-21 01:21:24,967 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2015-05-21 01:21:24,967 DEBUG [AWT-EventQueue-0] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2015-05-21 01:21:24,967 ERROR [AWT-EventQueue-0] - backend.ws.WrapperWS.sendRequest 75 - Error trying to access the server:
+ Connect to localhost:80 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect
+2015-05-21 01:21:24,967 ERROR [AWT-EventQueue-0] - backend.ws.HealthProfessionalWS.getHealthProfessionalById 94 - 
+	Ocorreu um erro ao tentar aceder ao servidor. 
+	Verifique a ligação à internet
