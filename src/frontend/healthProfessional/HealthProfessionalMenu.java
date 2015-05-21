@@ -97,7 +97,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
 
     private void jButtonScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonScheduleActionPerformed
         // TODO add your handling code here:
-        new Schedule().setVisible(true);;
+        new Schedule().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonScheduleActionPerformed
 
@@ -109,7 +109,8 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
 
     private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
         // Por idHealthProfessional !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        new HealthProfessionalProfile(1).setVisible(true);
+      //  new HealthProfessionalProfile(1).setVisible(true);
+        new healthprofprof(1).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonProfileActionPerformed
 
