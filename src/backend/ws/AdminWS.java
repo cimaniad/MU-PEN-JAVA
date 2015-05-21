@@ -24,7 +24,7 @@ public class AdminWS {
     private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
-    private Logger log = Logger.getLogger(AdminWS.class);
+    private Logger log = Logger.getLogger(Patient.class);
 
     public AdminWS() {
         gson = new Gson();
@@ -64,5 +64,44 @@ public class AdminWS {
         log.debug(
                 "\n\tAdmin with id " + id + ": " + a.toString());
         return a;
+    }
+
+
+    public void editAdmin(Admin a) {
+        try {
+            responseWS = wrapperWS.sendRequest("Admin", "editAdmin", getAllParams(a));    //efetua o pedido ao WS
+            String validacao = wrapperWS.readResponse(responseWS);         //Passa a resposta para uma string
+
+            Validation v = gson.fromJson(validacao, Validation.class);    //Conversão do objecto Json para o objecto Java
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 201) {
+                log.error("\n\tError saving admin: " + v.getMsg() + "\tCod:" + httpResponseCod);
+                log.error(v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao editar o Administrador");
+            }
+
+        } catch (RuntimeException e) {
+            log.error(e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("Admin saved with sucess");
+    }
+
+    private List<NameValuePair> getAllParams(Admin a) {
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idAdmin", String.valueOf(a.getIdAdmin())));
+        params.add(new BasicNameValuePair("name", a.getName()));
+        params.add(new BasicNameValuePair("lastName", a.getLastName()));
+        params.add(new BasicNameValuePair("numCC", String.valueOf(a.getNumCC())));
+        params.add(new BasicNameValuePair("adress", a.getAdress()));
+        params.add(new BasicNameValuePair("numTel", String.valueOf(a.getNumTel())));
+        params.add(new BasicNameValuePair("email", a.getEmail()));
+        params.add(new BasicNameValuePair("birthDate", String.valueOf(a.getBirthDate())));
+        params.add(new BasicNameValuePair("bloodGroup", a.getBloodGroup()));
+        params.add(new BasicNameValuePair("nationality", a.getNationality()));
+        params.add(new BasicNameValuePair("password", a.getPassword()));
+        params.add(new BasicNameValuePair("picture", a.getPicture()));
+
+        return params;
     }
 }

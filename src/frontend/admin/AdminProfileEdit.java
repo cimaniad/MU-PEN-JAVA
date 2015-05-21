@@ -160,7 +160,7 @@ public class AdminProfileEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new AdminProfile().setVisible(true);
+        new AdminProfile(1).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 

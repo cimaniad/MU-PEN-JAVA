@@ -32,37 +32,7 @@ public class SubDomainWS {
         gson = new Gson();
         wrapperWS = WrapperWS.getWrapperWS();
     }
-    
-    public List<SubDomain> getAllSubDomains() {
-        List<SubDomain> sdList = null;
-
-        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-
-        try {
-            responseWS = wrapperWS.sendRequest("SubDomain",
-                    "getAllSubDomain", params);    //efetua o pedido ao WS
-            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
-
-            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
-            if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
-                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Sub-Domínio");
-            }
-
-            Type type = new TypeToken<List<SubDomain>>() {
-            }.getType();  //tipo do para o qual queros retornar a responseWS Json
-            sdList = gson.fromJson(jsonResp, type);
-
-        } catch (RuntimeException e) {
-            log.error("\n\t" + e.getMessage());
-            throw new RuntimeException(e.getMessage());
-        }
-        log.debug("\n\t SubDomain data access success");
-        log.debug("\n\tDs : " + sdList.toString());
-        return sdList;
-
-    }
+ 
     
     public SubDomain getSubDomainById(int id) {
 

@@ -12,7 +12,6 @@ import backend.ws.PatientWS;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -86,14 +85,14 @@ public class FEAppointment extends javax.swing.JFrame {
 
     private void changeMessage(Appointment a) {
         if (a.getHealthProfessionalApproval() == 1 && a.getPatientApproval() == 1) {
-            jLabel1.setText("Esta consulta foi aprovada por ambos");
-            jLabel1.setForeground(newGreen);
+            jLabelStatus.setText("Esta consulta foi aprovada por ambos");
+            jLabelStatus.setForeground(newGreen);
         } else if (a.getHealthProfessionalApproval() == 1 && a.getPatientApproval() == 0) {
-            jLabel1.setText("Esta consulta necessita de ser aprovada pelo paciente");
-            jLabel1.setForeground(newRed);
+            jLabelStatus.setText("Esta consulta necessita de ser aprovada pelo paciente");
+            jLabelStatus.setForeground(newRed);
         } else if (a.getHealthProfessionalApproval() == 0 && a.getPatientApproval() == 1) {
-            jLabel1.setText("Esta consulta necessita de ser aprovada por si");
-            jLabel1.setForeground(newRed);
+            jLabelStatus.setText("Esta consulta necessita de ser aprovada por si");
+            jLabelStatus.setForeground(newRed);
         }
     }
 
@@ -133,8 +132,8 @@ public class FEAppointment extends javax.swing.JFrame {
         jButtonCancelEvent = new javax.swing.JButton();
         jComboBoxPatient = new javax.swing.JComboBox();
         jTextFieldDate = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelStatus = new javax.swing.JLabel();
+        jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,13 +219,13 @@ public class FEAppointment extends javax.swing.JFrame {
         jTextFieldDate.setEditable(false);
         jPanelInformation.add(jTextFieldDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Não existe Consulta");
-        jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, -1));
+        jLabelStatus.setBackground(new java.awt.Color(204, 204, 204));
+        jLabelStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelStatus.setText("Não existe Consulta");
+        jPanelInformation.add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
-        jPanelInformation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
+        jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
+        jPanelInformation.add(jLabelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
 
         jPanelWallpaper.add(jPanelInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 380));
 
@@ -247,7 +246,7 @@ public class FEAppointment extends javax.swing.JFrame {
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {
         new AppointmentCreateEdit(getSelectAppointment()).setVisible(true);
         dispose();
-
+       
     }
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,7 +258,8 @@ public class FEAppointment extends javax.swing.JFrame {
                 return;
             }
             apptmWS.saveEditAppointment(aproveAppointment());
-
+            new Schedule().setVisible(true);
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(FEAppointment.this,
                     e.getMessage(), "Erro aprovar consulta", JOptionPane.ERROR_MESSAGE);
@@ -275,8 +275,8 @@ public class FEAppointment extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonCancelEvent;
     private javax.swing.JComboBox jComboBoxPatient;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelStatus;
+    private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelDescription;
     private javax.swing.JLabel jLabelHealthPatientProfile;

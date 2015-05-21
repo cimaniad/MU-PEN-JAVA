@@ -5,10 +5,17 @@
  */
 package frontend.healthProfessional;
 
+import backend.pojos.AssignExercise;
 import backend.pojos.Block;
 import backend.pojos.Exercise;
+import backend.pojos.Patient;
+import backend.ws.AssignExerciseWS;
 import backend.ws.ExerciseWS;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -19,16 +26,83 @@ public class BlockInterface extends javax.swing.JFrame {
     /**
      * Creates new form SeeBlock
      */
-    
+    private Logger log = Logger.getLogger(BlockInterface.class);
+    private AssignExerciseWS aeWS;
+    private List<AssignExercise> aexList;
     private ExerciseWS exWS;
     private List<Exercise> exList;
-    
-    public BlockInterface(Block b) {
-        initComponents();
+    private List<Exercise> eList;
+    private Block b;
+    private DefaultTableModel tableModel;
+    private Patient p;
+    private int idHP;
+
+    public BlockInterface(Block b, Patient p, int idHP) {
+        try {
+
+            initComponents();
+            this.p = p;
+            this.idHP = idHP;
+            this.b = b;
+            aeWS = new AssignExerciseWS();
+            this.aexList = aeWS.getAssignExerciseByIdBlock(b.getIdBlock());
+            this.eList = new ArrayList();
+            setFields(b);
+            getExercises();
+            drawExercises();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(BlockInterface.this,
+                    e.getMessage(), "Erro ao carregar dados para criação de um bloco", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
-    
-     private Exercise getExerciseSelAtTable() {
-        return exList.get(jTableSelectedExercises.getSelectedRow());
+
+    private void setFields(Block b) {
+        this.jTextFieldName.setText(b.getName());
+        this.jTextAreaDescription.setText(b.getDescription());
+    }
+
+    private void drawExercises() {
+        try {
+            tableModel = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+            };
+            jTableSelectedExercises.setModel(tableModel);
+            tableModel.addColumn("Exercícios Selecionados");
+            for (Exercise ex : eList) {
+                tableModel.addRow(new Object[]{ex.getName()});
+            }
+
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(BlockInterface.this,
+                    "Erro ao carregar a tabela dos \nexercícios selecionados",
+                    "Erro  Exercícios selecionados", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private List<Exercise> getExercises() {
+        ArrayList<Integer> idList = new ArrayList();
+
+        for (AssignExercise ae : aexList) {
+            int id = ae.getIdExercise();
+            idList.add(id);
+        }
+        for (Exercise e : exList) {
+
+            if (idList.contains(e.getIdExercise())) {
+                eList.add(e);
+            }
+        }
+        return eList;
+    }
+
+    private Exercise getExerciseSelAtTable() {
+        return eList.get(jTableSelectedExercises.getSelectedRow());
     }
 
     /**
@@ -48,10 +122,6 @@ public class BlockInterface extends javax.swing.JFrame {
         jLabelDiscription = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescription = new javax.swing.JTextArea();
-        jLabelDomain = new javax.swing.JLabel();
-        jLabelSubDomain = new javax.swing.JLabel();
-        jComboBoxDomain = new javax.swing.JComboBox();
-        jComboBoxSubDomain = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableSelectedExercises = new javax.swing.JTable();
         jButtonBack = new javax.swing.JButton();
@@ -72,12 +142,12 @@ public class BlockInterface extends javax.swing.JFrame {
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelCreateBlock.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabelCreateBlock.setText("Criar bloco");
+        jLabelCreateBlock.setText("Bloco");
         jPanelInformation.add(jLabelCreateBlock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelName.setText("Nome:");
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-        jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 230, -1));
+        jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 320, -1));
 
         jLabelDiscription.setText("Descrição:");
         jPanelInformation.add(jLabelDiscription, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
@@ -86,29 +156,7 @@ public class BlockInterface extends javax.swing.JFrame {
         jTextAreaDescription.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescription);
 
-        jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 230, 60));
-
-        jLabelDomain.setText("Dominio:");
-        jPanelInformation.add(jLabelDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
-
-        jLabelSubDomain.setText("Sub-domínio:");
-        jPanelInformation.add(jLabelSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
-
-        jComboBoxDomain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxDomain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxDomainActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jComboBoxDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 230, -1));
-
-        jComboBoxSubDomain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxSubDomain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSubDomainActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jComboBoxSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 230, -1));
+        jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 320, 60));
 
         jTableSelectedExercises.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,14 +213,6 @@ public class BlockInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxDomainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDomainActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxDomainActionPerformed
-
-    private void jComboBoxSubDomainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSubDomainActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSubDomainActionPerformed
-
     private void jTableSelectedExercisesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSelectedExercisesMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
@@ -183,6 +223,8 @@ public class BlockInterface extends javax.swing.JFrame {
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         // TODO add your handling code here:
+        new PrescribeSession(p, idHP).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
 //    /**
@@ -222,14 +264,10 @@ public class BlockInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JComboBox jComboBoxDomain;
-    private javax.swing.JComboBox jComboBoxSubDomain;
     private javax.swing.JLabel jLabelCreateBlock;
     private javax.swing.JLabel jLabelDiscription;
-    private javax.swing.JLabel jLabelDomain;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelName;
-    private javax.swing.JLabel jLabelSubDomain;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;

@@ -214,6 +214,8 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
             HealthProfessional hp = loadHealthProfessionalFromPanel();
             HealthProfessionalWS hpWS = new HealthProfessionalWS();
             hpWS.saveEditHealthProfessional(hp);
+            new HealthProfessionalList().setVisible(true);
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(HealthProfessionalRegist.this,
                     e.getMessage(), "Erro ao registar Profissional de saude", JOptionPane.ERROR_MESSAGE);

@@ -172,7 +172,7 @@ public class PatientRegist extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
         jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
-        jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, -1));
+        jPanelInformation.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 430, 50));
         jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
 
         jButtonAddPhoto.setText("Inserir foto");

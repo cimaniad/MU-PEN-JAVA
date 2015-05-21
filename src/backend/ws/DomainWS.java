@@ -40,7 +40,7 @@ public class DomainWS {
 
         try {
             responseWS = wrapperWS.sendRequest("Domain",
-                    "getAllDomain", params);    //efetua o pedido ao WS
+                    "getAllDomains", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();

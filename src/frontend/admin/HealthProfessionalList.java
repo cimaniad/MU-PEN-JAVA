@@ -8,6 +8,7 @@ package frontend.admin;
 import backend.pojos.HealthProfessional;
 import backend.ws.HealthProfessionalWS;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -43,7 +44,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(HealthProfessionalList.this,
                     e.getMessage(), "Erro ao carregar os dados do Profissional de saude", JOptionPane.ERROR_MESSAGE);
-            
+
         }
 
     }
@@ -103,6 +104,12 @@ public class HealthProfessionalList extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyPressed(evt);
+            }
+        });
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 210, -1));
 
         jTableList.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -124,7 +131,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
 
         jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 630, 240));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "NºCC", "Nif" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "nome", "nºtel" }));
         jPanelInformation.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
@@ -186,6 +193,14 @@ public class HealthProfessionalList extends javax.swing.JFrame {
         new AdminMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jTextFieldSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String name = jTextFieldSearch.getText();
+            hpList = hpWS.getHealthProfessionalByName(name);
+            drawTable();
+        }
+    }//GEN-LAST:event_jTextFieldSearchKeyPressed
     /**
      * This method draw and fill the table
      */

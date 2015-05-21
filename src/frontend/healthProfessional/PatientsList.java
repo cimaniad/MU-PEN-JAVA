@@ -8,6 +8,7 @@ import backend.pojos.Patient;
 import backend.ws.PatientWS;
 import frontend.admin.JTableRenderer;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,18 +26,19 @@ import org.apache.log4j.Logger;
  * @author jorge
  */
 public class PatientsList extends javax.swing.JFrame {
+
     private Logger log = Logger.getLogger(PatientsList.class);
     private DefaultTableModel tableModel;
     private PatientWS pWS;
     private List<Patient> pList;
-    private List<Patient> pSearch;
-    
+
     /**
      * Creates new form PatientesList
      */
     public PatientsList() {
         initComponents();
-        pWS = new PatientWS(); 
+        pWS = new PatientWS();
+        //Pôr id HealthProfessional!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
         pList = pWS.getPatientsByHealthProfessional(1);
         drawTable();
     }
@@ -59,6 +61,7 @@ public class PatientsList extends javax.swing.JFrame {
         jTableList = new javax.swing.JTable();
         jButtonSearch = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
+        jComboBoxPesquisa = new javax.swing.JComboBox();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -125,7 +128,16 @@ public class PatientsList extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
+
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyPressed(evt);
+            }
+        });
         jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
+
+        jComboBoxPesquisa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "nome", "nºtel" }));
+        jPanelInformation.add(jComboBoxPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -155,14 +167,26 @@ public class PatientsList extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
-        if(evt.getClickCount()==2){
+        if (evt.getClickCount() == 2) {
             new PatientProfile(getPatientAtTable()).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jTableListMouseClicked
 
+    private void jTextFieldSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String name = jTextFieldSearch.getText();
+            //Por id Health Professional!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            pList = pWS.getPatientByName(name, 1);
+            drawTable();
+        }
+    }//GEN-LAST:event_jTextFieldSearchKeyPressed
+
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-        // TODO add your handling code here:
+        String name = jTextFieldSearch.getText();
+        //Por id Health Professional!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        pList = pWS.getPatientByName(name, 1);
+        drawTable();
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
 //    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
@@ -171,7 +195,6 @@ public class PatientsList extends javax.swing.JFrame {
 //       drawTable();
 //    }
 //    
-    
     private void drawTable() {
         try {
             initializeTable();
@@ -196,12 +219,11 @@ public class PatientsList extends javax.swing.JFrame {
                     "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
         }
     }
-   
+
     private Patient getPatientAtTable() {
         return pList.get(jTableList.getSelectedRow());
     }
 
-         
     private void initializeTable() {
         tableModel = new DefaultTableModel() {
             @Override
@@ -218,10 +240,10 @@ public class PatientsList extends javax.swing.JFrame {
         jTableList.getColumnModel().getColumn(2).setCellRenderer(renderer);
         jTableList.setRowHeight(60);
     }
-    
+
     /**
-     * This method gets the image of the Patient from the server and
-     * resize it to the chosen dimensions
+     * This method gets the image of the Patient from the server and resize it
+     * to the chosen dimensions
      *
      * @param picture
      * @param width
@@ -247,6 +269,7 @@ public class PatientsList extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;
     private javax.swing.JButton jButtonSearch;
+    private javax.swing.JComboBox jComboBoxPesquisa;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelPatientslList;
     private javax.swing.JLabel jLabelwallpaper;

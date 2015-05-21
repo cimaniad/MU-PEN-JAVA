@@ -44,19 +44,30 @@ public class CreateBlock extends javax.swing.JFrame {
     private List<Exercise> selectedExList;
     private BlockWS bWS;
     private AssignExerciseWS aeWS;
+    private Patient p;
+    private int idHP;
     
 
 
-    public CreateBlock() {
+    public CreateBlock(Patient p, int idHP) {
+        try{
         initComponents();
+        this.p = p;
+        this.idHP = idHP;
         dWS = new DomainWS();
+        dList =  new ArrayList<>();
         dList = dWS.getAllDomains();
         sdWS = new SubDomainWS();
         exWS = new ExerciseWS();
         selectedExList = new ArrayList<>();
         drawDomainCombo();
         drawSubDomainCombo();
-        drawPropExerTable();
+        drawPropExerTable();    
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(CreateBlock.this,
+                    e.getMessage(), "Erro ao carregar dados para criação de um bloco", JOptionPane.ERROR_MESSAGE);    
+        }
+        
         
     }
 
@@ -380,10 +391,13 @@ public class CreateBlock extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSelectActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-//
-//        int idB = 0;
-//        bWS.saveBlock(loadBlockFromPanel());
-//        aeWS.saveAssignExercise(new AssignExercise(idEX, idB));
+        int idB = 0;
+        bWS.saveBlock(loadBlockFromPanel());
+        for (Exercise e : selectedExList){
+        aeWS.saveAssignExercise(new AssignExercise(e.getIdExercise(), idB));
+        new PrescribeSession(p, idHP).setVisible(true);
+        dispose();
+        }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jTableProposenExercisesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProposenExercisesMouseClicked
@@ -404,7 +418,8 @@ public class CreateBlock extends javax.swing.JFrame {
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         // TODO add your handling code here:
-        
+         new PrescribeSession(p, idHP).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
