@@ -72,7 +72,7 @@ public class BlockInterface extends javax.swing.JFrame {
         jPanelInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelCreateBlock.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabelCreateBlock.setText("Criar bloco");
+        jLabelCreateBlock.setText("Bloco");
         jPanelInformation.add(jLabelCreateBlock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelName.setText("Nome:");

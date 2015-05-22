@@ -46,17 +46,17 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
     private void setFields(HealthProfessional hp) {
         this.jTextFieldName.setText(hp.getName());
-        this.jTextFieldGender.setText(hp.getLastName());
+        this.jTextFieldLastName.setText(hp.getLastName());
         this.jTextFieldBirthDate.setText(hp.getBirthDate());
         this.jTextFieldGender.setText(hp.getGender());
-        this.jTextFieldMaritalStatus.setText(String.valueOf(hp.getNumTel()));
-        this.jTextFieldBloodGroup.setText(hp.getNacionality());
-        this.jTextFieldNacio.setText(hp.getAdress());
-        this.jTextFieldAdress.setText(hp.getEmail());
-        this.jTextFieldInstitution.setText(String.valueOf(hp.getNumCC()));
+        this.jTextFieldNTel.setText(String.valueOf(hp.getNumTel()));
+        this.jTextFieldNacio.setText(hp.getNacionality());
+        this.jTextFieldAdress.setText(hp.getAdress());
+        this.jTextFieldEmail.setText(hp.getEmail());
+        this.jTextFieldNCC.setText(String.valueOf(hp.getNumCC()));
         this.jTextFieldNIF.setText(String.valueOf(hp.getNif()));
         this.jTextFieldMaritalStatus.setText(hp.getMaritalStatus());
-        this.jTextFieldLastName.setText(hp.getBloodGroup());
+        this.jTextFieldBloodGroup.setText(hp.getBloodGroup());
         this.jTextFieldInstitution.setText(hp.getInstitution());
 
         if (hp.getPicture().equals("profile")) {
@@ -172,42 +172,60 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 235, -1, -1));
 
         jTextFieldMaritalStatus.setEditable(false);
+        jTextFieldMaritalStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 150, -1));
 
         jTextFieldAdress.setEditable(false);
+        jTextFieldAdress.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 410, -1));
 
         jTextFieldNacio.setEditable(false);
+        jTextFieldNacio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 150, -1));
 
         jTextFieldGender.setEditable(false);
+        jTextFieldGender.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
 
         jTextFieldLastName.setEditable(false);
+        jTextFieldLastName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 150, -1));
 
         jTextFieldBloodGroup.setEditable(false);
+        jTextFieldBloodGroup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 150, -1));
 
         jTextFieldInstitution.setEditable(false);
+        jTextFieldInstitution.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 150, -1));
 
         jTextFieldNIF.setEditable(false);
+        jTextFieldNIF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 150, -1));
 
         jTextFieldEmail.setEditable(false);
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
 
         jTextFieldNCC.setEditable(false);
+        jTextFieldNCC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 150, -1));
 
         jTextFieldNTel.setEditable(false);
+        jTextFieldNTel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 150, -1));
 
         jTextFieldBirthDate.setEditable(false);
+        jTextFieldBirthDate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
 
         jTextFieldName.setEditable(false);
+        jTextFieldName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNameActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, -1));
 
         jButtonBack.setText("Voltar");
@@ -252,6 +270,10 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         new HealthProfessionalEdit(hp).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonEditActionPerformed
+
+    private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

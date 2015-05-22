@@ -177,45 +177,59 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 235, -1, -1));
 
         jTextField1.setEditable(false);
+		jTextField1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 110, -1));
 
         jTextField2.setEditable(false);
+		jTextField2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 110, -1));
 
         jTextFieldAdressp.setEditable(false);
+		jTextFieldAdressp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldAdressp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 370, -1));
 
         jTextFieldNationalityp.setEditable(false);
+		jTextFieldNationalityp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNationalityp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 110, -1));
 
         jTextField6.setEditable(false);
+		jTextField6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, -1));
 
         jTextFieldLastNamep.setEditable(false);
+		jTextFieldLastNamep.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldLastNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 110, -1));
 
         jTextField8.setEditable(false);
+		jTextField8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 310, 50));
 
         jTextFieldBloodGroupp.setEditable(false);
+		jTextFieldBloodGroupp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldBloodGroupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 110, -1));
 
         jTextField10.setEditable(false);
+		jTextField10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, -1));
 
         jTextFieldEmailp.setEditable(false);
+		jTextFieldEmailp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldEmailp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 110, -1));
 
         jTextFieldNumCCp.setEditable(false);
+		jTextFieldNumCCp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNumCCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 110, -1));
 
         jTextFieldNumTelp.setEditable(false);
+		jTextFieldNumTelp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNumTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
 
         jTextField14.setEditable(false);
+		jTextField14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
 
         jTextFieldNamep.setEditable(false);
+		jTextFieldNamep.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
 
         jButtonPrescribeSession.setText("Prescrever sessão");
