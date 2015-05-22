@@ -194,7 +194,7 @@ public class PatientsList extends javax.swing.JFrame {
 //       pList = pWS.getPatientByName(name);
 //       drawTable();
 //    }
-//    
+    
     private void drawTable() {
         try {
             initializeTable();
