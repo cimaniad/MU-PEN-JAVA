@@ -6,6 +6,15 @@
 package frontend.healthProfessional;
 
 import backend.pojos.Exercise;
+import backend.ws.ExerciseWS;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -13,12 +22,47 @@ import backend.pojos.Exercise;
  */
 public class ExerciseInterface extends javax.swing.JFrame {
 
+    private Logger log = Logger.getLogger(ExerciseInterface.class);
+    private ExerciseWS exWS;
+
     /**
      * Creates new form ExerciseDescription
      */
     public ExerciseInterface(Exercise ex) {
         initComponents();
+        setField(ex);
     }
+
+    private void setField(Exercise ex){
+        this.jTextFieldName.setText(ex.getName());
+        this.jTextFieldStructure.setText(ex.getStructure());
+        this.jTextFieldDesignation.setText(ex.getDesignation());
+
+        if (ex.getPicture().equals("profile")) {
+            ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+            jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
+                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+        } else {
+            jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(ex.getPicture(), 90, 90)));
+        }
+    }
+
+    private Image getImageFromServer(String picture, int with, int heigth) {
+        try {
+            URL url = new URL("http://localhost/mu-pen-web/imagens/Exercises/" + picture.trim());
+            log.debug("\n\tProfile Image: " + url.toString());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException("Erro ao carregar imagem");
+        } catch (IOException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException("Erro ao carregar imagem");
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,14 +78,12 @@ public class ExerciseInterface extends javax.swing.JFrame {
         jLabelExercise = new javax.swing.JLabel();
         jLabelName = new javax.swing.JLabel();
         jLabelBirthDate = new javax.swing.JLabel();
-        jLabelLastName = new javax.swing.JLabel();
         jLabelGender = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldName = new javax.swing.JTextField();
+        jLabelPhoto = new javax.swing.JLabel();
+        jTextFieldDesignation = new javax.swing.JTextField();
+        jTextFieldStructure = new javax.swing.JTextField();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -64,13 +106,10 @@ public class ExerciseInterface extends javax.swing.JFrame {
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         jLabelBirthDate.setText("designaçao:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
-
-        jLabelLastName.setText("Nivel de dificuldade:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
 
         jLabelGender.setText("Estrutura:");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -79,14 +118,13 @@ public class ExerciseInterface extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, -1, -1));
-        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 190, -1));
+        jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 190, -1));
 
-        jLabel1.setText("                           Imagem do exercício");
-        jLabel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), null));
-        jPanelInformation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 300, 220));
-        jPanelInformation.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 190, -1));
-        jPanelInformation.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 190, -1));
-        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 190, -1));
+        jLabelPhoto.setText("                           Imagem do exercício");
+        jLabelPhoto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), null));
+        jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 300, 220));
+        jPanelInformation.add(jTextFieldDesignation, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 190, -1));
+        jPanelInformation.add(jTextFieldStructure, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 190, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -105,8 +143,7 @@ public class ExerciseInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new HealthProfessionalMenu().setVisible(true);
-        dispose();
+
     }//GEN-LAST:event_jButtonBackActionPerformed
 
 //    /**
@@ -116,7 +153,7 @@ public class ExerciseInterface extends javax.swing.JFrame {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 //         */
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -147,19 +184,17 @@ public class ExerciseInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelExercise;
     private javax.swing.JLabel jLabelGender;
     private javax.swing.JLabel jLabelInformation;
-    private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldDesignation;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldStructure;
     // End of variables declaration//GEN-END:variables
 }

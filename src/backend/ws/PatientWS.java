@@ -52,7 +52,7 @@ public class PatientWS {
         }
         log.debug("Patient saved with sucess");
     }
-    
+
     public List<Patient> getPatientByName(String name, int idHealthPro) {
         List<Patient> pList = null;
 
@@ -66,7 +66,7 @@ public class PatientWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao realizar a pesquisa");
             }
@@ -83,7 +83,7 @@ public class PatientWS {
         log.debug("\n\tHPs : " + pList.toString());
         return pList;
     }
-    
+
     public List<Patient> getPatientsByHPDate(int idHealthPro, String appointmentDate) {
         List<Patient> pList = null;
 
@@ -97,7 +97,7 @@ public class PatientWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos Pacientes com consulta marcada para esta data");
             }
@@ -127,7 +127,7 @@ public class PatientWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
             }
@@ -183,7 +183,7 @@ public class PatientWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
             }
@@ -212,7 +212,7 @@ public class PatientWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Paciente");
             }

@@ -110,7 +110,7 @@ public class FEAppointment extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanelWallpaper = new javax.swing.JPanel();
@@ -236,7 +236,7 @@ public class FEAppointment extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }// </editor-fold>
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {
         new Schedule().setVisible(true);
@@ -246,7 +246,7 @@ public class FEAppointment extends javax.swing.JFrame {
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {
         new AppointmentCreateEdit(getSelectAppointment()).setVisible(true);
         dispose();
-       
+
     }
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +270,7 @@ public class FEAppointment extends javax.swing.JFrame {
         comboChange();
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify
     private javax.swing.JButton jButtonAprove;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonCancelEvent;
@@ -293,5 +293,5 @@ public class FEAppointment extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldHours;
     private javax.swing.JTextField jTextFieldLocal;
     private javax.swing.JTextField jTextFieldPathology;
-    // End of variables declaration                   
+    // End of variables declaration
 }

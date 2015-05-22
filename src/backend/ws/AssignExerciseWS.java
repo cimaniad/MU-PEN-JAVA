@@ -22,7 +22,7 @@ import org.apache.log4j.Logger;
  * @author jorge
  */
 public class AssignExerciseWS {
-    
+
     private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
@@ -32,8 +32,8 @@ public class AssignExerciseWS {
          gson = new Gson();
         wrapperWS = WrapperWS.getWrapperWS();
     }
-    
-    
+
+
      public void saveAssignExercise(AssignExercise ae ) {
 
         try {
@@ -41,7 +41,7 @@ public class AssignExerciseWS {
                     "saveAssignExercise", getAllParams(ae));    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
-            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 201) {
@@ -54,6 +54,37 @@ public class AssignExerciseWS {
             throw new RuntimeException(e.getMessage());
         }
         log.debug("\n\t AssignedEcercise saved with success");
+    }
+
+    public List<AssignExercise> getAssignExerciseByIdBlock(int idB){
+        List<AssignExercise> exList = null;
+
+        List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
+        params.add(new BasicNameValuePair("idBlock", String.valueOf(idB)));
+
+        try {
+            responseWS = wrapperWS.sendRequest("AssignExercise",
+                    "getAssignExerciseByIdBlock", params);    //efetua o pedido ao WS
+            String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
+
+            int httpResponseCod = responseWS.getStatusLine().getStatusCode();
+            if (httpResponseCod != 200) {
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
+                log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
+                throw new RuntimeException("Ocorreu um erro ao aceder aos dados dos Exercícios Atribuidos");
+            }
+
+            Type type = new TypeToken<List<AssignExercise>>() {
+            }.getType();  //tipo do para o qual queros retornar a responseWS Json
+            exList = gson.fromJson(jsonResp, type);
+
+        } catch (RuntimeException e) {
+            log.error("\n\t" + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        log.debug("\n\tAssignExercise data access success");
+        log.debug("\n\tPs : " + exList.toString());
+        return exList;
     }
     
      private List<NameValuePair> getAllParams(AssignExercise ae) {
