@@ -33,26 +33,7 @@ public class ExerciseWS {
         wrapperWS = WrapperWS.getWrapperWS();
     }
     
-    public void saveExercise(Exercise ex) {
-
-        try {
-            responseWS = wrapperWS.sendRequest("Exercise", "saveExercise", getAllParams(ex));    //efetua o pedido ao WS
-            String validacao = wrapperWS.readResponse(responseWS);         //Passa a resposta para uma string
-
-            Validation v = gson.fromJson(validacao, Validation.class);    //Conversão do objecto Json para o objecto Java
-
-            if (v.getCod() != 201) {
-                System.out.println(v.getMsg());
-                log.error(v.getMsg());
-                throw new RuntimeException("Ocorreu um erro ao criar o Exercício");
-            }
-
-        } catch (RuntimeException e) {
-            log.error(e.getMessage());
-            throw new RuntimeException(e.getMessage());
-        }
-        log.debug("Exercise saved with sucess");
-    }
+   
     public List<Exercise> getAllExercises() {
         List<Exercise> exList = null;
 
