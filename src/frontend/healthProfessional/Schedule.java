@@ -35,7 +35,7 @@ public class Schedule extends javax.swing.JFrame {
             initComponents();
             appoint = new AppointmentWS();
             //colocar idHealthProfessional
-            apList = appoint.getAllAppointments(1);
+            apList = appoint.getHPAppointments(1);
             i = 1;
             paintSchedule();
         } catch (Exception e) {

@@ -41,7 +41,7 @@ public class AppointmentWS {
                     "saveEditAppointment", getAllParams(a));    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
-            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 201) {
@@ -56,19 +56,19 @@ public class AppointmentWS {
         log.debug("\n\t Appointment saved with success");
     }
 
-    public List<Appointment> getAllAppointments(int idHealthProfessional) {
+    public List<Appointment> getHPAppointments(int idHealthProfessional) {
         List<Appointment> aList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(idHealthProfessional)));
         try {
             responseWS = wrapperWS.sendRequest("Appointment",
-                    "getAllAppointments", params);    //efetua o pedido ao WS
+                    "getHPAppointments", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
             }
@@ -115,7 +115,7 @@ public class AppointmentWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
             }
@@ -145,7 +145,7 @@ public class AppointmentWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados da consulta");
             }
