@@ -6,6 +6,21 @@
 package frontend.healthProfessional;
 
 import backend.pojos.HealthProfessional;
+import backend.ws.HealthProfessionalWS;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
+import sun.misc.BASE64Encoder;
+
 
 /**
  *
@@ -13,13 +28,48 @@ import backend.pojos.HealthProfessional;
  */
 public class HealthProfessionalEdit extends javax.swing.JFrame {
 
+    private Logger log = Logger.getLogger(frontend.admin.HealthProfessionalProfile.class);
+    private HealthProfessional hp;
+    private BufferedImage pic = null;
+    
     /**
      * Creates new form NewJFrame
      */
     public HealthProfessionalEdit(HealthProfessional hp) {
         initComponents();
+        this.hp = hp;
+        try {
+            setFields(hp);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(frontend.healthProfessional.HealthProfessionalEdit.this,
+                    e.getMessage(), "Erro ao carregar o seu perfil", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
+    private void setFields(HealthProfessional hp) {
+        this.jTextFieldName.setText(hp.getName());
+        this.jTextFieldLastName.setText(hp.getLastName());
+//        this.jDateChooserBirth.setDate(hp.getBirthDate());
+        this.jComboBoxGender.setSelectedItem(hp.getGender());
+        this.jTextFieldTel.setText(String.valueOf(hp.getNumTel()));
+        this.jTextFieldNationality.setText(hp.getNacionality());
+        this.jTextFieldCC.setText(String.valueOf(hp.getNumCC()));
+        this.jTextFieldEmail.setText(hp.getEmail());
+        this.jTextFieldAdress.setText(hp.getAdress());
+        this.jTextFieldNIF.setText(String.valueOf(hp.getNif()));
+        this.jComboBoxMaritalStatus.setSelectedItem(hp.getMaritalStatus());
+        this.jTextFieldInstitution.setText(hp.getInstitution());
+        this.jComboBoxBloodType.setSelectedItem(hp.getBloodGroup());
+
+        if (hp.getPicture().equals("profile")) {
+            ImageIcon pic = new ImageIcon(getClass().getResource("/imagens/fotos/perfil.PNG"));
+            jLabelPhoto.setIcon(new ImageIcon(pic.getImage().getScaledInstance(
+                    jLabelPhoto.getWidth(), jLabelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+        } else {
+            jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(hp.getPicture(), 90, 90)));
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,8 +102,8 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         jComboBoxBloodType = new javax.swing.JComboBox();
         jComboBoxMaritalStatus = new javax.swing.JComboBox();
         jCheckBoxDevelopmentProfessional = new javax.swing.JCheckBox();
+        jDateChooserBirth = new com.toedter.calendar.JDateChooser();
         jTextFieldName = new javax.swing.JTextField();
-        jTextFieldBirthDate = new javax.swing.JTextField();
         jTextFieldTel = new javax.swing.JTextField();
         jTextFieldCC = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
@@ -131,6 +181,11 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         jPanelInformation.add(jButtonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
         jButtonBack.setText("Voltar");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino", " " }));
@@ -149,8 +204,10 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
             }
         });
         jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 180, -1));
+
+        jDateChooserBirth.setDoubleBuffered(false);
+        jPanelInformation.add(jDateChooserBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
-        jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
         jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
         jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
         jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
@@ -192,8 +249,20 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
-        // TODO add your handling code here:
+        try {
+            HealthProfessional hp = loadHealthProfessionalFromPanel();
+            HealthProfessionalWS hpWS = new HealthProfessionalWS();
+            hpWS.saveEditHealthProfessional(hp);
+            new healthprofprof().setVisible(true);
+            dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(HealthProfessionalEdit.this,
+                    e.getMessage(), "Erro ao editar perfil", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonEditActionPerformed
 
     private void jCheckBoxDevelopmentProfessionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDevelopmentProfessionalActionPerformed
@@ -208,7 +277,126 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNIFActionPerformed
 
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        new healthprofprof().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
+     private HealthProfessional loadHealthProfessionalFromPanel() {
+        String warn = validator();
+        if (!warn.isEmpty()) {
+            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
+        }
+        String name = jTextFieldName.getText();
+        hp.setName(name);
+        String lastName = jTextFieldLastName.getText();
+        hp.setLastName(lastName);
+        String email = jTextFieldEmail.getText().trim();
+        hp.setEmail(email);
+        String adress = jTextFieldAdress.getText();
+        hp.setAdress(adress);
+        String nationality = jTextFieldNationality.getText();
+        hp.setNacionality(nationality);
+        String institution = jTextFieldInstitution.getText();
+        hp.setInstitution(institution);
+        String gender = String.valueOf(jComboBoxBloodType.getSelectedItem());
+        hp.setGender(gender);
+        String maritalStatus = String.valueOf(jComboBoxMaritalStatus.getSelectedItem());
+        hp.setMaritalStatus(maritalStatus);
+        String bloodGroup = String.valueOf(jComboBoxBloodType.getSelectedItem());
+        hp.setBloodGroup(bloodGroup);
+        Date birthDate = jDateChooserBirth.getDate();
+        hp.setBirthDate(lastName);
+        int numTel = 0;
+        int numCC = 0;
+        int nif = 0;
+        boolean developmentPro = jCheckBoxDevelopmentProfessional.isSelected() == true ? true : false;
+        try {
+            if (jTextFieldTel.getText().trim().length() != 9 || jTextFieldNIF.getText().trim().length() != 9) {
+                throw new RuntimeException("O NºTel e NIF devem ter 9 digitos!");
+            }
+            if (jTextFieldCC.getText().trim().length() != 8) {
+                throw new RuntimeException("O NºCC deve ter 8 digitos!");
+            }
+            numTel = Integer.valueOf(jTextFieldTel.getText().trim());
+            hp.setNumTel(numTel);
+            numCC = Integer.valueOf(jTextFieldCC.getText().trim());
+            hp.setNumCC(numCC);
+            nif = Integer.valueOf(jTextFieldNIF.getText().trim());
+            hp.setNif(nif);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Apenas numeros são permitidos nos campos NºTel, NIF e NºCC");
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+          return hp; 
+    }
+    
+     
+    private Image getImageFromServer(String picture, int with, int heigth) {
+        try {
+            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            log.debug("\n\tProfile Image: " + url.toString());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException("Erro ao carregar imagem");
+        } catch (IOException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException("Erro ao carregar imagem");
+        }
+    }
+    
+    private String parseDate(Date d) {
+        SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFromat.format(d);
+        return date;
+    }
+    
+    private String encodeToString(BufferedImage image, String type) {
+        if (image == null) {
+            return "profile";
+        }
+
+        String imageString = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        try {
+            ImageIO.write(image, type, bos);
+            byte[] imageBytes = bos.toByteArray();
+
+            BASE64Encoder encoder = new BASE64Encoder();
+            imageString = encoder.encode(imageBytes);
+
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imageString;
+    }
+    
+    private String validator() {
+        StringBuilder warns = new StringBuilder();
+        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
+        warns.append(jTextFieldLastName.getText().isEmpty() ? "Apelido, " : "");
+        warns.append(jTextFieldAdress.getText().isEmpty() ? "Morada, " : "");
+        warns.append(jDateChooserBirth.getDate().toString().isEmpty() ? "Data de Nascimento, " : "");
+        warns.append(jTextFieldCC.getText().isEmpty() ? "Numero CC, " : "");
+        warns.append(jTextFieldEmail.getText().isEmpty() ? "E-mail, " : "");
+        warns.append(jTextFieldNIF.getText().isEmpty() ? "NIF, " : "");
+        warns.append(jTextFieldNationality.getText().isEmpty() ? "Nacionalidade, " : "");
+
+        if (!warns.toString().isEmpty()) {
+            warns.delete(warns.toString().length() - 2, warns.toString().length());
+            warns.append("!");
+        }
+
+        return warns.toString();
+    }
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonEdit;
@@ -217,6 +405,7 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxBloodType;
     private javax.swing.JComboBox jComboBoxGender;
     private javax.swing.JComboBox jComboBoxMaritalStatus;
+    private com.toedter.calendar.JDateChooser jDateChooserBirth;
     private javax.swing.JLabel jLabelAdress;
     private javax.swing.JLabel jLabelBirthDate;
     private javax.swing.JLabel jLabelBloodType;
@@ -237,7 +426,6 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
     private javax.swing.JTextField jTextFieldAdress;
-    private javax.swing.JTextField jTextFieldBirthDate;
     private javax.swing.JTextField jTextFieldCC;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldInstitution;
