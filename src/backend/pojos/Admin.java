@@ -9,7 +9,7 @@ package backend.pojos;
  *
  * @author ASUS
  */
-public class Admin {
+public class Admin extends User{
 
 
       public Admin(){
@@ -25,7 +25,7 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin{" + "idAdmin=" + this.getIdUser() + ", name=" + this.getName + ", lastName=" + this.getLastName()
+        return "Admin{" + "idAdmin=" + this.getIdUser() + ", name=" + this.getName() + ", lastName=" + this.getLastName()
                 + ", numCC=" + this.getNumCC() + ", adress=" + this.getAdress() + ", numTel=" + this.getNumTel() + ", email="
                 + this.getEmail() + ", birthDate=" + this.getBirthDate() + ", bloodGroup=" + this.getBloodGroup()
                 + ", nationality=" + this.getNationality() + ", password=" + this.getPassword() + '}';
