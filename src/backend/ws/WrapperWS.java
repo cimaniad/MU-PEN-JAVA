@@ -26,7 +26,7 @@ import org.apache.log4j.*;
 public class WrapperWS {
 
     private static WrapperWS instance;
-    private final String URL = "http://localhost/mu-pen-web/api/";
+    private final String URL = "http://dainamic.dsi.uminho.pt/api/";
     private final CloseableHttpClient httpClient;
     private final HttpPost post;
     private static Logger log = Logger.getLogger(WrapperWS.class);

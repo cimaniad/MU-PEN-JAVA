@@ -36,11 +36,18 @@ public class PatientsList extends javax.swing.JFrame {
      * Creates new form PatientesList
      */
     public PatientsList() {
-        initComponents();
-        pWS = new PatientWS();
-        //Pôr id HealthProfessional!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-        pList = pWS.getPatientsByHealthProfessional(1);
-        drawTable();
+        try {
+            initComponents();
+            pWS = new PatientWS();
+            //Pôr id HealthProfessional!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+            pList = pWS.getPatientsByHealthProfessional(1);
+            drawTable();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            JOptionPane.showMessageDialog(PatientsList.this, e.getMessage(),
+                    "Lista de Pacientes", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     /**
@@ -189,12 +196,7 @@ public class PatientsList extends javax.swing.JFrame {
         drawTable();
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
-//    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                              
-//       String name = jTextFieldSearch.getText();
-//       pList = pWS.getPatientByName(name);
-//       drawTable();
-//    }
-//    
+
     private void drawTable() {
         try {
             initializeTable();
@@ -215,8 +217,8 @@ public class PatientsList extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos \nprofissionais de saude",
-                    "Erro  Profissional de saude", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(PatientsList.this, "Erro ao carregar a tabela dos \npacientes!",
+                    "Erro  Lista de Pacientes", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -252,7 +254,7 @@ public class PatientsList extends javax.swing.JFrame {
      */
     private Image getImageFromServer(String picture, int width, int heigth) {
         try {
-            URL url = new URL("http://localhost/mu-pen-web/imagens/Patients/" + picture.trim());
+            URL url = new URL(picture.trim());
             log.debug(url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);

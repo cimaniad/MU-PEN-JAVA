@@ -50,7 +50,7 @@ public class FEAppointment extends javax.swing.JFrame {
 
     private Appointment aproveAppointment() {
         int idAppointment = getSelectAppointment().getIdAppointment();
-        int idPatient = getSelectPat().getIdPatient();
+        int idPatient = getSelectPat().getIdUser();
         int idHealthProfessional = 1;
         String date = jTextFieldDate.getText();
         String hour = jTextFieldHours.getText();
@@ -102,7 +102,7 @@ public class FEAppointment extends javax.swing.JFrame {
 
     private Appointment getSelectAppointment() {
         for (Appointment a : apL) {
-            if (a.getIdPatient() == getSelectPat().getIdPatient()) {
+            if (a.getIdPatient() == getSelectPat().getIdUser()) {
                 return a;
             }
         }

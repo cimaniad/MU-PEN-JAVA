@@ -280,7 +280,7 @@ public class PatientProfile extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try {
             PatientWS pWS = new PatientWS();
-            pWS.deletePatient(p.getIdPatient());
+            pWS.deletePatient(p.getIdUser());
             new PatientsList().setVisible(true);
             dispose();
         } catch (Exception e) {
@@ -347,7 +347,7 @@ public class PatientProfile extends javax.swing.JFrame {
 
     private Image getImageFromServer(String picture, int with, int heigth) {
         try {
-             URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+             URL url = new URL(picture.trim());
              log.debug("\n\tProfile Image: " + url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);

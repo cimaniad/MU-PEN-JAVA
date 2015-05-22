@@ -47,7 +47,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         this.BirthDatehp.setText(hp.getBirthDate());
         this.jTextFieldGenderhp.setText(hp.getGender());
         this.jTextFieldTelhp.setText(String.valueOf(hp.getNumTel()));
-        this.jTextFieldNationalityhp.setText(hp.getNacionality());
+        this.jTextFieldNationalityhp.setText(hp.getNationality());
         this.jTextFieldnCChp.setText(String.valueOf(hp.getNumCC()));
         this.jTextFieldEmailhp.setText(hp.getEmail());
         this.jTextFieldAdresshp.setText(hp.getAdress());
@@ -291,7 +291,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
         try {
             HealthProfessionalWS hpWS = new HealthProfessionalWS();
-            hpWS.deleteHealthProfessional(hp.getIdHealthProfessional());
+            hpWS.deleteHealthProfessional(hp.getIdUser());
             new HealthProfessionalList().setVisible(true);
             dispose();
         } catch (Exception e) {

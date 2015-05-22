@@ -50,7 +50,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         this.jTextFieldBirthDate.setText(hp.getBirthDate());
         this.jTextFieldGender.setText(hp.getGender());
         this.jTextFieldMaritalStatus.setText(String.valueOf(hp.getNumTel()));
-        this.jTextFieldBloodGroup.setText(hp.getNacionality());
+        this.jTextFieldBloodGroup.setText(hp.getNationality());
         this.jTextFieldNacio.setText(hp.getAdress());
         this.jTextFieldAdress.setText(hp.getEmail());
         this.jTextFieldInstitution.setText(String.valueOf(hp.getNumCC()));
@@ -293,7 +293,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
     private Image getImageFromServer(String picture, int with, int heigth) {
         try {
-            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            URL url = new URL(picture.trim());
             log.debug("\n\tProfile Image: " + url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);

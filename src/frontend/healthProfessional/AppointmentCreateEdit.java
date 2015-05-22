@@ -97,7 +97,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
         }
 
-        int idPatient = getSelectPat().getIdPatient();
+        int idPatient = getSelectPat().getIdUser();
         //pôr IDHealthPro
         int idHealthProfessional = 1;
         String date = null;

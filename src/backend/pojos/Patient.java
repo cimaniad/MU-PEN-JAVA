@@ -1,24 +1,13 @@
 package backend.pojos;
 
-public class Patient {
+public class Patient extends User{
 
-    private int idPatient;
-    private String name;
-    private String lastName;
-    private int numCC;
-    private String adress;
-    private int numTel;
+    
     private int nif;
-    private String email;
     private String maritalStatus;
-    private String birthDate;
-    private String bloodGroup;
-    private String nationality;
-    private String gender;
-    private String password;
+    private String gender;    
     private String pathology;
     private String description;
-    private String picture;
     private int idHealthProfessional;
 
     public Patient() {
@@ -47,25 +36,13 @@ public class Patient {
             String adress, int numTel, int nif, String email, String maritalStatus, String birthDate,
             String bloodGroup, String nationality, String gender, String password, String pathology,
             String description, int idHealthProfessional) {
-
-        this.name = name;
-        this.lastName = lastName;
-        this.numCC = numCC;
-        this.adress = adress;
-        this.numTel = numTel;
+        super(name, lastName, numCC, picture, adress, numTel, email, birthDate, bloodGroup, nationality, password);
         this.nif = nif;
-        this.email = email;
         this.maritalStatus = maritalStatus;
-        this.birthDate = birthDate;
-        this.bloodGroup = bloodGroup;
-        this.nationality = nationality;
         this.gender = gender;
-        this.password = password;
         this.pathology = pathology;
         this.description = description;
-        this.picture = picture;
         this.idHealthProfessional = idHealthProfessional;
-        this.picture = picture;
 
     }
 
@@ -73,57 +50,7 @@ public class Patient {
         return idHealthProfessional;
     }
 
-    public int getIdPatient() {
-        return idPatient;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getNumCC() {
-        return numCC;
-    }
-
-    public void setNumCC(int numCC) {
-        this.numCC = numCC;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
-
-    public int getNumTel() {
-        return numTel;
-    }
-
-    public void setNumTel(int numTel) {
-        this.numTel = numTel;
-    }
+   
 
     public int getNif() {
         return nif;
@@ -131,14 +58,6 @@ public class Patient {
 
     public void setNif(int nif) {
         this.nif = nif;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getMaritalStatus() {
@@ -149,30 +68,6 @@ public class Patient {
         this.maritalStatus = miritalState;
     }
 
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -180,15 +75,7 @@ public class Patient {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    
     public String getPathology() {
         return pathology;
     }
@@ -207,12 +94,12 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "idPatient=" + idPatient + ", name=" + name + ", lastName=" + lastName
-                + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", nif=" + nif
-                + ", email=" + email + ", maritalStatus=" + maritalStatus + ", birthDate=" + birthDate
-                + ", bloodGroup=" + bloodGroup + ", nationality=" + nationality + ", gender=" + gender
-                + ", password=" + password + ", pathology=" + pathology + ", description=" + description
-                + ", picture=" + picture + ", idHealthProfessional=" + idHealthProfessional + '}';
+        return "Patient{" + "idPatient=" + this.getIdUser() + ", name=" + this.getName() + ", lastName=" + this.getLastName()
+                + ", numCC=" + this.getNumCC() + ", adress=" + this.getAdress() + ", numTel=" + this.getNumTel() + ", nif=" + nif
+                + ", email=" + this.getEmail() + ", maritalStatus=" + maritalStatus + ", birthDate=" + this.getBirthDate()
+                + ", bloodGroup=" + this.getBloodGroup() + ", nationality=" + this.getNationality() + ", gender=" + gender
+                + ", password=" + this.getPassword() + ", pathology=" + pathology + ", description=" + description
+                + ", picture=" + this.getPicture() + ", idHealthProfessional=" + idHealthProfessional + '}';
     }
 
 }

@@ -147,7 +147,7 @@ public class PatientWS {
 
     private List<NameValuePair> getAllParams(Patient p) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idPatient", String.valueOf(p.getIdPatient())));
+        params.add(new BasicNameValuePair("idPatient", String.valueOf(p.getIdUser())));
         params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(p.getIdHealthProfessional())));
         params.add(new BasicNameValuePair("name", p.getName()));
         params.add(new BasicNameValuePair("lastName", p.getLastName()));
