@@ -196,7 +196,6 @@ public class PatientsList extends javax.swing.JFrame {
         drawTable();
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
-
     private void drawTable() {
         try {
             initializeTable();

@@ -33,7 +33,6 @@ public class AssignExerciseWS {
         wrapperWS = WrapperWS.getWrapperWS();
     }
 
-
      public void saveAssignExercise(AssignExercise ae ) {
 
         try {
@@ -86,7 +85,7 @@ public class AssignExerciseWS {
         log.debug("\n\tPs : " + exList.toString());
         return exList;
     }
-    
+
      private List<NameValuePair> getAllParams(AssignExercise ae) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idBlock", String.valueOf(ae.getIdBlock())));

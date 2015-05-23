@@ -86,7 +86,6 @@ public class AdminProfile extends javax.swing.JFrame {
         jButtonEditProfile = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jTextFieldName = new javax.swing.JTextField();
-        jTextFieldNTel = new javax.swing.JTextField();
         jTextFieldBirthDate = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldAdress = new javax.swing.JTextField();
@@ -94,6 +93,7 @@ public class AdminProfile extends javax.swing.JFrame {
         jTextFieldBloodGroup = new javax.swing.JTextField();
         jTextFieldNatio = new javax.swing.JTextField();
         jTextFieldNCC = new javax.swing.JTextField();
+        jTextFieldNTel = new javax.swing.JTextField();
         jLabelInformation = new javax.swing.JLabel();
         jLabelwallpaper = new javax.swing.JLabel();
 
@@ -121,32 +121,32 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabelName.setText("Nome:");
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
-        jLabelBirthDate.setText("Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        jLabelBirthDate.setText(" Data de nascimento:");
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 173, -1, -1));
 
-        jLabelTel.setText("Nº Tel:");
+        jLabelTel.setText(" Nº Tel:");
         jLabelTel.setToolTipText("");
         jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 85, -1, -1));
 
-        jLabelCC.setText(" Nº CC:");
+        jLabelCC.setText("  Nº CC:");
         jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 145, -1, -1));
 
         jLabelEmail.setText("Email:");
         jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 145, -1, -1));
 
-        jLabelLastName.setText("Apelido:");
+        jLabelLastName.setText(" Apelido:");
         jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 55, -1, -1));
 
-        jLabelNationality.setText("Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 85, -1, -1));
+        jLabelNationality.setText(" Nacionalidade:");
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 85, -1, -1));
 
-        jLabelAdress.setText("Morada:");
+        jLabelAdress.setText(" Morada:");
         jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
 
         jLabelBloodType.setText("         Grupo sanguíneo:  ");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 140, -1));
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 173, 140, -1));
 
-        jButtonEditProfile.setText("Editar Perfil");
+        jButtonEditProfile.setText("Editar ");
         jButtonEditProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditProfileActionPerformed(evt);
@@ -163,31 +163,40 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jTextFieldName.setEditable(false);
+        jTextFieldName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, -1));
 
-        jTextFieldNTel.setEditable(false);
-        jPanelInformation.add(jTextFieldNTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
-
         jTextFieldBirthDate.setEditable(false);
+        jTextFieldBirthDate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
 
         jTextFieldEmail.setEditable(false);
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 150, -1));
 
         jTextFieldAdress.setEditable(false);
+        jTextFieldAdress.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 400, -1));
 
         jTextFieldLastName.setEditable(false);
+        jTextFieldLastName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 140, -1));
 
         jTextFieldBloodGroup.setEditable(false);
+        jTextFieldBloodGroup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 140, -1));
 
         jTextFieldNatio.setEditable(false);
+        jTextFieldNatio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNatio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 140, -1));
 
         jTextFieldNCC.setEditable(false);
+        jTextFieldNCC.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanelInformation.add(jTextFieldNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 140, -1));
+
+        jTextFieldNTel.setEditable(false);
+        jTextFieldNTel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jPanelInformation.add(jTextFieldNTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));

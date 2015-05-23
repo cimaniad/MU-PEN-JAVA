@@ -143,7 +143,8 @@ public class ExerciseInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-
+        new HealthProfessionalMenu().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
 //    /**

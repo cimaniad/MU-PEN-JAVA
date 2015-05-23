@@ -42,8 +42,10 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         jLabelGender = new javax.swing.JLabel();
         jLabelNationality = new javax.swing.JLabel();
         jLabelAdress = new javax.swing.JLabel();
+        jLabelNUtente = new javax.swing.JLabel();
         jLabelNIF = new javax.swing.JLabel();
         jLabelMaritalStatus = new javax.swing.JLabel();
+        jLabelType = new javax.swing.JLabel();
         jLabelBloodType = new javax.swing.JLabel();
         jLabelInstitution = new javax.swing.JLabel();
         jButtonEdit = new javax.swing.JButton();
@@ -61,6 +63,8 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         jTextFieldNationality = new javax.swing.JTextField();
         jTextFieldAdress = new javax.swing.JTextField();
         jTextFieldNIF = new javax.swing.JTextField();
+        jTextFieldUtente = new javax.swing.JTextField();
+        jTextFieldType = new javax.swing.JTextField();
         jTextFieldInstitution = new javax.swing.JTextField();
         jButtonEditPhoto = new javax.swing.JButton();
         jLabelInformation = new javax.swing.JLabel();
@@ -96,7 +100,7 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
 
         jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 145, -1, -1));
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 175, -1, -1));
 
         jLabelLastName.setText("Apelido:");
         jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 55, -1, -1));
@@ -108,13 +112,19 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 115, -1, -1));
 
         jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 175, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 145, -1, -1));
+
+        jLabelNUtente.setText("Nº Utente:");
+        jPanelInformation.add(jLabelNUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 175, -1, -1));
 
         jLabelNIF.setText("  NIF:");
         jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 205, 30, -1));
 
         jLabelMaritalStatus.setText(" Estado Civil:");
         jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 205, -1, -1));
+
+        jLabelType.setText("   Tipo:");
+        jPanelInformation.add(jLabelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 235, -1, -1));
 
         jLabelBloodType.setText("  Grupo sanguíneo:");
         jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, -1, -1));
@@ -148,28 +158,18 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
                 jCheckBoxDevelopmentProfessionalActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 180, -1));
+        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 180, -1));
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
         jPanelInformation.add(jTextFieldBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
         jPanelInformation.add(jTextFieldTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, -1));
         jPanelInformation.add(jTextFieldCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
-        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
+        jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 170, -1));
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 170, -1));
-
-        jTextFieldAdress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAdressActionPerformed(evt);
-            }
-        });
-        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 430, -1));
-
-        jTextFieldNIF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNIFActionPerformed(evt);
-            }
-        });
+        jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
         jPanelInformation.add(jTextFieldNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, -1));
+        jPanelInformation.add(jTextFieldUtente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 170, -1));
+        jPanelInformation.add(jTextFieldType, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
         jPanelInformation.add(jTextFieldInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 170, -1));
 
         jButtonEditPhoto.setText("Editar foto");
@@ -200,13 +200,6 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxDevelopmentProfessionalActionPerformed
 
-    private void jTextFieldAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAdressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAdressActionPerformed
-
-    private void jTextFieldNIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNIFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNIFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -229,10 +222,12 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelMaritalStatus;
     private javax.swing.JLabel jLabelNIF;
+    private javax.swing.JLabel jLabelNUtente;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNationality;
     private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelTel;
+    private javax.swing.JLabel jLabelType;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;
@@ -246,5 +241,7 @@ public class HealthProfessionalEdit extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldNationality;
     private javax.swing.JTextField jTextFieldTel;
+    private javax.swing.JTextField jTextFieldType;
+    private javax.swing.JTextField jTextFieldUtente;
     // End of variables declaration//GEN-END:variables
 }

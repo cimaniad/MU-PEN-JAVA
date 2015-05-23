@@ -2,15 +2,15 @@ package backend.pojos;
 
 public class Patient extends User{
 
-    
     private int nif;
     private String maritalStatus;
-    private String gender;    
+    private String gender;
     private String pathology;
     private String description;
     private int idHealthProfessional;
 
     public Patient() {
+      super();
     }
 
     /**
@@ -43,14 +43,12 @@ public class Patient extends User{
         this.pathology = pathology;
         this.description = description;
         this.idHealthProfessional = idHealthProfessional;
-
     }
 
     public int getIdHealthProfessional() {
         return idHealthProfessional;
     }
 
-   
 
     public int getNif() {
         return nif;
@@ -75,7 +73,7 @@ public class Patient extends User{
     public void setGender(String gender) {
         this.gender = gender;
     }
-    
+
     public String getPathology() {
         return pathology;
     }

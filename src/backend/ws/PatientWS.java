@@ -84,6 +84,7 @@ public class PatientWS {
         return pList;
     }
 
+
     public List<Patient> getPatientsByHPDate(int idHealthPro, String appointmentDate) {
         List<Patient> pList = null;
 

@@ -25,7 +25,7 @@ public class HealthProfessional extends User {
     }
 
     /**
-     * 
+     *
      * @param name
      * @param lastName
      * @param numCC
@@ -41,7 +41,7 @@ public class HealthProfessional extends User {
      * @param password
      * @param picture
      * @param institution
-     * @param developmentProfessional 
+     * @param developmentProfessional
      */
     public HealthProfessional(String name, String lastName, int numCC, String adress,
             int numTel, int nif, String email, String maritalStatus, String birthDate,
@@ -101,9 +101,16 @@ public class HealthProfessional extends User {
      */
     @Override
     public String toString() {
-        return "HealthProfessional{" + "nif=" + nif + ", maritalStatus=" + maritalStatus
-                + ", gender=" + gender + ", institution=" + institution + ", developmentProfessional="
-                + developmentProfessional + '}';
+        return "HealthProfessional{" + "idHealthProfessional=" + this.getIdUser()
+        + ", name=" + this.getName() + ", lastName=" + this.getLastName()
+        + ", numCC=" + this.getNumCC() + ", adress=" + this.getAdress()
+        + ", numTel=" + this.getNumTel() + ", nif=" + nif
+        + ", email=" + this.getEmail() + ", maritalStatus=" + maritalStatus
+        + ", birthDate=" + this.getBirthDate() + ", bloodGroup=" + this.getBloodGroup()
+        + ", nationality=" + this.getNationality() + ", sex=" + gender
+        + ", password=" + this.getPassword() + ", picture=" + this.getPicture()
+        + ", institution=" + institution
+        + ", developmentProfessional=" + developmentProfessional + '}';
     }
 
 }

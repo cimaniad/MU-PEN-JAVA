@@ -10,7 +10,7 @@ package backend.pojos;
  * @author jorge
  */
 public class Exercise {
-   
+
     private int idExercise;
     private int idSubDomain;
     private String designation;
@@ -77,10 +77,5 @@ public class Exercise {
     public String toString() {
         return "Exercise{" + "idExercise=" + idExercise + ", idSubDomain=" + idSubDomain + ", designation=" + designation + ", structure=" + structure + ", name=" + name + ", picture=" + picture + '}';
     }
-
-    
-
-    
-    
     
 }

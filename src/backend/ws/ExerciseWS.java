@@ -22,7 +22,7 @@ import org.apache.log4j.Logger;
  * @author jorge
  */
 public class ExerciseWS {
-    
+
      private WrapperWS wrapperWS;
     private CloseableHttpResponse responseWS;
     private Gson gson;
@@ -32,8 +32,7 @@ public class ExerciseWS {
         gson = new Gson();
         wrapperWS = WrapperWS.getWrapperWS();
     }
-    
-   
+
     public List<Exercise> getAllExercises() {
         List<Exercise> exList = null;
 
@@ -46,7 +45,7 @@ public class ExerciseWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Exercício");
             }
@@ -79,7 +78,7 @@ public class ExerciseWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Exercício");
             }
@@ -94,7 +93,7 @@ public class ExerciseWS {
         log.debug("\n\tEx with id " + id + ": " + ex.toString());
         return ex;
     }
-    
+
     public List<Exercise> getExerciseBySubDomain(int idSD){
         List<Exercise> exList = null;
 
@@ -108,7 +107,7 @@ public class ExerciseWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Exercício");
             }
@@ -125,9 +124,7 @@ public class ExerciseWS {
         log.debug("\n\tPs : " + exList.toString());
         return exList;
     }
-    
-    
-    
+
     private List<NameValuePair> getAllParams(Exercise ex) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
         params.add(new BasicNameValuePair("idExercise", String.valueOf(ex.getIdExercise())));
@@ -139,4 +136,3 @@ public class ExerciseWS {
         return params;
     }
 }
-

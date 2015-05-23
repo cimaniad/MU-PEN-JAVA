@@ -49,7 +49,7 @@ public class HealthProfessionalWS {
                     "saveEditHealthProfessional", getAllParams(hp));    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
-            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+            Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 201) {
@@ -83,7 +83,7 @@ public class HealthProfessionalWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Profissional de Saúde");
             }
@@ -116,7 +116,7 @@ public class HealthProfessionalWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao aceder aos dados do Profissional de Saúde");
             }
@@ -166,7 +166,7 @@ public class HealthProfessionalWS {
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();
             if (httpResponseCod != 200) {
-                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java     
+                Validation v = gson.fromJson(jsonResp, Validation.class);    //Conversão do objecto Json para o objecto Java
                 log.error("\n\tCod: " + v.getCod() + "\tMsg: " + v.getMsg());
                 throw new RuntimeException("Ocorreu um erro ao realizar a pesquisa");
             }

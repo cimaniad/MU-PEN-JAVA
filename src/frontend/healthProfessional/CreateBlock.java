@@ -68,7 +68,6 @@ public class CreateBlock extends javax.swing.JFrame {
                     e.getMessage(), "Erro ao carregar dados para criação de um bloco", JOptionPane.ERROR_MESSAGE);
         }
 
-
     }
 
     private void drawDomainCombo() {
@@ -134,7 +133,6 @@ public class CreateBlock extends javax.swing.JFrame {
                 tableModelSel.addRow(new Object[]{ex.getName()});
             }
 
-
         } catch (Exception ex) {
             log.error(ex.getMessage());
             JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios selecionados",
@@ -159,7 +157,6 @@ public class CreateBlock extends javax.swing.JFrame {
         }
         String name = jTextFieldName.getText();
         String description = jTextAreaDescription.getText();
-
         return new Block(0,name, description, 1);   // resolver id profissional
     }
     private String validator() {
@@ -177,8 +174,6 @@ public class CreateBlock extends javax.swing.JFrame {
     private Exercise getExAtTable(){
         return propExList.get(jTableProposenExercises.getSelectedRow());
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.

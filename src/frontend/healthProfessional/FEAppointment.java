@@ -246,7 +246,6 @@ public class FEAppointment extends javax.swing.JFrame {
     private void jButtonCancelEventActionPerformed(java.awt.event.ActionEvent evt) {
         new AppointmentCreateEdit(getSelectAppointment()).setVisible(true);
         dispose();
-
     }
 
     private void jButtonAproveActionPerformed(java.awt.event.ActionEvent evt) {
