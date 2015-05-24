@@ -5,7 +5,6 @@
  */
 package frontend.admin;
 
-import de.javasoft.plaf.synthetica.SyntheticaRootPaneUI;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;

@@ -34,7 +34,7 @@ public class Main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new HealthProfessionalMenu().setVisible(true);
+                new HealthProfessionalMenu().setVisible(true);
                 new AdminMenu().setVisible(true);
             }
         });
