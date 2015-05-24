@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -38,6 +39,7 @@ public class PatientsList extends javax.swing.JFrame {
     public PatientsList() {
         try {
             initComponents();
+            setIcon();
             pWS = new PatientWS();
             //Pôr id HealthProfessional!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
             pList = pWS.getPatientsByHealthProfessional(1);
@@ -265,7 +267,12 @@ public class PatientsList extends javax.swing.JFrame {
         }
         return null;
     }
-
+ private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonRegist;

@@ -89,7 +89,7 @@ public class AdminWS {
 
     private List<NameValuePair> getAllParams(Admin a) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idAdmin", String.valueOf(a.getIdUser())));
+        params.add(new BasicNameValuePair("idAdmin", String.valueOf(a.getIdAdmin())));
         params.add(new BasicNameValuePair("name", a.getName()));
         params.add(new BasicNameValuePair("lastName", a.getLastName()));
         params.add(new BasicNameValuePair("numCC", String.valueOf(a.getNumCC())));

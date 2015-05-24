@@ -4,26 +4,40 @@
  * and open the template in the editor.
  */
 package main;
-
-import backend.pojos.HealthProfessional;
-import backend.ws.HealthProfessionalWS;
-import java.io.IOException;
+import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaSilverMoonLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
+import frontend.healthProfessional.HealthProfessionalMenu;
+import frontend.admin.AdminMenu;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Ricardo
  */
 public class Main {
-
+    private static Logger log = Logger.getLogger(Main.class);
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-//        HealthProfessional t = new HealthProfessional("david", "nova", 123, "prazins", 123, 123, "nova@nova.com", "devolvido sem uso", "11-02-2015", "-n", "irlandes", "feminino", "nova", "nova.png", "HP", false);
-//        HealthProfessionalWS tWS = new HealthProfessionalWS();
-//        tWS.saveEditHealthProfessional(t);
-//        tWS.getHealthProfessionalById(15);
-//        tWS.getAllHealthProfessionals();
+    public static void main(String args[]) {
+       // com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+       // UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+       // new SyntheticaAluOxideLookAndFeel()
+        try {
+            javax.swing.UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+       
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+//                new HealthProfessionalMenu().setVisible(true);
+                new AdminMenu().setVisible(true);
+            }
+        });
     }
 
 }

@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -38,6 +39,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
     public HealthProfessionalList() {
         try {
             initComponents();
+            setIcon();
             hpWS = new HealthProfessionalWS();
             hpList = hpWS.getAllHealthProfessionals();
             drawTable();
@@ -269,7 +271,7 @@ public class HealthProfessionalList extends javax.swing.JFrame {
      */
     private Image getImageFromServer(String picture, int width, int heigth) {
         try {
-            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            URL url = new URL(picture.trim());
             log.debug(url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);
@@ -280,6 +282,12 @@ public class HealthProfessionalList extends javax.swing.JFrame {
             log.error("\n" + ex.getMessage());
         }
         return null;
+    }
+    private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;

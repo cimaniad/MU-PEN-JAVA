@@ -13,7 +13,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -35,6 +37,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
 
     public HealthProfessionalRegist() {
         initComponents();
+        setIcon();
 
     }
 
@@ -101,7 +104,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jLabelName.setText("Nome:");
         jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
 
-        jLabelBirthDate.setText("Data de nascimento:");
+        jLabelBirthDate.setText("  Data de nascimento:");
         jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 85, -1, -1));
 
         jLabelTel.setText("Nº Tel.:");
@@ -137,7 +140,7 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         jLabelInstitution.setText(" Instituição:");
         jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 235, -1, -1));
 
-        jButtonRegist.setText("submeter dados");
+        jButtonRegist.setText("Submeter Dados");
         jButtonRegist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistActionPerformed(evt);
@@ -341,46 +344,6 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         return sb.toString();
     }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddPhoto;
-    private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonRegist;
-    private javax.swing.JCheckBox jCheckBoxDevelopmentProfessional;
-    private javax.swing.JComboBox jComboBoxBloodType;
-    private javax.swing.JComboBox jComboBoxGender;
-    private javax.swing.JComboBox jComboBoxMaritalStatus;
-    private com.toedter.calendar.JDateChooser jDateChooserBirth;
-    private javax.swing.JFileChooser jFileChooserPhoto;
-    private javax.swing.JLabel jLabelAdress;
-    private javax.swing.JLabel jLabelBirthDate;
-    private javax.swing.JLabel jLabelBloodType;
-    private javax.swing.JLabel jLabelCC;
-    private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelGender;
-    private javax.swing.JLabel jLabelHealthProfessionalRegist;
-    private javax.swing.JLabel jLabelInformation;
-    private javax.swing.JLabel jLabelInstitution;
-    private javax.swing.JLabel jLabelLastName;
-    private javax.swing.JLabel jLabelMaritalStatus;
-    private javax.swing.JLabel jLabelNIF;
-    private javax.swing.JLabel jLabelName;
-    private javax.swing.JLabel jLabelNationality;
-    private javax.swing.JLabel jLabelPhoto;
-    private javax.swing.JLabel jLabelTel;
-    private javax.swing.JLabel jLabelwallpaper;
-    private javax.swing.JPanel jPanelInformation;
-    private javax.swing.JPanel jPanelWallpaper;
-    private javax.swing.JTextField jTextFieldAdress;
-    private javax.swing.JTextField jTextFieldCC;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldInstitution;
-    private javax.swing.JTextField jTextFieldLastName;
-    private javax.swing.JTextField jTextFieldNIF;
-    private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldNationality;
-    private javax.swing.JTextField jTextFieldTel;
-    // End of variables declaration//GEN-END:variables
 /**
      * This method receive a Date object and passes it to a String in the format
      * yyyy-MM-dd
@@ -422,4 +385,50 @@ public class HealthProfessionalRegist extends javax.swing.JFrame {
         }
         return imageString;
     }
+    private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAddPhoto;
+    private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonRegist;
+    private javax.swing.JCheckBox jCheckBoxDevelopmentProfessional;
+    private javax.swing.JComboBox jComboBoxBloodType;
+    private javax.swing.JComboBox jComboBoxGender;
+    private javax.swing.JComboBox jComboBoxMaritalStatus;
+    private com.toedter.calendar.JDateChooser jDateChooserBirth;
+    private javax.swing.JFileChooser jFileChooserPhoto;
+    private javax.swing.JLabel jLabelAdress;
+    private javax.swing.JLabel jLabelBirthDate;
+    private javax.swing.JLabel jLabelBloodType;
+    private javax.swing.JLabel jLabelCC;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelGender;
+    private javax.swing.JLabel jLabelHealthProfessionalRegist;
+    private javax.swing.JLabel jLabelInformation;
+    private javax.swing.JLabel jLabelInstitution;
+    private javax.swing.JLabel jLabelLastName;
+    private javax.swing.JLabel jLabelMaritalStatus;
+    private javax.swing.JLabel jLabelNIF;
+    private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelNationality;
+    private javax.swing.JLabel jLabelPhoto;
+    private javax.swing.JLabel jLabelTel;
+    private javax.swing.JLabel jLabelwallpaper;
+    private javax.swing.JPanel jPanelInformation;
+    private javax.swing.JPanel jPanelWallpaper;
+    private javax.swing.JTextField jTextFieldAdress;
+    private javax.swing.JTextField jTextFieldCC;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldInstitution;
+    private javax.swing.JTextField jTextFieldLastName;
+    private javax.swing.JTextField jTextFieldNIF;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldNationality;
+    private javax.swing.JTextField jTextFieldTel;
+    // End of variables declaration//GEN-END:variables
+
 }

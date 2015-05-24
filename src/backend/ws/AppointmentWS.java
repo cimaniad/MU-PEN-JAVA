@@ -131,7 +131,7 @@ public class AppointmentWS {
         return ap;
     }
 
-    public List<Appointment> getAppointmentByIdDate(int id, String date) {
+    public List<Appointment> getAppointmentByIdHPDate(int id, String date) {
         List<Appointment> apList = null;
 
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
@@ -140,7 +140,7 @@ public class AppointmentWS {
 
         try {
             responseWS = wrapperWS.sendRequest("Appointment",
-                    "getAppointmentByIdDate", params);    //efetua o pedido ao WS
+                    "getAppointmentByIdHPDate", params);    //efetua o pedido ao WS
             String jsonResp = wrapperWS.readResponse(responseWS);         //Passa a responseWS para uma string
 
             int httpResponseCod = responseWS.getStatusLine().getStatusCode();

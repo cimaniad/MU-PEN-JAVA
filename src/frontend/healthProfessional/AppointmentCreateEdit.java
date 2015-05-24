@@ -9,10 +9,12 @@ import backend.pojos.Appointment;
 import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
 import backend.ws.PatientWS;
+import java.awt.Image;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 
@@ -37,8 +39,9 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             appWS = new AppointmentWS();
             patWS = new PatientWS();
             patList = new ArrayList<>();
-            apptList = appWS.getAppointmentByIdDate(1, appoint.getDate());
+            apptList = appWS.getAppointmentByIdHPDate(1, appoint.getDate());
             initComponents();
+            setIcon();
             jTextFieldDate.setVisible(false);
             loadAppointToEdit(appoint);
 
@@ -54,7 +57,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             jDateChooser1.setVisible(false);
             appWS = new AppointmentWS();
             patWS = new PatientWS();
-            apptList = appWS.getAppointmentByIdDate(1, date);
+            apptList = appWS.getAppointmentByIdHPDate(1, date);
             jTextFieldDate.setText(date);
             //colocar id do terapeuta
             patList = patWS.getPatientsByHealthProfessional(1);
@@ -97,7 +100,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
             throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
         }
 
-        int idPatient = getSelectPat().getIdUser();
+        int idPatient = getSelectPat().getIdPatient();
         //pôr IDHealthPro
         int idHealthProfessional = 1;
         String date = null;
@@ -191,22 +194,22 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jLabelDate.setText("Data:");
-        jPanelInformation.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        jPanelInformation.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 20));
 
         jLabelPatient.setText("Paciente:");
-        jPanelInformation.add(jLabelPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+        jPanelInformation.add(jLabelPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, 20));
 
         jLabelLocal.setText("Local: ");
-        jPanelInformation.add(jLabelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 155, -1, -1));
+        jPanelInformation.add(jLabelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, 20));
 
         jLabelDescription.setText("Descrição:");
         jPanelInformation.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
 
         jLabelHours.setText("Hora:");
-        jPanelInformation.add(jLabelHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+        jPanelInformation.add(jLabelHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, 20));
 
         jLabelPathology.setText("Patologia:");
-        jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
+        jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, 20));
 
         jComboBoxPatientList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,11 +219,11 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         jPanelInformation.add(jComboBoxPatientList, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 460, -1));
 
         jTextFieldPathology.setEditable(false);
-        jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, -1));
+        jPanelInformation.add(jTextFieldPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 180, -1));
 
         jTextFieldDate.setEditable(false);
         jPanelInformation.add(jTextFieldDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 180, -1));
-        jPanelInformation.add(jTextFieldLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 180, -1));
+        jPanelInformation.add(jTextFieldLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, -1));
 
         jTextAreaDescription.setColumns(20);
         jTextAreaDescription.setRows(5);
@@ -228,7 +231,7 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
 
         jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 460, -1));
 
-        jButtonMakeAppointment.setText("Marcar consulta");
+        jButtonMakeAppointment.setText("Marcar Consulta");
         jButtonMakeAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMakeAppointmentActionPerformed(evt);
@@ -291,7 +294,24 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
         comboChange();
     }//GEN-LAST:event_jComboBoxPatientListActionPerformed
 
-
+/**
+     * This method receive a Date object and passes it to a String in the format
+     * yyyy-MM-dd
+     *
+     * @param d
+     * @return String date
+     */
+    private String parseDate(Date d) {
+        SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFromat.format(d);
+        return date;
+    }
+     private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonMakeAppointment;
@@ -320,16 +340,5 @@ public class AppointmentCreateEdit extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPathology;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * This method receive a Date object and passes it to a String in the format
-     * yyyy-MM-dd
-     *
-     * @param d
-     * @return String date
-     */
-    private String parseDate(Date d) {
-        SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd");
-        String date = dateFromat.format(d);
-        return date;
-    }
+
 }

@@ -101,28 +101,28 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="55" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="190" y="50" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelBirthDate">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Data de nascimento:"/>
+                <Property name="text" type="java.lang.String" value="  Data de nascimento:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="110" y="173" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="110" y="170" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTel">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" N&#xba; Tel:"/>
+                <Property name="text" type="java.lang.String" value="  N&#xba; Tel:"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="188" y="85" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="180" y="80" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -132,17 +132,17 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="443" y="145" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="443" y="139" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelEmail">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Email:"/>
+                <Property name="text" type="java.lang.String" value="  E-mail:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="192" y="145" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="180" y="140" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -152,7 +152,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="441" y="55" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="441" y="49" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -162,33 +162,33 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="400" y="85" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="410" y="79" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelAdress">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Morada:"/>
+                <Property name="text" type="java.lang.String" value="   Morada:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="115" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="170" y="110" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelBloodType">
               <Properties>
-                <Property name="text" type="java.lang.String" value="         Grupo sangu&#xed;neo:  "/>
+                <Property name="text" type="java.lang.String" value="Grupo sangu&#xed;neo:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="360" y="173" width="140" height="-1"/>
+                  <AbsoluteConstraints x="400" y="169" width="90" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEditProfile">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Editar "/>
+                <Property name="text" type="java.lang.String" value="Editar Perfil"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditProfileActionPerformed"/>
@@ -286,7 +286,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="490" y="170" width="140" height="-1"/>
+                  <AbsoluteConstraints x="490" y="170" width="40" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

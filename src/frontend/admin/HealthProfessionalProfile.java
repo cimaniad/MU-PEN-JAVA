@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -30,11 +32,12 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public HealthProfessionalProfile(HealthProfessional hp) {
-
-        initComponents();
-        this.hp = hp;
-        try {
+      try{
+            initComponents();
+            setIcon();
+            this.hp = hp;
             setFields(hp);
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(HealthProfessionalProfile.this,
                     e.getMessage(), "Erro ao carregar os dados do Profissional de saude", JOptionPane.ERROR_MESSAGE);
@@ -120,44 +123,44 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelHealthProfessionalProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 90));
 
-        jLabelName.setText("Nome:");
-        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 40, -1));
+        jLabelName.setText(" Nome:");
+        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 50, -1, 20));
 
         jLabelBirthDate.setText(" Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, 20));
 
-        jLabelTel.setText(" Nº Telemovel: ");
-        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 90, 20));
+        jLabelTel.setText("  Nº Telemovel:");
+        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 80, 20));
 
-        jLabelCC.setText(" Nº CC:");
-        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 40, -1));
+        jLabelCC.setText("  Nº CC:");
+        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 40, 20));
 
-        jLabelEmail.setText("  Email: ");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, 20));
+        jLabelEmail.setText("    Email: ");
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, 20));
 
         jLabelLastName.setText(" Apelido:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 50, 10));
+        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 50, 20));
 
-        jLabelGender.setText("  Sexo:");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 40, -1));
+        jLabelGender.setText("    Sexo:");
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 40, 20));
 
         jLabelNationality.setText("  Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 90, -1));
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 90, 20));
 
-        jLabelAdress.setText(" Morada: ");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 50, 10));
+        jLabelAdress.setText("    Morada:");
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 60, 20));
 
-        jLabelNIF.setText("NIF:");
-        jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 30, 20));
+        jLabelNIF.setText("  NIF:");
+        jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 30, 20));
 
-        jLabelMaritalStatus.setText("Estado Civil: ");
-        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
+        jLabelMaritalStatus.setText(" Estado Civil: ");
+        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, 20));
 
         jLabelBloodType.setText("Grupo sanguíneo:  ");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 110, -1));
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, 20));
 
-        jLabelInstitution.setText(" Instituição: ");
-        jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 70, -1));
+        jLabelInstitution.setText("  Instituição: ");
+        jPanelInformation.add(jLabelInstitution, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 70, 20));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -168,77 +171,65 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
         jCheckBoxDevelopmentProfessional.setText("Profissional de desenvolvimento");
-        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 230, -1));
+        jPanelInformation.add(jCheckBoxDevelopmentProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 180, -1));
 
         jTextFieldnCChp.setEditable(false);
         jTextFieldnCChp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldnCChp.setText("jTextField1");
-        jPanelInformation.add(jTextFieldnCChp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 120, -1));
+        jPanelInformation.add(jTextFieldnCChp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
 
         jTextFieldTelhp.setEditable(false);
         jTextFieldTelhp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldTelhp.setText("jTextField1");
-        jPanelInformation.add(jTextFieldTelhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, -1));
+        jPanelInformation.add(jTextFieldTelhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 150, -1));
 
         BirthDatehp.setEditable(false);
         BirthDatehp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BirthDatehp.setText("jTextField2");
-        jPanelInformation.add(BirthDatehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 120, -1));
+        jPanelInformation.add(BirthDatehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
 
         jTextFieldnamehp.setEditable(false);
         jTextFieldnamehp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldnamehp.setText("jTextField3");
-        jPanelInformation.add(jTextFieldnamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 120, 20));
+        jPanelInformation.add(jTextFieldnamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, 20));
 
         jTextFieldnifhp.setEditable(false);
         jTextFieldnifhp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldnifhp.setText("jTextField4");
         jTextFieldnifhp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldnifhpActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jTextFieldnifhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 120, -1));
+        jPanelInformation.add(jTextFieldnifhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 150, -1));
 
         jTextFieldInstitutionhp.setEditable(false);
         jTextFieldInstitutionhp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldInstitutionhp.setText("jTextField5");
-        jPanelInformation.add(jTextFieldInstitutionhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 120, -1));
+        jPanelInformation.add(jTextFieldInstitutionhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 150, -1));
 
         jTextFieldLastNamehp.setEditable(false);
         jTextFieldLastNamehp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldLastNamehp.setText("jTextField6");
-        jPanelInformation.add(jTextFieldLastNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 48, 120, -1));
+        jPanelInformation.add(jTextFieldLastNamehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 48, 150, -1));
 
         jTextFieldGenderhp.setEditable(false);
         jTextFieldGenderhp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldGenderhp.setText("jTextField7");
         jTextFieldGenderhp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGenderhpActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jTextFieldGenderhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 120, -1));
+        jPanelInformation.add(jTextFieldGenderhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
 
         jTextFieldNationalityhp.setEditable(false);
         jTextFieldNationalityhp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldNationalityhp.setText("jTextField8");
-        jPanelInformation.add(jTextFieldNationalityhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 138, 120, -1));
+        jPanelInformation.add(jTextFieldNationalityhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 138, 150, -1));
 
         jTextFieldAdresshp.setEditable(false);
         jTextFieldAdresshp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldAdresshp.setText("jTextField9");
-        jPanelInformation.add(jTextFieldAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 380, -1));
+        jPanelInformation.add(jTextFieldAdresshp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 410, -1));
 
         jTextFieldMaritalStatehp.setEditable(false);
         jTextFieldMaritalStatehp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldMaritalStatehp.setText("jTextField10");
-        jPanelInformation.add(jTextFieldMaritalStatehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 178, 120, -1));
+        jPanelInformation.add(jTextFieldMaritalStatehp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 150, -1));
 
         jTextField11.setEditable(false);
         jTextField11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextField11.setText("jTextField11");
-        jPanelInformation.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 209, 120, -1));
+        jPanelInformation.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 40, -1));
 
         jButtonEdit.setText("Editar");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -258,8 +249,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
         jTextFieldEmailhp.setEditable(false);
         jTextFieldEmailhp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextFieldEmailhp.setText("jTextField1");
-        jPanelInformation.add(jTextFieldEmailhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 120, -1));
+        jPanelInformation.add(jTextFieldEmailhp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 150, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -291,7 +281,7 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
 
         try {
             HealthProfessionalWS hpWS = new HealthProfessionalWS();
-            hpWS.deleteHealthProfessional(hp.getIdUser());
+            hpWS.deleteHealthProfessional(hp.getIdHealthProfessional());
             new HealthProfessionalList().setVisible(true);
             dispose();
         } catch (Exception e) {
@@ -307,7 +297,27 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     private void jTextFieldGenderhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGenderhpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldGenderhpActionPerformed
-
+private Image getImageFromServer(String picture, int with, int heigth) {
+        try {
+            URL url = new URL(picture.trim());
+            log.debug("\n\tProfile Image: " + url.toString());
+            BufferedImage image = ImageIO.read(url);
+            ImageIcon pic = new ImageIcon(image);
+            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
+        } catch (MalformedURLException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException("Erro ao carregar imagem");
+        } catch (IOException ex) {
+            log.error(ex.getMessage());
+            throw new RuntimeException("Erro ao carregar imagem");
+        }
+    }
+    private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BirthDatehp;
@@ -348,19 +358,5 @@ public class HealthProfessionalProfile extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldnifhp;
     // End of variables declaration//GEN-END:variables
 
-    private Image getImageFromServer(String picture, int with, int heigth) {
-        try {
-            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
-            log.debug("\n\tProfile Image: " + url.toString());
-            BufferedImage image = ImageIO.read(url);
-            ImageIcon pic = new ImageIcon(image);
-            return pic.getImage().getScaledInstance(with, heigth, Image.SCALE_DEFAULT);
-        } catch (MalformedURLException ex) {
-            log.error(ex.getMessage());
-            throw new RuntimeException("Erro ao carregar imagem");
-        } catch (IOException ex) {
-            log.error(ex.getMessage());
-            throw new RuntimeException("Erro ao carregar imagem");
-        }
-    }
+
 }

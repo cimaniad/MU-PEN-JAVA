@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -34,6 +36,7 @@ public class AdminProfile extends javax.swing.JFrame {
     public AdminProfile(int idAdmin) {
         try {
             initComponents();
+            setIcon();
             admWS = new AdminWS();
             setFields(admWS.getAdminById(idAdmin));
         } catch (Exception e) {
@@ -119,34 +122,34 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, 80));
 
         jLabelName.setText("Nome:");
-        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
+        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 20));
 
-        jLabelBirthDate.setText(" Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 173, -1, -1));
+        jLabelBirthDate.setText("  Data de nascimento:");
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, 20));
 
-        jLabelTel.setText(" Nº Tel:");
+        jLabelTel.setText("  Nº Tel:");
         jLabelTel.setToolTipText("");
-        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 85, -1, -1));
+        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, 20));
 
         jLabelCC.setText("  Nº CC:");
-        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 145, -1, -1));
+        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 139, -1, 20));
 
-        jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 145, -1, -1));
+        jLabelEmail.setText("  E-mail:");
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 20));
 
         jLabelLastName.setText(" Apelido:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 55, -1, -1));
+        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 49, -1, 20));
 
         jLabelNationality.setText(" Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 85, -1, -1));
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 79, -1, 20));
 
-        jLabelAdress.setText(" Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
+        jLabelAdress.setText("   Morada:");
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, 20));
 
-        jLabelBloodType.setText("         Grupo sanguíneo:  ");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 173, 140, -1));
+        jLabelBloodType.setText("Grupo sanguíneo:");
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 169, 90, 20));
 
-        jButtonEditProfile.setText("Editar ");
+        jButtonEditProfile.setText("Editar Perfil");
         jButtonEditProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditProfileActionPerformed(evt);
@@ -184,7 +187,7 @@ public class AdminProfile extends javax.swing.JFrame {
 
         jTextFieldBloodGroup.setEditable(false);
         jTextFieldBloodGroup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jPanelInformation.add(jTextFieldBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 140, -1));
+        jPanelInformation.add(jTextFieldBloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 40, -1));
 
         jTextFieldNatio.setEditable(false);
         jTextFieldNatio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -257,7 +260,7 @@ public class AdminProfile extends javax.swing.JFrame {
 
     private Image getImageFromServer(String picture, int with, int heigth) {
         try {
-            URL url = new URL("http://localhost/mu-pen-web/imagens/HealthProfessionals/" + picture.trim());
+            URL url = new URL(picture.trim());
             log.debug("\n\tProfile Image: " + url.toString());
             BufferedImage image = ImageIO.read(url);
             ImageIcon pic = new ImageIcon(image);
@@ -269,5 +272,11 @@ public class AdminProfile extends javax.swing.JFrame {
             log.error(ex.getMessage());
             throw new RuntimeException("Erro ao carregar imagem");
         }
+    }
+    private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
     }
 }

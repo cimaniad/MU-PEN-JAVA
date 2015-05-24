@@ -13,9 +13,12 @@ import backend.ws.BlockWS;
 import backend.ws.SessionWS;
 import frontend.admin.HealthProfessionalList;
 import frontend.admin.JTableRenderer;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +43,7 @@ public class PrescribeSession extends javax.swing.JFrame {
 
     public PrescribeSession(Patient p, int idHP) {
         initComponents();
+        setIcon();
         this.p = p;
         this.idHP = idHP;
         sWS = new SessionWS();
@@ -87,14 +91,19 @@ public class PrescribeSession extends javax.swing.JFrame {
         if (jDateChooserDeadline.getDate().toString().isEmpty()) {
             throw new RuntimeException("Preencha a data limite");
         }
-        int idPatient = p.getIdUser();
+        int idPatient = p.getIdPatient();
         int idHealthProfessional = idHP;
         int idBlock = getBlockAtTable().getIdBlock();
         Date deadline = getDeadLine();
 
         return new Session(0, idPatient, idHealthProfessional, idBlock, deadline);
     }
-
+ private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,7 +150,7 @@ public class PrescribeSession extends javax.swing.JFrame {
                 jButtonRegistActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        jPanelInformation.add(jButtonRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 160, 40));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +158,7 @@ public class PrescribeSession extends javax.swing.JFrame {
                 jButtonBackActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 160, 40));
 
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,7 +197,7 @@ public class PrescribeSession extends javax.swing.JFrame {
         });
         jScrollPaneList.setViewportView(jTableList);
 
-        jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 180));
+        jPanelInformation.add(jScrollPaneList, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 230));
 
         jButtonSearch.setText("Pesquisar");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +205,7 @@ public class PrescribeSession extends javax.swing.JFrame {
                 jButtonSearchActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
+        jPanelInformation.add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
 
         jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +217,7 @@ public class PrescribeSession extends javax.swing.JFrame {
                 jTextFieldSearchKeyPressed(evt);
             }
         });
-        jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 210, -1));
+        jPanelInformation.add(jTextFieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 210, -1));
 
         jButtonDelete.setText("Eliminar Bloco");
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +225,7 @@ public class PrescribeSession extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
+        jPanelInformation.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 160, 40));
 
         jButtonPrescribe.setText("Prescrever");
         jButtonPrescribe.addActionListener(new java.awt.event.ActionListener() {
@@ -224,11 +233,11 @@ public class PrescribeSession extends javax.swing.JFrame {
                 jButtonPrescribeActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonPrescribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
+        jPanelInformation.add(jButtonPrescribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 160, 40));
 
         jLabelDeadline.setText("Data limite:");
-        jPanelInformation.add(jLabelDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-        jPanelInformation.add(jDateChooserDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 170, -1));
+        jPanelInformation.add(jLabelDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, 20));
+        jPanelInformation.add(jDateChooserDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));

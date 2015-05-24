@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -31,6 +33,7 @@ public class PatientProfile extends javax.swing.JFrame {
      */
     public PatientProfile(Patient p) {
         initComponents();
+        setIcon();
         this.p = p;
         try {
             setFields(p);
@@ -67,7 +70,12 @@ public class PatientProfile extends javax.swing.JFrame {
             jLabelPhoto.setIcon(new ImageIcon(getImageFromServer(p.getPicture(), 90, 90)));
         }
     }
-
+ private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,88 +143,85 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, 80));
 
         jLabelName.setText("Nome:");
-        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
+        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 49, -1, 20));
 
         jLabelBirthDate.setText("Data de nascimento:");
-
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 85, -1, -1));
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 79, -1, 20));
 
         jLabelTel.setText("Nº Tel:");
-        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 115, -1, -1));
+        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 109, -1, 20));
 
         jLabelCC.setText(" Nº CC:");
-        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 175, -1, -1));
+        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 169, -1, 20));
 
         jLabelEmail.setText("Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 175, -1, -1));
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 169, -1, 20));
 
         jLabelLastName.setText("Apelido:");
         jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 55, -1, -1));
 
         jLabelGender.setText("Sexo:");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 85, -1, -1));
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 79, -1, 20));
 
         jLabelNationality.setText("Nacionalidade:");
-
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 115, -1, -1));
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 109, -1, 20));
 
         jLabelAdress.setText("Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 139, -1, 20));
 
         jLabelNIF.setText("  NIF:");
-        jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 205, 30, -1));
+        jPanelInformation.add(jLabelNIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 199, 30, 20));
 
         jLabelMaritalStatus.setText(" Estado Civil:");
-
-        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 205, -1, -1));
+        jPanelInformation.add(jLabelMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 199, -1, 20));
 
         jLabelPathology.setText(" Patologia:");
-        jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 235, -1, -1));
+        jPanelInformation.add(jLabelPathology, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 229, -1, 20));
 
         jLabelBloodType.setText("    Grupo sanguíneo:");
-        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 235, -1, -1));
+        jPanelInformation.add(jLabelBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 229, -1, 20));
 
         jTextField1.setEditable(false);
-        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 110, -1));
+        jPanelInformation.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 140, -1));
 
         jTextField2.setEditable(false);
-        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 110, -1));
+        jPanelInformation.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 140, -1));
 
         jTextFieldAdressp.setEditable(false);
-        jPanelInformation.add(jTextFieldAdressp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 370, -1));
+        jPanelInformation.add(jTextFieldAdressp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 400, -1));
 
         jTextFieldNationalityp.setEditable(false);
-        jPanelInformation.add(jTextFieldNationalityp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 110, -1));
+        jPanelInformation.add(jTextFieldNationalityp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 140, -1));
 
         jTextField6.setEditable(false);
-        jPanelInformation.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, -1));
+        jPanelInformation.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 140, -1));
 
         jTextFieldLastNamep.setEditable(false);
-        jPanelInformation.add(jTextFieldLastNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 110, -1));
+        jPanelInformation.add(jTextFieldLastNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 140, -1));
 
         jTextField8.setEditable(false);
         jPanelInformation.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 310, 50));
 
         jTextFieldBloodGroupp.setEditable(false);
-        jPanelInformation.add(jTextFieldBloodGroupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 110, -1));
+        jPanelInformation.add(jTextFieldBloodGroupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 60, -1));
 
         jTextField10.setEditable(false);
-        jPanelInformation.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, -1));
+        jPanelInformation.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 150, -1));
 
         jTextFieldEmailp.setEditable(false);
-        jPanelInformation.add(jTextFieldEmailp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 110, -1));
+        jPanelInformation.add(jTextFieldEmailp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
 
         jTextFieldNumCCp.setEditable(false);
-        jPanelInformation.add(jTextFieldNumCCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 110, -1));
+        jPanelInformation.add(jTextFieldNumCCp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 140, -1));
 
         jTextFieldNumTelp.setEditable(false);
-        jPanelInformation.add(jTextFieldNumTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
+        jPanelInformation.add(jTextFieldNumTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 150, -1));
 
         jTextField14.setEditable(false);
-        jPanelInformation.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
+        jPanelInformation.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 150, -1));
 
         jTextFieldNamep.setEditable(false);
-        jPanelInformation.add(jTextFieldNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, -1));
+        jPanelInformation.add(jTextFieldNamep, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, -1));
 
         jButtonPrescribeSession.setText("Prescrever sessão");
         jButtonPrescribeSession.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +239,7 @@ public class PatientProfile extends javax.swing.JFrame {
         });
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
 
-        jButtonDelete.setText("Eliminar");
+        jButtonDelete.setText("Eliminar Paciente");
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
@@ -246,7 +251,7 @@ public class PatientProfile extends javax.swing.JFrame {
         jPanelInformation.add(jButtonGenerateReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         jLabelDiscription.setText("  Descrição:");
-        jPanelInformation.add(jLabelDiscription, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 265, -1, -1));
+        jPanelInformation.add(jLabelDiscription, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 259, -1, 20));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -280,7 +285,7 @@ public class PatientProfile extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try {
             PatientWS pWS = new PatientWS();
-            pWS.deletePatient(p.getIdUser());
+            pWS.deletePatient(p.getIdPatient());
             new PatientsList().setVisible(true);
             dispose();
         } catch (Exception e) {
@@ -296,36 +301,22 @@ public class PatientProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGenerateReport;
     private javax.swing.JButton jButtonPrescribeSession;
     private javax.swing.JLabel jLabelAdress;
-    private javax.swing.JLabel jLabelAdressp;
     private javax.swing.JLabel jLabelBirthDate;
-    private javax.swing.JLabel jLabelBirthDatep;
     private javax.swing.JLabel jLabelBloodType;
-    private javax.swing.JLabel jLabelBloodTypep;
     private javax.swing.JLabel jLabelCC;
-    private javax.swing.JLabel jLabelCCp;
-    private javax.swing.JLabel jLabelDescriptionp;
     private javax.swing.JLabel jLabelDiscription;
     private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEmailp;
     private javax.swing.JLabel jLabelGender;
-    private javax.swing.JLabel jLabelGenderp;
     private javax.swing.JLabel jLabelHealthPatientProfile;
     private javax.swing.JLabel jLabelInformation;
     private javax.swing.JLabel jLabelLastName;
-    private javax.swing.JLabel jLabelLastNamep;
     private javax.swing.JLabel jLabelMaritalStatus;
-    private javax.swing.JLabel jLabelMaritalStatusp;
     private javax.swing.JLabel jLabelNIF;
     private javax.swing.JLabel jLabelName;
-    private javax.swing.JLabel jLabelNamep;
     private javax.swing.JLabel jLabelNationality;
-    private javax.swing.JLabel jLabelNationalityp;
     private javax.swing.JLabel jLabelPathology;
-    private javax.swing.JLabel jLabelPathologyp;
     private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelTel;
-    private javax.swing.JLabel jLabelTelp;
-    private javax.swing.JLabel jLabelUtentep;
     private javax.swing.JLabel jLabelwallpaper;
     private javax.swing.JPanel jPanelInformation;
     private javax.swing.JPanel jPanelWallpaper;

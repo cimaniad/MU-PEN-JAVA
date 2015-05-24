@@ -9,11 +9,14 @@ import backend.pojos.Appointment;
 import backend.ws.AppointmentWS;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import static java.lang.Integer.parseInt;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -33,6 +36,7 @@ public class Schedule extends javax.swing.JFrame {
     public Schedule() {
         try {
             initComponents();
+            setIcon();
             appoint = new AppointmentWS();
             //colocar idHealthProfessional
             apList = appoint.getHPAppointments(1);
@@ -50,7 +54,7 @@ public class Schedule extends javax.swing.JFrame {
                 if (a.getPatientApproval() == 1 && a.getHealthProfessionalApproval() == 1) {
                     paintAppoint(a, "green");
                 } else if (a.getPatientApproval() == 0 || a.getHealthProfessionalApproval() == 0) {
-                    paintAppoint(a, "orange");
+                    paintAppoint(a, "red");
                 }
             }
         }
@@ -77,9 +81,11 @@ public class Schedule extends javax.swing.JFrame {
             if (color.equals("green")) {
                 Color newGreen = new Color(0, 204, 51);
                 component[appointDay - 1 + offset + 6].setBackground(newGreen);
+                component[appointDay - 1 + offset + 6].setForeground(Color.GREEN);
 
             } else {
                 Color newRed = new Color(173, 0, 2);
+                component[appointDay - 1 + offset + 6].setForeground(Color.RED);
                 component[appointDay - 1 + offset + 6].setBackground(newRed);
             }
         }
@@ -213,5 +219,10 @@ public class Schedule extends javax.swing.JFrame {
         String date = dateFromat.format(d);
         return date;
     }
-
+ private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
 }

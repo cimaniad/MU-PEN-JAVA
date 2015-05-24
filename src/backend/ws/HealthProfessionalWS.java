@@ -186,7 +186,7 @@ public class HealthProfessionalWS {
 
     private List<NameValuePair> getAllParams(HealthProfessional hp) {
         List<NameValuePair> params = new ArrayList<>();           //array com os params necessários para registar um terapeuta
-        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(hp.getIdUser())));
+        params.add(new BasicNameValuePair("idHealthProfessional", String.valueOf(hp.getIdHealthProfessional())));
         params.add(new BasicNameValuePair("name", hp.getName()));
         params.add(new BasicNameValuePair("lastName", hp.getLastName()));
         params.add(new BasicNameValuePair("numCC", String.valueOf(hp.getNumCC())));
@@ -197,7 +197,7 @@ public class HealthProfessionalWS {
         params.add(new BasicNameValuePair("maritalStatus", hp.getMaritalStatus()));
         params.add(new BasicNameValuePair("birthDate", hp.getBirthDate()));
         params.add(new BasicNameValuePair("bloodGroup", hp.getBloodGroup()));
-        params.add(new BasicNameValuePair("nacionality", hp.getNationality()));
+        params.add(new BasicNameValuePair("nationality", hp.getNationality()));
         params.add(new BasicNameValuePair("gender", hp.getGender()));
         params.add(new BasicNameValuePair("password", hp.getPassword()));
         params.add(new BasicNameValuePair("picture", hp.getPicture()));

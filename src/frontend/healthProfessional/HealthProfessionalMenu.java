@@ -5,6 +5,11 @@
  */
 package frontend.healthProfessional;
 
+import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author jorge
@@ -16,8 +21,14 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
      */
     public HealthProfessionalMenu() {
         initComponents();
+        setIcon();
     }
-
+ private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,10 +43,11 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
         jButtonProfile = new javax.swing.JButton();
         jButtonSchedule = new javax.swing.JButton();
         jLabelwallpaper = new javax.swing.JLabel();
-        jLabelwallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(705, 520));
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
 
         jPanelWallpaper.setMaximumSize(new java.awt.Dimension(700, 500));
@@ -48,7 +60,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
                 jButtonHealthProfessionalActionPerformed(evt);
             }
         });
-        jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 140, 40));
+        jPanelWallpaper.add(jButtonHealthProfessional, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 140, 40));
 
         jButtonProfile.setText("Perfil");
         jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +68,7 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
                 jButtonProfileActionPerformed(evt);
             }
         });
-        jPanelWallpaper.add(jButtonProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 140, 40));
+        jPanelWallpaper.add(jButtonProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 140, 40));
 
         jButtonSchedule.setText("Agenda");
         jButtonSchedule.addActionListener(new java.awt.event.ActionListener() {
@@ -64,31 +76,26 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
                 jButtonScheduleActionPerformed(evt);
             }
         });
-        jPanelWallpaper.add(jButtonSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 140, 40));
-        jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+        jPanelWallpaper.add(jButtonSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 140, 40));
 
-        jLabelwallpaper1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
-        jPanelWallpaper.add(jLabelwallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabelwallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo2.jpg"))); // NOI18N
+        jPanelWallpaper.add(jLabelwallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGap(0, 717, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelWallpaper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelWallpaper, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelWallpaper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanelWallpaper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,20 +116,20 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
 
     private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
         // Por idHealthProfessional !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      //  new HealthProfessionalProfile(1).setVisible(true);
-        new healthprofprof(1).setVisible(true);
+        new HealthProfessionalProfile(1).setVisible(true);
+      //  new healthprofprof(1).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonProfileActionPerformed
 
     /**
      * @param args the command line arguments
-     */
+     *
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
+         *
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -141,20 +148,20 @@ public class HealthProfessionalMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form *
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HealthProfessionalMenu().setVisible(true);
             }
         });
     }
+    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonHealthProfessional;
     private javax.swing.JButton jButtonProfile;
     private javax.swing.JButton jButtonSchedule;
     private javax.swing.JLabel jLabelwallpaper;
-    private javax.swing.JLabel jLabelwallpaper1;
     private javax.swing.JPanel jPanelWallpaper;
     // End of variables declaration//GEN-END:variables
 }

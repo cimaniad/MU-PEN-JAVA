@@ -11,7 +11,6 @@ package backend.pojos;
  * @author Ricardo
  */
 public class User {
-    private int idUser;
     private String name;
     private String lastName;
     private int numCC;
@@ -44,10 +43,6 @@ public class User {
         this.password = password;
         this.picture = picture;
 
-    }
-
-    public int getIdUser() {
-        return idUser;
     }
 
     public String getName() {
@@ -138,12 +133,5 @@ public class User {
         this.picture = picture;
     }
     
-    @Override
-    public String toString() {
-        return "Admin{" + "idAdmin=" + idUser + ", name=" + name + ", lastName=" + lastName
-                + ", numCC=" + numCC + ", adress=" + adress + ", numTel=" + numTel + ", email=" 
-                + email + ", birthDate=" + birthDate+ ", bloodGroup=" + bloodGroup 
-                + ", nationality=" + nationality + ", password=" + password + ", pathology="
-                + ", picture=" + picture + '}';
-    }
+    
 }

@@ -5,6 +5,11 @@
  */
 package frontend.admin;
 
+import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author jorge
@@ -16,6 +21,7 @@ public class AdminProfileEdit extends javax.swing.JFrame {
      */
     public AdminProfileEdit() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -74,39 +80,39 @@ public class AdminProfileEdit extends javax.swing.JFrame {
         jPanelInformation.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabelName.setText("Nome:");
-        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 55, -1, -1));
+        jPanelInformation.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 49, -1, 20));
 
-        jLabelBirthDate.setText("  Data de nascimento:");
-        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 173, -1, -1));
+        jLabelBirthDate.setText("    Data de nascimento:");
+        jPanelInformation.add(jLabelBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, 20));
 
         jLabelTel.setText("   Nº Tel.:");
-        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 85, -1, -1));
+        jPanelInformation.add(jLabelTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 79, -1, 20));
 
-        jLabelCC.setText("    Nº CC:");
-        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 145, -1, -1));
+        jLabelCC.setText("Nº CC:");
+        jPanelInformation.add(jLabelCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, 20));
 
         jLabelEmail.setText(" Email:");
-        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 145, -1, -1));
+        jPanelInformation.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, 20));
 
         jLabelLastName.setText("  Apelido:");
-        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 55, -1, -1));
+        jPanelInformation.add(jLabelLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, 20));
 
-        jLabelGender.setText("Grupo Sanguíneo: ");
-        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 173, -1, -1));
+        jLabelGender.setText("Grupo Sanguíneo:");
+        jPanelInformation.add(jLabelGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, 20));
 
-        jLabelNationality.setText("   Nacionalidade:");
-        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 85, -1, -1));
+        jLabelNationality.setText("Nacionalidade:");
+        jPanelInformation.add(jLabelNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, 20));
 
         jLabelAdress.setText("  Morada:");
-        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 115, -1, -1));
+        jPanelInformation.add(jLabelAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 109, -1, 20));
 
-        jButtonEditProfile.setText("Editar Perfil");
+        jButtonEditProfile.setText("Submeter Alterações");
         jButtonEditProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditProfileActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jButtonEditProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
+        jPanelInformation.add(jButtonEditProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, -1));
 
         jButtonBack.setText("Voltar");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -117,22 +123,23 @@ public class AdminProfileEdit extends javax.swing.JFrame {
         jPanelInformation.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
         jPanelInformation.add(jTextFieldNTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 170, -1));
-
-
         jPanelInformation.add(jTextFieldNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 170, -1));
         jPanelInformation.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
         jPanelInformation.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 170, -1));
         jPanelInformation.add(jTextFieldNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 170, -1));
-
-        
         jPanelInformation.add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 440, -1));
 
-        jButtonEditPhoto.setText("Editar foto");
+        jButtonEditPhoto.setText("Alterar Foto");
+        jButtonEditPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditPhotoActionPerformed(evt);
+            }
+        });
         jPanelInformation.add(jButtonEditPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
         jPanelInformation.add(jDateChooserBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 170, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-" }));
-        jPanelInformation.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 170, -1));
+        jPanelInformation.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 60, -1));
 
         jLabelInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundos/fundo_branco.jpg"))); // NOI18N
         jLabelInformation.setMaximumSize(new java.awt.Dimension(680, 380));
@@ -161,6 +168,15 @@ public class AdminProfileEdit extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
+    private void jButtonEditPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditPhotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditPhotoActionPerformed
+private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;

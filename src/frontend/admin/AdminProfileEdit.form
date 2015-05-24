@@ -92,17 +92,17 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="190" y="55" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="192" y="49" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelBirthDate">
               <Properties>
-                <Property name="text" type="java.lang.String" value="  Data de nascimento:"/>
+                <Property name="text" type="java.lang.String" value="    Data de nascimento:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="110" y="173" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="110" y="170" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -112,17 +112,17 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="85" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="180" y="79" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelCC">
               <Properties>
-                <Property name="text" type="java.lang.String" value="    N&#xba; CC:"/>
+                <Property name="text" type="java.lang.String" value="N&#xba; CC:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="450" y="145" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="450" y="140" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -132,7 +132,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="192" y="145" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="190" y="140" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -142,27 +142,27 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="450" y="55" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="440" y="50" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelGender">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Grupo Sangu&#xed;neo: "/>
+                <Property name="text" type="java.lang.String" value="Grupo Sangu&#xed;neo:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="400" y="173" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="430" y="170" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelNationality">
               <Properties>
-                <Property name="text" type="java.lang.String" value="   Nacionalidade:"/>
+                <Property name="text" type="java.lang.String" value="Nacionalidade:"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="410" y="85" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="420" y="80" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -172,20 +172,20 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="115" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="180" y="109" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEditProfile">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Editar Perfil"/>
+                <Property name="text" type="java.lang.String" value="Submeter Altera&#xe7;&#xf5;es"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditProfileActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="460" y="330" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="440" y="330" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -253,8 +253,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEditPhoto">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Editar foto"/>
+                <Property name="text" type="java.lang.String" value="Alterar Foto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditPhotoActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="20" y="150" width="-1" height="-1"/>
@@ -285,7 +288,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="500" y="170" width="170" height="-1"/>
+                  <AbsoluteConstraints x="520" y="170" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

@@ -17,8 +17,10 @@ import backend.ws.DomainWS;
 import backend.ws.ExerciseWS;
 import backend.ws.PatientWS;
 import backend.ws.SubDomainWS;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
@@ -52,6 +54,7 @@ public class CreateBlock extends javax.swing.JFrame {
     public CreateBlock(Patient p, int idHP) {
         try{
         initComponents();
+        setIcon();
         this.p = p;
         this.idHP = idHP;
         dWS = new DomainWS();
@@ -70,110 +73,7 @@ public class CreateBlock extends javax.swing.JFrame {
 
     }
 
-    private void drawDomainCombo() {
-        try {
-            for (Domain d : dList) {
-                jComboBoxDomain.addItem(d.getName());
-            }
-        } catch (Exception ex) {
-            log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \ndominios",
-                    "Erro  Domínio", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
-    private void drawSubDomainCombo() {
-        try {
-            int index = jComboBoxDomain.getSelectedIndex();
-            sdList = sdWS.getSubDomainByDomain(dList.get(index).getIdDomain());
-            for (SubDomain sd : sdList) {
-                jComboBoxSubDomain.addItem(sd.getName());
-            }
-        } catch (Exception ex) {
-            log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nsub-dominios",
-                    "Erro  Sub Domínios", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void drawPropExerTable() {
-        try {
-            tableModelPro = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int i, int i1) {
-                    return false;
-                }
-            };
-            jTableProposenExercises.setModel(tableModelPro);
-            tableModelPro.addColumn("Exercícios Propostos");
-
-            int index = jComboBoxSubDomain.getSelectedIndex();
-            propExList = exWS.getExerciseBySubDomain(sdList.get(index).getIdSubDomain());
-            for (Exercise ex : propExList) {
-                tableModelPro.addRow(new Object[]{ex.getName()});
-            }
-        } catch (Exception ex) {
-            log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios propostos",
-                    "Erro  Exercícios propostos", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void drawSelecExerTable() {
-        try {
-            tableModelSel = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int i, int i1) {
-                    return false;
-                }
-            };
-            jTableSelectedExercises.setModel(tableModelSel);
-            tableModelSel.addColumn("Exercícios Selecionados");
-            for (Exercise ex : selectedExList){
-                tableModelSel.addRow(new Object[]{ex.getName()});
-            }
-
-        } catch (Exception ex) {
-            log.error(ex.getMessage());
-            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios selecionados",
-                    "Erro  Exercícios selecionados", JOptionPane.ERROR_MESSAGE);
-        }
-
-    }
-
-    private Exercise getExerciseSelAtTable() {
-        return propExList.get(jTableSelectedExercises.getSelectedRow());
-    }
-
-    private Exercise getExerciseProAtTable() {
-        return propExList.get(jTableProposenExercises.getSelectedRow());
-    }
-
-
-    private Block loadBlockFromPanel() {
-        String warn = validator();
-        if (!warn.isEmpty()) {
-            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
-        }
-        String name = jTextFieldName.getText();
-        String description = jTextAreaDescription.getText();
-        return new Block(0,name, description, 1);   // resolver id profissional
-    }
-    private String validator() {
-        StringBuilder warns = new StringBuilder();
-        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
-        warns.append(jTextAreaDescription.getText().isEmpty() ? "Descriçao, " : "");
-
-        if (!warns.toString().isEmpty()) {
-            warns.delete(warns.toString().length() - 2, warns.toString().length());
-            warns.append("!");
-        }
-
-        return warns.toString();
-    }
-    private Exercise getExAtTable(){
-        return propExList.get(jTableProposenExercises.getSelectedRow());
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,35 +126,33 @@ public class CreateBlock extends javax.swing.JFrame {
         jPanelInformation.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 230, -1));
 
         jLabelDiscription.setText("Descrição:");
-        jPanelInformation.add(jLabelDiscription, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanelInformation.add(jLabelDiscription, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, 30));
 
         jTextAreaDescription.setColumns(20);
         jTextAreaDescription.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescription);
 
-        jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 230, 60));
+        jPanelInformation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 230, 80));
 
         jLabelDomain.setText("Dominio:");
-        jPanelInformation.add(jLabelDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
+        jPanelInformation.add(jLabelDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 20));
 
         jLabelSubDomain.setText("Sub-domínio:");
-        jPanelInformation.add(jLabelSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+        jPanelInformation.add(jLabelSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
 
-        jComboBoxDomain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxDomain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxDomainActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jComboBoxDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 230, -1));
+        jPanelInformation.add(jComboBoxDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 230, -1));
 
-        jComboBoxSubDomain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxSubDomain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSubDomainActionPerformed(evt);
             }
         });
-        jPanelInformation.add(jComboBoxSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 230, -1));
+        jPanelInformation.add(jComboBoxSubDomain, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 230, -1));
 
         jTableSelectedExercises.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -417,7 +315,117 @@ public class CreateBlock extends javax.swing.JFrame {
          new PrescribeSession(p, idHP).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
+ private void drawDomainCombo() {
+        try {
+            for (Domain d : dList) {
+                jComboBoxDomain.addItem(d.getName());
+            }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \ndominios",
+                    "Erro  Domínio", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
+    private void drawSubDomainCombo() {
+        try {
+            int index = jComboBoxDomain.getSelectedIndex();
+            sdList = sdWS.getSubDomainByDomain(dList.get(index).getIdDomain());
+            for (SubDomain sd : sdList) {
+                jComboBoxSubDomain.addItem(sd.getName());
+            }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nsub-dominios",
+                    "Erro  Sub Domínios", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void drawPropExerTable() {
+        try {
+            tableModelPro = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+            };
+            jTableProposenExercises.setModel(tableModelPro);
+            tableModelPro.addColumn("Exercícios Propostos");
+
+            int index = jComboBoxSubDomain.getSelectedIndex();
+            propExList = exWS.getExerciseBySubDomain(sdList.get(index).getIdSubDomain());
+            for (Exercise ex : propExList) {
+                tableModelPro.addRow(new Object[]{ex.getName()});
+            }
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios propostos",
+                    "Erro  Exercícios propostos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void drawSelecExerTable() {
+        try {
+            tableModelSel = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+            };
+            jTableSelectedExercises.setModel(tableModelSel);
+            tableModelSel.addColumn("Exercícios Selecionados");
+            for (Exercise ex : selectedExList){
+                tableModelSel.addRow(new Object[]{ex.getName()});
+            }
+
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            JOptionPane.showMessageDialog(CreateBlock.this, "Erro ao carregar a tabela dos \nexercícios selecionados",
+                    "Erro  Exercícios selecionados", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    private Exercise getExerciseSelAtTable() {
+        return propExList.get(jTableSelectedExercises.getSelectedRow());
+    }
+
+    private Exercise getExerciseProAtTable() {
+        return propExList.get(jTableProposenExercises.getSelectedRow());
+    }
+
+
+    private Block loadBlockFromPanel() {
+        String warn = validator();
+        if (!warn.isEmpty()) {
+            throw new RuntimeException("Preencha o(s) seguintes dado(s): " + warn);
+        }
+        String name = jTextFieldName.getText();
+        String description = jTextAreaDescription.getText();
+        return new Block(0,name, description, 1);   // resolver id profissional
+    }
+    private String validator() {
+        StringBuilder warns = new StringBuilder();
+        warns.append(jTextFieldName.getText().isEmpty() ? "Nome, " : "");
+        warns.append(jTextAreaDescription.getText().isEmpty() ? "Descriçao, " : "");
+
+        if (!warns.toString().isEmpty()) {
+            warns.delete(warns.toString().length() - 2, warns.toString().length());
+            warns.append("!");
+        }
+
+        return warns.toString();
+    }
+    private Exercise getExAtTable(){
+        return propExList.get(jTableProposenExercises.getSelectedRow());
+    }
+
+    private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonSave;

@@ -11,6 +11,7 @@ package backend.pojos;
  */
 public class HealthProfessional extends User {
 
+    private int idHealthProfessional;
     private int nif;
     private String maritalStatus;
     private String gender;
@@ -56,6 +57,10 @@ public class HealthProfessional extends User {
 
     }
 
+    public int getIdHealthProfessional() {
+        return idHealthProfessional;
+    }
+    
     public int getNif() {
         return nif;
     }
@@ -101,7 +106,7 @@ public class HealthProfessional extends User {
      */
     @Override
     public String toString() {
-        return "HealthProfessional{" + "idHealthProfessional=" + this.getIdUser()
+        return "HealthProfessional{" + "idHealthProfessional=" + idHealthProfessional
         + ", name=" + this.getName() + ", lastName=" + this.getLastName()
         + ", numCC=" + this.getNumCC() + ", adress=" + this.getAdress()
         + ", numTel=" + this.getNumTel() + ", nif=" + nif

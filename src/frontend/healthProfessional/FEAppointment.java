@@ -10,7 +10,10 @@ import backend.pojos.Patient;
 import backend.ws.AppointmentWS;
 import backend.ws.PatientWS;
 import java.awt.Color;
+import java.awt.Image;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,9 +38,10 @@ public class FEAppointment extends javax.swing.JFrame {
             newGreen = new Color(0, 204, 51);
             patWS = new PatientWS();
             apptmWS = new AppointmentWS();
-            apL = apptmWS.getAppointmentByIdDate(idHP, date);
+            apL = apptmWS.getAppointmentByIdHPDate(idHP, date);
             patients = patWS.getPatientsByHPDate(idHP, date);
             initComponents();
+            setIcon();
             seeAppointment();
             jTextFieldDate.setText(date);
             jTextAreaDescription.setEditable(false);
@@ -50,7 +54,7 @@ public class FEAppointment extends javax.swing.JFrame {
 
     private Appointment aproveAppointment() {
         int idAppointment = getSelectAppointment().getIdAppointment();
-        int idPatient = getSelectPat().getIdUser();
+        int idPatient = getSelectPat().getIdPatient();
         int idHealthProfessional = 1;
         String date = jTextFieldDate.getText();
         String hour = jTextFieldHours.getText();
@@ -102,11 +106,18 @@ public class FEAppointment extends javax.swing.JFrame {
 
     private Appointment getSelectAppointment() {
         for (Appointment a : apL) {
-            if (a.getIdPatient() == getSelectPat().getIdUser()) {
+            if (a.getIdPatient() == getSelectPat().getIdPatient()) {
                 return a;
             }
         }
         return null;
+    }
+
+     private void setIcon(){
+        List<Image> icons = new ArrayList<>();
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo.png")).getImage());
+        icons.add(new ImageIcon(getClass().getResource("/imagens/logo-icon.png")).getImage());
+        setIconImages(icons);
     }
 
     @SuppressWarnings("unchecked")

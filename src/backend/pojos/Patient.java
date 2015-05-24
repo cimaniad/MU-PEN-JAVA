@@ -2,6 +2,7 @@ package backend.pojos;
 
 public class Patient extends User{
 
+    private int idPatient;
     private int nif;
     private String maritalStatus;
     private String gender;
@@ -43,6 +44,10 @@ public class Patient extends User{
         this.pathology = pathology;
         this.description = description;
         this.idHealthProfessional = idHealthProfessional;
+    }
+
+    public int getIdPatient() {
+        return idPatient;
     }
 
     public int getIdHealthProfessional() {
@@ -92,7 +97,7 @@ public class Patient extends User{
 
     @Override
     public String toString() {
-        return "Patient{" + "idPatient=" + this.getIdUser() + ", name=" + this.getName() + ", lastName=" + this.getLastName()
+        return "Patient{" + "idPatient=" + idPatient + ", name=" + this.getName() + ", lastName=" + this.getLastName()
                 + ", numCC=" + this.getNumCC() + ", adress=" + this.getAdress() + ", numTel=" + this.getNumTel() + ", nif=" + nif
                 + ", email=" + this.getEmail() + ", maritalStatus=" + maritalStatus + ", birthDate=" + this.getBirthDate()
                 + ", bloodGroup=" + this.getBloodGroup() + ", nationality=" + this.getNationality() + ", gender=" + gender
